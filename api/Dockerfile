@@ -1,9 +1,11 @@
-FROM python:3.4
+FROM python:3.8.1
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         postgresql-client \
     && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --upgrade pip
 
 WORKDIR /app/api
 COPY requirements.txt /app/api

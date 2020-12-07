@@ -31,3 +31,11 @@ Things I want to add:
 - Instructions on easy deployment to cloud.gov
 - Directory structure?
 - USWDS in some form?
+
+
+## Potential problems
+If you want to be on a shell for one of the Docker services, you can do something like:
+`docker-compose down -v`
+
+If you want to be on a shell for one of the Docker services, you can do something like:
+`docker-compose up`
