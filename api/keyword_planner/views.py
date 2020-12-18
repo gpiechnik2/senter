@@ -19,6 +19,21 @@ class KeyWordPlannerViewSet(viewsets.ModelViewSet):
         user = self.request.user
         return KeywordPlanner.objects.filter(author = user)
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data = request.data)
+        serializer.is_valid(raise_exception = True)
+
+        #check if users has maximum of keyword analysis
+        keywordAnalysisLen = len(KeywordPlanner.objects.filter(author = user))
+        if keywordAnalysisLen >= 60:
+            return Response(serializer.errors, status=status.HTTP_409_CONFLICT)
+
+        #if not, continue
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status = status.HTTP_201_CREATED, headers=headers)
+
+
     def destroy(self, request, *args, **kwargs):
         try:
             instance = self.get_object()

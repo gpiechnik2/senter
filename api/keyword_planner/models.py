@@ -7,7 +7,7 @@ LANG_CHOICES = [
 ]
 
 class KeywordPlanner(models.Model):
-    author = models.ForeignKey(User, on_delete = models.CASCADE, blank = True, null = True)
+    author = models.ForeignKey(User, on_delete = models.CASCADE)
     keyword = models.CharField(max_length = 300)
     language = models.CharField(max_length = 6, choices = LANG_CHOICES, default = 'pl')
     googleKeywords = models.JSONField(null = True, blank = True)

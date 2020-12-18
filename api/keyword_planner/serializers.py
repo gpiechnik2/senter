@@ -36,29 +36,24 @@ class KeywordPlannerSerializer(serializers.ModelSerializer):
         keyword = request['keyword']
         language = request['language']
 
-        keywordAnalysisLen = len(KeywordPlanner.objects.filter(author = user))
-        if keywordAnalysisLen >= 60:
-            raise serializers.ValidationError('Posiadasz maksymalną ilość analiz słów kluczowych.')
-        else:
+        header = user.headers
 
-            header = user.headers
+        googleKeywords = google_keywords(keyword, header)
+        pyTrendsKeywords = pytrends_query(keyword, language)
+        serpKeywords = serp_keywords(keyword, header)
+        googleSuggestionsKeywords = google_suggestions_keywords(keyword, header)
 
-            googleKeywords = google_keywords(keyword, header)
-            pyTrendsKeywords = pytrends_query(keyword, language)
-            serpKeywords = serp_keywords(keyword, header)
-            googleSuggestionsKeywords = google_suggestions_keywords(keyword, header)
-
-            newAnalysis = KeywordPlanner.objects.create(
-                author = user,
-                language = language,
-                keyword = keyword,
-                googleKeywords = googleKeywords,
-                pytrendsKeywords = pyTrendsKeywords,
-                serpKeywords = serpKeywords,
-                googleSuggestionsQuestions = googleSuggestionsKeywords[0],
-                googleSuggestionsPrepositions = googleSuggestionsKeywords[1],
-                googleSuggestionsComparisons = googleSuggestionsKeywords[2],
-                googleSuggestionsAlphabeticals = googleSuggestionsKeywords[3]
-            )
+        newAnalysis = KeywordPlanner.objects.create(
+            author = user,
+            language = language,
+            keyword = keyword,
+            googleKeywords = googleKeywords,
+            pytrendsKeywords = pyTrendsKeywords,
+            serpKeywords = serpKeywords,
+            googleSuggestionsQuestions = googleSuggestionsKeywords[0],
+            googleSuggestionsPrepositions = googleSuggestionsKeywords[1],
+            googleSuggestionsComparisons = googleSuggestionsKeywords[2],
+            googleSuggestionsAlphabeticals = googleSuggestionsKeywords[3]
+        )
 
         return newAnalysis
