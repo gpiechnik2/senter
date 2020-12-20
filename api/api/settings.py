@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'keyword_planner.apps.KeywordPlannerConfig',
     'content_analysis.apps.ContentAnalysisConfig',
     'keyword_analysis.apps.KeywordAnalysisConfig',
-
+    'website_info.apps.WebsiteInfoConfig',
 
 ]
 

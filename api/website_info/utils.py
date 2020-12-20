@@ -3,28 +3,16 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlsplit, urljoin, urlparse
 import re
 
-def analyze(keyword, user_agent):
+def analyze(url, user_agent):
 
     headers = {
         "User-agent": user_agent
     }
 
-    results = {
-        "keyword": keyword,
-        "results": []
-    }
+    #analyse website with given url
+    analysis = website_analysis(url, headers)
 
-    #get links from bing
-    bing_links = get_bing_links(keyword, headers)
-
-    #and for all of them get website analysis
-    for link in bing_links:
-
-        #analyse all urls from bing results
-        analysis = website_analysis(link, headers)
-        results['results'].append(analysis)
-
-    return results
+    return analysis
 
 def make_soup(url, headers):
     r = requests.get(url, headers = headers).content
@@ -349,24 +337,3 @@ def get_keywords(title, meta_desc, h1, url_title):
         return h1
 
     return "N/A"
-
-def get_bing_links(keyword, headers):
-
-    results = []
-    page = requests.get("https://www.bing.com/search?", headers = headers, params = {"q": keyword}).text
-    soup = BeautifulSoup(page, 'html.parser')
-
-    anchors = soup.find_all("a")
-    #anchors = anchors[:len(anchors)-8]
-
-    for anchor in anchors:
-        if anchor is not None:
-            try:
-                if "http" in anchor["href"]:
-                    results.append(anchor["href"])
-            except KeyError:
-                continue
-
-    results = results[:len(results)-8]
-
-    return results
