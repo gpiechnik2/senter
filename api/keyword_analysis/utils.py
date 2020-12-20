@@ -42,6 +42,8 @@ def website_analysis(url, headers):
     h1 = get_h1(soup)
     h2 = get_h2(soup)
     other_h = get_other_h(soup)
+    url_title = get_url_title(url)
+    keywords = get_keywords(title, description, h1, url_title)
 
     #links
     urls_info = get_internal_and_external_links(url, soup)
@@ -58,6 +60,8 @@ def website_analysis(url, headers):
         "url" : url,
         "title" : title,
         "description": description,
+        "url_title": url_title,
+        "keywords": keywords,
         "h1": h1,
         "h2": {
             "h2_count": len(h2),
