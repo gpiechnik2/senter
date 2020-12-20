@@ -60,7 +60,7 @@ class User(AbstractUser):
     username = None
     username_validator = None
     email = models.EmailField(verbose_name = 'email', max_length = 255, unique = True)
-    headers = models.CharField(max_length = 99999, choices = HEADER_CHOICES, default = HEADER_CHOICES[0][1])
+    user_agent = models.CharField(max_length = 99999, choices = HEADER_CHOICES, default = HEADER_CHOICES[0][1])
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name']

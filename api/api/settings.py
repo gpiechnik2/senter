@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'keyword_planner.apps.KeywordPlannerConfig',
     'content_analysis.apps.ContentAnalysisConfig',
+    'keyword_analysis.apps.KeywordAnalysisConfig',
+
 
 ]
 

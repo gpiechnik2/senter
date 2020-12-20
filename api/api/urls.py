@@ -21,4 +21,6 @@ urlpatterns = [
     path('auth/', include('accounts.urls')),
     path('keyword/planner/', include('keyword_planner.urls')),
     path('content/analysis/', include('content_analysis.urls')),
+    path('keyword/analysis/', include('keyword_analysis.urls')),
+
 ]
