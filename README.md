@@ -43,6 +43,7 @@ docker-compose run --rm frontend bash
 
 ## Documentation
 
+For detailed rest API documentation, please go [here](https://github.com/gpiechnik2/popita/blob/master/API.md).
 
 ## External resources
 
