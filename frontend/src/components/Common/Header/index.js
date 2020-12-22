@@ -1,15 +1,22 @@
-import { HeaderContainer, LogoWrap, Logo } from './HeaderElements';
+import {
+  HeaderContainer,
+  HeaderWrapper,
+  LogoWrap,
+  Logo,
+} from './HeaderElements';
 
 import logo from '../../../images/logo.svg';
 
-const Header = () => {
+const Header = ({ children }) => {
   return (
     <>
       <HeaderContainer>
-        <LogoWrap>
-          <Logo src={logo} />
-        </LogoWrap>
-        
+        <HeaderWrapper>
+          <LogoWrap>
+            <Logo src={logo} />
+          </LogoWrap>
+          {children}
+        </HeaderWrapper>
       </HeaderContainer>
     </>
   );

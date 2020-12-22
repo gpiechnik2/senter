@@ -2,13 +2,19 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   grid-area: header;
+
+  background-color: #fff;
+`;
+
+export const HeaderWrapper = styled.div`
   width: 100%;
+  height: 100%;
   padding: 4px 10px;
 
   display: flex;
   justify-content: space-between;
 
-  background-color: #fff;
+  border-bottom: 1px solid #e6e8f1;
 `;
 
 export const LogoWrap = styled.div`

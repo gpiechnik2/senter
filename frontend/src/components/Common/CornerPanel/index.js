@@ -1,11 +1,22 @@
-import {} from './CornerPanelElements'
+import {
+  CornerPanelContainer,
+  CornerPanelWrap,
+  IconWrap,
+  IconGrid,
+} from './CornerPanelElements';
 
 const CornerPanel = () => {
   return (
     <>
-<CornerPanelContainer></CornerPanelContainer>
+      <CornerPanelContainer>
+        <CornerPanelWrap>
+          <IconWrap>
+            <IconGrid />
+          </IconWrap>
+        </CornerPanelWrap>
+      </CornerPanelContainer>
     </>
-  )
-}
+  );
+};
 
-export default CornerPanel
+export default CornerPanel;

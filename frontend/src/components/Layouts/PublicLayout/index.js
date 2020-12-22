@@ -1,11 +1,11 @@
-import { SigninContainer } from './SigninContainer';
+import { PublicContainer } from './PublicContainer';
 
-const SigninLayout = (props) => {
+const PublicLayout = ({ children }) => {
   return (
     <>
-      <SigninContainer>{props.children}</SigninContainer>
+      <PublicContainer>{children}</PublicContainer>
     </>
   );
 };
 
-export default SigninLayout;
+export default PublicLayout;

@@ -7,9 +7,9 @@ const HomePage = () => {
 
       <Link to='/dashboard'>Dashboard</Link>
       <br />
-      <Link to='/signin'>zaloguj sie</Link>
+      <Link to='/login'>zaloguj sie</Link>
       <br />
-      <Link to='/signup'>zarejestruj sie</Link>
+      <Link to='/register'>zarejestruj sie</Link>
       <br />
       <Link to='/blog'>BLOG</Link>
       <br />
