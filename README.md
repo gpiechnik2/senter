@@ -1,8 +1,8 @@
 # Django & React application
 
-This is a set up so that we can easily create apps that use Django on the backend (and take advantage of the amazing admin UI) and React (set up with [`create-react-app`](https://npm.im/create-react-app)) for the front end application.
+This is a lorem ipsum dolor mit set amit
 
-## Running
+## Setup
 
 1. `docker-compose build`
 1. `docker-compose up`
@@ -20,22 +20,16 @@ For example, to install a Javascript dependency and save that information to `pa
 If you want to be on a shell for one of the Docker services, you can do something like:
 `docker-compose run --rm frontend bash`
 
+## Features
 
 
-Things I want to add:
-- config for circle to deploy on `master` (wondering if i can get default branch name) and tagged releases
-- React Router
-- Redux & directory structure
-- A server side rendering
-- Service Workers and easy to config [strategies](https://jakearchibald.com/2014/offline-cookbook/)
-- Instructions on easy deployment to cloud.gov
-- Directory structure?
-- USWDS in some form?
+## Dependencies
 
 
-## Potential problems
-If you want to be on a shell for one of the Docker services, you can do something like:
-`docker-compose down -v`
+## Documentation
 
-If you want to be on a shell for one of the Docker services, you can do something like:
-`docker-compose up`
+
+## External resources
+
+
+## License
