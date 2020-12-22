@@ -21,7 +21,6 @@ class KeywordAnalysisViewSet(viewsets.ViewSet):
         keyword = serializer.validated_data['keyword']
         user_agent = self.request.user.user_agent
 
-
         #analyse user keyword analysis
         keywordAnalysis = analyze(keyword, user_agent)
 

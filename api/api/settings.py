@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'content_analysis.apps.ContentAnalysisConfig',
     'keyword_analysis.apps.KeywordAnalysisConfig',
     'website_info.apps.WebsiteInfoConfig',
+    'website_analysis.apps.WebsiteAnalysisConfig',
+
 
 ]
 
@@ -163,3 +165,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+DATETIME_FORMAT = '%Y-%m-%d %H:%m'
