@@ -295,7 +295,7 @@ def get_images_analysis(url, soup):
             results.append({
                 "url": r.url,
                 "file_url": file_,
-                "status": "Invalid",
+                "status": "Valid",
                 "message": "Zdjęcie posiada poprawny atrybut alt."
             })
 
