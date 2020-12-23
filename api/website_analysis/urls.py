@@ -1,10 +1,7 @@
 from django.urls import path
-from .views import PageSpeedAnalizeViewSet, SEOViewSet
+from .views import SEOViewSet
 
 urlpatterns = [
-    path('pagespeedinsights/', PageSpeedAnalizeViewSet.as_view({
-        'post': 'create'
-    })),
     path('seo/', SEOViewSet.as_view({
         'post': 'create'
     })),
