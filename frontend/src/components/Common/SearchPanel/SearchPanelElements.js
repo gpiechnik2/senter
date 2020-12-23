@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { FiSearch } from 'react-icons/fi';
 
 import {
@@ -9,6 +9,16 @@ import {
   ComboboxOption,
 } from '@reach/combobox';
 import '@reach/combobox/styles.css';
+
+const searchPanelAnimation = keyframes`
+ from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 
 export const SearchPanelContainer = styled.div`
   height: 100%;
@@ -80,6 +90,7 @@ export const MyComboboxPopover = styled(ComboboxPopover)`
   overflow-x: hidden;
   text-overflow: ellipsis;
   overflow-y: scroll;
+  animation: ${searchPanelAnimation} 0.3s ease;
 
   background-color: #fff;
   border: 1px solid #e8ebf2;

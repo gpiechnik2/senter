@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 import { BsGrid3X3Gap } from 'react-icons/bs';
 
-export const CornerPanelContainer = styled.div`
+export const CornerMenuContainer = styled.div`
   grid-area: corner-panel;
+
+  position: relative;
 `;
 
-export const CornerPanelWrap = styled.div`
+export const CornerMenuWrap = styled.div`
   width: 100%;
   height: 100%;
   display: flex;

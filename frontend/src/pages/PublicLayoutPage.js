@@ -1,13 +1,13 @@
 import PublicLayout from '../components/Layouts/PublicLayout/index';
 import Header from '../components/Common/Header';
-import CornerPanel from '../components/Common/CornerPanel';
+import CornerMenu from '../components/Common/CornerMenu';
 
 const PublicLayoutPage = () => {
   return (
     <>
       <PublicLayout>
         <Header></Header>
-        <CornerPanel />
+        <CornerMenu />
       </PublicLayout>
     </>
   );
