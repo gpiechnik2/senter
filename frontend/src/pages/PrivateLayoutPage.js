@@ -1,9 +1,14 @@
+import { Switch, Route } from 'react-router-dom';
+
 import PrivateLayout from '../components/Layouts/PrivateLayout';
 import Aside from '../components/Common/Aside/index';
 import Header from '../components/Common/Header';
 import CornerMenu from '../components/Common/CornerMenu/index';
 import SearchPanel from '../components/Common/SearchPanel/index';
 import CrumbNav from '../components/Common/CrumbNav';
+import { ContentContainer } from '../components/Layouts/ContentContainer';
+
+import DashboardPage from './dashboard';
 
 const PrivateLayoutPage = () => {
   return (
@@ -15,6 +20,11 @@ const PrivateLayoutPage = () => {
         </Header>
         <CornerMenu />
         <CrumbNav />
+        <ContentContainer>
+          <Switch>
+            <Route exact path='/dashboard' component={DashboardPage} />
+          </Switch>
+        </ContentContainer>
       </PrivateLayout>
     </>
   );
