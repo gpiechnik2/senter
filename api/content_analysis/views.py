@@ -6,7 +6,7 @@ from django.http import Http404
 
 from .models import ContentAnalysis
 from .serializers import ContentAnalysisSerializer
-from .utils import text_analysis, keyword_analysis, title_analysis, meta_description_analysis
+from .utils import analize_content
 
 class ContentAnalysisViewSet(viewsets.ModelViewSet):
     """
@@ -79,14 +79,8 @@ class ContentAnalysisRealTimeViewSet(viewsets.ViewSet):
         meta_description = serializer.validated_data['meta_description']
 
         #analyse user Content analysis
-        textAnalysis = text_analysis(text_to_check, keyword)
-        keywordAnalysis = keyword_analysis(keyword)
-        titleAnalysis = title_analysis(keyword, page_title)
-        metaDescription = meta_description_analysis(keyword, meta_description)
+        analysis = analize_content(keyword, text_to_check, page_title, meta_description)
 
         return Response({
-            "text_analysis": textAnalysis,
-            "keyword_analysis": keywordAnalysis,
-            "title_analysis": titleAnalysis,
-            "meta_description": metaDescription
+            'analysis': analysis
         }, status = status.HTTP_200_OK)

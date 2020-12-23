@@ -21,6 +21,10 @@ def website_analysis(url, user_agent):
     soup = make_soup(url, headers)
 
     #get basic info
+    url_status = check_status(url)
+    ssl = check_ssl(url)
+    meta_robots_info = get_meta_robots_info(soup)
+    response_time = get_response_time(url, headers)
     titles = get_title_tag(soup)
     descriptions = get_meta_descriptions(soup)
     h1 = get_h1(soup)
@@ -50,6 +54,7 @@ def website_analysis(url, user_agent):
     images_links = get_links_images(url, soup, images)
 
     #analyze data
+    responseTimeAnalysis = response_time_analysis(response_time)
     titleAnalysis = title_list_analysis(keyword, titles)
     h1_analysis = h1_list_analysis(keyword, h1)
     h2_analysis = h2_list_analysis(h2)
@@ -65,6 +70,15 @@ def website_analysis(url, user_agent):
     #Append all stuff to competitions
     results = {
         'url' : url,
+        'url_status': url_status,
+        'ssl': {
+            'analysis': ssl
+        },
+        'meta_robots': meta_robots_info,
+        'response_time': {
+            'time': response_time,
+            'analysis': responseTimeAnalysis
+        },
         'keyword': keyword,
         'title' : {
             'title_count': len(titles),
@@ -120,9 +134,35 @@ def website_analysis(url, user_agent):
     return results
 
 def make_soup(url, headers):
-    r = requests.get(url, headers = headers).content
+    r = requests.get(url, headers = headers, verify = False).content
     soup = BeautifulSoup(r, 'html.parser', from_encoding='utf-8')
     return soup
+
+def get_response_time(url, headers):
+    r = requests.get(url, headers = headers)
+    response_time = r.elapsed.total_seconds()
+    return response_time
+
+def response_time_analysis(response_time):
+
+    #convert seconds to milliseconds
+    response_time = response_time * 1000
+
+    if response_time <= 0:
+        return [{
+            "status": "Invalid",
+            "message": "Czas odpowiedzi storny jest zbyt niski i wynosi: {:.2f} milisekund.".format(response_time)
+        }]
+    if 0 > response_time <= 200:
+        return [{
+            "status": "Valid",
+            "message": "Czas odpowiedzi strony jest niski i wynosi: {:.2f} milisekund.".format(response_time)
+        }]
+    elif response_time > 200:
+        return [{
+            "status": "Invalid",
+            "message": "Czas odpowiedzi strony jest zbyt wysoki i wynosi: {:.2f} milisekund.".format(response_time)
+        }]
 
 def check_robots_txt(url, headers):
 
@@ -149,6 +189,21 @@ def is_valid(url):
     """
     parsed = urlparse(url)
     return bool(parsed.netloc) and bool(parsed.scheme)
+
+def get_meta_robots_info(soup):
+
+    meta_robots = soup.find("meta",  content = "noindex")
+
+    if meta_robots:
+        return [{
+            "status": "Invalid",
+            "message": "Strona posiada atrybutu meta({}) z określonym nieindeksowaniem jej w wyszukiwarkach.".format(meta)
+        }]
+    else:
+        return [{
+            "status": "Valid",
+            "message": "Strona nie posiada atrybutu meta blokującego indeksowanie strony."
+        }]
 
 def get_h1(soup):
 
@@ -283,7 +338,7 @@ def get_images_analysis(url, soup):
                 "message": "Zdjęcie nie posiada atrybutu alt."
             })
 
-        if image_alt is null:
+        if image_alt is None:
             results.append({
                 "url": r.url,
                 "file_url": file_,
@@ -296,7 +351,7 @@ def get_images_analysis(url, soup):
                 "url": r.url,
                 "file_url": file_,
                 "status": "Valid",
-                "message": "Zdjęcie posiada poprawny atrybut alt."
+                "message": "Zdjęcie posiada poprawny atrybut alt({}).".format(image_alt)
             })
 
     return results
@@ -455,6 +510,19 @@ def check_status(url):
 
     return status
 
+def check_ssl(url):
+
+    if "https" in str(url):
+        return [{
+            "status": "Valid",
+            "message": "Strona posiada certyfikat ssl."
+        }]
+    else:
+        return [{
+            "status": "Invalid",
+            "message": "Strona nie posiada certyfikatu ssl."
+        }]
+
 def get_links_status(urls):
 
     results = []
@@ -505,44 +573,45 @@ def get_main_h1(keyword, h1):
             else:
                 return h1_with_keyword[0]
 
-        elif len(h1_with_keyword) <= 0:
-            return null
-        else:
+        # if there is 1 title, return him or get first from h1 list
+        elif len(h1_with_keyword) == 1:
             return h1_with_keyword[0]
+        else:
+            return h1[0]
 
     return null
 
-def get_main_title(keyword, title):
+def get_main_title(keyword, titles):
 
-    if len(title) == 1:
-        return title[0]
-    elif len(title) == null:
+    if len(titles) == 1:
+        return titles[0]
+    elif len(titles) == null:
         return null
     else:
         #clean h1 to get title with keyword inside only
         title_with_keyword = []
-        for tag in title:
+        for tag in titles:
             if keyword.lower() in tag.lower():
-                title_with_keyword.append(tag)
+                titles_with_keyword.append(tag)
             else:
                 continue
 
         #return the shortest title, null or the only title
-        if len(title_with_keyword) > 1:
+        if len(titles_with_keyword) > 1:
 
             #we assume, that if there are two the same titles, min_desc is None
-            min_desc = min(title_with_keyword, key = len)
+            min_desc = min(titles_with_keyword, key = len)
 
             if min_desc:
                 return min_desc
             else:
-                return title_with_keyword[0]
+                return titles_with_keyword[0]
 
-
-        elif len(title_with_keyword) <= 0:
-            return null
+        # if there is 1 title, return him or get first from h1 list
+        elif len(titles_with_keyword) == 1:
+            return titles_with_keyword[0]
         else:
-            return str(title_with_keyword[0])
+            return titles[0]
 
     return null
 
@@ -572,10 +641,11 @@ def get_main_description(keyword, descriptions):
             else:
                 return descriptions_with_keyword[0]
 
-        elif len(descriptions_with_keyword) <= 0:
-            return null
-        else:
+        # if there is 1 title, return him or get first from h1 list
+        elif len(descriptions_with_keyword) == 1:
             return descriptions_with_keyword[0]
+        else:
+            return descriptions[0]
 
     return null
 
