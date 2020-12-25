@@ -47,7 +47,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink to='/website-analysis'>
+                <NavLink to='/dashboard/keywords-analysis'>
                   <IconWrap>
                     <IconKeywordsAnalysis />
                   </IconWrap>

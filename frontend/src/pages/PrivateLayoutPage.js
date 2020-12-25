@@ -10,6 +10,7 @@ import { ContentContainer } from '../components/Layouts/ContentContainer';
 
 import DashboardPage from './dashboard';
 import WebsiteAnalysisPage from './website-analysis';
+import KeywordsAnalysisPage from './keywords-analysis';
 
 const PrivateLayoutPage = () => {
   return (
@@ -28,6 +29,11 @@ const PrivateLayoutPage = () => {
               exact
               path='/dashboard/website-analysis'
               component={WebsiteAnalysisPage}
+            />
+            <Route
+              exact
+              path='/dashboard/keywords-analysis'
+              component={KeywordsAnalysisPage}
             />
           </Switch>
         </ContentContainer>

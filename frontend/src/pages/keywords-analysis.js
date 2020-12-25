@@ -1,7 +1,9 @@
+import KeywordsAnalysis from '../components/PageComponents/KeywordsAnalysis/index';
+
 const KeywordsAnalysisPage = () => {
   return (
     <>
-      <h1>KeywordsAnalysis</h1>
+      <KeywordsAnalysis />
     </>
   );
 };
