@@ -11,6 +11,8 @@ import { ContentContainer } from '../components/Layouts/ContentContainer';
 import DashboardPage from './dashboard';
 import WebsiteAnalysisPage from './website-analysis';
 import KeywordsAnalysisPage from './keywords-analysis';
+import CompetitionAnalysisPage from './competition-analysis';
+import ContentAnalysisPage from './content-analysis';
 
 const PrivateLayoutPage = () => {
   return (
@@ -34,6 +36,16 @@ const PrivateLayoutPage = () => {
               exact
               path='/dashboard/keywords-analysis'
               component={KeywordsAnalysisPage}
+            />
+            <Route
+              exact
+              path='/dashboard/competition-analysis'
+              component={CompetitionAnalysisPage}
+            />
+            <Route
+              exact
+              path='/dashboard/content-analysis'
+              component={ContentAnalysisPage}
             />
           </Switch>
         </ContentContainer>

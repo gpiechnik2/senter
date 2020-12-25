@@ -1,7 +1,9 @@
+import CompetitionAnalysis from '../components/PageComponents/CompetitionAnalysis';
+
 const CompetitionAnalysisPage = () => {
   return (
     <>
-      <h1>CompetitionAnalysis</h1>
+      <CompetitionAnalysis />
     </>
   );
 };
