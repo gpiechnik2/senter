@@ -9,6 +9,7 @@ import CrumbNav from '../components/Common/CrumbNav';
 import { ContentContainer } from '../components/Layouts/ContentContainer';
 
 import DashboardPage from './dashboard';
+import WebsiteAnalysisPage from './website-analysis';
 
 const PrivateLayoutPage = () => {
   return (
@@ -23,6 +24,11 @@ const PrivateLayoutPage = () => {
         <ContentContainer>
           <Switch>
             <Route exact path='/dashboard' component={DashboardPage} />
+            <Route
+              exact
+              path='/dashboard/website-analysis'
+              component={WebsiteAnalysisPage}
+            />
           </Switch>
         </ContentContainer>
       </PrivateLayout>

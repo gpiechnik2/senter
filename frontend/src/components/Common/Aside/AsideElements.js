@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Link as LinkRouter } from 'react-router-dom';
+
 import {
   CgHello,
   CgBrowse,
@@ -63,7 +65,7 @@ export const NavElement = styled.li`
     overflow: hidden;
   }
 `;
-export const NavLink = styled.a`
+export const NavLink = styled(LinkRouter)`
   width: 100%;
   display: flex;
   justify-content: flex-start;

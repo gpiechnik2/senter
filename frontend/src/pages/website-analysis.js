@@ -1,7 +1,9 @@
+import WebsiteAnalysis from '../components/PageComponents/WebsiteAnalysis';
+
 const WebsiteAnalysisPage = () => {
   return (
     <>
-      <h1>WebsiteAnalysis</h1>
+      <WebsiteAnalysis />
     </>
   );
 };

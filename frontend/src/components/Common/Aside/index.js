@@ -31,7 +31,7 @@ const Aside = () => {
           <Nav>
             <NavUl>
               <NavElement>
-                <NavLink href='#'>
+                <NavLink to='/dashboard'>
                   <IconWrap>
                     <IconHome />
                   </IconWrap>
@@ -39,7 +39,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink>
+                <NavLink to='/dashboard/website-analysis'>
                   <IconWrap>
                     <IconWebsiteAnalysis />
                   </IconWrap>
@@ -47,7 +47,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink>
+                <NavLink to='/website-analysis'>
                   <IconWrap>
                     <IconKeywordsAnalysis />
                   </IconWrap>
@@ -55,7 +55,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink>
+                <NavLink to='/website-analysis'>
                   <IconWrap>
                     <IconCompetitionAnalysis />
                   </IconWrap>
@@ -63,7 +63,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink>
+                <NavLink to='/website-analysis'>
                   <IconWrap>
                     <IconContentAnalysis />
                   </IconWrap>
@@ -71,7 +71,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink>
+                <NavLink to='/website-analysis'>
                   <IconWrap>
                     <IconWebsiteRankTracker />
                   </IconWrap>
@@ -79,7 +79,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink>
+                <NavLink to='/website-analysis'>
                   <IconWrap>
                     <IconDocuments />
                   </IconWrap>
