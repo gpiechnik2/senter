@@ -8,10 +8,13 @@ class UserGoogleJWTSerializer(serializers.Serializer):
 class UserFacebookATSerializer(serializers.Serializer):
     access_token = serializers.CharField()
     facebookId = serializers.CharField()
-    
+
 class PasswordSerializer(serializers.Serializer):
     current_password = serializers.CharField()
     new_password = serializers.CharField()
+
+class UserAgentSerializer(serializers.Serializer):
+    user_agent = serializers.ChoiceField()
 
 class UserSerializer(serializers.Serializer):
 

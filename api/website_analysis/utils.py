@@ -5,12 +5,10 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlsplit, urljoin, urlparse
 import re
 import json
+import random
+import string
 
 def website_analysis(url, user_agent):
-
-    #declare null globally to avoid json converting
-    global null
-    null = str(None)
 
     #declare headers
     headers = {
@@ -33,7 +31,11 @@ def website_analysis(url, user_agent):
     url_title = get_url_title(url)
 
     #get keyword based on data above
-    keyword = get_keyword(titles[0], descriptions[0], h1[0], url_title)
+    keyword = get_keyword(
+        titles[0] if titles else None,
+        descriptions[0] if descriptions else None,
+        h1[0] if h1 else None,
+        url_title)
 
     #get main title based on keyword and len of title
     main_title = get_main_title(keyword, titles)
@@ -76,7 +78,7 @@ def website_analysis(url, user_agent):
         },
         'meta_robots': meta_robots_info,
         'response_time': {
-            'time': response_time,
+            'time': response_time * 1000,
             'analysis': responseTimeAnalysis
         },
         'keyword': keyword,
@@ -148,17 +150,20 @@ def response_time_analysis(response_time):
     #convert seconds to milliseconds
     response_time = response_time * 1000
 
-    if response_time <= 0:
+    #round to two decimal places
+    response_time = round(response_time, 2)
+
+    if response_time <= 0.00:
         return [{
             "status": "Invalid",
             "message": "Czas odpowiedzi storny jest zbyt niski i wynosi: {:.2f} milisekund.".format(response_time)
         }]
-    if 0 > response_time <= 200:
+    if 0.00 < response_time <= 200.00:
         return [{
             "status": "Valid",
             "message": "Czas odpowiedzi strony jest niski i wynosi: {:.2f} milisekund.".format(response_time)
         }]
-    elif response_time > 200:
+    elif response_time > 200.00:
         return [{
             "status": "Invalid",
             "message": "Czas odpowiedzi strony jest zbyt wysoki i wynosi: {:.2f} milisekund.".format(response_time)
@@ -214,7 +219,7 @@ def get_h1(soup):
         data.setdefault('val1', []).append(h1.text if h1 else "N/A")
         data['val1'][0] = data['val1'][0].replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
     else:
-        data.setdefault('val1', []).append("N/A")
+        pass
 
     return data['val1']
 
@@ -229,7 +234,7 @@ def get_h2(soup):
             h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
             results.append(h)
     else:
-        results = null
+        pass
 
     return results
 
@@ -244,7 +249,7 @@ def get_other_h(soup):
             h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
             results.append(h)
     else:
-        results = "N/A"
+        pass
 
     return results
 
@@ -257,10 +262,10 @@ def get_title_tag(soup):
             title_text = (title.text).replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
             results.append(str(title_text))
         else:
-            results.append(null)
+            pass
 
     if not results:
-        results.append(null)
+        pass
 
     return results
 
@@ -276,10 +281,10 @@ def get_meta_descriptions(soup):
                 desc = meta['content'].strip()
                 results.append(desc)
         else:
-            results.append(null)
+            pass
 
     if not results:
-        results.append(null)
+        pass
 
     return results
 
@@ -317,15 +322,15 @@ def get_images_analysis(url, soup):
         if image_size < 200:
             results.append({
                 "url": r.url,
-                "file_url": file_,
+                "file_name": file_,
                 "status": "Valid",
-                "message": "Rozmiar zdjęcia jest zbyt poprawny i wynosi {}.".format(image_size)
+                "message": "Rozmiar zdjęcia jest poprawny i wynosi {}.".format(image_size)
             })
 
         if image_size >= 200:
             results.append({
                 "url": r.url,
-                "file_url": file_,
+                "file_name": file_,
                 "status": "Invalid",
                 "message": "Rozmiar zdjęcia jest zbyt duży. Obecny: {}. Sugerowany: 200MB.".format(image_size)
             })
@@ -333,7 +338,7 @@ def get_images_analysis(url, soup):
         if not image_alt:
             results.append({
                 "url": r.url,
-                "file_url": file_,
+                "file_name": file_,
                 "status": "Invalid",
                 "message": "Zdjęcie nie posiada atrybutu alt."
             })
@@ -341,7 +346,7 @@ def get_images_analysis(url, soup):
         if image_alt is None:
             results.append({
                 "url": r.url,
-                "file_url": file_,
+                "file_name": file_,
                 "status": "Invalid",
                 "message": "Zdjęcie posiada pusty atrybut alt."
             })
@@ -349,10 +354,37 @@ def get_images_analysis(url, soup):
         if image_alt:
             results.append({
                 "url": r.url,
-                "file_url": file_,
+                "file_name": file_,
                 "status": "Valid",
                 "message": "Zdjęcie posiada poprawny atrybut alt({}).".format(image_alt)
             })
+
+            #check alt attribute length
+            if 115 < len(image_alt) < 135:
+                results.append({
+                    "url": r.url,
+                    "file_name": file_,
+                    "status": "Valid",
+                    "message": "Atrybut alt({}) zdjęcia jest odpowiedniej długości.".format(image_alt)
+                })
+
+            elif len(image_alt) <= 115:
+                free_characters = 115 - len(image_alt)
+                results.append({
+                    "url": r.url,
+                    "file_name": file_,
+                    "status": "Valid",
+                    "message": "Atrybut alt({}) zdjęcia jest zbyt krótki. Dodaj do niego przynajmniej {} znaki.".format(image_alt, free_characters)
+                })
+
+            elif len(image_alt) > 135:
+                free_characters = len(image_alt) - 135
+                results.append({
+                    "url": r.url,
+                    "file_name": file_,
+                    "status": "Valid",
+                    "message": "Atrybut alt({}) zdjęcia jest zbyt długo. Skróć go o przynajmniej {} znaki.".format(image_alt, free_characters)
+                })
 
     return results
 
@@ -372,7 +404,7 @@ def get_internal_and_external_links(url, soup):
 
     for a_tag in soup.findAll("a"):
         href = a_tag.attrs.get("href")
-        if href == "" or href is null:
+        if href == "" or href is None:
             # href empty tag
             continue
         # join the URL if it's relative (not absolute link)
@@ -392,13 +424,16 @@ def get_internal_and_external_links(url, soup):
         if 'mailto://' in href:
             #and mail hrefs
             continue
+        if 'call://' in href:
+            #and call hrefs
+            continue
+        if 'tel:' in href:
+            #and call hrefs
+            continue
         if base_url not in href:
             # check if url is not in external link
             if href not in external_links:
-                if "tel:" not in href:
-                    external_links.append(href)
-                else:
-                    pass
+                external_links.append(href)
             continue
 
         internal_links.append(href)
@@ -412,34 +447,32 @@ def get_internal_and_external_links(url, soup):
 
 def get_url_title(url):
 
-    title = url.rsplit('/', 1)[-1]
-    title = title.replace('-', ' ').replace('_', ' ').replace('.html', '').replace('\xa0', ' ')
+    title = urlparse(url).path
 
-    if not title:
-        title = url.rsplit('/', 1)[-2]
-        title = title.rsplit('/', 1)[-1]
-        title = title.replace('-', ' ').replace('_', ' ').replace('.html', '').replace('\xa0', ' ')
+    if str(title) == "/":
+        return None
 
     return title
 
 def get_keyword(title, meta_desc, h1, url_title):
 
-    if title is not null:
+    #if one of parameters is None, match to it random hash
+    if title is not None:
         title = title.lower()
     else:
-        title = null
-    if meta_desc is not null:
+        title = get_random_string(8)
+    if meta_desc is not None:
         meta_desc = meta_desc.lower()
     else:
-        meta_desc = null
-    if h1 is not null:
+        meta_desc = get_random_string(8)
+    if h1 is not None:
         h1 = h1.lower()
     else:
-        h1 = null
-    if url_title is not null:
+        h1 = get_random_string(8)
+    if url_title is not None:
         url_title = url_title.lower()
     else:
-        url_title = null
+        url_title = get_random_string(8)
 
     #hierarchy of elements:
     #   1 url_title
@@ -501,7 +534,14 @@ def get_keyword(title, meta_desc, h1, url_title):
     if h1:
         return h1
 
-    return null
+    return None
+
+def get_random_string(length):
+    # put your letters in the following string
+    sample_letters = 'abcdefghijklmnopqrstuvwxyz'
+    result_str = ''.join((random.choice(sample_letters) for i in range(length)))
+
+    return result_str
 
 def check_status(url):
 
@@ -551,8 +591,8 @@ def get_main_h1(keyword, h1):
 
     if len(h1) == 1:
         return h1[0]
-    elif len(h1) == null:
-        return null
+    elif len(h1) < 1:
+        return None
     else:
         #clean h1 to get h1 with keyword inside only
         h1_with_keyword = []
@@ -576,17 +616,19 @@ def get_main_h1(keyword, h1):
         # if there is 1 title, return him or get first from h1 list
         elif len(h1_with_keyword) == 1:
             return h1_with_keyword[0]
-        else:
+
+        #remove duplicates if exists, and return first element
+        elif len(set(h1)) == 1:
             return h1[0]
 
-    return null
+    return None
 
 def get_main_title(keyword, titles):
 
     if len(titles) == 1:
         return titles[0]
-    elif len(titles) == null:
-        return null
+    elif len(titles) < 1:
+        return None
     else:
         #clean h1 to get title with keyword inside only
         title_with_keyword = []
@@ -610,17 +652,19 @@ def get_main_title(keyword, titles):
         # if there is 1 title, return him or get first from h1 list
         elif len(titles_with_keyword) == 1:
             return titles_with_keyword[0]
-        else:
+
+        #remove duplicates if exists, and return first element
+        elif len(set(titles)) == 1:
             return titles[0]
 
-    return null
+    return None
 
 def get_main_description(keyword, descriptions):
 
     if len(descriptions) == 1:
         return descriptions[0]
-    elif len(descriptions) == null:
-        return null
+    elif len(descriptions) < 1:
+        return None
     else:
         #clean descriptions to get descriptions with keyword inside only
         descriptions_with_keyword = []
@@ -644,14 +688,16 @@ def get_main_description(keyword, descriptions):
         # if there is 1 title, return him or get first from h1 list
         elif len(descriptions_with_keyword) == 1:
             return descriptions_with_keyword[0]
-        else:
+
+        #remove duplicates if exists, and return first element
+        elif len(set(descriptions)) == 1:
             return descriptions[0]
 
-    return null
+    return None
 
 def descriptions_list_analysis(keyword, descriptions):
 
-    if len(descriptions) is null:
+    if len(descriptions) < 1:
 
         return [{
             "status": "Invalid",
@@ -686,6 +732,9 @@ def descriptions_list_analysis(keyword, descriptions):
 def description_analysis(keyword, description):
 
     results = []
+
+    if keyword is None:
+        keyword = get_random_string(8)
 
     #check if keyword exists in description tag
     if keyword.lower() in description.lower():
@@ -722,7 +771,7 @@ def description_analysis(keyword, description):
 
 def title_list_analysis(keyword, titles):
 
-    if len(titles) is null:
+    if len(titles) < 1:
 
         return [{
             "status": "Invalid",
@@ -758,17 +807,9 @@ def title_analysis(keyword, title):
 
     results = []
 
-    #check if keyword exists in title tag
-    if keyword.lower() in title.lower():
-        results.append({
-            "status": "Valid",
-            "message": "Znacznik title({}) zawiera w sobie słowo bądź frazę kluczową.".format(title)
-        })
-    else:
-        results.append({
-            "status": "Invalid",
-            "message": "Znacznik title({}) nie zawiera w sobie słowa bądź frazy kluczowej.".format(title)
-        })
+    #if keyword is None, match to it random string
+    if keyword is None:
+        keyword = get_random_string(8)
 
     #check length of title
     if len(title) >= 50 <= 60:
@@ -795,8 +836,16 @@ def url_title_analysis(keyword, url_title):
 
     results = []
 
+    #if keyword is None, match to it random string
+    if keyword is None:
+        keyword = get_random_string(8)
+
+    #if url_title is None, match to it random string
+    if url_title is None:
+        return None
+
     #check if keyword exists in url_title
-    if keyword.lower() in url_title.lower():
+    if keyword.lower() in url_title.lower().replace('-', ' ').replace('_', ' '):
         results.append({
             "status": "Valid",
             "message": "Url title({}) zawiera w sobie słowo bądź frazę kluczową.".format(url_title)
@@ -811,7 +860,7 @@ def url_title_analysis(keyword, url_title):
 
 def h1_list_analysis(keyword, h1):
 
-    if len(h1) is null:
+    if len(h1) < 1:
 
         return [{
             "status": "Invalid",
@@ -846,6 +895,10 @@ def h1_list_analysis(keyword, h1):
 def h1_analysis(keyword, h1):
 
     results = []
+
+    #if keyword is None, match to it random string
+    if keyword is None:
+        keyword = get_random_string(8)
 
     #check if keyword exists in h1 tag
     if keyword.lower() in h1.lower():
@@ -882,16 +935,16 @@ def h1_analysis(keyword, h1):
 
 def h2_list_analysis(h2):
 
-    if len(h2) is null:
+    if len(h2) < 1:
 
         return [{
             "status": "Invalid",
             "message": "Brak znaczników h2 na stronie."
         }]
 
-    elif len(h2) < 2:
+    elif len(h2) == 1:
 
-        free_h2_tags = 2 - len(h2)
+        free_h2_tags = 4 - len(h2)
 
         results = [{
             "status": "Invalid",
@@ -921,7 +974,7 @@ def h2_analysis(h2):
     results = []
 
     #check length of h1
-    if len(h2) >= 20 <= 70:
+    if 20 <= len(h2) <= 70:
         results.append({
             "status": "Valid",
             "message": "Znacznik h2({}) jest poprawnej długości.".format(h2)
@@ -943,7 +996,7 @@ def h2_analysis(h2):
 
 def other_h_list_analysis(other_h):
 
-    if len(other_h) is null:
+    if len(other_h) is None:
 
         return [{
             "status": "Invalid",
@@ -968,7 +1021,7 @@ def other_h_list_analysis(other_h):
 
 def external_links_analysis(external_links):
 
-    if len(external_links) is null:
+    if len(external_links) is None:
 
         return [{
             "status": "Invalid",
@@ -997,7 +1050,7 @@ def external_links_analysis(external_links):
 
 def internal_links_analysis(internal_links):
 
-    if len(internal_links) is null:
+    if len(internal_links) is None:
 
         return [{
             "status": "Invalid",

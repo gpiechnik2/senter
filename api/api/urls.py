@@ -24,5 +24,5 @@ urlpatterns = [
     path('keyword/analysis/', include('keyword_analysis.urls')),
     path('website/info/', include('website_info.urls')),
     path('website/analysis/', include('website_analysis.urls')),
-
+    path('audit/', include('audit.urls')),
 ]
