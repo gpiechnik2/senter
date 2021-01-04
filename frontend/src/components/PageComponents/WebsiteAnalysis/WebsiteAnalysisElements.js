@@ -94,10 +94,10 @@ export const ButtonWrap = styled.div`
   justify-content: flex-end;
 `;
 
-export const TableTitle = styled.h2`
-  font-size: 15px;
+export const TableTitle = styled.h1`
+  font-size: 17px;
   color: #686868;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 `;
 export const TableElementsWrapper = styled.div`
   width: 100%;

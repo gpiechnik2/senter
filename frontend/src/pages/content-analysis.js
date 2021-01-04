@@ -1,7 +1,9 @@
+import ContentAnalysis from '../components/PageComponents/ContentAnalysis';
+
 const ContentAnalysisPage = () => {
   return (
     <>
-      <h1>ContentAnalysis</h1>
+      <ContentAnalysis />
     </>
   );
 };
