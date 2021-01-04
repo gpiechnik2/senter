@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'keyword_analysis.apps.KeywordAnalysisConfig',
     'website_info.apps.WebsiteInfoConfig',
     'website_analysis.apps.WebsiteAnalysisConfig',
-
+    'audit.apps.AuditConfig',
 
 ]
 

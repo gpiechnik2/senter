@@ -8,6 +8,37 @@ import json
 import random
 import string
 
+def analysis(url, user_agent):
+
+    results = []
+
+    #declare globally lists to avoid crawling website url multiple times
+    global crawled_urls
+    global urls_to_crawl
+    crawled_urls = []
+    urls_to_crawl = []
+
+    urls_to_crawl.append(url)
+
+    #until there are urls to "crawl"
+    while True:
+
+        #if there are no urls, break while loop
+        if not urls_to_crawl:
+            break
+
+        for url in crawled_urls:
+            #if urls_to_crawl is in crawled_urls, remove urls_to_crawl
+            if urls_to_crawl[0] == crawled_urls:
+                urls_to_crawl.pop(0)
+                break
+
+            #if urls_to_crawl is not in crawled_urls, call website analysis
+            urlAnalysis = website_analysis(urls_to_crawl[0])
+            results.append(urlAnalysis)
+
+    return results
+
 def website_analysis(url, user_agent):
 
     #declare headers
@@ -51,6 +82,24 @@ def website_analysis(url, user_agent):
     external_links = urls_info['external_links']
     internal_links = urls_info['internal_links']
 
+    #append internal links to urls_to_crawl
+    #but first, check if internal url is in crawled_urls
+    for interurl in internal_links:
+
+        #but first, check if internal url is in crawled_urls
+        for curl in crawled_urls:
+            if interurl == curl:
+                pass
+            else:
+                #then, check if internal url is in urls_to_crawl
+                #if not, add url query to crawl
+                for tcurl in urls_to_crawl:
+                    if interurl == tcurl:
+                        pass
+                    else:
+                        urls_to_crawl.append(interurl)
+
+
     #images and keyword extraction
     images = get_images(url, soup)
     images_links = get_links_images(url, soup, images)
@@ -63,8 +112,8 @@ def website_analysis(url, user_agent):
     other_h_analysis = other_h_list_analysis(other_h)
     descriptions_analysis = descriptions_list_analysis(keyword, descriptions)
     urlTitleAnalysis = url_title_analysis(keyword, url_title)
-    external_links_status = get_links_status(external_links)
-    internal_links_status = get_links_status(internal_links)
+    #external_links_status = get_links_status(external_links)
+    #internal_links_status = get_links_status(internal_links)
     externalLinksAnalysis = external_links_analysis(external_links)
     internalLinksAnalysis = internal_links_analysis(internal_links)
     images_analysis = get_images_analysis(url, soup)
@@ -117,13 +166,13 @@ def website_analysis(url, user_agent):
         'external_links': {
             'external_links_count': len(external_links),
             'external_links': external_links,
-            'status': external_links_status,
+            #'status': external_links_status,
             'analysis': externalLinksAnalysis
         },
         'internal_links': {
             'internal_links_count': len(internal_links),
             'internal_links': internal_links,
-            'status': internal_links_status,
+            #'status': internal_links_status,
             'analysis': internalLinksAnalysis
         },
         'images': {
