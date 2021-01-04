@@ -13,6 +13,7 @@ import WebsiteAnalysisPage from './website-analysis';
 import KeywordsAnalysisPage from './keywords-analysis';
 import CompetitionAnalysisPage from './competition-analysis';
 import ContentAnalysisPage from './content-analysis';
+import WebsiteRankTrackerPage from './website-rank-tracker';
 
 const PrivateLayoutPage = () => {
   return (
@@ -46,6 +47,11 @@ const PrivateLayoutPage = () => {
               exact
               path='/dashboard/content-analysis'
               component={ContentAnalysisPage}
+            />
+            <Route
+              exact
+              path='/dashboard/website-rank-tracker'
+              component={WebsiteRankTrackerPage}
             />
           </Switch>
         </ContentContainer>

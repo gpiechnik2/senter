@@ -71,7 +71,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink to='/website-analysis'>
+                <NavLink to='/dashboard/website-rank-tracker'>
                   <IconWrap>
                     <IconWebsiteRankTracker />
                   </IconWrap>
@@ -79,7 +79,7 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink to='/website-analysis'>
+                <NavLink to='/dashboard/website-rank-tracker'>
                   <IconWrap>
                     <IconDocuments />
                   </IconWrap>

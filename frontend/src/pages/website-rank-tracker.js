@@ -1,7 +1,9 @@
+import WebsiteRankTracker from '../components/PageComponents/WebsiteRankTracker';
+
 const WebsiteRankTrackerPage = () => {
   return (
     <>
-      <h1>WebsiteRankTracker</h1>
+      <WebsiteRankTracker />
     </>
   );
 };
