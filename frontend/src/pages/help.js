@@ -1,9 +1,9 @@
-import React from 'react';
+import Help from '../components/PageComponents/Help';
 
 const HelpPage = () => {
   return (
     <>
-      <h1>HELP PAGE</h1>
+      <Help />
     </>
   );
 };

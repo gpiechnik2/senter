@@ -14,6 +14,8 @@ import KeywordsAnalysisPage from './keywords-analysis';
 import CompetitionAnalysisPage from './competition-analysis';
 import ContentAnalysisPage from './content-analysis';
 import WebsiteRankTrackerPage from './website-rank-tracker';
+import DocumentsPage from './documents';
+import HelpPage from './help';
 
 const PrivateLayoutPage = () => {
   return (
@@ -53,6 +55,12 @@ const PrivateLayoutPage = () => {
               path='/dashboard/website-rank-tracker'
               component={WebsiteRankTrackerPage}
             />
+            <Route
+              exact
+              path='/dashboard/documents'
+              component={DocumentsPage}
+            />
+            <Route exact path='/dashboard/help' component={HelpPage} />
           </Switch>
         </ContentContainer>
       </PrivateLayout>

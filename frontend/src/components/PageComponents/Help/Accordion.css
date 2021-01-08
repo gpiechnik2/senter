@@ -1,0 +1,73 @@
+/**
+* ----------------------------------------------
+* Demo styles
+* ----------------------------------------------
+**/
+.accordion {
+  border: none;
+}
+
+.accordion__item {
+  /* border-bottom: 1px solid #E6E8F1; */
+}
+
+.accordion__button {
+  padding: 17px 0 12px 0;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: #fff;
+  font-size: 15px;
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  outline: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #E6E8F1;
+  color: #686868;
+  cursor: pointer;
+}
+
+.accordion__button:hover {
+  color: #8954BA;
+}
+
+.accordion__button:before {
+  display: inline-block;
+  content: '';
+  height: 10px;
+  width: 10px;
+  margin-right: 12px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.accordion__button[aria-expanded='true']::before,
+.accordion__button[aria-selected='true']::before {
+  transform: rotate(45deg);
+}
+
+[hidden] {
+  display: none;
+}
+
+.accordion__panel {
+  padding: 20px;
+  animation: fadein 0.35s ease-in;
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}

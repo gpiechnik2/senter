@@ -113,7 +113,7 @@ export const HelpWrap = styled.div`
     overflow: hidden;
   }
 `;
-export const HelpLink = styled.a`
+export const HelpLink = styled(LinkRouter)`
   width: 100%;
   display: flex;
   justify-content: flex-start;
