@@ -6,6 +6,14 @@ export const CornerMenuContainer = styled.div`
   grid-area: corner-panel;
 
   position: relative;
+  z-index: 10;
+  background: #fff;
+
+  position: ${({ isScroll }) => (isScroll ? 'fixed' : 'relative')};
+  top: ${({ isScroll }) => (isScroll ? '0' : 'auto')};
+  right: ${({ isScroll }) => (isScroll ? '0' : 'auto')};
+  width: ${({ isScroll }) => (isScroll ? '80px' : 'auto')};
+  height: ${({ isScroll }) => (isScroll ? '70px' : 'auto')};
 `;
 
 export const CornerMenuWrap = styled.div`

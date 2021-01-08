@@ -5,6 +5,11 @@ export const HeaderContainer = styled.header`
 
   z-index: 10;
   background-color: #fff;
+
+  position: ${({ isScroll }) => (isScroll ? 'fixed' : 'static')};
+  top: ${({ isScroll }) => (isScroll ? '0' : 'auto')};
+  width: ${({ isScroll }) => (isScroll ? 'calc(100% - 80px)' : 'auto')};
+  height: ${({ isScroll }) => (isScroll ? '70px' : 'auto')};
 `;
 
 export const HeaderWrapper = styled.div`

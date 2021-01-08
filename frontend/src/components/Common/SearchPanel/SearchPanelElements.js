@@ -69,6 +69,9 @@ export const Input = styled(ComboboxInput)`
     color: #a4a5a6;
     opacity: 1;
   }
+  &:focus {
+    border-bottom: none;
+  }
 `;
 
 export const MyCombobox = styled(Combobox)`

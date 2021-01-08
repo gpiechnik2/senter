@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import {
   HeaderContainer,
   HeaderWrapper,
@@ -8,9 +10,27 @@ import {
 import logo from '../../../images/logo.svg';
 
 const Header = ({ children }) => {
+  const [isScroll, setIsScroll] = useState(false);
+
+  const changeHeader = () => {
+    if (window.scrollY > 0) {
+      setIsScroll(true);
+    } else {
+      setIsScroll(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', changeHeader);
+
+    return () => {
+      window.removeEventListener('scroll', changeHeader);
+    };
+  }, []);
+
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer isScroll={isScroll}>
         <HeaderWrapper>
           <LogoWrap>
             <Logo src={logo} />
