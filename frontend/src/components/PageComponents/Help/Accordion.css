@@ -1,8 +1,4 @@
-/**
-* ----------------------------------------------
-* Demo styles
-* ----------------------------------------------
-**/
+
 .accordion {
   border: none;
 }
@@ -15,17 +11,17 @@
   padding: 17px 0 12px 0;
   width: 100%;
   box-sizing: border-box;
-  text-align: left;
-  background-color: #fff;
-  font-size: 15px;
   border: none;
   border-bottom-color: currentcolor;
   border-bottom-style: none;
   border-bottom-width: medium;
+  text-align: left;
+  font-size: 15px;
+  color: #686868;
+  background-color: #fff;
   outline: none;
   transition: all 0.3s ease;
   border-bottom: 1px solid #E6E8F1;
-  color: #686868;
   cursor: pointer;
 }
 
@@ -42,6 +38,7 @@
   border-bottom: 2px solid currentColor;
   border-right: 2px solid currentColor;
   transform: rotate(-45deg);
+  transition: transform .2s ease-in;
 }
 
 .accordion__button[aria-expanded='true']::before,

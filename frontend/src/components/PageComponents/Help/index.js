@@ -21,7 +21,7 @@ export const Help = () => {
     <>
       <HelpContainer>
         <CollapsibleWrap>
-          <Accordion allowZeroExpanded={true}>
+          <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
             <AccordionItem>
               <AccordionItemHeading>
                 <AccordionItemButton>Content Analysis</AccordionItemButton>
