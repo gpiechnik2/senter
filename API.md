@@ -1563,8 +1563,8 @@
     `Authorization: Token <AUTHORIZATION_TOKEN>`
 
   * **URL Params**
-  
-    `id = [integer]`
+
+    `id = <Integer>`
 
   * **Data Params**
 
@@ -2133,8 +2133,8 @@
     `Authorization: Token <AUTHORIZATION_TOKEN>`
 
   * **URL Params**
-  
-    `id = [integer]`
+
+    `id = <Integer>`
 
   * **Data Params**
 
