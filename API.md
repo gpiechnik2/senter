@@ -317,7 +317,7 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"access_token": <ACCESS_TOKEN>, "facebookId": <FACEBOOKID>}' http://hostname/auth/facebook/token/login/
   ```
 
-  **Get website info**
+**Get website info**
   ----
     Returns website info.
 
@@ -339,11 +339,11 @@
 
   * **Data Params**
 
-      ```
-        {
-            "url": <String>
-        }
-      ```
+    ```
+      {
+          "url": <String>
+      }
+    ```
 
   * **Success Response:**
 
@@ -395,6 +395,6 @@
 
   * **Sample Call:**
 
-    ```
-      curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website/info/
-    ```
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website/info/
+  ```

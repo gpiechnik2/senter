@@ -27,9 +27,6 @@ class ContentAnalysisViewSet(viewsets.ModelViewSet):
         serializer = ContentAnalysisSerializer(data = request.data)
         if serializer.is_valid():
 
-            if self.request.user.is_anonymous:
-                return Response(status = status.HTTP_401_UNAUTHORIZED)
-
             #check if users has maximum of content analysis
             analysislen = len(ContentAnalysis.objects.filter(author = user))
             if analysislen > 6:
