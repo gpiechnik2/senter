@@ -396,5 +396,5 @@
   * **Sample Call:**
 
     ```
-      curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"url": <URL>}' http://hostname/website/info/
+      curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website/info/
     ```
