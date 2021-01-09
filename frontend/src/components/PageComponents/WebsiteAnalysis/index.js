@@ -1,5 +1,8 @@
 import MainPage from './MainPage';
+import PageSpeedPage from './PageSpeedPage';
 import SeoPage from './SeoPage/index';
+import SearchConsolePage from './SearchConsolePage/index';
+
 import {
   WebAnalysisWrapper,
   WebAnalysisMenu,
@@ -28,7 +31,9 @@ const WebsiteAnalysis = () => {
         </WebAnalysisMenu>
         <WebSwitchContainer>
           {/* <MainPage /> */}
-          <SeoPage />
+          {/* <SeoPage /> */}
+          {/* <PageSpeedPage /> */}
+          <SearchConsolePage />
         </WebSwitchContainer>
       </WebAnalysisWrapper>
     </>

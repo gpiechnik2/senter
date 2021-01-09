@@ -13,5 +13,5 @@ export const SeoPageContainer = styled.div`
 
 export const SeoSelect = styled.div`
   width: 100%;
-  margin-top: 25px;
+  margin-top: 19px;
 `;
