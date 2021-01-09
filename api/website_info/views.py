@@ -18,6 +18,9 @@ class WebsiteInfoViewSet(viewsets.ViewSet):
         serializer = WebsiteInfoSerializer(data = request.data)
         serializer.is_valid(raise_exception = True)
 
+        if self.request.user.is_anonymous:
+            return Response(status = status.HTTP_401_UNAUTHORIZED)
+
         url = serializer.validated_data['url']
         user_agent = self.request.user.user_agent
 

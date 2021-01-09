@@ -18,6 +18,9 @@ class KeywordAnalysisViewSet(viewsets.ViewSet):
         serializer = KeywordAnalysisSerializer(data = request.data)
         serializer.is_valid(raise_exception = True)
 
+        if self.request.user.is_anonymous:
+            return Response(status = status.HTTP_401_UNAUTHORIZED)
+
         keyword = serializer.validated_data['keyword']
         user_agent = self.request.user.user_agent
 

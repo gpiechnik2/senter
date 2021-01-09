@@ -36,12 +36,12 @@ class KeywordPlannerSerializer(serializers.ModelSerializer):
         keyword = request['keyword']
         language = request['language']
 
-        header = user.headers
+        user_agent = user.user_agent
 
-        googleKeywords = google_keywords(keyword, header)
+        googleKeywords = google_keywords(keyword, user_agent)
         pyTrendsKeywords = pytrends_query(keyword, language)
-        serpKeywords = serp_keywords(keyword, header)
-        googleSuggestionsKeywords = google_suggestions_keywords(keyword, header)
+        serpKeywords = serp_keywords(keyword, user_agent)
+        googleSuggestionsKeywords = google_suggestions_keywords(keyword, user_agent)
 
         newAnalysis = KeywordPlanner.objects.create(
             author = user,
