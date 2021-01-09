@@ -27,14 +27,17 @@ def analysis(url, user_agent):
         if not urls_to_crawl:
             break
 
-        for url in crawled_urls:
-            #if urls_to_crawl is in crawled_urls, remove urls_to_crawl
-            if urls_to_crawl[0] == crawled_urls:
-                urls_to_crawl.pop(0)
-                break
+        for url in urls_to_crawl:
 
-            #if urls_to_crawl is not in crawled_urls, call website analysis
-            urlAnalysis = website_analysis(urls_to_crawl[0])
+            #if url to crawl is in crawled_urls, remove crawled url
+            for curl in crawled_urls:
+                if url == curl:
+                    urls_to_crawl.remove(url)
+                    continue
+
+            #if url to crawl is not in crawled_urls, call website analysis
+            urlAnalysis = website_analysis(url, user_agent)
+            crawled_urls.append(url)
             results.append(urlAnalysis)
 
     return results

@@ -23,6 +23,8 @@ class KeyWordPlannerViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data = request.data)
         serializer.is_valid(raise_exception = True)
 
+        user = self.request.user
+
         #check if users has maximum of keyword analysis
         keywordAnalysisLen = len(KeywordPlanner.objects.filter(author = user))
         if keywordAnalysisLen >= 60:

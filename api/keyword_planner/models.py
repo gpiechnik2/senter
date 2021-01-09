@@ -2,8 +2,8 @@ from django.db import models
 from accounts.models import User
 
 LANG_CHOICES = [
-    ('pl', 'Polski'),
-    ('en', 'Angielski')
+    ('pl', 'Polish'),
+    ('en', 'English')
 ]
 
 class KeywordPlanner(models.Model):
