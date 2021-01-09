@@ -415,7 +415,7 @@
 
     `Authorization: Token <AUTHORIZATION_TOKEN>`
 
-  *  **URL Params**
+  * **URL Params**
 
     None
 
@@ -990,7 +990,7 @@
 
     `Authorization: Token <AUTHORIZATION_TOKEN>`
 
-  *  **URL Params**
+  * **URL Params**
 
     None
 
@@ -1562,7 +1562,7 @@
 
     `Authorization: Token <AUTHORIZATION_TOKEN>`
 
-  *  **URL Params**
+  * **URL Params**
 
     `id = [integer]`
 
