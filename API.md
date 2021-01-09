@@ -973,3 +973,1201 @@
   ```
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "language": <LANGUAGE>}' http://hostname/keyword/planner/
   ```
+
+**Get user keyword planners**
+  ----
+    Returns user keyword planners.
+
+  * **URL**
+
+    keyword/planner/
+
+  * **Method:**
+
+    `GET`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  *  **URL Params**
+
+    None
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+
+      ```
+      [
+          {
+              "id": <Int>,
+              "keyword": <String>,
+              "language": <String>,
+              "googleKeywords": [
+                  <String>
+              ],
+              "pytrendsKeywords": [
+                  {
+                      "title": <String>,
+                      "type": <String>
+                  }
+              ],
+              "serpKeywords": [
+                  <String>
+              ],
+              "googleSuggestionsQuestions": {
+                  "questions": [
+                      {
+                          "question": "co",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "czemu",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "dlaczego",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "gdzie",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "jak",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "kiedy",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "kto",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "które",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "którzy",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "question": "w jaki sposób",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      }
+                  ]
+              },
+              "googleSuggestionsPrepositions": {
+                  "prepositions": [
+                      {
+                          "preposition": "jak",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "bez",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "niedaleko",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "w okolicy",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "w pobliżu",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "z",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "do",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "podobne",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "blisko",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "obok",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "preposition": "czy",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      }
+                  ]
+              },
+              "googleSuggestionsComparisons": {
+                  "comparisons": [
+                      {
+                          "comparison": "dla",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "comparison": "podobny",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "comparison": "przeciw",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "comparison": "vs",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "comparison": "i",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      },
+                      {
+                          "comparison": "lub",
+                          "results": {
+                              "normal": [
+                                  <String>
+                              ],
+                              "reversed": [
+                                  <String>
+                              ]
+                          }
+                      }
+                  ]
+              },
+              "googleSuggestionsAlphabeticals": {
+                  "letters": [
+                      {
+                          "letter": "a",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "ą",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "b",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "c",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "ć",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "d",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "e",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "f",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "g",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "h",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "i",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "j",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "k",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "l",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "ł",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "m",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "n",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "ń",
+                          "results": []
+                      },
+                      {
+                          "letter": "o",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "ó",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "p",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "r",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "s",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "ś",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "t",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "u",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "w",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "y",
+                          "results": [
+                             <String>
+                          ]
+                      },
+                      {
+                          "letter": "z",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "ź",
+                          "results": [
+                              <String>
+                          ]
+                      },
+                      {
+                          "letter": "ż",
+                          "results": [
+                              <String>
+                          ]
+                      }
+                  ]
+              },
+              "publish_date": <String>
+          }
+      ]
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/
+  ```
+  
+  **Get user keyword planner**
+  ----
+    Returns a user keyword planner with specified id.
+
+  * **URL**
+
+    keyword/planner/:id
+
+  * **Method:**
+
+    `GET`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  *  **URL Params**
+
+    **Required:**
+ 
+   `id = [integer]`
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+
+      ```
+      {
+          "id": <Int>,
+          "keyword": <String>,
+          "language": <String>,
+          "googleKeywords": [
+              <String>
+          ],
+          "pytrendsKeywords": [
+              {
+                  "title": <String>,
+                  "type": <String>
+              }
+          ],
+          "serpKeywords": [
+              <String>
+          ],
+          "googleSuggestionsQuestions": {
+              "questions": [
+                  {
+                      "question": "co",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "czemu",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "dlaczego",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "gdzie",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "jak",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "kiedy",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "kto",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "które",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "którzy",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "question": "w jaki sposób",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  }
+              ]
+          },
+          "googleSuggestionsPrepositions": {
+              "prepositions": [
+                  {
+                      "preposition": "jak",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "bez",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "niedaleko",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "w okolicy",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "w pobliżu",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "z",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "do",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "podobne",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "blisko",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "obok",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "preposition": "czy",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  }
+              ]
+          },
+          "googleSuggestionsComparisons": {
+              "comparisons": [
+                  {
+                      "comparison": "dla",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "comparison": "podobny",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "comparison": "przeciw",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "comparison": "vs",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "comparison": "i",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  },
+                  {
+                      "comparison": "lub",
+                      "results": {
+                          "normal": [
+                              <String>
+                          ],
+                          "reversed": [
+                              <String>
+                          ]
+                      }
+                  }
+              ]
+          },
+          "googleSuggestionsAlphabeticals": {
+              "letters": [
+                  {
+                      "letter": "a",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "ą",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "b",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "c",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "ć",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "d",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "e",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "f",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "g",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "h",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "i",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "j",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "k",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "l",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "ł",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "m",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "n",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "ń",
+                      "results": []
+                  },
+                  {
+                      "letter": "o",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "ó",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "p",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "r",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "s",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "ś",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "t",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "u",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "w",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "y",
+                      "results": [
+                         <String>
+                      ]
+                  },
+                  {
+                      "letter": "z",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "ź",
+                      "results": [
+                          <String>
+                      ]
+                  },
+                  {
+                      "letter": "ż",
+                      "results": [
+                          <String>
+                      ]
+                  }
+              ]
+          },
+          "publish_date": <String>
+      }
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/<ID>/
+  ```
+
+**Delete user keyword planner**
+  ----
+    Deletes a user keyword planner with specified id.
+
+  * **URL**
+
+    keyword/planner/:id
+
+  * **Method:**
+
+    `DELETE`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  *  **URL Params**
+
+    **Required:**
+ 
+   `id = [integer]`
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 204 NO CONTENT <br />
+    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+    
+  * **Sample Call:**
+
+  ```
+    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/<ID>/
