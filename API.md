@@ -959,14 +959,13 @@
       {
         "detail": "Authentication credentials were not provided."
       }
-      
-      OR
-      
+    ```
+    OR
+    ```  
       {
         "detail": "Invalid token."
       }
     ```
-
   * **Sample Call:**
 
   ```
