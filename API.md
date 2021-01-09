@@ -447,7 +447,9 @@
                   "type": <String>
               }
           ],
-          "serpKeywords": [],
+          "serpKeywords": [
+              <String>
+          ],
           "googleSuggestionsQuestions": {
               "questions": [
                   {
@@ -954,7 +956,7 @@
 
     * **Code:** 401 UNAUTHORIZED <br />
     **Content:**
-    
+
     ```
       {
         "detail": "Authentication credentials were not provided."
