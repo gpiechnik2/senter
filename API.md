@@ -1545,7 +1545,7 @@
   ```
     curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/
   ```
-  
+
   **Get user keyword planner**
   ----
     Returns a user keyword planner with specified id.
@@ -1564,9 +1564,7 @@
 
   *  **URL Params**
 
-    **Required:**
- 
-   `id = [integer]`
+    `id = [integer]`
 
   * **Data Params**
 
@@ -2136,9 +2134,7 @@
 
   *  **URL Params**
 
-    **Required:**
- 
-   `id = [integer]`
+    `id = [integer]`
 
   * **Data Params**
 
@@ -2147,7 +2143,7 @@
   * **Success Response:**
 
     * **Code:** 204 NO CONTENT <br />
-    
+
   * **Error Response:**
 
     * **Code:** 400 BAD REQUEST
@@ -2166,7 +2162,7 @@
         "detail": "Invalid token."
       }
     ```
-    
+
   * **Sample Call:**
 
   ```
