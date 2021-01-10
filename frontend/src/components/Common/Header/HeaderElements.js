@@ -4,7 +4,7 @@ export const HeaderContainer = styled.header`
   grid-area: header;
 
   z-index: 10;
-  background-color: #fff;
+  background-color: #5d38db;
 
   position: ${({ isScroll }) => (isScroll ? 'fixed' : 'static')};
   top: ${({ isScroll }) => (isScroll ? '0' : 'auto')};
@@ -19,8 +19,6 @@ export const HeaderWrapper = styled.div`
 
   display: flex;
   justify-content: space-between;
-
-  border-bottom: 1px solid #e6e8f1;
 `;
 
 export const LogoWrap = styled.div`

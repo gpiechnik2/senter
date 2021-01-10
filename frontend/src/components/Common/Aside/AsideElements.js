@@ -21,10 +21,10 @@ export const AsideContainer = styled.aside`
   bottom: 0;
   width: 70px;
   height: 100vh;
-  border-right: 1px solid #e6e8f1;
   transition: width 0.3s ease;
   z-index: 9;
   overflow: hidden;
+  background: #5d38db;
 
   &:hover {
     width: 211px;
@@ -37,12 +37,13 @@ export const AsideWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 9;
 `;
 export const ToggleWrap = styled.div``;
 export const Nav = styled.nav`
   width: 210px;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: #5d38db;
   z-index: 9;
 `;
 export const NavUl = styled.ul`
@@ -58,10 +59,10 @@ export const NavElement = styled.li`
   cursor: pointer;
 
   &:hover {
-    border-right: 2.5px solid #8954ba;
+    border-right: 2.5px solid #fff;
   }
   &:hover a {
-    color: #8954ba;
+    color: #fff;
     overflow: hidden;
   }
 `;
@@ -73,10 +74,10 @@ export const NavLink = styled(LinkRouter)`
   margin-left: 25px;
   font-weight: 100;
   font-size: 11px;
-  color: #767676;
+  color: #fff;
 
   &:hover {
-    color: #8954ba;
+    color: #fff;
   }
 `;
 export const IconWrap = styled.div`
@@ -100,16 +101,16 @@ export const NavName = styled.span`
 export const HelpWrap = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   overflow: hidden;
   transition: all 0.1s ease;
   cursor: pointer;
 
   &:hover {
-    border-right: 2.5px solid #8954ba;
+    border-right: 2.5px solid #fff;
   }
   &:hover a {
-    color: #8954ba;
+    color: #fff;
     overflow: hidden;
   }
 `;
@@ -121,20 +122,23 @@ export const HelpLink = styled(LinkRouter)`
   margin-left: 25px;
   font-weight: 100;
   font-size: 11px;
-  color: #767676;
-
-  &:hover {
-    color: #8954ba;
-  }
+  color: #fff;
 `;
 export const IconHelpWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-size: 20px;
+  width: 20px;
+  height: 25px;
+  background: #fff;
+
+  border-radius: 5px;
 `;
-export const IconHelp = styled(CgReadme)``;
+export const IconHelp = styled(CgReadme)`
+  font-size: 20px;
+  color: #5d38db;
+`;
 export const HelpText = styled.span`
   margin-left: 25px;
 `;

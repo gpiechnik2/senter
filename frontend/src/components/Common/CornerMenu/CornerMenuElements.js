@@ -7,7 +7,7 @@ export const CornerMenuContainer = styled.div`
 
   position: relative;
   z-index: 10;
-  background: #fff;
+  background: #5d38db;
 
   position: ${({ isScroll }) => (isScroll ? 'fixed' : 'relative')};
   top: ${({ isScroll }) => (isScroll ? '0' : 'auto')};
@@ -23,13 +23,12 @@ export const CornerMenuWrap = styled.div`
   justify-content: center;
   align-items: center;
 
-  border-left: 1px solid #e6e8f1;
-  border-bottom: 1px solid #e6e8f1;
+  border-left: 1px solid #d8d8d8;
 `;
 export const IconWrap = styled.div`
   cursor: pointer;
 `;
 export const IconGrid = styled(BsGrid3X3Gap)`
   font-size: 26px;
-  color: #5d38db;
+  color: #fff;
 `;

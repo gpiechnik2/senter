@@ -8,12 +8,17 @@ import {
   CrumbNavBackLink,
   IconWrap,
   IconArrowLeft,
+  EdgeElement,
+  EdgeElement2,
 } from './CrumbNavElements';
 
 const CrumbNav = () => {
   return (
     <>
       <CrumbNavContainer>
+        <EdgeElement>
+          <EdgeElement2 />
+        </EdgeElement>
         <CrumbNavWrap>
           <CrumbNavList>
             <CrumbNavElement>

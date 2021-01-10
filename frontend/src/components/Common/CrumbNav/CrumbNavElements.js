@@ -3,6 +3,7 @@ import { HiArrowNarrowLeft } from 'react-icons/hi';
 
 export const CrumbNavContainer = styled.div`
   grid-area: crumb-nav;
+  /* background: #5d38db; */
 `;
 export const CrumbNavWrap = styled.div`
   padding-left: 4%;
@@ -15,6 +16,8 @@ export const CrumbNavWrap = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  /* border-top-left-radius: 10px; */
+  background: #fff;
   border-bottom: 1px solid #e6e8f1;
 `;
 export const CrumbNavList = styled.ul`
@@ -62,3 +65,26 @@ export const IconWrap = styled.div`
   align-items: center;
 `;
 export const IconArrowLeft = styled(HiArrowNarrowLeft)``;
+
+export const EdgeElement = styled.div`
+  position: fixed;
+  top: 70px;
+  left: 70px;
+
+  width: 20px;
+  height: 20px;
+
+  background: #5d38db;
+  overflow: hidden;
+`;
+export const EdgeElement2 = styled.div`
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+
+  width: 20px;
+  height: 20px;
+
+  border-top-left-radius: 10px;
+  background: #fff;
+`;

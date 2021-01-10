@@ -52,7 +52,7 @@ export const SearchBtn = styled.button`
 `;
 
 export const IconSearch = styled(FiSearch)`
-  color: #757575;
+  color: #fff;
   font-size: 26px;
 `;
 
@@ -60,13 +60,14 @@ export const Input = styled(ComboboxInput)`
   width: 90%;
   font-size: 13px;
   border: none;
-  color: #a4a5a6;
+  background: #5d38db;
+  color: #fff;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 
   &::placeholder {
-    color: #a4a5a6;
+    color: #fff;
     opacity: 1;
   }
   &:focus {
