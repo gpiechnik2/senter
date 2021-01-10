@@ -392,6 +392,19 @@
     * **Code:** 400 BAD REQUEST
 
     * **Code:** 401 BAD UNAUTHORIZED
+      **Content:**
+      
+      ```
+        {
+          "detail": "Authentication credentials were not provided."
+        }
+      ```
+      OR
+      ```  
+        {
+          "detail": "Invalid token."
+        }
+      ```
 
   * **Sample Call:**
 
@@ -2167,4 +2180,107 @@
 
   ```
     curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/<ID>/
+  ```
+  
+**Check content analysis**
+----
+  Returns content analysis.
 
+* **URL**
+
+  content-analysis/check/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  None
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+    ```
+      {
+          "keyword": <String>,
+          "page_title": <String>,
+          "meta_description": <String>,
+          "text_to_check: <String>
+      }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "analysis": {
+              "keyword": {
+                  "keyword": <String>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "page_title": {
+                  "page_title": <String>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "meta_description": {
+                  "meta_description": <String>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "text": {
+                  "text": <String>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              }
+          }
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": <EMAIL>, "password": <PASSWORD>, "re_password": <PASSWORD>}' http://hostname/auth/users/
+  ```
