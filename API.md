@@ -360,30 +360,30 @@
             "keywords": <String>,
             "h1": <String>,
             "h2": {
-                "h2_count": <Int>
+                "h2_count": <Integer>
                 "h2": [
                     <String>
                 ]
             },
             "other_h": {
-                "other_h_count": <Int>,
+                "other_h_count": <Integer>,
                 "other_h": [
                     <String>
                 ]
             },
             "external_links": {
-                "external_links_count": <Int>,
+                "external_links_count": <Integer>,
                 "external_links": [
                     <String>
                 ]
             },
             "internal links": {
-                "internal_links_count": <Int>,
+                "internal_links_count": <Integer>,
                 "internal_links": [
                     <String>
                 ]
             },
-            "images_count": <Int>
+            "images_count": <Integer>
         }
       }
       ```    
@@ -393,7 +393,7 @@
 
     * **Code:** 401 BAD UNAUTHORIZED
       **Content:**
-      
+
       ```
         {
           "detail": "Authentication credentials were not provided."
@@ -448,7 +448,7 @@
 
       ```
       {
-          "id": <Int>,
+          "id": <Integer>,
           "keyword": <String>,
           "language": <String>,
           "googleKeywords": [
@@ -1019,7 +1019,7 @@
       ```
       [
           {
-              "id": <Int>,
+              "id": <Integer>,
               "keyword": <String>,
               "language": <String>,
               "googleKeywords": [
@@ -1590,7 +1590,7 @@
 
       ```
       {
-          "id": <Int>,
+          "id": <Integer>,
           "keyword": <String>,
           "language": <String>,
           "googleKeywords": [
@@ -2181,7 +2181,7 @@
   ```
     curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/<ID>/
   ```
-  
+
 **Get content analysis**
 ----
   Returns content analysis.
@@ -2353,7 +2353,7 @@
   ```
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/
   ```
-  
+
 **Get contents**
 ----
   Returns contents list of the user.
@@ -2417,7 +2417,7 @@
   ```
     curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/
   ```
- 
+
 **Get content with specified id**
 ----
   Returns content with specified id.
@@ -2480,7 +2480,7 @@
   ```
     curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/<ID>/
   ```
-  
+
 **Update content**
 ----
   Returns updated content.
@@ -2543,7 +2543,7 @@
   ```
     curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/<ID>/
   ```
-  
+
 **Delete content**
 ----
   Returns status 204.

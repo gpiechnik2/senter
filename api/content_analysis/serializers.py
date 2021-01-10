@@ -12,12 +12,20 @@ class ContentAnalysisSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContentAnalysis
         fields = [
+            'id',
             'text_to_check',
             'keyword',
             'page_title',
             'meta_description']
 
     def create(self, request):
+
+        user = self.context['request'].user
+
+        #check if users has maximum of content analysis
+        analysislen = len(ContentAnalysis.objects.filter(author = user))
+        if analysislen > 6:
+            return Response(serializer.errors, status = status.HTTP_409_CONFLICT)
 
         user = self.context['request'].user
         text_to_check = request['text_to_check']
@@ -35,6 +43,11 @@ class ContentAnalysisSerializer(serializers.ModelSerializer):
         return analysis
 
     def update(self, instance, validated_data):
+
+        user = self.context['request'].user
+
+        if instance.author != user:
+            return Response(serializer.errors, status = status.HTTP_401_UNAUTHORIZED)
 
         instance.text_to_check = validated_data.get('text_to_check')
         instance.keyword = validated_data.get('keyword')
