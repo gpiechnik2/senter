@@ -323,7 +323,7 @@
 
   * **URL**
 
-    website/info/
+    website-info/
 
   * **Method:**
 
@@ -396,16 +396,16 @@
   * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website/info/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website-info/
   ```
 
-**Get keyword planner**
-  ----
-    Returns keyword planner.
+**Get and save user keyword planner**
+----
+  Returns keyword planner.
 
   * **URL**
 
-    keyword/planner/
+    keyword-planner/
 
   * **Method:**
 
@@ -971,7 +971,7 @@
   * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "language": <LANGUAGE>}' http://hostname/keyword/planner/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "language": <LANGUAGE>}' http://hostname/keyword-planner/
   ```
 
 **Get user keyword planners**
@@ -980,7 +980,7 @@
 
   * **URL**
 
-    keyword/planner/
+    keyword-planner/
 
   * **Method:**
 
@@ -1543,7 +1543,7 @@
   * **Sample Call:**
 
   ```
-    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/
   ```
 
   **Get user keyword planner**
@@ -1552,7 +1552,7 @@
 
   * **URL**
 
-    keyword/planner/:id
+    keyword-planner/:id
 
   * **Method:**
 
@@ -2113,7 +2113,7 @@
   * **Sample Call:**
 
   ```
-    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/<ID>/
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/<ID>/
   ```
 
 **Delete user keyword planner**
@@ -2122,7 +2122,7 @@
 
   * **URL**
 
-    keyword/planner/:id
+    keyword-planner/:id
 
   * **Method:**
 
@@ -2166,4 +2166,4 @@
   * **Sample Call:**
 
   ```
-    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/<ID>/
+    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/<ID>/
