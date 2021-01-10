@@ -399,7 +399,7 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website-info/
   ```
 
-**Get and save user keyword planner**
+**Create keyword planner**
 ----
   Returns keyword planner.
 
@@ -974,9 +974,9 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "language": <LANGUAGE>}' http://hostname/keyword-planner/
   ```
 
-**Get user keyword planners**
+**Get keyword planners of the user**
   ----
-    Returns user keyword planners.
+    Returns the keyword planner list of the user.
 
   * **URL**
 
@@ -1546,9 +1546,9 @@
     curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/
   ```
 
-  **Get user keyword planner**
+**Get keyword planner with specified id**
   ----
-    Returns a user keyword planner with specified id.
+    Returns the keyword planner with specified id.
 
   * **URL**
 
@@ -2116,9 +2116,9 @@
     curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/<ID>/
   ```
 
-**Delete user keyword planner**
+**Delete keyword planner**
   ----
-    Deletes a user keyword planner with specified id.
+    Deletes keyword planner with specified id.
 
   * **URL**
 
@@ -2167,3 +2167,4 @@
 
   ```
     curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/<ID>/
+
