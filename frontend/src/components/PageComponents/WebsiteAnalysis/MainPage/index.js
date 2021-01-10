@@ -32,6 +32,7 @@ const MainPage = () => {
       <WebSelectWrap>
         <SelectWrap>
           <Select
+            isSearchable={false}
             className='react-select-container-web'
             classNamePrefix='react-select-web'
             theme={(theme) => ({

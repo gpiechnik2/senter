@@ -31,7 +31,6 @@ const PrivateLayoutPage = () => {
           <Switch>
             <Route exact path='/dashboard' component={DashboardPage} />
             <Route
-              exact
               path='/dashboard/website-analysis'
               component={WebsiteAnalysisPage}
             />

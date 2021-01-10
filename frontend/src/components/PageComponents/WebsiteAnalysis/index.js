@@ -1,3 +1,5 @@
+import { Switch, Route } from 'react-router-dom';
+
 import MainPage from './MainPage';
 import PageSpeedPage from './PageSpeedPage';
 import SeoPage from './SeoPage/index';
@@ -19,21 +21,37 @@ const WebsiteAnalysis = () => {
         <WebAnalysisMenu>
           <MenuList>
             <MenuElement>
-              <MenuLink>SEO</MenuLink>
+              <MenuLink to='/dashboard/website-analysis/seo'>SEO</MenuLink>
             </MenuElement>
             <MenuElement>
-              <MenuLink>Techniczne błędy</MenuLink>
+              <MenuLink to='/dashboard/website-analysis/pagespeed'>
+                Techniczne błędy
+              </MenuLink>
             </MenuElement>
             <MenuElement>
-              <MenuLink>Search Console</MenuLink>
+              <MenuLink to='/dashboard/website-analysis/search-console'>
+                Search Console
+              </MenuLink>
             </MenuElement>
           </MenuList>
         </WebAnalysisMenu>
         <WebSwitchContainer>
-          {/* <MainPage /> */}
-          {/* <SeoPage /> */}
-          {/* <PageSpeedPage /> */}
-          <SearchConsolePage />
+          <Switch>
+            <Route
+              exact
+              path='/dashboard/website-analysis'
+              component={MainPage}
+            />
+            <Route path='/dashboard/website-analysis/seo' component={SeoPage} />
+            <Route
+              path='/dashboard/website-analysis/pagespeed'
+              component={PageSpeedPage}
+            />
+            <Route
+              path='/dashboard/website-analysis/search-console'
+              component={SearchConsolePage}
+            />
+          </Switch>
         </WebSwitchContainer>
       </WebAnalysisWrapper>
     </>
