@@ -1,7 +1,5 @@
 from rest_framework import viewsets, status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.decorators import action
 
 from .serializers import WebsiteInfoSerializer
 from .utils import analyze
@@ -12,14 +10,15 @@ class WebsiteInfoViewSet(viewsets.ViewSet):
     A viewset for creating website analysis.
     """
 
-    @action(detail = False, methods = ['post'], permission_classes=[IsAuthenticated])
     def create(self, request, *args, **kwargs):
 
         serializer = WebsiteInfoSerializer(data = request.data)
         serializer.is_valid(raise_exception = True)
 
         if self.request.user.is_anonymous:
-            return Response(status = status.HTTP_401_UNAUTHORIZED)
+            return Response({
+                'detail': "Authentication credentials were not provided."
+            }, status = status.HTTP_401_UNAUTHORIZED)
 
         url = serializer.validated_data['url']
         user_agent = self.request.user.user_agent

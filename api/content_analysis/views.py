@@ -1,7 +1,6 @@
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.decorators import action
 from django.http import Http404
 
 from .models import ContentAnalysis
@@ -67,11 +66,15 @@ class ContentAnalysisRealTimeViewSet(viewsets.ViewSet):
     A viewset for creating content analysis in real time.
     """
 
-    @action(detail = False, methods = ['post'], permission_classes=[IsAuthenticated])
     def create(self, request, *args, **kwargs):
 
         serializer = ContentAnalysisSerializer(data = request.data)
         serializer.is_valid(raise_exception = True)
+
+        if self.request.user.is_anonymous:
+            return Response({
+                'detail': "Authentication credentials were not provided."
+            }, status = status.HTTP_401_UNAUTHORIZED)
 
         text_to_check = serializer.validated_data['text_to_check']
         keyword = serializer.validated_data['keyword']
