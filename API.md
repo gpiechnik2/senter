@@ -2595,3 +2595,215 @@
   ```
     curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/content-analysis/analyse/<ID>/
   ```
+
+**Get website analysis(SEO)**
+----
+  Returns website analysis(SEO)
+
+* **URL**
+
+  website-analysis/seo/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  ```
+    {
+        "url": <String>
+    }
+  ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+    
+     ```
+       {
+          "analysis": {
+              "url": <String>,
+              "url_status": <Integer>,
+              "ssl": {
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "meta_robots": [
+                  {
+                      "status": <String>,
+                      "message": <String>
+                  }
+              ],
+              "response_time": {
+                  "time": <Double>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "keyword": <String>,
+              "title": {
+                  "title_count": <Integer>,
+                  "main_title": <String>,
+                  "titles": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "description": {
+                  "descriptions_count": <Integer>,
+                  "main_description": <String>,
+                  "descriptions": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "url_title": {
+                  "url_title": <String>,
+                  "analysis": <String>
+              },
+              "h1": {
+                  "h1_count": <Integer>,
+                  "main_h1": <String>,
+                  "h1": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "h2": {
+                  "h2_count": <Integer>,
+                  "h2": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "other_h": {
+                  "other_h_count": <Integer>,
+                  "other_h": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "external_links": {
+                  "external_links_count": <Integer>,
+                  "external_links": [
+                      <String>
+                  ],
+                  "status": [
+                      {
+                          "url": <String>,
+                          "url_status": <Integer>,
+                          "status": <String>,
+                          "message": "<String>
+                      }
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "internal_links": {
+                  "internal_links_count": <Integer>,
+                  "internal_links": [
+                      <String>
+                  ],
+                  "status": [
+                      {
+                          "url": <String>,
+                          "url_status": <Integer>,
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "images": {
+                  "images_counts": <Integer>,
+                  "images": [
+                     <String>
+                  ],
+                  "analysis": [
+                      {
+                          "url": <String>,
+                          "file_name": <String>,
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              }
+          }
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website-analysis/seo/
+  ```
+
