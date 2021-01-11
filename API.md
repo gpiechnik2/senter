@@ -2807,3 +2807,104 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website-analysis/seo/
   ```
 
+**Get keyword analysis**
+----
+  Returns keyword analysis
+
+* **URL**
+
+  keyword-analysis/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  ```
+    {
+        "keyword": <String>
+    }
+  ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+    
+     ```
+       {
+          "keyword_analysis": {
+              "keyword":  <String>,
+              "results": [
+                  {
+                      "url":  <String>,
+                      "title":  <String>,
+                      "description":  <String>,
+                      "url_title":  <String>,
+                      "keywords":  <String>,
+                      "h1":  <String>,
+                      "h2": {
+                          "h2_count": <Integer>,
+                          "h2": [
+                               <String>
+                          ]
+                      },
+                      "other_h": {
+                          "other_h_count": <Integer>,
+                          "other_h": [
+                               <String>
+                          ]
+                      },
+                      "external_links": {
+                          "external_links_count": <Integer>,
+                          "external_links": [
+                               <String>
+                          ]
+                      },
+                      "internal links": {
+                          "internal_links_count": <Integer>,
+                          "internal_links": [
+                               <String>
+                          ]
+                      },
+                      "images_count": <Integer>
+                  },
+              ]
+          }
+      }      
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/keyword-analysis/
+  ```
+  
+  
