@@ -17,6 +17,8 @@ import WebsiteRankTrackerPage from './website-rank-tracker';
 import DocumentsPage from './documents';
 import HelpPage from './help';
 
+import { Toaster } from 'react-hot-toast';
+
 const PrivateLayoutPage = () => {
   return (
     <>
@@ -28,6 +30,18 @@ const PrivateLayoutPage = () => {
         <CornerMenu />
         <CrumbNav />
         <ContentContainer>
+          <Toaster
+            toastOptions={{
+              className: '',
+              style: {
+                margin: '80px',
+
+                background: '#5D38DB',
+                padding: '16px',
+                color: '#fff',
+              },
+            }}
+          />
           <Switch>
             <Route exact path='/dashboard' component={DashboardPage} />
             <Route

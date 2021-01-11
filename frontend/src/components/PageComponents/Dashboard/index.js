@@ -12,7 +12,34 @@ import {
   ButtonLink,
 } from './DashboardElements';
 
+import {
+  NotificationWrapper,
+  TextWrap,
+  NotificationText,
+  LinkRefresh,
+  IconWrap,
+  IconClose,
+} from '../../Common/NotificationElements';
+
+import toast from 'react-hot-toast';
+
 const Dashboard = () => {
+  const notify = () =>
+    toast((t) => (
+      <NotificationWrapper>
+        <TextWrap>
+          <NotificationText>
+            This page have been updated by another person.
+            <LinkRefresh onClick={() => window.location.reload()}>
+              Refresh
+            </LinkRefresh>
+          </NotificationText>
+        </TextWrap>
+        <IconWrap onClick={() => toast.dismiss(t.id)}>
+          <IconClose />
+        </IconWrap>
+      </NotificationWrapper>
+    ));
   return (
     <>
       <DashboardWrapper>
@@ -46,7 +73,7 @@ const Dashboard = () => {
           </UpdateSection>
         </UpdatesWrap>
         <BtnWrap>
-          <ButtonLink>Więcej</ButtonLink>
+          <ButtonLink onClick={notify}>Więcej</ButtonLink>
         </BtnWrap>
       </DashboardWrapper>
     </>
