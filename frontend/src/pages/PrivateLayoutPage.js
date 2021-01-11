@@ -75,7 +75,7 @@ const PrivateLayoutPage = () => {
               component={DocumentsPage}
             />
             <Route exact path='/dashboard/help' component={HelpPage} />
-            <Route exact path='/dashboard/settings' component={SettingsPage} />
+            <Route path='/dashboard/settings' component={SettingsPage} />
           </Switch>
         </ContentContainer>
       </PrivateLayout>
