@@ -19,7 +19,7 @@ export const AsideContainer = styled.aside`
   top: 0;
   left: 0;
   bottom: 0;
-  width: 70px;
+  width: 65px;
   height: 100vh;
   transition: width 0.3s ease;
   z-index: 9;
@@ -71,7 +71,7 @@ export const NavLink = styled(LinkRouter)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 25px;
+  margin-left: 20px;
   font-weight: 100;
   font-size: 11px;
   color: #fff;
@@ -119,7 +119,7 @@ export const HelpLink = styled(LinkRouter)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 25px;
+  margin-left: 20px;
   font-weight: 100;
   font-size: 11px;
   color: #fff;

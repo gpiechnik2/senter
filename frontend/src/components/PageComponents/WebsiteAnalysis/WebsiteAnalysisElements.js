@@ -10,7 +10,7 @@ export const WebAnalysisWrapper = styled.div`
 `;
 export const WebAnalysisMenu = styled.nav`
   width: 100%;
-  height: 70px;
+  height: 45px;
 
   display: flex;
   justify-content: flex-start;
@@ -19,7 +19,7 @@ export const WebAnalysisMenu = styled.nav`
   border-bottom: 1px solid #e6e8f1;
 `;
 export const MenuList = styled.ul`
-  padding-left: 4vw;
+  padding-left: 3vw;
   padding-right: 4vw;
 
   height: 100%;
@@ -38,18 +38,19 @@ export const MenuElement = styled.li`
 
 export const MenuLink = styled(LinkRouter)`
   height: 100%;
+  padding-bottom: 7px;
 
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
 
   font-size: 12px;
-  color: #757575;
+  color: #707070;
   transition: 0.1s ease;
 
   &:hover {
-    border-bottom: 2.5px solid #8954ba;
-    color: #8954ba;
+    border-bottom: 2.5px solid #5d38db;
+    color: #5d38db;
   }
 `;
 

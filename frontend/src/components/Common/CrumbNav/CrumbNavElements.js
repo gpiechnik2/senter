@@ -6,7 +6,7 @@ export const CrumbNavContainer = styled.div`
   /* background: #5d38db; */
 `;
 export const CrumbNavWrap = styled.div`
-  padding-left: 4%;
+  padding-left: 2%;
   padding-right: 4%;
 
   width: 100%;
@@ -69,7 +69,7 @@ export const IconArrowLeft = styled(HiArrowNarrowLeft)``;
 export const EdgeElement = styled.div`
   position: fixed;
   top: 70px;
-  left: 70px;
+  left: 65px;
 
   width: 20px;
   height: 20px;
