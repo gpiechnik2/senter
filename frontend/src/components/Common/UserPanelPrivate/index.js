@@ -18,16 +18,20 @@ const UserPanelPrivate = ({ isOpen }) => {
           </UserHello>
           <UserPanelList>
             <UserPanelElement>
-              <UserPanelLink>Wesprzyj nas</UserPanelLink>
+              <UserPanelLink to='/dashboard/settings'>
+                Wesprzyj nas
+              </UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink>Ustawienia</UserPanelLink>
+              <UserPanelLink to='/dashboard/settings'>Ustawienia</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink>Report / Feedback</UserPanelLink>
+              <UserPanelLink to='/dashboard/settings'>
+                Report / Feedback
+              </UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink>Wyloguj</UserPanelLink>
+              <UserPanelLink to='/dashboard/settings'>Wyloguj</UserPanelLink>
             </UserPanelElement>
           </UserPanelList>
         </UserPanelWrapper>

@@ -16,6 +16,7 @@ import ContentAnalysisPage from './content-analysis';
 import WebsiteRankTrackerPage from './website-rank-tracker';
 import DocumentsPage from './documents';
 import HelpPage from './help';
+import SettingsPage from './settings';
 
 import { Toaster } from 'react-hot-toast';
 
@@ -74,6 +75,7 @@ const PrivateLayoutPage = () => {
               component={DocumentsPage}
             />
             <Route exact path='/dashboard/help' component={HelpPage} />
+            <Route exact path='/dashboard/settings' component={SettingsPage} />
           </Switch>
         </ContentContainer>
       </PrivateLayout>

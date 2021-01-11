@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { Link as LinkRouter } from 'react-router-dom';
 
 export const panelAnimation = keyframes`
 from {
@@ -53,7 +54,7 @@ export const UserPanelElement = styled.li`
   font-size: 12px;
   color: #686868;
 `;
-export const UserPanelLink = styled.a`
+export const UserPanelLink = styled(LinkRouter)`
   cursor: pointer;
 
   &:hover {

@@ -1,7 +1,9 @@
+import Settings from '../components/PageComponents/Settings';
+
 const SettingsPage = () => {
   return (
     <>
-      <h1>settings</h1>
+      <Settings />
     </>
   );
 };
