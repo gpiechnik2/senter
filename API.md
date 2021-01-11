@@ -236,7 +236,7 @@
 
   `Authorization: Token <AUTHORIZATION_TOKEN>`
 
-*  **URL Params**
+* **URL Params**
 
   None
 
@@ -323,7 +323,7 @@
 
   * **URL**
 
-    website/info/
+    website-info/
 
   * **Method:**
 
@@ -360,30 +360,30 @@
             "keywords": <String>,
             "h1": <String>,
             "h2": {
-                "h2_count": <Int>
+                "h2_count": <Integer>
                 "h2": [
                     <String>
                 ]
             },
             "other_h": {
-                "other_h_count": <Int>,
+                "other_h_count": <Integer>,
                 "other_h": [
                     <String>
                 ]
             },
             "external_links": {
-                "external_links_count": <Int>,
+                "external_links_count": <Integer>,
                 "external_links": [
                     <String>
                 ]
             },
             "internal links": {
-                "internal_links_count": <Int>,
+                "internal_links_count": <Integer>,
                 "internal_links": [
                     <String>
                 ]
             },
-            "images_count": <Int>
+            "images_count": <Integer>
         }
       }
       ```    
@@ -392,20 +392,33 @@
     * **Code:** 400 BAD REQUEST
 
     * **Code:** 401 BAD UNAUTHORIZED
+      **Content:**
+
+      ```
+        {
+          "detail": "Authentication credentials were not provided."
+        }
+      ```
+      OR
+      ```  
+        {
+          "detail": "Invalid token."
+        }
+      ```
 
   * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website/info/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website-info/
   ```
 
-**Get keyword planner**
-  ----
-    Returns keyword planner.
+**Create keyword planner**
+----
+  Returns keyword planner.
 
   * **URL**
 
-    keyword/planner/
+    keyword-planner/
 
   * **Method:**
 
@@ -430,12 +443,12 @@
 
   * **Success Response:**
 
-    * **Code:** 200 <br />
+    * **Code:** 201 <br />
       **Content:**
 
       ```
       {
-          "id": <Int>,
+          "id": <Integer>,
           "keyword": <String>,
           "language": <String>,
           "googleKeywords": [
@@ -971,16 +984,16 @@
   * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "language": <LANGUAGE>}' http://hostname/keyword/planner/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "language": <LANGUAGE>}' http://hostname/keyword-planner/
   ```
 
-**Get user keyword planners**
+**Get keyword planners**
   ----
-    Returns user keyword planners.
+    Returns keyword planners list of the user.
 
   * **URL**
 
-    keyword/planner/
+    keyword-planner/
 
   * **Method:**
 
@@ -1006,7 +1019,7 @@
       ```
       [
           {
-              "id": <Int>,
+              "id": <Integer>,
               "keyword": <String>,
               "language": <String>,
               "googleKeywords": [
@@ -1543,16 +1556,16 @@
   * **Sample Call:**
 
   ```
-    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/
   ```
 
-  **Get user keyword planner**
+**Get keyword planner with specified id**
   ----
-    Returns a user keyword planner with specified id.
+    Returns the keyword planner with specified id.
 
   * **URL**
 
-    keyword/planner/:id
+    keyword-planner/:id
 
   * **Method:**
 
@@ -1577,7 +1590,7 @@
 
       ```
       {
-          "id": <Int>,
+          "id": <Integer>,
           "keyword": <String>,
           "language": <String>,
           "googleKeywords": [
@@ -2113,16 +2126,16 @@
   * **Sample Call:**
 
   ```
-    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/<ID>/
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/<ID>/
   ```
 
-**Delete user keyword planner**
+**Delete keyword planner**
   ----
-    Deletes a user keyword planner with specified id.
+    Deletes keyword planner with specified id.
 
   * **URL**
 
-    keyword/planner/:id
+    keyword-planner/:id
 
   * **Method:**
 
@@ -2166,4 +2179,732 @@
   * **Sample Call:**
 
   ```
-    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword/planner/<ID>/
+    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/keyword-planner/<ID>/
+  ```
+
+**Get content analysis**
+----
+  Returns content analysis.
+
+* **URL**
+
+  content-analysis/check/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+    ```
+      {
+          "keyword": <String>,
+          "page_title": <String>,
+          "meta_description": <String>,
+          "text_to_check: <String>
+      }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "analysis": {
+              "keyword": {
+                  "keyword": <String>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "page_title": {
+                  "page_title": <String>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "meta_description": {
+                  "meta_description": <String>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "text": {
+                  "text": <String>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              }
+          }
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/check/
+  ```
+
+**Create content**
+----
+  Returns content.
+
+* **URL**
+
+  content-analysis/analyse/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+    ```
+      {
+          "keyword": <String>,
+          "page_title": <String>,
+          "meta_description": <String>,
+          "text_to_check: <String>
+      }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+    **Content:**
+
+    ```
+      {
+          "keyword": <String>,
+          "page_title": <String>,
+          "meta_description": <String>,
+          "text_to_check: <String>
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/
+  ```
+
+**Get contents**
+----
+  Returns contents list of the user.
+
+* **URL**
+
+  content-analysis/analyse/
+
+* **Method:**
+
+  `GET`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      [
+          {
+              "keyword": <String>,
+              "page_title": <String>,
+              "meta_description": <String>,
+              "text_to_check: <String>
+          }
+      ]
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/
+  ```
+
+**Get content with specified id**
+----
+  Returns content with specified id.
+
+* **URL**
+
+  content-analysis/analyse/:id
+
+* **Method:**
+
+  `GET`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  `id: <Integer>`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "id": <Integer>,
+          "text_to_check": <String>,
+          "keyword": <String>,
+          "page_title": <String>,
+          "meta_description": <String>
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/<ID>/
+  ```
+
+**Update content**
+----
+  Returns updated content.
+
+* **URL**
+
+  content-analysis/analyse/:id
+
+* **Method:**
+
+  `PUT`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  `id: <Integer>`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "id": <Integer>,
+          "text_to_check": <String>,
+          "keyword": <String>,
+          "page_title": <String>,
+          "meta_description": <String>
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/<ID>/
+  ```
+
+**Delete content**
+----
+  Returns status 204.
+
+* **URL**
+
+  content-analysis/analyse/:id
+
+* **Method:**
+
+  `DELETE`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  `id: <Integer>`
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 204 <br />
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/content-analysis/analyse/<ID>/
+  ```
+
+**Get website analysis(SEO)**
+----
+  Returns website analysis(SEO)
+
+* **URL**
+
+  website-analysis/seo/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  ```
+    {
+        "url": <String>
+    }
+  ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+    
+     ```
+       {
+          "analysis": {
+              "url": <String>,
+              "url_status": <Integer>,
+              "ssl": {
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "meta_robots": [
+                  {
+                      "status": <String>,
+                      "message": <String>
+                  }
+              ],
+              "response_time": {
+                  "time": <Double>,
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "keyword": <String>,
+              "title": {
+                  "title_count": <Integer>,
+                  "main_title": <String>,
+                  "titles": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "description": {
+                  "descriptions_count": <Integer>,
+                  "main_description": <String>,
+                  "descriptions": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "url_title": {
+                  "url_title": <String>,
+                  "analysis": <String>
+              },
+              "h1": {
+                  "h1_count": <Integer>,
+                  "main_h1": <String>,
+                  "h1": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "h2": {
+                  "h2_count": <Integer>,
+                  "h2": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "other_h": {
+                  "other_h_count": <Integer>,
+                  "other_h": [
+                      <String>
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "external_links": {
+                  "external_links_count": <Integer>,
+                  "external_links": [
+                      <String>
+                  ],
+                  "status": [
+                      {
+                          "url": <String>,
+                          "url_status": <Integer>,
+                          "status": <String>,
+                          "message": "<String>
+                      }
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "internal_links": {
+                  "internal_links_count": <Integer>,
+                  "internal_links": [
+                      <String>
+                  ],
+                  "status": [
+                      {
+                          "url": <String>,
+                          "url_status": <Integer>,
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ],
+                  "analysis": [
+                      {
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              },
+              "images": {
+                  "images_counts": <Integer>,
+                  "images": [
+                     <String>
+                  ],
+                  "analysis": [
+                      {
+                          "url": <String>,
+                          "file_name": <String>,
+                          "status": <String>,
+                          "message": <String>
+                      }
+                  ]
+              }
+          }
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/website-analysis/seo/
+  ```
+
+**Get keyword analysis**
+----
+  Returns keyword analysis
+
+* **URL**
+
+  keyword-analysis/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+  ```
+    {
+        "keyword": <String>
+    }
+  ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+    
+     ```
+       {
+          "keyword_analysis": {
+              "keyword":  <String>,
+              "results": [
+                  {
+                      "url":  <String>,
+                      "title":  <String>,
+                      "description":  <String>,
+                      "url_title":  <String>,
+                      "keywords":  <String>,
+                      "h1":  <String>,
+                      "h2": {
+                          "h2_count": <Integer>,
+                          "h2": [
+                               <String>
+                          ]
+                      },
+                      "other_h": {
+                          "other_h_count": <Integer>,
+                          "other_h": [
+                               <String>
+                          ]
+                      },
+                      "external_links": {
+                          "external_links_count": <Integer>,
+                          "external_links": [
+                               <String>
+                          ]
+                      },
+                      "internal links": {
+                          "internal_links_count": <Integer>,
+                          "internal_links": [
+                               <String>
+                          ]
+                      },
+                      "images_count": <Integer>
+                  },
+              ]
+          }
+      }      
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/keyword-analysis/
+  ```
+  
+  

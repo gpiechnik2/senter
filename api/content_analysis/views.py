@@ -1,7 +1,6 @@
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.decorators import action
 from django.http import Http404
 
 from .models import ContentAnalysis
@@ -15,32 +14,11 @@ class ContentAnalysisViewSet(viewsets.ModelViewSet):
 
     permission_classes = [IsAuthenticated]
     serializer_class = ContentAnalysisSerializer
-    http_method_names = ['get', 'post', 'delete', 'update', 'head']
+    http_method_names = ['get', 'post', 'head', 'put', 'delete']
 
     def get_queryset(self):
         user = self.request.user
         return ContentAnalysis.objects.filter(author = user)
-
-    def create(self, request, *args, **kwargs):
-
-        #check if serializer is valid
-        serializer = ContentAnalysisSerializer(data = request.data)
-        if serializer.is_valid():
-
-            #check if users has maximum of content analysis
-            analysislen = len(ContentAnalysis.objects.filter(author = user))
-            if analysislen > 6:
-                return Response(serializer.errors, status = status.HTTP_409_CONFLICT)
-
-            #if not, continue
-            analysis = ContentAnalysis.objects.create(request.data)
-            analysis.save()
-
-            return Response(status = status.HTTP_201_CREATED)
-
-        else:
-            return Response(serializer.errors,
-                            status = status.HTTP_400_BAD_REQUEST)
 
     def destroy(self, request, *args, **kwargs):
         try:
@@ -67,11 +45,15 @@ class ContentAnalysisRealTimeViewSet(viewsets.ViewSet):
     A viewset for creating content analysis in real time.
     """
 
-    @action(detail = False, methods = ['post'], permission_classes=[IsAuthenticated])
     def create(self, request, *args, **kwargs):
 
         serializer = ContentAnalysisSerializer(data = request.data)
         serializer.is_valid(raise_exception = True)
+
+        if self.request.user.is_anonymous:
+            return Response({
+                'detail': "Authentication credentials were not provided."
+            }, status = status.HTTP_401_UNAUTHORIZED)
 
         text_to_check = serializer.validated_data['text_to_check']
         keyword = serializer.validated_data['keyword']
