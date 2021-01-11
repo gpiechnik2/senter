@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HelpContainer = styled.div`
   width: 100%;
   height: 100%;
-  margin-top: 10%;
+  margin-top: 6%;
   padding-left: 4vw;
   padding-right: 4vw;
 
