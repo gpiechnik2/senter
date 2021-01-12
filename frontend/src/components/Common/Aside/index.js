@@ -10,7 +10,6 @@ import {
   IconHome,
   IconWebsiteAnalysis,
   IconKeywordsAnalysis,
-  IconCompetitionAnalysis,
   IconContentAnalysis,
   IconWebsiteRankTracker,
   IconDocuments,
@@ -35,11 +34,19 @@ const Aside = () => {
                   <IconWrap>
                     <IconHome />
                   </IconWrap>
-                  <NavName>Home</NavName>
+                  <NavName>Dashboard</NavName>
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink to='/dashboard/website-analysis'>
+                <NavLink to='/keyword-planner'>
+                  <IconWrap>
+                    <IconKeywordsAnalysis />
+                  </IconWrap>
+                  <NavName>Keyword planner</NavName>
+                </NavLink>
+              </NavElement>
+              <NavElement>
+                <NavLink to='/website-analysis'>
                   <IconWrap>
                     <IconWebsiteAnalysis />
                   </IconWrap>
@@ -47,53 +54,45 @@ const Aside = () => {
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink to='/dashboard/keywords-analysis'>
+                <NavLink to='/keyword-analysis'>
                   <IconWrap>
                     <IconKeywordsAnalysis />
                   </IconWrap>
-                  <NavName>Keywords analysis</NavName>
+                  <NavName>Keyword analysis</NavName>
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink to='/dashboard/competition-analysis'>
-                  <IconWrap>
-                    <IconCompetitionAnalysis />
-                  </IconWrap>
-                  <NavName>Competition analysis</NavName>
-                </NavLink>
-              </NavElement>
-              <NavElement>
-                <NavLink to='/dashboard/content-analysis'>
+                <NavLink to='/content-analysis'>
                   <IconWrap>
                     <IconContentAnalysis />
                   </IconWrap>
-                  <NavName>Analiza kontentu</NavName>
+                  <NavName>Content analysis</NavName>
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink to='/dashboard/website-rank-tracker'>
+                <NavLink to='/website-info'>
                   <IconWrap>
                     <IconWebsiteRankTracker />
                   </IconWrap>
-                  <NavName>Website rank tracker</NavName>
+                  <NavName>Website info</NavName>
                 </NavLink>
               </NavElement>
               <NavElement>
-                <NavLink to='/dashboard/documents'>
+                <NavLink to='/audit'>
                   <IconWrap>
                     <IconDocuments />
                   </IconWrap>
-                  <NavName>Dokumenty</NavName>
+                  <NavName>Audit</NavName>
                 </NavLink>
               </NavElement>
             </NavUl>
           </Nav>
           <HelpWrap>
-            <HelpLink to='/dashboard/help'>
+            <HelpLink to='/help'>
               <IconHelpWrap>
                 <IconHelp />
               </IconHelpWrap>
-              <HelpText>Pomoc</HelpText>
+              <HelpText>Helpdesk</HelpText>
             </HelpLink>
           </HelpWrap>
         </AsideWrap>

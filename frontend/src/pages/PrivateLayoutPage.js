@@ -8,17 +8,17 @@ import SearchPanel from '../components/Common/SearchPanel/index';
 import CrumbNav from '../components/Common/CrumbNav';
 import { ContentContainer } from '../components/Layouts/ContentContainer';
 
+import { Toaster } from 'react-hot-toast';
+
 import DashboardPage from './dashboard';
+import KeywordPlannerPage from './keyword-planner';
 import WebsiteAnalysisPage from './website-analysis';
-import KeywordsAnalysisPage from './keywords-analysis';
-import CompetitionAnalysisPage from './competition-analysis';
+import KeywordAnalysisPage from './keyword-analysis';
 import ContentAnalysisPage from './content-analysis';
-import WebsiteRankTrackerPage from './website-rank-tracker';
-import DocumentsPage from './documents';
+import WebsiteInfoPage from './website-info';
+import AuditPage from './audit';
 import HelpPage from './help';
 import SettingsPage from './settings';
-
-import { Toaster } from 'react-hot-toast';
 
 const PrivateLayoutPage = () => {
   return (
@@ -44,38 +44,15 @@ const PrivateLayoutPage = () => {
             }}
           />
           <Switch>
-            <Route exact path='/dashboard' component={DashboardPage} />
-            <Route
-              path='/dashboard/website-analysis'
-              component={WebsiteAnalysisPage}
-            />
-            <Route
-              exact
-              path='/dashboard/keywords-analysis'
-              component={KeywordsAnalysisPage}
-            />
-            <Route
-              exact
-              path='/dashboard/competition-analysis'
-              component={CompetitionAnalysisPage}
-            />
-            <Route
-              exact
-              path='/dashboard/content-analysis'
-              component={ContentAnalysisPage}
-            />
-            <Route
-              exact
-              path='/dashboard/website-rank-tracker'
-              component={WebsiteRankTrackerPage}
-            />
-            <Route
-              exact
-              path='/dashboard/documents'
-              component={DocumentsPage}
-            />
-            <Route exact path='/dashboard/help' component={HelpPage} />
-            <Route path='/dashboard/settings' component={SettingsPage} />
+            <Route path='/dashboard' component={DashboardPage} />
+            <Route path='/keyword-planner' component={KeywordPlannerPage} />
+            <Route path='/website-analysis' component={WebsiteAnalysisPage} />
+            <Route path='/keyword-analysis' component={KeywordAnalysisPage} />
+            <Route path='/content-analysis' component={ContentAnalysisPage} />
+            <Route path='/website-info' component={WebsiteInfoPage} />
+            <Route path='/audit' component={AuditPage} />
+            <Route path='/help' component={HelpPage} />
+            <Route path='/settings' component={SettingsPage} />
           </Switch>
         </ContentContainer>
       </PrivateLayout>

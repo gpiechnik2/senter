@@ -21,15 +21,15 @@ const WebsiteAnalysis = () => {
         <WebAnalysisMenu>
           <MenuList>
             <MenuElement>
-              <MenuLink to='/dashboard/website-analysis/seo'>SEO</MenuLink>
+              <MenuLink to='/website-analysis/seo'>SEO</MenuLink>
             </MenuElement>
             <MenuElement>
-              <MenuLink to='/dashboard/website-analysis/pagespeed'>
+              <MenuLink to='/website-analysis/pagespeed'>
                 Techniczne błędy
               </MenuLink>
             </MenuElement>
             <MenuElement>
-              <MenuLink to='/dashboard/website-analysis/search-console'>
+              <MenuLink to='/website-analysis/search-console'>
                 Search Console
               </MenuLink>
             </MenuElement>
@@ -37,18 +37,14 @@ const WebsiteAnalysis = () => {
         </WebAnalysisMenu>
         <WebSwitchContainer>
           <Switch>
+            <Route exact path='/website-analysis' component={MainPage} />
+            <Route path='/website-analysis/seo' component={SeoPage} />
             <Route
-              exact
-              path='/dashboard/website-analysis'
-              component={MainPage}
-            />
-            <Route path='/dashboard/website-analysis/seo' component={SeoPage} />
-            <Route
-              path='/dashboard/website-analysis/pagespeed'
+              path='/website-analysis/pagespeed'
               component={PageSpeedPage}
             />
             <Route
-              path='/dashboard/website-analysis/search-console'
+              path='/website-analysis/search-console'
               component={SearchConsolePage}
             />
           </Switch>

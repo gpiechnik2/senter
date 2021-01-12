@@ -20,26 +20,21 @@ const Settings = () => {
         <SettingsMenu>
           <MenuList>
             <MenuElement>
-              <MenuLink to='/dashboard/settings'>Profile</MenuLink>
+              <MenuLink to='/settings'>Profile</MenuLink>
             </MenuElement>
             <MenuElement>
-              <MenuLink to='/dashboard/settings/private'>Private</MenuLink>
+              <MenuLink to='/settings/private'>Private</MenuLink>
             </MenuElement>
             <MenuElement>
-              <MenuLink to='/dashboard/settings/web-scraping'>
-                Web scraping
-              </MenuLink>
+              <MenuLink to='/settings/web-scraping'>Web scraping</MenuLink>
             </MenuElement>
           </MenuList>
         </SettingsMenu>
         <SettingsSwitchContainer>
           <Switch>
-            <Route exact path='/dashboard/settings' component={ProfilePage} />
-            <Route path='/dashboard/settings/private' component={PrivatePage} />
-            <Route
-              path='/dashboard/settings/web-scraping'
-              component={WebScrapingPage}
-            />
+            <Route exact path='/settings' component={ProfilePage} />
+            <Route path='/settings/private' component={PrivatePage} />
+            <Route path='/settings/web-scraping' component={WebScrapingPage} />
           </Switch>
         </SettingsSwitchContainer>
       </SettingsWrapper>

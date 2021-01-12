@@ -23,7 +23,7 @@ const UserPanelPrivate = ({ isOpen }) => {
               </UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/dashboard/settings'>Ustawienia</UserPanelLink>
+              <UserPanelLink to='/settings'>Ustawienia</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
               <UserPanelLink to='/dashboard/settings'>
