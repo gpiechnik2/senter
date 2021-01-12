@@ -13,5 +13,5 @@ export const SearchConsolePageContainer = styled.div`
 
 export const SearchConsoleSelect = styled.div`
   width: 100%;
-  margin-top: 19px;
+  margin-bottom: 19px;
 `;

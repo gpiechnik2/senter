@@ -13,5 +13,5 @@ export const PageSpeedPageContainer = styled.div`
 
 export const PageSpeedSelect = styled.div`
   width: 100%;
-  margin-top: 19px;
+  margin-bottom: 19px;
 `;
