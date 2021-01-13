@@ -116,7 +116,7 @@ export const MessageAnalysisElementWrap = styled.div`
   border-bottom: 1px solid #d0d6e6;
 `;
 export const StatusElement = styled.div`
-  width: 18%;
+  width: 20%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -135,7 +135,7 @@ export const StatusText = styled.p`
   color: #000000;
 `;
 export const MessageElement = styled.div`
-  width: 80%;
+  width: 78%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

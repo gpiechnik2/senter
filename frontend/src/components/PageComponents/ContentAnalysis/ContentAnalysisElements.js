@@ -6,19 +6,26 @@ export const ContentAnalysisContainer = styled.div`
   width: 100%;
   height: 100%;
 
-  margin-top: 5%;
+  margin-top: 6%;
   padding-left: 4vw;
   padding-right: 4vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 export const FormContainer = styled.form`
-  width: 100%;
+  max-width: 530px;
+  margin-bottom: 30px;
 
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 768px) {
+    max-width: auto;
+    width: 100%;
+  }
 `;
 export const BtnWrap = styled.div`
+  padding-top: 25px;
   width: 100%;
 
   display: flex;
@@ -30,17 +37,21 @@ export const BtnIcon = styled(CgSoftwareDownload)`
   font-size: 18px;
 `;
 export const FormWrapper = styled.div`
-  width: 100%;
-  padding-top: 100px;
+  min-width: 530px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    min-width: auto;
+    width: 100%;
+  }
 `;
 
 export const FormItemsWrap = styled.div`
-  max-width: 530px;
+  width: 100%;
   margin-bottom: 30px;
 `;
 
@@ -78,69 +89,4 @@ export const ContentTextArea = styled.textarea`
   height: 350px;
   font-size: 12px;
   border: 1px solid #e6e8f1;
-`;
-export const TableContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-export const TableWrapper = styled.div`
-  width: 100%;
-  margin-bottom: 50px;
-
-  display: flex;
-  flex-direction: column;
-`;
-export const TableTitle = styled.h1`
-  font-size: 17px;
-  color: #686868;
-  margin-bottom: 3%;
-`;
-export const TableElementsWrapper = styled.div`
-  width: 100%;
-  /* overflow-x: scroll; */
-
-  display: flex;
-  flex-direction: column;
-`;
-export const TableElement = styled.div`
-  width: 100%;
-  height: 60px;
-
-  display: flex;
-  align-items: center;
-
-  border-bottom: 1px solid #e6e8f1;
-`;
-export const ElementWrapFirst = styled.div`
-  width: 12%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
-export const ElementBox = styled.span`
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-
-  display: block;
-  border-radius: 2px;
-  border: 1px solid #979797;
-`;
-export const ElementText = styled.p`
-  font-size: 12px;
-  color: #686868;
-`;
-export const ElementWrapSecond = styled.div`
-  width: 12%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
-export const ElementWrap = styled.div`
-  width: 75%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 `;

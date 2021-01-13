@@ -2,7 +2,6 @@ import {
   ContentAnalysisContainer,
   FormContainer,
   BtnWrap,
-  BtnIcon,
   FormWrapper,
   FormItemsWrap,
   FormInput,
@@ -12,31 +11,43 @@ import {
   ContentDiv,
   ContentP,
   ContentTextArea,
-  TableContainer,
-  TableWrapper,
-  TableTitle,
-  TableElementsWrapper,
-  TableElement,
-  ElementWrapFirst,
-  ElementBox,
-  ElementText,
-  ElementWrapSecond,
-  ElementWrap,
 } from './ContentAnalysisElements';
+
+import {
+  ExpandableAnalysisContainer,
+  MessageAnalysisWrapper,
+  MessageAnalysisElementWrap,
+  StatusElement,
+  StatusBar,
+  StatusText,
+  MessageElement,
+  MessageText,
+} from '../../Common/AnalysisElements';
 
 import { ButtonBasic } from '../../Common/ButtonElements';
 
 const ContentAnalysis = () => {
+  const analysisExample = [
+    {
+      message:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting indusstry. ',
+      status: 'Valid',
+    },
+    {
+      message:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting indsustry. ',
+      status: 'Invalid',
+    },
+    {
+      message:
+        'Lorem Ipsum is simply dummy text of the printing and typesetting iandustry. ',
+      status: 'Undefined',
+    },
+  ];
   return (
     <>
       <ContentAnalysisContainer>
         <FormContainer>
-          <BtnWrap>
-            <ButtonBasic>
-              <BtnIcon />
-              Ściągnij analizę
-            </ButtonBasic>
-          </BtnWrap>
           <FormWrapper>
             <FormItemsWrap>
               <FormInput placeholder='Tytuł*' required />
@@ -52,156 +63,40 @@ const ContentAnalysis = () => {
               </ContentDiv>
             </FormItemsWrap>
           </FormWrapper>
+          <ExpandableAnalysisContainer>
+            <MessageAnalysisWrapper>
+              <MessageAnalysisElementWrap>
+                <StatusElement>
+                  <StatusBar />
+                  <StatusText style={{ fontWeight: 'bold' }}>Status</StatusText>
+                </StatusElement>
+                <MessageElement>
+                  <MessageText style={{ fontWeight: 'bold' }}>
+                    Message
+                  </MessageText>
+                </MessageElement>
+              </MessageAnalysisElementWrap>
+              {analysisExample.map((analysis) => (
+                <MessageAnalysisElementWrap key={analysis.message}>
+                  <StatusElement>
+                    <StatusBar style={{ borderColor: '#72BC39' }} />
+                    <StatusText style={{ color: 'rgba(104,104,104,.8)' }}>
+                      {analysis.status}
+                    </StatusText>
+                  </StatusElement>
+                  <MessageElement>
+                    <MessageText style={{ color: 'rgba(104,104,104,.8)' }}>
+                      {analysis.message}
+                    </MessageText>
+                  </MessageElement>
+                </MessageAnalysisElementWrap>
+              ))}
+            </MessageAnalysisWrapper>
+          </ExpandableAnalysisContainer>
+          <BtnWrap>
+            <ButtonBasic>Save</ButtonBasic>
+          </BtnWrap>
         </FormContainer>
-        <TableContainer>
-          <TableWrapper>
-            <TableTitle>Słowo kluczowe</TableTitle>
-            <TableElementsWrapper>
-              <TableElement>
-                <ElementWrapFirst>
-                  <ElementBox />
-                  <ElementText>Status</ElementText>
-                </ElementWrapFirst>
-
-                <ElementWrapSecond>
-                  <ElementText>Typ</ElementText>
-                </ElementWrapSecond>
-
-                <ElementWrap>
-                  <ElementText>Wiadomość</ElementText>
-                </ElementWrap>
-              </TableElement>
-
-              <TableElement>
-                <ElementWrapFirst>
-                  <ElementBox />
-                  <ElementText>Pozytywny</ElementText>
-                </ElementWrapFirst>
-
-                <ElementWrapSecond>
-                  <ElementText>Fraza kluczowa</ElementText>
-                </ElementWrapSecond>
-
-                <ElementWrap>
-                  <ElementText>
-                    Created dashboard with shipment value and sales. Lorem ipsum
-                    dolor mit set. Created dashboard with shipment value and
-                    sales. Lorem ipsum dolor mit set. Created dashboard with
-                    shipment value and sales. Lorem ipsum dolor mit set. Created
-                    dashboard with shipment value and sales. Lorem ipsum dolor
-                    mit set.
-                  </ElementText>
-                </ElementWrap>
-              </TableElement>
-              <TableElement>
-                <ElementWrapFirst>
-                  <ElementBox />
-                  <ElementText>Pozytywny</ElementText>
-                </ElementWrapFirst>
-
-                <ElementWrapSecond>
-                  <ElementText>Page title</ElementText>
-                </ElementWrapSecond>
-
-                <ElementWrap>
-                  <ElementText>
-                    Created dashboard with shipment value and sales. Lorem ipsum
-                    dolor mit set.
-                  </ElementText>
-                </ElementWrap>
-              </TableElement>
-              <TableElement>
-                <ElementWrapFirst>
-                  <ElementBox />
-                  <ElementText>Pozytywny</ElementText>
-                </ElementWrapFirst>
-
-                <ElementWrapSecond>
-                  <ElementText>Meta description</ElementText>
-                </ElementWrapSecond>
-
-                <ElementWrap>
-                  <ElementText>
-                    Created dashboard with shipment value and sales. Lorem ipsum
-                    dolor mit set.
-                  </ElementText>
-                </ElementWrap>
-              </TableElement>
-            </TableElementsWrapper>
-          </TableWrapper>
-
-          <TableWrapper>
-            <TableTitle>Page title</TableTitle>
-            <TableElementsWrapper>
-              <TableElement>
-                <ElementWrapFirst>
-                  <ElementBox />
-                  <ElementText>Status</ElementText>
-                </ElementWrapFirst>
-
-                <ElementWrapSecond>
-                  <ElementText>Typ</ElementText>
-                </ElementWrapSecond>
-
-                <ElementWrap>
-                  <ElementText>Wiadomość</ElementText>
-                </ElementWrap>
-              </TableElement>
-
-              <TableElement>
-                <ElementWrapFirst>
-                  <ElementBox />
-                  <ElementText>Pozytywny</ElementText>
-                </ElementWrapFirst>
-
-                <ElementWrapSecond>
-                  <ElementText>Content</ElementText>
-                </ElementWrapSecond>
-
-                <ElementWrap>
-                  <ElementText>
-                    Created dashboard with shipment value and sales. Lorem ipsum
-                    dolor mit set.
-                  </ElementText>
-                </ElementWrap>
-              </TableElement>
-              <TableElement>
-                <ElementWrapFirst>
-                  <ElementBox />
-                  <ElementText>Pozytywny</ElementText>
-                </ElementWrapFirst>
-
-                <ElementWrapSecond>
-                  <ElementText>Fraza kluczowa</ElementText>
-                </ElementWrapSecond>
-
-                <ElementWrap>
-                  <ElementText>
-                    Created dashboard with shipment value and sales. Lorem ipsum
-                    dolor mit set.
-                  </ElementText>
-                </ElementWrap>
-              </TableElement>
-              <TableElement>
-                <ElementWrapFirst>
-                  <ElementBox />
-                  <ElementText>Pozytywny</ElementText>
-                </ElementWrapFirst>
-
-                <ElementWrapSecond>
-                  <ElementText>Fraza kluczowa</ElementText>
-                </ElementWrapSecond>
-
-                <ElementWrap>
-                  <ElementText>
-                    Created dashboard with shipment value and sales. Lorem ipsum
-                    dolor mit set.
-                  </ElementText>
-                </ElementWrap>
-              </TableElement>
-            </TableElementsWrapper>
-          </TableWrapper>
-        </TableContainer>
       </ContentAnalysisContainer>
     </>
   );
