@@ -30,13 +30,20 @@ export const FormInput = styled.input`
     border-bottom: 1px solid #8954ba;
   }
 `;
+
 export const FormBtnWrap = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 `;
+
 export const MultipleFormsContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const FormSelectContainer = styled.div`
+  width: 100%;
+  margin-bottom: 19px;
 `;
