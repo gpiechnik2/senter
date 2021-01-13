@@ -1,0 +1,124 @@
+
+.accordion {
+  border: none;
+  width: 100%;
+}
+
+.accordion__item {
+  /* border-bottom: 1px solid #E6E8F1; */
+}
+
+.accordion__button {
+  padding: 17px 0 12px 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  text-align: left;
+  font-size: 15px;
+  color: #686868;
+  background-color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #E6E8F1;
+  cursor: pointer;
+}
+
+.accordion__button:hover {
+  color: #8954BA;
+}
+
+.accordion__button:after {
+  float:right;
+  content: '';
+  height: 10px;
+  width: 10px;
+  margin-right: 14px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform .2s ease-in;
+  color: #686868;
+}
+
+.accordion__button:hover:after {
+  color: #8954BA;
+}
+
+.accordion__button[aria-expanded='true']::after,
+.accordion__button[aria-selected='true']::after {
+  transform: rotate(135deg);
+}
+
+[hidden] {
+  display: none;
+}
+
+.accordion__panel {
+  padding: 20px;
+  animation: fadein 0.35s ease-in;
+}
+
+/* styles for analysis-accordion */
+
+
+.accordion__panel--analysis {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  animation: fadein 0.35s ease-in;
+}
+
+
+.accordion__button--analysis {
+  padding: 17px 0 12px 0;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-bottom-color: currentcolor;
+  border-bottom-style: none;
+  border-bottom-width: medium;
+  text-align: left;
+  font-size: 16px;
+  color: #5D38DB;
+  font-weight: bold;
+  background-color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #E6E8F1;
+  cursor: pointer;
+}
+
+.accordion__button--analysis[aria-expanded='true']::after,
+.accordion__button--analysis[aria-selected='true']::after {
+  transform: rotate(135deg);
+}
+
+.accordion__button--analysis:after {
+  float:right;
+  content: '';
+  height: 10px;
+  width: 10px;
+  margin-right: 14px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform .2s ease-in;
+  color: #D0D6E6;
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
