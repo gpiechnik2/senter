@@ -6,6 +6,7 @@ import PrivateLayoutPage from './pages/PrivateLayoutPage';
 
 import './App.css';
 import './components/Common/DropdownMain.css';
+import './components/Common/Accordion.css';
 
 const App = () => {
   return (

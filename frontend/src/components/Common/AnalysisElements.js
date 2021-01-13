@@ -63,6 +63,17 @@ export const TableIcon = styled(CgHome)`
   color: #6caa89;
 `;
 
+export const ExpandableAnalysisContainer = styled.div`
+  min-width: 530px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @media screen and (max-width: 768px) {
+    min-width: auto;
+    width: 100%;
+  }
+`;
+
 export const AnalysisElementWrapper = styled.div`
   min-width: 530px;
   display: flex;
@@ -87,4 +98,50 @@ export const ElementTitle = styled.h1`
 export const ElementText = styled.p`
   font-size: 13px;
   color: rgba(104, 104, 104, 0.8);
+`;
+
+export const MessageAnalysisWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+export const MessageAnalysisElementWrap = styled.div`
+  padding: 10px 10px 10px 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+
+  border-bottom: 1px solid #d0d6e6;
+`;
+export const StatusElement = styled.div`
+  width: 18%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
+export const StatusBar = styled.span`
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  display: block;
+  border-radius: 2px;
+  border: 1px solid #979797;
+`;
+export const StatusText = styled.p`
+  line-height: 20px;
+  font-size: 13px;
+  color: #000000;
+`;
+export const MessageElement = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
+export const MessageText = styled.p`
+  line-height: 20px;
+  font-size: 13px;
+  color: #000000;
 `;

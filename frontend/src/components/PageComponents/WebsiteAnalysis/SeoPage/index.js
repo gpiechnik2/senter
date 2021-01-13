@@ -14,12 +14,28 @@ import {
 
 import { ButtonBasic } from '../../../Common/ButtonElements';
 
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
+
 import { ColumnContainerBasic } from '../../../Common/ContainerElements';
 import {
+  ExpandableAnalysisContainer,
   AnalysisElementWrapper,
   AnalysisElement,
   ElementTitle,
   ElementText,
+  MessageAnalysisWrapper,
+  MessageAnalysisElementWrap,
+  StatusElement,
+  StatusBar,
+  StatusText,
+  MessageElement,
+  MessageText,
 } from '../../../Common/AnalysisElements';
 
 const SeoPage = () => {
@@ -28,6 +44,81 @@ const SeoPage = () => {
     { label: 'op1', value: 'opcja 1' },
     { label: 'op2', value: 'opcja 2' },
     { label: 'op3', value: 'opcja 3' },
+  ];
+
+  const analysisContent = [
+    {
+      title: 'Basic info',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
+    {
+      title: 'Title',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
+    {
+      title: 'External links',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
+    {
+      title: 'Internal links',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
+    {
+      title: 'Description',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
+    {
+      title: 'H1',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
+    {
+      title: 'Images',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
+    {
+      title: 'H2',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
+    {
+      title: 'H3-H6',
+      count: 12,
+      main: 'frontmain',
+      all: `"title1", "title2"`,
+      message:
+        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
+    },
   ];
   return (
     <>
@@ -62,22 +153,67 @@ const SeoPage = () => {
             </FormBtnWrap>
           </FormWrap>
         </FormContainer>
-        <ColumnContainerBasic>
-          <AnalysisElementWrapper>
-            <AnalysisElement>
-              <ElementTitle>H1 count</ElementTitle>
-              <ElementText>analysis.h1.h1_count</ElementText>
-            </AnalysisElement>
-            <AnalysisElement>
-              <ElementTitle>H1 count</ElementTitle>
-              <ElementText>analysis.h1.h1_count</ElementText>
-            </AnalysisElement>
-            <AnalysisElement>
-              <ElementTitle>H1 count</ElementTitle>
-              <ElementText>analysis.h1.h1_count</ElementText>
-            </AnalysisElement>
-          </AnalysisElementWrapper>
-        </ColumnContainerBasic>
+        {analysisContent.map((analysis) => (
+          <ColumnContainerBasic key={analysis.title}>
+            <ExpandableAnalysisContainer>
+              <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+                <AccordionItem>
+                  <AccordionItemHeading>
+                    <AccordionItemButton className='accordion__button--analysis'>
+                      {analysis.title}
+                    </AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel className='accordion__panel--analysis'>
+                    <AnalysisElementWrapper>
+                      <AnalysisElement>
+                        <ElementTitle>{analysis.title} count</ElementTitle>
+                        <ElementText>{analysis.count}</ElementText>
+                      </AnalysisElement>
+                      <AnalysisElement>
+                        <ElementTitle>Main {analysis.title}</ElementTitle>
+                        <ElementText>{analysis.main}</ElementText>
+                      </AnalysisElement>
+                      <AnalysisElement>
+                        <ElementTitle>{analysis.title}</ElementTitle>
+                        <ElementText>{analysis.all}</ElementText>
+                      </AnalysisElement>
+                    </AnalysisElementWrapper>
+                  </AccordionItemPanel>
+                </AccordionItem>
+              </Accordion>
+            </ExpandableAnalysisContainer>
+            <ExpandableAnalysisContainer>
+              <MessageAnalysisWrapper>
+                <MessageAnalysisElementWrap>
+                  <StatusElement>
+                    <StatusBar />
+                    <StatusText style={{ fontWeight: 'bold' }}>
+                      Status
+                    </StatusText>
+                  </StatusElement>
+                  <MessageElement>
+                    <MessageText style={{ fontWeight: 'bold' }}>
+                      Message
+                    </MessageText>
+                  </MessageElement>
+                </MessageAnalysisElementWrap>
+                <MessageAnalysisElementWrap>
+                  <StatusElement>
+                    <StatusBar style={{ borderColor: '#72BC39' }} />
+                    <StatusText style={{ color: 'rgba(104,104,104,.8)' }}>
+                      Valid
+                    </StatusText>
+                  </StatusElement>
+                  <MessageElement>
+                    <MessageText style={{ color: 'rgba(104,104,104,.8)' }}>
+                      {analysis.message}
+                    </MessageText>
+                  </MessageElement>
+                </MessageAnalysisElementWrap>
+              </MessageAnalysisWrapper>
+            </ExpandableAnalysisContainer>
+          </ColumnContainerBasic>
+        ))}
       </SeoPageContainer>
     </>
   );

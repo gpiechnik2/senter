@@ -6,8 +6,6 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 
-import './Accordion.css';
-
 import {
   HelpContainer,
   CollapsibleWrap,
