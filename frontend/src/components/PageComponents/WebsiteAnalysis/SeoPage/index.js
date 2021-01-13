@@ -1,6 +1,6 @@
 import Select from 'react-select';
 
-import { SeoPageContainer, SeoSelect } from './SeoPageElements';
+import { SeoPageContainer } from './SeoPageElements';
 
 import {
   FormContainer,
@@ -9,9 +9,18 @@ import {
   FormWrap,
   FormInput,
   FormBtnWrap,
+  FormSelectContainer,
 } from '../../../Common/FormElements';
 
 import { ButtonBasic } from '../../../Common/ButtonElements';
+
+import { ColumnContainerBasic } from '../../../Common/ContainerElements';
+import {
+  AnalysisElementWrapper,
+  AnalysisElement,
+  ElementTitle,
+  ElementText,
+} from '../../../Common/AnalysisElements';
 
 const SeoPage = () => {
   const options1 = [
@@ -31,7 +40,7 @@ const SeoPage = () => {
           </FormText>
           <FormWrap>
             <FormInput placeholder='Adres strony do analizy' />
-            <SeoSelect>
+            <FormSelectContainer>
               <Select
                 isSearchable={false}
                 className='react-select-container'
@@ -47,12 +56,28 @@ const SeoPage = () => {
                 options={options1}
                 placeholder='Rodzaj strony'
               />
-            </SeoSelect>
+            </FormSelectContainer>
             <FormBtnWrap>
               <ButtonBasic>Analizuj</ButtonBasic>
             </FormBtnWrap>
           </FormWrap>
         </FormContainer>
+        <ColumnContainerBasic>
+          <AnalysisElementWrapper>
+            <AnalysisElement>
+              <ElementTitle>H1 count</ElementTitle>
+              <ElementText>analysis.h1.h1_count</ElementText>
+            </AnalysisElement>
+            <AnalysisElement>
+              <ElementTitle>H1 count</ElementTitle>
+              <ElementText>analysis.h1.h1_count</ElementText>
+            </AnalysisElement>
+            <AnalysisElement>
+              <ElementTitle>H1 count</ElementTitle>
+              <ElementText>analysis.h1.h1_count</ElementText>
+            </AnalysisElement>
+          </AnalysisElementWrapper>
+        </ColumnContainerBasic>
       </SeoPageContainer>
     </>
   );

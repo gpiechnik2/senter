@@ -1,3 +1,5 @@
+import { KeywordAnalysisContainer, AddFont } from './KeywordAnalysisElements';
+
 import {
   FormContainer,
   FormTitle,
@@ -7,8 +9,6 @@ import {
   FormBtnWrap,
 } from '../../Common/FormElements';
 import { ButtonBasic } from '../../Common/ButtonElements';
-
-import { KeywordAnalysisContainer, AddFont } from './KeywordAnalysisElements';
 
 const KeywordAnalysis = () => {
   return (

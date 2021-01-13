@@ -8,10 +8,6 @@ export const SeoPageContainer = styled.div`
   padding-left: 4vw;
   padding-right: 4vw;
   display: flex;
-  justify-content: center;
-`;
-
-export const SeoSelect = styled.div`
-  width: 100%;
-  margin-bottom: 19px;
+  flex-direction: column;
+  align-items: center;
 `;

@@ -1,9 +1,6 @@
 import Select from 'react-select';
 
-import {
-  SearchConsolePageContainer,
-  SearchConsoleSelect,
-} from './SearchConsolePageElements';
+import { SearchConsolePageContainer } from './SearchConsolePageElements';
 
 import {
   FormContainer,
@@ -12,6 +9,7 @@ import {
   FormWrap,
   FormInput,
   FormBtnWrap,
+  FormSelectContainer,
 } from '../../../Common/FormElements';
 
 import { ButtonBasic } from '../../../Common/ButtonElements';
@@ -40,7 +38,7 @@ const SearchConsolePage = () => {
           </FormText>
           <FormWrap>
             <FormInput placeholder='Adres strony do analizy' />
-            <SearchConsoleSelect>
+            <FormSelectContainer>
               <Select
                 isSearchable={false}
                 className='react-select-container'
@@ -56,8 +54,8 @@ const SearchConsolePage = () => {
                 options={options1}
                 placeholder='Państwo'
               />
-            </SearchConsoleSelect>
-            <SearchConsoleSelect>
+            </FormSelectContainer>
+            <FormSelectContainer>
               <Select
                 isSearchable={false}
                 className='react-select-container'
@@ -73,8 +71,8 @@ const SearchConsolePage = () => {
                 options={options2}
                 placeholder='Urządzenie'
               />
-            </SearchConsoleSelect>
-            <SearchConsoleSelect>
+            </FormSelectContainer>
+            <FormSelectContainer>
               <Select
                 isSearchable={false}
                 className='react-select-container'
@@ -90,8 +88,8 @@ const SearchConsolePage = () => {
                 options={options2}
                 placeholder='Data startowa'
               />
-            </SearchConsoleSelect>
-            <SearchConsoleSelect>
+            </FormSelectContainer>
+            <FormSelectContainer>
               <Select
                 isSearchable={false}
                 className='react-select-container'
@@ -107,7 +105,7 @@ const SearchConsolePage = () => {
                 options={options2}
                 placeholder='Data końcowa'
               />
-            </SearchConsoleSelect>
+            </FormSelectContainer>
             <FormBtnWrap>
               <ButtonBasic>Analizuj</ButtonBasic>
             </FormBtnWrap>

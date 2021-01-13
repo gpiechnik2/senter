@@ -1,9 +1,6 @@
 import Select from 'react-select';
 
-import {
-  PageSpeedPageContainer,
-  PageSpeedSelect,
-} from './PageSpeedPageElements';
+import { PageSpeedPageContainer } from './PageSpeedPageElements';
 
 import {
   FormContainer,
@@ -12,6 +9,7 @@ import {
   FormWrap,
   FormInput,
   FormBtnWrap,
+  FormSelectContainer,
 } from '../../../Common/FormElements';
 
 import { ButtonBasic } from '../../../Common/ButtonElements';
@@ -40,7 +38,7 @@ const PageSpeedPage = () => {
           </FormText>
           <FormWrap>
             <FormInput placeholder='Adres strony do analizy' />
-            <PageSpeedSelect>
+            <FormSelectContainer>
               <Select
                 isSearchable={false}
                 className='react-select-container'
@@ -56,8 +54,8 @@ const PageSpeedPage = () => {
                 options={options1}
                 placeholder='Rodzaj strony'
               />
-            </PageSpeedSelect>
-            <PageSpeedSelect>
+            </FormSelectContainer>
+            <FormSelectContainer>
               <Select
                 isSearchable={false}
                 className='react-select-container'
@@ -73,7 +71,7 @@ const PageSpeedPage = () => {
                 options={options2}
                 placeholder='Urządzenie'
               />
-            </PageSpeedSelect>
+            </FormSelectContainer>
             <FormBtnWrap>
               <ButtonBasic>Analizuj</ButtonBasic>
             </FormBtnWrap>
