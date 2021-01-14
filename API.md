@@ -3215,3 +3215,51 @@
   ```
     curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/audit/<ID>/
   ```
+
+**Get updates**
+  ----
+    Returns updates list of the user.
+
+  * **URL**
+
+    updates/
+
+  * **Method:**
+
+    `GET`
+
+  * **Header Params**
+  
+    None
+
+  * **URL Params**
+
+    None
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+
+      ```
+        [
+            {
+                "id": <Integer>,
+                "update": <String>,
+                "publish_date": <String>
+            }
+        ]
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+  * **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" http://hostname/updates/
+  ```
