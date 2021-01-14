@@ -212,16 +212,18 @@ def get_meta_robots_info(soup):
 
 def get_h1(soup):
 
-    data = {}
+    h1 = soup.find_all('h1')
+    results = []
 
-    if soup.find_all('h1'):
-        h1 = soup.find_all('h1')[0]
-        data.setdefault('val1', []).append(h1.text if h1 else "N/A")
-        data['val1'][0] = data['val1'][0].replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
+    if h1:
+        temp_result = (h.text for h in h1)
+        for h in temp_result:
+            h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
+            results.append(h)
     else:
         pass
 
-    return data['val1']
+    return results
 
 def get_h2(soup):
 
@@ -631,7 +633,7 @@ def get_main_title(keyword, titles):
         return None
     else:
         #clean h1 to get title with keyword inside only
-        title_with_keyword = []
+        titles_with_keyword = []
         for tag in titles:
             if keyword.lower() in tag.lower():
                 titles_with_keyword.append(tag)
