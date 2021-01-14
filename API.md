@@ -2907,4 +2907,312 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/keyword-analysis/
   ```
   
+**Get audit**
+----
+  Returns audit.
+
+  * **URL**
+
+    audit/
+
+  * **Method:**
+
+    `POST`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    None
+
+  * **Data Params**
+
+    ```
+      {
+          "url": <String>,
+          "audit": <String>
+      }
+    ```
+
+  * **Success Response:**
+
+    * **Code:** 201 <br />
+      **Content:**
+
+      ```
+       {
+            "id": <Integer>,
+            "url": <String>,
+            "audit": ,
+            "publish_date": <String>
+        }
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>, "audit": <AUDIT>}' http://hostname/audit/check/
+  ```
+  
+**Create audit**
+----
+  Returns audit.
+
+  * **URL**
+
+    audit/
+
+  * **Method:**
+
+    `POST`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    None
+
+  * **Data Params**
+
+    ```
+      {
+          "url": <String>,
+          "audit": <String>
+      }
+    ```
+
+  * **Success Response:**
+
+    * **Code:** 201 <br />
+      **Content:**
+
+      ```
+       {
+            "id": <Integer>,
+            "url": <String>,
+            "audit": ,
+            "publish_date": <String>
+        }
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>, "audit": <AUDIT>}' http://hostname/audit/
+  ```
+
+**Get audits**
+  ----
+    Returns audits list of the user.
+
+  * **URL**
+
+    audit/
+
+  * **Method:**
+
+    `GET`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    None
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+
+      ```
+        [
+            {
+              "id": <Integer>,
+              "url": <String>,
+              "audit": ,
+              "publish_date": <String>
+          }
+        ]
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/audit/
+  ```
+
+**Get audit with specified id**
+  ----
+    Returns the audit with specified id.
+
+  * **URL**
+
+    audit/:id
+
+  * **Method:**
+
+    `GET`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    `id = <Integer>`
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+
+      ```
+        {
+            "id": <Integer>,
+            "url": <String>,
+            "audit": ,
+            "publish_date": <String>
+        }
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/audit/<ID>/
+  ```
+
+**Delete audit**
+  ----
+    Deletes audit with specified id.
+
+  * **URL**
+
+    audit/:id
+
+  * **Method:**
+
+    `DELETE`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    `id = <Integer>`
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 204 NO CONTENT <br />
+
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+
+  * **Sample Call:**
+
+  ```
+    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/audit/<ID>/
+  ```
   
