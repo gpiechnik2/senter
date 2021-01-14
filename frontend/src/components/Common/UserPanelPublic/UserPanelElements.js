@@ -15,6 +15,7 @@ export const UserPanelContainer = styled.div`
 
   transition: all 0.5s linear;
   width: 280px;
+  height: 250px;
   position: absolute;
   top: 70px;
   right: 0;
@@ -28,7 +29,7 @@ export const UserPanelContainer = styled.div`
   box-shadow: -10px 9px 21px rgba(128, 152, 213, 0.07);
 `;
 export const UserPanelWrapper = styled.div`
-  padding: 32px 102px 10px 40px;
+  padding: 32px 102px 32px 40px;
 `;
 export const UserHello = styled.div`
   height: 31px;
@@ -43,12 +44,13 @@ export const UserName = styled.span`
 export const UserPanelList = styled.ul`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   width: 115px;
+  height: 132px;
   margin-top: 23px;
 `;
 export const UserPanelElement = styled.li`
-  margin-bottom: 25px;
   font-size: 12px;
   color: #686868;
 `;

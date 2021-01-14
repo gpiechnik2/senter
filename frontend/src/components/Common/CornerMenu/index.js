@@ -8,8 +8,9 @@ import {
 } from './CornerMenuElements';
 
 import UserPanelPrivate from '../UserPanelPrivate/index';
+import UserPanelPublic from '../UserPanelPublic/index';
 
-const CornerMenu = () => {
+const CornerMenu = ({ isPrivate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScroll, setIsScroll] = useState(false);
 
@@ -38,7 +39,11 @@ const CornerMenu = () => {
           <IconWrap onClick={toggle}>
             <IconGrid />
           </IconWrap>
-          <UserPanelPrivate isOpen={isOpen} />
+          {isPrivate ? (
+            <UserPanelPrivate isOpen={isOpen} />
+          ) : (
+            <UserPanelPublic isOpen={isOpen} />
+          )}
         </CornerMenuWrap>
       </CornerMenuContainer>
     </>
