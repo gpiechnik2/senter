@@ -1,9 +1,9 @@
-// import { Link } from 'react-router-dom';
+import Login from '../components/PageComponents/Login';
 
 const LoginPage = () => {
   return (
     <>
-      <h1>zaloguj sie</h1>
+      <Login />
     </>
   );
 };
