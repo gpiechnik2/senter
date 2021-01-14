@@ -27,6 +27,7 @@ export const SmallTableWrapper = styled.div`
   width: 48%;
   padding: 14px;
 
+  display: flex;
   border: 1px solid #d0d6e6;
 `;
 

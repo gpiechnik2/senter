@@ -1,5 +1,13 @@
 import Select from 'react-select';
 
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from 'react-accessible-accordion';
+
 import { SeoPageContainer } from './SeoPageElements';
 
 import {
@@ -14,15 +22,8 @@ import {
 
 import { ButtonBasic } from '../../../Common/ButtonElements';
 
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemButton,
-  AccordionItemPanel,
-} from 'react-accessible-accordion';
-
 import { ColumnContainerBasic } from '../../../Common/ContainerElements';
+
 import {
   ExpandableAnalysisContainer,
   AnalysisElementWrapper,
@@ -36,90 +37,20 @@ import {
   StatusText,
   MessageElement,
   MessageText,
+  TableLargeContainer,
+  TableIconWrapper,
+  TableTextWrapper,
+  TableTextTitle,
+  TableTextContentWrap,
+  TableText,
+  TableIcon,
+  TableSmallContainer,
+  SmallTableWrapper,
 } from '../../../Common/AnalysisElements';
 
-const SeoPage = () => {
-  const options1 = [
-    { label: 'all', value: 'Wszystkie' },
-    { label: 'op1', value: 'opcja 1' },
-    { label: 'op2', value: 'opcja 2' },
-    { label: 'op3', value: 'opcja 3' },
-  ];
+import { options1, InfoTables, analysisContent } from './Data';
 
-  const analysisContent = [
-    {
-      title: 'Basic info',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-    {
-      title: 'Title',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-    {
-      title: 'External links',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-    {
-      title: 'Internal links',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-    {
-      title: 'Description',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-    {
-      title: 'H1',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-    {
-      title: 'Images',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-    {
-      title: 'H2',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-    {
-      title: 'H3-H6',
-      count: 12,
-      main: 'frontmain',
-      all: `"title1", "title2"`,
-      message:
-        'Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym. Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle ',
-    },
-  ];
+const SeoPage = () => {
   return (
     <>
       <SeoPageContainer>
@@ -153,6 +84,44 @@ const SeoPage = () => {
             </FormBtnWrap>
           </FormWrap>
         </FormContainer>
+        <ColumnContainerBasic>
+          {InfoTables.map((table) => (
+            <TableLargeContainer key={table.id}>
+              <TableIconWrapper>{table.icon}</TableIconWrapper>
+              <TableTextWrapper>
+                <TableTextTitle>{table.title}</TableTextTitle>
+                <TableTextContentWrap>
+                  <TableText>{table.text}</TableText>
+                  <TableText>{table.text}</TableText>
+                </TableTextContentWrap>
+              </TableTextWrapper>
+            </TableLargeContainer>
+          ))}
+          <TableSmallContainer>
+            <SmallTableWrapper>
+              <TableIconWrapper style={{ width: '13%' }}>
+                <TableIcon />
+              </TableIconWrapper>
+              <TableTextWrapper>
+                <TableTextTitle>Url title</TableTextTitle>
+                <TableTextContentWrap>
+                  <TableText>analysis.url_title</TableText>
+                </TableTextContentWrap>
+              </TableTextWrapper>
+            </SmallTableWrapper>
+            <SmallTableWrapper>
+              <TableIconWrapper style={{ width: '13%' }}>
+                <TableIcon />
+              </TableIconWrapper>
+              <TableTextWrapper>
+                <TableTextTitle>Url status</TableTextTitle>
+                <TableTextContentWrap>
+                  <TableText>analysis.url_status</TableText>
+                </TableTextContentWrap>
+              </TableTextWrapper>
+            </SmallTableWrapper>
+          </TableSmallContainer>
+        </ColumnContainerBasic>
         {analysisContent.map((analysis) => (
           <ColumnContainerBasic key={analysis.title}>
             <ExpandableAnalysisContainer>
