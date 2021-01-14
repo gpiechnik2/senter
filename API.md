@@ -2291,7 +2291,7 @@
 
 * **URL**
 
-  content-analysis/analyse/
+  content-analysis/
 
 * **Method:**
 
@@ -2351,7 +2351,7 @@
 * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/
   ```
 
 **Get contents**
@@ -2360,7 +2360,7 @@
 
 * **URL**
 
-  content-analysis/analyse/
+  content-analysis/
 
 * **Method:**
 
@@ -2415,7 +2415,7 @@
 * **Sample Call:**
 
   ```
-    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/
   ```
 
 **Get content with specified id**
@@ -2424,7 +2424,7 @@
 
 * **URL**
 
-  content-analysis/analyse/:id
+  content-analysis/:id
 
 * **Method:**
 
@@ -2478,7 +2478,7 @@
 * **Sample Call:**
 
   ```
-    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/<ID>/
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/<ID>/
   ```
 
 **Update content**
@@ -2487,7 +2487,7 @@
 
 * **URL**
 
-  content-analysis/analyse/:id
+  content-analysis/:id
 
 * **Method:**
 
@@ -2541,7 +2541,7 @@
 * **Sample Call:**
 
   ```
-    curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/<ID>/
+    curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/<ID>/
   ```
 
 **Delete content**
@@ -2550,7 +2550,7 @@
 
 * **URL**
 
-  content-analysis/analyse/:id
+  content-analysis/:id
 
 * **Method:**
 
@@ -2593,7 +2593,7 @@
 * **Sample Call:**
 
   ```
-    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/content-analysis/analyse/<ID>/
+    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/content-analysis/<ID>/
   ```
 
 **Get website analysis(SEO)**
@@ -2628,7 +2628,7 @@
 
   * **Code:** 200 <br />
     **Content:**
-    
+
      ```
        {
           "analysis": {
@@ -2839,7 +2839,7 @@
 
   * **Code:** 200 <br />
     **Content:**
-    
+
      ```
        {
           "keyword_analysis": {
@@ -2906,7 +2906,7 @@
   ```
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/keyword-analysis/
   ```
-  
+
 **Get audit**
 ----
   Returns audit.
@@ -2972,7 +2972,7 @@
   ```
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>, "audit": <AUDIT>}' http://hostname/audit/check/
   ```
-  
+
 **Create audit**
 ----
   Returns audit.
@@ -3215,4 +3215,3 @@
   ```
     curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/audit/<ID>/
   ```
-  
