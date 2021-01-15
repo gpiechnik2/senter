@@ -121,6 +121,73 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{ "current_password": <PASSWORD>, "new_password": <PASSWORD>}' http://hostname/auth/users/set-password/
   ```
 
+**Set user password**
+----
+  Returns info about successful changing the password.
+
+* **URL**
+
+  auth/users/set-password/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+    ```
+      {
+          "new_email": <String>
+      }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "new_email": "Email has been changed."
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+          "User": "Anonymous users can not change user password."
+      }
+    ```
+
+  OR
+
+  * **Code:** 400 BAD REQUEST
+    **Content:**
+
+    ```
+      {
+          "new_email": "User with provided email already exists."
+      }
+    ```
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"new_email": <NEW_EMAIL>}' http://hostname/auth/users/change-email/
+  ```
+
 **Login user**
 ----
   Returns auth token.
