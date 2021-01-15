@@ -100,15 +100,15 @@ class UserViewSet(viewsets.ViewSet):
 
             #check if validated data is the same
 
-            email = serializer.data['email']
+            email = serializer.data['new_email']
             emailsqry = User.objects.filter(email = email)
 
             if not emailsqry:
                 user.email = email
                 user.save()
-                return Response({"email": "Email has been changed."}, status = status.HTTP_200_OK)
+                return Response({"new_email": "Email has been changed."}, status = status.HTTP_200_OK)
             else:
-                return Response({"email": "User with provided email already exists."},
+                return Response({"new_email": "User with provided email already exists."},
                                 status = status.HTTP_400_BAD_REQUEST)
         else:
             return Response(serializer.errors,
