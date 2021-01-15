@@ -66,7 +66,7 @@
 
 * **URL**
 
-  auth/users/set_password/
+  auth/users/set-password/
 
 * **Method:**
 
@@ -118,7 +118,7 @@
 * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": <EMAIL>, "password": <PASSWORD>, "re_password": <PASSWORD>}' http://hostname/auth/users/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{ "current_password": <PASSWORD>, "new_password": <PASSWORD>}' http://hostname/auth/users/set-password/
   ```
 
 **Login user**
@@ -3525,7 +3525,7 @@
                     }
                 ],
                 "publish_date": <String>
-            } 
+            }
         ]
       ```    
   * **Error Response:**
@@ -3829,7 +3829,7 @@
     `GET`
 
   * **Header Params**
-  
+
     None
 
   * **URL Params**

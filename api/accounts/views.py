@@ -8,7 +8,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 
 from .models import User
-from .serializers import UserSerializer, UserGoogleJWTSerializer, UserFacebookATSerializer, PasswordSerializer
+from .serializers import UserSerializer, UserGoogleJWTSerializer, UserFacebookATSerializer, PasswordSerializer, ChangeEmailSerializer
 
 import requests
 import jwt
@@ -80,6 +80,35 @@ class UserViewSet(viewsets.ViewSet):
 
             else:
                 return Response(serializer.errors,
+                                status = status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(serializer.errors,
+                            status = status.HTTP_400_BAD_REQUEST)
+
+    #change email
+    @action(detail = True, methods = ['post'], permission_classes=[IsAuthenticated])
+    def change_email(self, request, *args, **kwargs):
+
+        serializer = ChangeEmailSerializer(data = request.data)
+        if serializer.is_valid():
+
+            #check if user is anonymous
+            user = self.request.user
+            if user.is_anonymous:
+                return Response({"User": "Anonymous users can not change user password."},
+                                status = status.HTTP_401_UNAUTHORIZED)
+
+            #check if validated data is the same
+
+            email = serializer.data['email']
+            emailsqry = User.objects.filter(email = email)
+
+            if not emailsqry:
+                user.email = email
+                user.save()
+                return Response({"email": "Email has been changed."}, status = status.HTTP_200_OK)
+            else:
+                return Response({"email": "User with provided email already exists."},
                                 status = status.HTTP_400_BAD_REQUEST)
         else:
             return Response(serializer.errors,

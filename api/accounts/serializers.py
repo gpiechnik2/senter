@@ -13,6 +13,9 @@ class PasswordSerializer(serializers.Serializer):
     current_password = serializers.CharField()
     new_password = serializers.CharField()
 
+class ChangeEmailSerializer(serializers.Serializer):
+    email = serializers.CharField(required = True)
+
 class UserSerializer(serializers.Serializer):
 
     email = serializers.EmailField(required = True)
