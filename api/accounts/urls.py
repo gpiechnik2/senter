@@ -14,6 +14,9 @@ urlpatterns = [
     path('users/change-email/', UserViewSet.as_view({
         'post': 'change_email'
     })),
+    path('users/change-contact-email/', UserViewSet.as_view({
+        'post': 'change_contact_email'
+    })),
     path('', include('djoser.urls.authtoken')),
     path('google/token/login/', GoogleJwtAuthToken.as_view()),
     path('facebook/token/login/', FacebookAccesToken.as_view()),

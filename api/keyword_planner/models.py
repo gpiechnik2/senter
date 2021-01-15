@@ -23,5 +23,5 @@ class KeywordPlanner(models.Model):
         return self.keyword
 
     class Meta:
-        verbose_name = 'Keyword'
+        verbose_name = 'Keyword analysis'
         verbose_name_plural = 'Keyword analysis'

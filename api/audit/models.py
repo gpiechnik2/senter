@@ -13,4 +13,4 @@ class Audit(models.Model):
 
     class Meta:
         verbose_name = 'Audit'
-        verbose_name_plural = 'Url audit'
+        verbose_name_plural = 'Audit'
