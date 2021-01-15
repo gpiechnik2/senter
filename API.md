@@ -121,13 +121,13 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{ "current_password": <PASSWORD>, "new_password": <PASSWORD>}' http://hostname/auth/users/set-password/
   ```
 
-**Set user password**
+**Set user email**
 ----
-  Returns info about successful changing the password.
+  Returns info about successful changing the email.
 
 * **URL**
 
-  auth/users/set-password/
+  auth/users/change-email/
 
 * **Method:**
 
