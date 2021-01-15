@@ -66,7 +66,7 @@
 
 * **URL**
 
-  auth/users/set_password/
+  auth/users/set-password/
 
 * **Method:**
 
@@ -118,7 +118,74 @@
 * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"email": <EMAIL>, "password": <PASSWORD>, "re_password": <PASSWORD>}' http://hostname/auth/users/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{ "current_password": <PASSWORD>, "new_password": <PASSWORD>}' http://hostname/auth/users/set-password/
+  ```
+
+**Set user email**
+----
+  Returns info about successful changing the email.
+
+* **URL**
+
+  auth/users/change-email/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+    ```
+      {
+          "new_email": <String>
+      }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "new_email": "Email has been changed."
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+          "User": "Anonymous users can not change user password."
+      }
+    ```
+
+  OR
+
+  * **Code:** 400 BAD REQUEST
+    **Content:**
+
+    ```
+      {
+          "new_email": "User with provided email already exists."
+      }
+    ```
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"new_email": <NEW_EMAIL>}' http://hostname/auth/users/change-email/
   ```
 
 **Login user**
@@ -2291,7 +2358,7 @@
 
 * **URL**
 
-  content-analysis/analyse/
+  content-analysis/
 
 * **Method:**
 
@@ -2351,7 +2418,7 @@
 * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/
   ```
 
 **Get contents**
@@ -2360,7 +2427,7 @@
 
 * **URL**
 
-  content-analysis/analyse/
+  content-analysis/
 
 * **Method:**
 
@@ -2415,7 +2482,7 @@
 * **Sample Call:**
 
   ```
-    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/
   ```
 
 **Get content with specified id**
@@ -2424,7 +2491,7 @@
 
 * **URL**
 
-  content-analysis/analyse/:id
+  content-analysis/:id
 
 * **Method:**
 
@@ -2478,7 +2545,7 @@
 * **Sample Call:**
 
   ```
-    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/<ID>/
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/<ID>/
   ```
 
 **Update content**
@@ -2487,7 +2554,7 @@
 
 * **URL**
 
-  content-analysis/analyse/:id
+  content-analysis/:id
 
 * **Method:**
 
@@ -2541,7 +2608,7 @@
 * **Sample Call:**
 
   ```
-    curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/analyse/<ID>/
+    curl -X PUT -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"keyword": <KEYWORD>, "page_title": <PAGE_TITLE>, "meta_description": <META_DESCRIPTION>, "text_to_check": <TEXT_TO_CHECK>}' http://hostname/content-analysis/<ID>/
   ```
 
 **Delete content**
@@ -2550,7 +2617,7 @@
 
 * **URL**
 
-  content-analysis/analyse/:id
+  content-analysis/:id
 
 * **Method:**
 
@@ -2593,7 +2660,7 @@
 * **Sample Call:**
 
   ```
-    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/content-analysis/analyse/<ID>/
+    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/content-analysis/<ID>/
   ```
 
 **Get website analysis(SEO)**
@@ -2628,7 +2695,7 @@
 
   * **Code:** 200 <br />
     **Content:**
-    
+
      ```
        {
           "analysis": {
@@ -2839,7 +2906,7 @@
 
   * **Code:** 200 <br />
     **Content:**
-    
+
      ```
        {
           "keyword_analysis": {
@@ -2906,5 +2973,960 @@
   ```
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/keyword-analysis/
   ```
-  
-  
+
+**Get audit**
+----
+  Returns audit.
+
+  * **URL**
+
+    audit/
+
+  * **Method:**
+
+    `POST`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    None
+
+  * **Data Params**
+
+    ```
+      {
+          "url": <String>,
+          "audit": <String>
+      }
+    ```
+
+  * **Success Response:**
+
+    * **Code:** 201 <br />
+      **Content:**
+
+      ```
+        {
+            "id": <Integer>,
+            "url": <String>,
+            "audit": [
+                {
+                    "url": <String>,
+                    "url_status": <Integer>,
+                    "ssl": {
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "meta_robots": [
+                        {
+                            "status": <String>,
+                            "message": <String>
+                        }
+                    ],
+                    "response_time": {
+                        "time": <Double>,
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "keyword": <String>,
+                    "title": {
+                        "title_count": <Integer>,
+                        "main_title": <String>,
+                        "titles": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "description": {
+                        "descriptions_count": <Integer>,
+                        "main_description": <String>,
+                        "descriptions": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "url_title": {
+                        "url_title": <String>,
+                        "analysis": <String>
+                    },
+                    "h1": {
+                        "h1_count": <Integer>,
+                        "main_h1": <String>,
+                        "h1": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "h2": {
+                        "h2_count": <Integer>,
+                        "h2": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "other_h": {
+                        "other_h_count": <Integer>,
+                        "other_h": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "external_links": {
+                        "external_links_count": <Integer>,
+                        "external_links": [
+                            <String>
+                        ],
+                        "status": [
+                            {
+                                "url": <String>,
+                                "url_status": <Integer>,
+                                "status": <String>,
+                                "message": "<String>
+                            }
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "internal_links": {
+                        "internal_links_count": <Integer>,
+                        "internal_links": [
+                            <String>
+                        ],
+                        "status": [
+                            {
+                                "url": <String>,
+                                "url_status": <Integer>,
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "images": {
+                        "images_counts": <Integer>,
+                        "images": [
+                           <String>
+                        ],
+                        "analysis": [
+                            {
+                                "url": <String>,
+                                "file_name": <String>,
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    }
+                }
+            ],
+            "publish_date": <String>
+        }
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>, "audit": <AUDIT>}' http://hostname/audit/check/
+  ```
+
+**Create audit**
+----
+  Returns audit.
+
+  * **URL**
+
+    audit/
+
+  * **Method:**
+
+    `POST`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    None
+
+  * **Data Params**
+
+    ```
+      {
+          "url": <String>,
+          "audit": <String>
+      }
+    ```
+
+  * **Success Response:**
+
+    * **Code:** 201 <br />
+      **Content:**
+
+      ```
+        {
+            "id": <Integer>,
+            "url": <String>,
+            "audit": [
+                {
+                    "url": <String>,
+                    "url_status": <Integer>,
+                    "ssl": {
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "meta_robots": [
+                        {
+                            "status": <String>,
+                            "message": <String>
+                        }
+                    ],
+                    "response_time": {
+                        "time": <Double>,
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "keyword": <String>,
+                    "title": {
+                        "title_count": <Integer>,
+                        "main_title": <String>,
+                        "titles": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "description": {
+                        "descriptions_count": <Integer>,
+                        "main_description": <String>,
+                        "descriptions": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "url_title": {
+                        "url_title": <String>,
+                        "analysis": <String>
+                    },
+                    "h1": {
+                        "h1_count": <Integer>,
+                        "main_h1": <String>,
+                        "h1": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "h2": {
+                        "h2_count": <Integer>,
+                        "h2": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "other_h": {
+                        "other_h_count": <Integer>,
+                        "other_h": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "external_links": {
+                        "external_links_count": <Integer>,
+                        "external_links": [
+                            <String>
+                        ],
+                        "status": [
+                            {
+                                "url": <String>,
+                                "url_status": <Integer>,
+                                "status": <String>,
+                                "message": "<String>
+                            }
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "internal_links": {
+                        "internal_links_count": <Integer>,
+                        "internal_links": [
+                            <String>
+                        ],
+                        "status": [
+                            {
+                                "url": <String>,
+                                "url_status": <Integer>,
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "images": {
+                        "images_counts": <Integer>,
+                        "images": [
+                           <String>
+                        ],
+                        "analysis": [
+                            {
+                                "url": <String>,
+                                "file_name": <String>,
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    }
+                }
+            ],
+            "publish_date": <String>
+        }
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>, "audit": <AUDIT>}' http://hostname/audit/
+  ```
+
+**Get audits**
+  ----
+    Returns audits list of the user.
+
+  * **URL**
+
+    audit/
+
+  * **Method:**
+
+    `GET`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    None
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+
+      ```
+        [
+            {
+                "id": <Integer>,
+                "url": <String>,
+                "audit": [
+                    {
+                        "url": <String>,
+                        "url_status": <Integer>,
+                        "ssl": {
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "meta_robots": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ],
+                        "response_time": {
+                            "time": <Double>,
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "keyword": <String>,
+                        "title": {
+                            "title_count": <Integer>,
+                            "main_title": <String>,
+                            "titles": [
+                                <String>
+                            ],
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "description": {
+                            "descriptions_count": <Integer>,
+                            "main_description": <String>,
+                            "descriptions": [
+                                <String>
+                            ],
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "url_title": {
+                            "url_title": <String>,
+                            "analysis": <String>
+                        },
+                        "h1": {
+                            "h1_count": <Integer>,
+                            "main_h1": <String>,
+                            "h1": [
+                                <String>
+                            ],
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "h2": {
+                            "h2_count": <Integer>,
+                            "h2": [
+                                <String>
+                            ],
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "other_h": {
+                            "other_h_count": <Integer>,
+                            "other_h": [
+                                <String>
+                            ],
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "external_links": {
+                            "external_links_count": <Integer>,
+                            "external_links": [
+                                <String>
+                            ],
+                            "status": [
+                                {
+                                    "url": <String>,
+                                    "url_status": <Integer>,
+                                    "status": <String>,
+                                    "message": "<String>
+                                }
+                            ],
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "internal_links": {
+                            "internal_links_count": <Integer>,
+                            "internal_links": [
+                                <String>
+                            ],
+                            "status": [
+                                {
+                                    "url": <String>,
+                                    "url_status": <Integer>,
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ],
+                            "analysis": [
+                                {
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        },
+                        "images": {
+                            "images_counts": <Integer>,
+                            "images": [
+                               <String>
+                            ],
+                            "analysis": [
+                                {
+                                    "url": <String>,
+                                    "file_name": <String>,
+                                    "status": <String>,
+                                    "message": <String>
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "publish_date": <String>
+            }
+        ]
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/audit/
+  ```
+
+**Get audit with specified id**
+  ----
+    Returns the audit with specified id.
+
+  * **URL**
+
+    audit/:id
+
+  * **Method:**
+
+    `GET`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    `id = <Integer>`
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+
+      ```
+        {
+            "id": <Integer>,
+            "url": <String>,
+            "audit": [
+                {
+                    "url": <String>,
+                    "url_status": <Integer>,
+                    "ssl": {
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "meta_robots": [
+                        {
+                            "status": <String>,
+                            "message": <String>
+                        }
+                    ],
+                    "response_time": {
+                        "time": <Double>,
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "keyword": <String>,
+                    "title": {
+                        "title_count": <Integer>,
+                        "main_title": <String>,
+                        "titles": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "description": {
+                        "descriptions_count": <Integer>,
+                        "main_description": <String>,
+                        "descriptions": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "url_title": {
+                        "url_title": <String>,
+                        "analysis": <String>
+                    },
+                    "h1": {
+                        "h1_count": <Integer>,
+                        "main_h1": <String>,
+                        "h1": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "h2": {
+                        "h2_count": <Integer>,
+                        "h2": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "other_h": {
+                        "other_h_count": <Integer>,
+                        "other_h": [
+                            <String>
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "external_links": {
+                        "external_links_count": <Integer>,
+                        "external_links": [
+                            <String>
+                        ],
+                        "status": [
+                            {
+                                "url": <String>,
+                                "url_status": <Integer>,
+                                "status": <String>,
+                                "message": "<String>
+                            }
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "internal_links": {
+                        "internal_links_count": <Integer>,
+                        "internal_links": [
+                            <String>
+                        ],
+                        "status": [
+                            {
+                                "url": <String>,
+                                "url_status": <Integer>,
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ],
+                        "analysis": [
+                            {
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    },
+                    "images": {
+                        "images_counts": <Integer>,
+                        "images": [
+                           <String>
+                        ],
+                        "analysis": [
+                            {
+                                "url": <String>,
+                                "file_name": <String>,
+                                "status": <String>,
+                                "message": <String>
+                            }
+                        ]
+                    }
+                }
+            ],
+            "publish_date": <String>
+        }
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+  * **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/audit/<ID>/
+  ```
+
+**Delete audit**
+  ----
+    Deletes audit with specified id.
+
+  * **URL**
+
+    audit/:id
+
+  * **Method:**
+
+    `DELETE`
+
+  * **Header Params**
+
+    `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+  * **URL Params**
+
+    `id = <Integer>`
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 204 NO CONTENT <br />
+
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+    * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+        "detail": "Authentication credentials were not provided."
+      }
+    ```
+    OR
+    ```  
+      {
+        "detail": "Invalid token."
+      }
+    ```
+
+  * **Sample Call:**
+
+  ```
+    curl -X DELETE -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> http://hostname/audit/<ID>/
+  ```
+
+**Get updates**
+  ----
+    Returns updates list.
+
+  * **URL**
+
+    updates/
+
+  * **Method:**
+
+    `GET`
+
+  * **Header Params**
+
+    None
+
+  * **URL Params**
+
+    None
+
+  * **Data Params**
+
+    None
+
+  * **Success Response:**
+
+    * **Code:** 200 <br />
+      **Content:**
+
+      ```
+        [
+            {
+                "id": <Integer>,
+                "update": <String>,
+                "publish_date": <String>
+            }
+        ]
+      ```    
+  * **Error Response:**
+
+    * **Code:** 400 BAD REQUEST
+
+  * **Sample Call:**
+
+  ```
+    curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" http://hostname/updates/
+  ```

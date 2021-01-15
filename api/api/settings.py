@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'website_info.apps.WebsiteInfoConfig',
     'website_analysis.apps.WebsiteAnalysisConfig',
     'audit.apps.AuditConfig',
+    'updates.apps.UpdatesConfig',
 
 ]
 

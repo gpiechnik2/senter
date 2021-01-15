@@ -25,4 +25,5 @@ urlpatterns = [
     path('website-info/', include('website_info.urls')),
     path('website-analysis/', include('website_analysis.urls')),
     path('audit/', include('audit.urls')),
+    path('updates/', include('updates.urls')),
 ]

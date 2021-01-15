@@ -24,7 +24,10 @@ class SEOViewSet(viewsets.ViewSet):
         url = serializer.validated_data['url']
         user_agent = self.request.user.user_agent
 
-        analysis = website_analysis(url, user_agent)
+        try:
+            analysis = website_analysis(url, user_agent)
+        except Exception:
+            analysis = []
 
         return Response({
             "analysis": analysis,

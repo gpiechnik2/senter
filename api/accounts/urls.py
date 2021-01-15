@@ -8,8 +8,14 @@ urlpatterns = [
     path('users/', UserViewSet.as_view({
         'post': 'create'
     })),
-    path('users/set_password/', UserViewSet.as_view({
+    path('users/set-password/', UserViewSet.as_view({
         'post': 'set_password'
+    })),
+    path('users/change-email/', UserViewSet.as_view({
+        'post': 'change_email'
+    })),
+    path('users/change-contact-email/', UserViewSet.as_view({
+        'post': 'change_contact_email'
     })),
     path('', include('djoser.urls.authtoken')),
     path('google/token/login/', GoogleJwtAuthToken.as_view()),

@@ -61,6 +61,7 @@ class User(AbstractUser):
     username_validator = None
     email = models.EmailField(verbose_name = 'email', max_length = 255, unique = True)
     user_agent = models.CharField(max_length = 99999, choices = HEADER_CHOICES, default = HEADER_CHOICES[0][1])
+    contact_email = models.EmailField(null = True, blank = True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name']
@@ -79,3 +80,8 @@ class User(AbstractUser):
 
     def get_username(self):
         return self.email
+
+    def save(self, *args, **kwargs):
+        if self.contact_email is None:
+            self.contact_email = self.email
+        super(User, self).save(*args, **kwargs)

@@ -15,4 +15,4 @@ class ContentAnalysis(models.Model):
 
     class Meta:
         verbose_name = 'Content analysis'
-        verbose_name_plural = 'Users content analysis'
+        verbose_name_plural = 'Content analysis'

@@ -29,18 +29,42 @@ def analysis(url, user_agent):
 
         for url in urls_to_crawl:
 
-            #if url to crawl is in crawled_urls, remove crawled url
-            for curl in crawled_urls:
-                if url == curl:
-                    urls_to_crawl.remove(url)
-                    continue
+            #check if url is checked or not
+            checkedUrl = checkIfInCrawled(url)
 
-            #if url to crawl is not in crawled_urls, call website analysis
-            urlAnalysis = website_analysis(url, user_agent)
-            crawled_urls.append(url)
-            results.append(urlAnalysis)
+            if checkedUrl == True:
+                urls_to_crawl.remove(url)
+                continue
+            else:
+                #if url to crawl is not in crawled_urls, call website analysis
+                urlAnalysis = website_analysis(url, user_agent)
+                crawled_urls.append(url)
+                results.append(urlAnalysis)
+                continue
 
     return results
+
+def checkIfInCrawled(url):
+
+    #if url to crawl is in crawled_urls, remove crawled url
+    for curl in crawled_urls:
+        if url == curl:
+            return True
+        else:
+            continue
+    else:
+        return False
+
+def checkIfInQueryToCrawl(url):
+
+    #check if url is in the query to crawl
+    for curl in urls_to_crawl:
+        if url == curl:
+            return True
+        else:
+            continue
+    else:
+        return False
 
 def website_analysis(url, user_agent):
 
@@ -90,18 +114,17 @@ def website_analysis(url, user_agent):
     for interurl in internal_links:
 
         #but first, check if internal url is in crawled_urls
-        for curl in crawled_urls:
-            if interurl == curl:
-                pass
-            else:
-                #then, check if internal url is in urls_to_crawl
-                #if not, add url query to crawl
-                for tcurl in urls_to_crawl:
-                    if interurl == tcurl:
-                        pass
-                    else:
-                        urls_to_crawl.append(interurl)
+        checkedUrl = checkIfInCrawled(interurl)
+        if checkedUrl == True:
+            continue
 
+        #check if internal url is already in query to crawl
+        inQueryUrl = checkIfInQueryToCrawl(interurl)
+        if inQueryUrl == True:
+            continue
+
+        #add to urls to crawl
+        urls_to_crawl.append(interurl)
 
     #images and keyword extraction
     images = get_images(url, soup)
@@ -264,16 +287,18 @@ def get_meta_robots_info(soup):
 
 def get_h1(soup):
 
-    data = {}
+    h1 = soup.find_all('h1')
+    results = []
 
-    if soup.find_all('h1'):
-        h1 = soup.find_all('h1')[0]
-        data.setdefault('val1', []).append(h1.text if h1 else "N/A")
-        data['val1'][0] = data['val1'][0].replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
+    if h1:
+        temp_result = (h.text for h in h1)
+        for h in temp_result:
+            h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
+            results.append(h)
     else:
         pass
 
-    return data['val1']
+    return results
 
 def get_h2(soup):
 
@@ -683,7 +708,7 @@ def get_main_title(keyword, titles):
         return None
     else:
         #clean h1 to get title with keyword inside only
-        title_with_keyword = []
+        titles_with_keyword = []
         for tag in titles:
             if keyword.lower() in tag.lower():
                 titles_with_keyword.append(tag)
