@@ -116,7 +116,7 @@ class UserViewSet(viewsets.ViewSet):
     @action(detail = True, methods = ['post'], permission_classes=[IsAuthenticated])
     def change_contact_email(self, request, *args, **kwargs):
 
-        serializer = ChangeEmailSerializer(data = request.data)
+        serializer = ChangeContactEmailSerializer(data = request.data)
         if serializer.is_valid():
 
             #check if user is anonymous
@@ -125,10 +125,10 @@ class UserViewSet(viewsets.ViewSet):
                 return Response({"User": "Anonymous users can not change user password."},
                                 status = status.HTTP_401_UNAUTHORIZED)
 
-            email = serializer.data['contact_email']
-            user.email = email
+            email = serializer.data['new_contact_email']
+            user.contact_email = email
             user.save()
-            return Response({"contact_email": "Contact email has been changed."}, status = status.HTTP_200_OK)
+            return Response({"new_contact_email": "Contact email has been changed."}, status = status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors,

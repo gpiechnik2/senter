@@ -17,7 +17,7 @@ class ChangeEmailSerializer(serializers.Serializer):
     new_email = serializers.CharField(required = True)
 
 class ChangeContactEmailSerializer(serializers.Serializer):
-    contact_email = serializers.CharField(required = True)
+    new_contact_email = serializers.CharField(required = True)
 
 class UserSerializer(serializers.Serializer):
     email = serializers.EmailField(required = True)
