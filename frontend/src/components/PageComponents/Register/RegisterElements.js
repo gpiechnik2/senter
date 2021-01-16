@@ -35,69 +35,69 @@ export const RegisterGraphic = styled.img`
 `;
 
 export const RegisterFormWrap = styled.form`
+  width: 100%;
+
   display: flex;
   flex-direction: column;
 `;
-export const LoginInputWrap = styled.div`
-  position: relative;
-  width: 100%;
-  height: 120px;
-  margin-bottom: 41px;
-`;
-export const LoginInput = styled.input`
-  padding: 0 2vh;
-  width: 100%;
-  height: 50%;
-  border-bottom: none;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 19px;
-  color: #0e0c0c;
 
-  &:focus {
-    border-bottom: none;
-  }
-`;
-export const LoginButtonWrap = styled.div`
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-`;
-export const LoginCheckWrap = styled.div`
-  padding: 0 18px;
-  width: 100%;
-  display: flex;
+export const RegisterInputsWrap = styled.div`
   margin-bottom: 30px;
-`;
-export const CheckRememberWrap = styled.div`
-  margin-right: 46px;
+  width: 100%;
+
   display: flex;
-  align-items: center;
+  flex-direction: column;
 `;
-export const InputRemember = styled.input`
-  margin-right: 10px;
-  width: 15px;
-  height: 15px;
-  border: 1px solid #91a1c6;
-  border-radius: 2px;
-  color: #f5f6fa;
 
-  appearance: checkbox;
+export const RegisterButtonsWrap = styled.div`
+  width: 100%;
 
-  &:focus {
-    border-bottom: none;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RegisterTwoButtonWrap = styled.div`
+  margin-bottom: 10px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+`;
+export const HalfBtnWrap = styled.div`
+  width: 49%;
+`;
+export const RegisterInputGroup = styled.div`
+  margin-bottom: 19px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RegisterLabel = styled.label`
+  color: rgba(104, 104, 104, 0.6);
+  line-height: 16px;
+  font-size: 12px;
+`;
+export const RegisterInput = styled.input`
+  margin-bottom: 5px;
+  width: 100%;
+
+  line-height: 17px;
+  font-size: 13px;
+  color: #8954ba;
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: #8954ba;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 `;
-export const LabelRemember = styled.label`
-  font-size: 12px;
-  color: #686868;
+export const RegisterErrorMsg = styled.span`
+  width: 100%;
+  display: block;
+  font-size: 13px;
+  color: #eb6969;
 `;
-export const ForgotWrap = styled.div``;
-export const ForgotLink = styled.a`
-  font-size: 12px;
-  color: #4a90e2;
-  text-decoration: none;
-  cursor: pointer;
-`;
-export const LoginGoogleBtnWrap = styled.div``;
