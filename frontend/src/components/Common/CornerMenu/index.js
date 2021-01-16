@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import onClickOutside from 'react-onclickoutside';
 
 import {
   CornerMenuContainer,
@@ -10,11 +11,11 @@ import {
 import UserPanelPrivate from '../UserPanelPrivate/index';
 import UserPanelPublic from '../UserPanelPublic/index';
 
-const CornerMenu = ({ isPrivate }) => {
+function CornerMenu({ isPrivate }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScroll, setIsScroll] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
+  CornerMenu.handleClickOutside = () => setIsOpen(false);
 
   const changeHeader = () => {
     if (window.scrollY > 0) {
@@ -40,14 +41,18 @@ const CornerMenu = ({ isPrivate }) => {
             <IconGrid />
           </IconWrap>
           {isPrivate ? (
-            <UserPanelPrivate isOpen={isOpen} />
+            <UserPanelPrivate setIsOpen={setIsOpen} isOpen={isOpen} />
           ) : (
-            <UserPanelPublic isOpen={isOpen} />
+            <UserPanelPublic setIsOpen={setIsOpen} isOpen={isOpen} />
           )}
         </CornerMenuWrap>
       </CornerMenuContainer>
     </>
   );
+}
+
+const clickOutsideConfig = {
+  handleClickOutside: () => CornerMenu.handleClickOutside,
 };
 
-export default CornerMenu;
+export default onClickOutside(CornerMenu, clickOutsideConfig);

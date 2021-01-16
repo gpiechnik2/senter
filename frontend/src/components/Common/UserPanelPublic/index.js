@@ -7,10 +7,10 @@ import {
   UserPanelLink,
 } from '../UserPanelPrivate/UserPanelElements';
 
-const UserPanelPublic = ({ isOpen }) => {
+const UserPanelPublic = ({ isOpen, setIsOpen }) => {
   return (
     <>
-      <UserPanelContainer isOpen={isOpen}>
+      <UserPanelContainer onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <UserPanelWrapper>
           <UserHello>Hello!</UserHello>
           <UserPanelList>
