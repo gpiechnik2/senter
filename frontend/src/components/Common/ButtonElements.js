@@ -27,13 +27,13 @@ export const ButtonGoogle = styled.button`
   font-size: 13px;
   color: #707070;
   background-color: #ffffff;
-  border: 1px solid #979797;
+  border: 1px solid #171717;
   border-radius: 3px;
   cursor: pointer;
   transition: 0.3s ease;
 
   &:hover {
     color: #fff;
-    background-color: #686868;
+    background-color: #707070;
   }
 `;

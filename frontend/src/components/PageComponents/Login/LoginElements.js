@@ -28,7 +28,7 @@ export const LoginInputWrap = styled.div`
   margin-bottom: 41px;
 `;
 export const LoginInput = styled.input`
-  padding: 0 2vh;
+  padding: 0 3%;
   width: 100%;
   height: 50%;
   border-bottom: none;
