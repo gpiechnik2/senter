@@ -9,7 +9,7 @@ const HomePage = () => {
       <br />
       <Link to='/login'>zaloguj sie</Link>
       <br />
-      <Link to='/register'>zarejestruj sie</Link>
+      <Link to='/auth/users/'>zarejestruj sie</Link>
       <br />
       <Link to='/blog'>BLOG</Link>
       <br />

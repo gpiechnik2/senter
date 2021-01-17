@@ -17,7 +17,7 @@ const PublicLayoutPage = () => {
         <ContentContainer>
           <Switch>
             <Route path='/login' component={LoginPage} />
-            <Route path='/register' component={RegisterPage} />
+            <Route exact path='/auth/users/' component={RegisterPage} />
           </Switch>
         </ContentContainer>
       </PublicLayout>

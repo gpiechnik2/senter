@@ -18,7 +18,7 @@ const UserPanelPublic = ({ isOpen, setIsOpen }) => {
               <UserPanelLink to='/login'>Login</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/register'>Register</UserPanelLink>
+              <UserPanelLink to='/auth/users/'>Register</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
               <UserPanelLink to='/login'>About us</UserPanelLink>
