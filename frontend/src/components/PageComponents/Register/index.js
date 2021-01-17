@@ -1,6 +1,9 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { signup } from '../../../actions/auth';
 
 import {
   RegisterContainer,
@@ -31,12 +34,34 @@ const errorStyles = {
   borderBottomColor: 'rgba(255,150,150,.85)',
 };
 
+const initialState = {
+  First_name: '',
+  email: '',
+  password: '',
+  re_password: '',
+};
+
 const Register = () => {
-  const { register, handleSubmit, errors, watch } = useForm();
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const {
+    register,
+    handleSubmit,
+    errors,
+    watch,
+    formState: { isSubmitting },
+  } = useForm();
   const password = useRef({});
   password.current = watch('password', '');
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = () => {
+    dispatch(signup(formData, history));
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <>
@@ -62,8 +87,9 @@ const Register = () => {
                   <RegisterInput
                     type='text'
                     id='registerUsername'
-                    name='username'
+                    name='First_name'
                     aria-describedby='Enter username'
+                    onChange={handleChange}
                     ref={register({
                       required: {
                         value: true,
@@ -78,11 +104,11 @@ const Register = () => {
                         message: 'Maximum 255 characters are allowed',
                       },
                     })}
-                    style={errors.username && errorStyles}
+                    style={errors.First_name && errorStyles}
                   />
-                  {errors.username && (
+                  {errors.First_name && (
                     <RegisterErrorMsg>
-                      {errors.username.message}
+                      {errors.First_name.message}
                     </RegisterErrorMsg>
                   )}
                 </RegisterInputGroup>
@@ -94,6 +120,7 @@ const Register = () => {
                     id='registerEmail'
                     name='email'
                     aria-describedby='Enter email address'
+                    onChange={handleChange}
                     ref={register({
                       required: {
                         value: true,
@@ -128,6 +155,7 @@ const Register = () => {
                     id='registerPassword'
                     name='password'
                     aria-describedby='Enter password'
+                    onChange={handleChange}
                     ref={register({
                       required: {
                         value: true,
@@ -158,18 +186,19 @@ const Register = () => {
                   <RegisterInput
                     type='password'
                     id='registerRePassword'
-                    name='password_repeat'
+                    name='re_password'
                     aria-describedby='Enter password'
+                    onChange={handleChange}
                     ref={register({
                       validate: (value) =>
                         value === password.current ||
                         'The passwords do not match',
                     })}
-                    style={errors.password_repeat && errorStyles}
+                    style={errors.re_password && errorStyles}
                   />
-                  {errors.password_repeat && (
+                  {errors.re_password && (
                     <RegisterErrorMsg>
-                      {errors.password_repeat.message}
+                      {errors.re_password.message}
                     </RegisterErrorMsg>
                   )}
                 </RegisterInputGroup>
@@ -178,7 +207,10 @@ const Register = () => {
               <RegisterButtonsWrap>
                 <RegisterTwoButtonWrap>
                   <HalfBtnWrap>
-                    <ButtonBasic type='submit' style={{ width: '100%' }}>
+                    <ButtonBasic
+                      type='submit'
+                      disabled={isSubmitting}
+                      style={{ width: '100%' }}>
                       Join
                     </ButtonBasic>
                   </HalfBtnWrap>
