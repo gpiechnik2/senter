@@ -1,4 +1,9 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { signin } from '../../../actions/auth';
 
 import {
   LoginContainer,
@@ -23,10 +28,30 @@ import {
 } from '../../Common/ContainerElements';
 import { ButtonBasic, ButtonGoogle } from '../../Common/ButtonElements';
 
-const Login = () => {
-  const { register, handleSubmit, errors } = useForm();
+const initialState = {
+  email: '',
+  password: '',
+};
 
-  const onSubmit = (data) => console.log(data);
+const Login = () => {
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const {
+    register,
+    handleSubmit,
+    errors,
+    formState: { isSubmitting },
+  } = useForm();
+
+  const onSubmit = () => {
+    dispatch(signin(formData, history));
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <SingleElementContainer>
@@ -44,6 +69,7 @@ const Login = () => {
                   name='email'
                   placeholder='uxlead@gmail.com'
                   aria-describedby='Enter email address'
+                  onChange={handleChange}
                   ref={register({
                     required: {
                       value: true,
@@ -55,6 +81,7 @@ const Login = () => {
                   type='password'
                   name='password'
                   placeholder='Password'
+                  onChange={handleChange}
                   ref={register({
                     required: {
                       value: true,
@@ -64,6 +91,8 @@ const Login = () => {
                 />
                 <LoginButtonWrap>
                   <ButtonBasic
+                    type='submit'
+                    disabled={isSubmitting}
                     style={{
                       boxShadow: '0px 12px 35px rgba(52, 77, 178, 0.34)',
                     }}>
