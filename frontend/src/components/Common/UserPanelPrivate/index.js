@@ -1,3 +1,7 @@
+// import {useState} from 'react'
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import {
   UserPanelContainer,
   UserPanelWrapper,
@@ -6,9 +10,22 @@ import {
   UserPanelList,
   UserPanelElement,
   UserPanelLink,
+  UserPanelLogout,
 } from './UserPanelElements';
 
 const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' });
+
+    history.push('/login');
+
+    // setUser(null)
+  };
+
   return (
     <>
       <UserPanelContainer onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
@@ -31,7 +48,7 @@ const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
               </UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/dashboard/settings'>Wyloguj</UserPanelLink>
+              <UserPanelLogout onClick={logout}>Wyloguj</UserPanelLogout>
             </UserPanelElement>
           </UserPanelList>
         </UserPanelWrapper>

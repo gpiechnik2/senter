@@ -49,10 +49,24 @@ export const UserPanelList = styled.ul`
 `;
 export const UserPanelElement = styled.li`
   margin-bottom: 25px;
-  font-size: 12px;
-  color: #686868;
 `;
 export const UserPanelLink = styled(LinkRouter)`
+  font-size: 13px;
+  color: #686868;
+  cursor: pointer;
+
+  &:hover {
+    color: #5d38db;
+    transition: 0.3s ease;
+  }
+`;
+
+export const UserPanelLogout = styled.button`
+  padding: 0 !important;
+  border: none;
+  font-size: 13px;
+  background: none !important;
+  color: #686868;
   cursor: pointer;
 
   &:hover {
