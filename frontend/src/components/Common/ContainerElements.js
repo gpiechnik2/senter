@@ -8,3 +8,14 @@ export const ColumnContainerBasic = styled.div`
     width: 100%;
   }
 `;
+
+export const SingleElementContainer = styled.div`
+  margin-top: 6%;
+  padding-left: 4vw;
+  padding-right: 4vw;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+`;

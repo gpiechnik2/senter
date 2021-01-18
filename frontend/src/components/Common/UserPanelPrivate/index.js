@@ -8,10 +8,10 @@ import {
   UserPanelLink,
 } from './UserPanelElements';
 
-const UserPanelPrivate = ({ isOpen }) => {
+const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
   return (
     <>
-      <UserPanelContainer isOpen={isOpen}>
+      <UserPanelContainer onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <UserPanelWrapper>
           <UserHello>
             Cześć, <UserName>Lorem ipsum</UserName>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="227.595" height="83.707" viewBox="0 0 227.595 83.707">
+  <g id="Visual" transform="translate(0.707 0.707)">
+    <path id="Line_20" data-name="Line 20" d="M.5,16.5,16.311.689" transform="translate(-0.5 30)" fill="none" stroke="#ef2596" stroke-linecap="square" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Line_21" data-name="Line 21" d="M.5,11.5,11.68.32" transform="translate(214.5 49)" fill="none" stroke="#fc8e2f" stroke-linecap="square" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Line_22" data-name="Line 22" d="M.5,6.5,6.023.977" transform="translate(51.5 71)" fill="none" stroke="#979797" stroke-linecap="square" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Line_23" data-name="Line 23" d="M0,14.142,14.142,0" transform="translate(100.5)" fill="none" stroke="#c5c5c5" stroke-linecap="square" stroke-miterlimit="10" stroke-width="1"/>
+    <path id="Combined_Shape" data-name="Combined Shape" d="M5.765,14V8.235H0V5.765H5.765V0H8.235V5.765H14V8.235H8.235V14Z" transform="translate(63.5 25)" fill="#8954ba"/>
+    <path id="Combined_Shape_Copy_5" data-name="Combined Shape Copy 5" d="M4.118,10V5.882H0V4.118H4.118V0H5.882V4.118H10V5.882H5.882V10Z" transform="translate(75.5 73)" fill="#5d38db"/>
+    <path id="Combined_Shape_Copy_6" data-name="Combined Shape Copy 6" d="M4.118,10V5.882H0V4.118H4.118V0H5.882V4.118H10V5.882H5.882V10Z" transform="translate(33.5 52)" fill="#fe479e"/>
+    <path id="Combined_Shape_Copy_7" data-name="Combined Shape Copy 7" d="M1.647,4V2.353H0V1.647H1.647V0h.706V1.647H4v.706H2.353V4Z" transform="translate(162.5 31)" fill="#8954ba"/>
+    <path id="Combined_Shape_Copy_8" data-name="Combined Shape Copy 8" d="M6.588,16V9.412H0V6.588H6.588V0H9.412V6.588H16V9.412H9.412V16Z" transform="translate(148.5 65)" fill="#f2559d"/>
+    <path id="Combined_Shape_Copy_9" data-name="Combined Shape Copy 9" d="M2.47,6V3.53H0V2.47H2.47V0H3.53V2.47H6V3.53H3.53V6Z" transform="translate(175.5 54)" fill="#bbaab2"/>
+    <path id="Combined_Shape_Copy_10" data-name="Combined Shape Copy 10" d="M2.47,6V3.53H0V2.47H2.47V0H3.53V2.47H6V3.53H3.53V6Z" transform="translate(205.5 14)" fill="#f2559d"/>
+    <g id="user" transform="translate(107.5 24)">
+      <path id="Oval_11" data-name="Oval 11" d="M30.3,15.152a15.152,15.152,0,0,0-30.3,0C0,23.521,30.3,23.521,30.3,15.152Z" transform="translate(0 17)" fill="none" stroke="#8934c7" stroke-miterlimit="10" stroke-width="3"/>
+      <circle id="Oval_12" data-name="Oval 12" cx="8.333" cy="8.333" r="8.333" transform="translate(7)" fill="none" stroke="#8934c7" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
