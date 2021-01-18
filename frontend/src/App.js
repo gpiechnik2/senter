@@ -13,8 +13,8 @@ const App = () => {
     <Router>
       <Switch>
         <Route path='/' component={HomePage} exact />
-        <Route path='/login' component={PublicLayoutPage} />
-        <Route exact path='/auth/users/' component={PublicLayoutPage} />
+        <Route exact path='/login' component={PublicLayoutPage} />
+        <Route exact path='/register' component={PublicLayoutPage} />
         <Route path='/dashboard' component={PrivateLayoutPage} />
         <Route path='/keyword-planner' component={PrivateLayoutPage} />
         <Route path='/website-analysis' component={PrivateLayoutPage} />
