@@ -188,6 +188,67 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"new_email": <NEW_EMAIL>}' http://hostname/auth/users/change-email/
   ```
 
+**Set contact email**
+----
+  Returns info about successful changing the contact email.
+
+* **URL**
+
+  auth/users/change-contact-email/
+  
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+    ```
+      {
+          "new_contact_email": <String>
+      }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "new_contact_email": "Contact email has been changed."
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+          "User": "Anonymous users can not change user password."
+      }
+    ```
+
+  OR
+
+  * **Code:** 400 BAD REQUEST
+    
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"new_contact_email": <NEW_CONTACT_EMAIL>}' http://hostname/auth/users/change-contact-email/
+  ```
+
+
 **Login user**
 ----
   Returns auth token.
