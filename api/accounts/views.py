@@ -43,8 +43,10 @@ class UserViewSet(viewsets.ViewSet):
 
             #create user with given data
             first_name = serializer.validated_data.get('first_name', '')
-            user = User.objects.create(email = email, first_name = first_name, password = password)
-
+            user = User.objects.create(email = email, first_name = first_name)
+            user.set_password(password)
+            user.save()
+            
             #return user token, if does not exist, create new before
             token, created = Token.objects.get_or_create(user = user)
             return Response({
