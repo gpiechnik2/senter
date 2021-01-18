@@ -9,6 +9,16 @@ This is a lorem ipsum dolor mit set amit
 docker-compose build
 ```
 
+**Migrate**
+```
+docker-compose run django python3 manage.py migrate
+```
+
+**Make migrations**
+```
+docker-compose run django python3 manage.py makemigrations
+```
+
 **Run entire app**
 ```
 docker-compose up
