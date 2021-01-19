@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { signup } from '../../../actions/auth';
 
@@ -42,6 +42,7 @@ const initialState = {
 };
 
 const Register = () => {
+  const { messageRegister } = useSelector((state) => state.messageReducer);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -139,10 +140,13 @@ const Register = () => {
                         message: 'Maximum 255 characters are allowed',
                       },
                     })}
-                    style={errors.email && errorStyles}
+                    style={errors.password && errorStyles}
                   />
                   {errors.email && (
                     <RegisterErrorMsg>{errors.email.message}</RegisterErrorMsg>
+                  )}
+                  {messageRegister && (
+                    <RegisterErrorMsg>{messageRegister}</RegisterErrorMsg>
                   )}
                 </RegisterInputGroup>
 

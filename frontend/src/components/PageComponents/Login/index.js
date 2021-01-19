@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { signin } from '../../../actions/auth';
 
@@ -34,6 +34,7 @@ const initialState = {
 };
 
 const Login = () => {
+  const { messageLogin } = useSelector((state) => state.messageReducer);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -64,7 +65,11 @@ const Login = () => {
               autoComplete='off'>
               <LoginInputWrap>
                 <LoginInput
-                  style={{ borderBottom: '1px solid #DCE2F0' }}
+                  style={{
+                    borderBottom: `1px solid ${
+                      messageLogin ? '#eb6969' : '#DCE2F0'
+                    }`,
+                  }}
                   type='email'
                   name='email'
                   placeholder='uxlead@gmail.com'
@@ -105,6 +110,9 @@ const Login = () => {
               )}
               {errors.password && (
                 <RegisterErrorMsg> {errors.password.message}</RegisterErrorMsg>
+              )}
+              {messageLogin && (
+                <RegisterErrorMsg>{messageLogin}</RegisterErrorMsg>
               )}
               <LoginCheckWrap>
                 <CheckRememberWrap>

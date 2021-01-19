@@ -1,5 +1,11 @@
 import * as api from '../api';
-import { AUTH } from '../constants/actionTypes';
+import {
+  AUTH,
+  REGISTER_MESSAGE,
+  LOGIN_MESSAGE,
+  CLEAR_REGISTER,
+  CLEAR_LOGIN,
+} from '../constants/actionTypes';
 
 export const signup = (formData, history) => async (dispatch) => {
   try {
@@ -8,8 +14,21 @@ export const signup = (formData, history) => async (dispatch) => {
     dispatch({ type: AUTH, data });
 
     history.push('/dashboard');
+    window.location.reload();
   } catch (error) {
-    console.log(error);
+    const messageRegister = error.response.data.email;
+
+    console.log(error.response);
+
+    dispatch({
+      type: REGISTER_MESSAGE,
+      payload: messageRegister,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: CLEAR_REGISTER,
+      });
+    }, 4000);
   }
 };
 
@@ -20,7 +39,20 @@ export const signin = (formData, history) => async (dispatch) => {
     dispatch({ type: AUTH, data });
 
     history.push('/dashboard');
+    window.location.reload();
   } catch (error) {
-    console.log(error);
+    const messageLogin = error.response.data.non_field_errors[0];
+
+    console.log(error.response);
+
+    dispatch({
+      type: LOGIN_MESSAGE,
+      payload: messageLogin,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: CLEAR_LOGIN,
+      });
+    }, 4000);
   }
 };
