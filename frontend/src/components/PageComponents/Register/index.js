@@ -2,8 +2,9 @@ import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { GoogleLogin } from 'react-google-login';
 
-import { signup } from '../../../actions/auth';
+import { signup, signgoogle } from '../../../actions/auth';
 
 import {
   RegisterContainer,
@@ -26,7 +27,11 @@ import {
   ColumnContainerBasic,
   SingleElementContainer,
 } from '../../Common/ContainerElements';
-import { ButtonBasic, ButtonGoogle } from '../../Common/ButtonElements';
+import {
+  ButtonBasic,
+  ButtonGoogle,
+  IconGoogle,
+} from '../../Common/ButtonElements';
 
 import registerGraphic from '../../../images/register.svg';
 const errorStyles = {
@@ -40,6 +45,8 @@ const initialState = {
   password: '',
   re_password: '',
 };
+
+const GOOGLE_ID = process.env.REACT_APP_GOOGLE_ID;
 
 const Register = () => {
   const { messageRegister } = useSelector((state) => state.messageReducer);
@@ -56,12 +63,29 @@ const Register = () => {
   const password = useRef({});
   password.current = watch('password', '');
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
     dispatch(signup(formData, history));
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const googleSucces = async (res) => {
+    console.log(res);
+
+    const token = {
+      id_token: res?.tokenId,
+    };
+
+    try {
+      dispatch(signgoogle(token, history));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const googleFailure = (error) => {
+    console.log('GOOGLE FAIL', error);
   };
 
   return (
@@ -224,7 +248,20 @@ const Register = () => {
                     </Link>
                   </HalfBtnWrap>
                 </RegisterTwoButtonWrap>
-                <ButtonGoogle>Zaloguj się przez Google</ButtonGoogle>
+                <GoogleLogin
+                  clientId={GOOGLE_ID}
+                  render={(renderProps) => (
+                    <ButtonGoogle
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}>
+                      <IconGoogle />
+                      Zaloguj się przez Google
+                    </ButtonGoogle>
+                  )}
+                  onSucces={googleSucces}
+                  onFailure={googleFailure}
+                  cookiePolicy='single_host_origin'
+                />
               </RegisterButtonsWrap>
             </RegisterFormWrap>
           </RegisterContainer>

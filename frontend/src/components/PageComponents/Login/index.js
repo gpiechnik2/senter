@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { GoogleLogin } from 'react-google-login';
 
-import { signin } from '../../../actions/auth';
+import { signin, signgoogle } from '../../../actions/auth';
 
 import {
   LoginContainer,
@@ -26,12 +27,18 @@ import {
   ColumnContainerBasic,
   SingleElementContainer,
 } from '../../Common/ContainerElements';
-import { ButtonBasic, ButtonGoogle } from '../../Common/ButtonElements';
+import {
+  ButtonBasic,
+  ButtonGoogle,
+  IconGoogle,
+} from '../../Common/ButtonElements';
 
 const initialState = {
   email: '',
   password: '',
 };
+
+const GOOGLE_ID = process.env.REACT_APP_GOOGLE_ID;
 
 const Login = () => {
   const { messageLogin } = useSelector((state) => state.messageReducer);
@@ -51,6 +58,23 @@ const Login = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const googleSucces = async (res) => {
+    console.log(res);
+
+    const token = {
+      id_token: res?.tokenId,
+    };
+
+    try {
+      dispatch(signgoogle(token, history));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const googleFailure = (error) => {
+    console.log('GOOGLE FAIL', error);
   };
 
   return (
@@ -126,7 +150,20 @@ const Login = () => {
                 </ForgotWrap>
               </LoginCheckWrap>
               <LoginGoogleBtnWrap>
-                <ButtonGoogle>Zaloguj się przez Google</ButtonGoogle>
+                <GoogleLogin
+                  clientId={GOOGLE_ID}
+                  render={(renderProps) => (
+                    <ButtonGoogle
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}>
+                      <IconGoogle />
+                      Zaloguj się przez Google
+                    </ButtonGoogle>
+                  )}
+                  onSucces={googleSucces}
+                  onFailure={googleFailure}
+                  cookiePolicy='single_host_origin'
+                />
               </LoginGoogleBtnWrap>
             </LoginFormWrap>
           </LoginContainer>

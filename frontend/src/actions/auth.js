@@ -56,3 +56,28 @@ export const signin = (formData, history) => async (dispatch) => {
     }, 4000);
   }
 };
+
+export const signgoogle = (token, history) => async (dispatch) => {
+  try {
+    const { data } = await api.signGoogle(token);
+
+    dispatch({ type: AUTH, data });
+
+    history.push('/dashboard');
+    window.location.reload();
+  } catch (error) {
+    const messageLogin = error.response.data.non_field_errors[0];
+
+    console.log(error.response);
+
+    dispatch({
+      type: LOGIN_MESSAGE,
+      payload: messageLogin,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: CLEAR_LOGIN,
+      });
+    }, 4000);
+  }
+};

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FcGoogle } from 'react-icons/fc';
 
 export const ButtonBasic = styled.button`
   padding: 10px 35px;
@@ -15,6 +16,11 @@ export const ButtonBasic = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+`;
+
+export const IconGoogle = styled(FcGoogle)`
+  margin-right: 10px;
+  font-size: 24px;
 `;
 
 export const ButtonGoogle = styled.button`
