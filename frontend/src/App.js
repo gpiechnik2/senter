@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 
 import HomePage from './pages';
 import PublicLayoutPage from './pages/PublicLayoutPage';
@@ -8,6 +13,14 @@ import './App.css';
 import './components/Common/DropdownMain.css';
 import './components/Common/Accordion.css';
 
+const authGuard = (Component) => () => {
+  return localStorage.getItem('profile') ? (
+    <Component />
+  ) : (
+    <Redirect to='/login' />
+  );
+};
+
 const App = () => {
   return (
     <Router>
@@ -16,7 +29,10 @@ const App = () => {
         <Route exact path='/login' component={PublicLayoutPage} />
         <Route exact path='/register' component={PublicLayoutPage} />
         <Route path='/dashboard' component={PrivateLayoutPage} />
-        <Route path='/keyword-planner' component={PrivateLayoutPage} />
+        <Route
+          path='/keyword-planner'
+          component={authGuard(PrivateLayoutPage)}
+        />
         <Route path='/website-analysis' component={PrivateLayoutPage} />
         <Route path='/keyword-analysis' component={PrivateLayoutPage} />
         <Route path='/content-analysis' component={PrivateLayoutPage} />
