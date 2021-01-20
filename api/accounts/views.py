@@ -8,7 +8,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 
 from .models import User
-from .serializers import UserSerializer, UserGoogleJWTSerializer, UserFacebookATSerializer, PasswordSerializer, ChangeEmailSerializer, ChangeContactEmailSerializer
+from .serializers import UserSerializer, UserGoogleJWTSerializer, PasswordSerializer, ChangeEmailSerializer, ChangeContactEmailSerializer
 
 import requests
 import jwt
