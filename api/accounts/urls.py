@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.contrib.auth.models import User
 from rest_framework.routers import DefaultRouter, SimpleRouter
 from rest_framework import routers, serializers, viewsets
-from .views import UserViewSet, GoogleJwtAuthToken, FacebookAccesToken
+from .views import UserViewSet, GoogleJwtAuthToken
 
 urlpatterns = [
     path('users/', UserViewSet.as_view({
@@ -18,6 +18,6 @@ urlpatterns = [
         'post': 'change_contact_email'
     })),
     path('', include('djoser.urls.authtoken')),
-    path('google/token/login/', GoogleJwtAuthToken.as_view()),
-    path('facebook/token/login/', FacebookAccesToken.as_view()),
+    path('google/token/login/', GoogleJwtAuthToken.as_view())
+
 ]

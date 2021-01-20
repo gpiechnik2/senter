@@ -4,11 +4,7 @@ from .models import *
 
 class UserGoogleJWTSerializer(serializers.Serializer):
     id_token = serializers.CharField()
-
-class UserFacebookATSerializer(serializers.Serializer):
-    access_token = serializers.CharField()
-    facebookId = serializers.CharField()
-
+    
 class PasswordSerializer(serializers.Serializer):
     current_password = serializers.CharField()
     new_password = serializers.CharField()
