@@ -14,5 +14,5 @@ API.interceptors.request.use((req) => {
 
 export const signUp = (formData) => API.post('/auth/users/', formData);
 export const signIn = (formData) => API.post('/auth/token/login/', formData);
-export const signGoogle = (token) =>
-  API.post('/auth/google/token/login/', token);
+export const signGoogle = (tokenGoogle) =>
+  API.post('/auth/google/token/login/', tokenGoogle);

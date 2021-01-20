@@ -43,6 +43,7 @@ const GOOGLE_ID = process.env.REACT_APP_GOOGLE_ID;
 const Login = () => {
   const { messageLogin } = useSelector((state) => state.messageReducer);
   const [formData, setFormData] = useState(initialState);
+
   const dispatch = useDispatch();
   const history = useHistory();
   const {
@@ -62,13 +63,16 @@ const Login = () => {
 
   const googleSucces = async (res) => {
     console.log(res);
+    console.log(res.accesToken);
+    console.log(res.Bc);
+    console.log(res?.Bc.access_token);
 
-    const token = {
-      id_token: res?.tokenId,
+    const tokenGoogle = {
+      id_token: res?.Bc.access_token,
     };
 
     try {
-      dispatch(signgoogle(token, history));
+      dispatch(signgoogle(tokenGoogle, history));
     } catch (error) {
       console.log(error);
     }
@@ -160,7 +164,7 @@ const Login = () => {
                       Zaloguj się przez Google
                     </ButtonGoogle>
                   )}
-                  onSucces={googleSucces}
+                  onSuccess={googleSucces}
                   onFailure={googleFailure}
                   cookiePolicy='single_host_origin'
                 />
