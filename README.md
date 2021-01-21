@@ -1,6 +1,6 @@
 # Django & React application
 
-This is a lorem ipsum dolor mit set amit
+An application to streamline and automate the development of SEO for websites and articles. More about functionalities in [functionalities section](README.md##Functionalities).
 
 ## Setup
 
@@ -59,22 +59,17 @@ Audit analyzes the entire domain for SEO and provides to the user detailed analy
 #### Content analysis
 Provides real time text analysis, meta description, page title, and keywords or keyphrases in terms of SEO. This helps you write more friendly text under search engine.
 
-### Keyword analysis
+#### Keyword analysis
 We get information about the competition pages that are at the first positions of your search for a keyword or keyphrase. This gives us the opportunity to "look", what we could change on our website to get a similar result.
 
 #### Website info
 User get basic information about a page, such as its keyword/keyphrases, description, or external links. Recommended for research in a specific competitor.
 
-## Dependencies
-
-
 ## Documentation
-
 For detailed rest API documentation, please go [here](https://github.com/gpiechnik2/popita/blob/master/API.md).
 
 ## External resources
-
-
+In project has been used resources from [Free UI Components](https://dribbble.com/shots/4981844-Free-Ui-Elements) and [Freepik vectors](https://www.freepik.com/vectorjuice).
 
 ## License
 
