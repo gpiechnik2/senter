@@ -1,6 +1,6 @@
 # Django & React application
 
-An application to streamline and automate the development of SEO for websites and articles. More about functionalities in [functionalities section](README.md##Functionalities).
+An application to streamline and automate the development of SEO for websites and articles. More about functionalities in [functionalities](https://github.com/gpiechnik2/senter#functionalities)section.
 
 ## Setup
 
