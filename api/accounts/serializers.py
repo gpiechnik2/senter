@@ -2,9 +2,12 @@ from djoser.serializers import UserCreateSerializer, UserSerializer
 from rest_framework import serializers
 from .models import *
 
+class ChangeUserAgentSerializer(serializers.Serializer):
+    user_agent = serializers.CharField()
+
 class UserGoogleJWTSerializer(serializers.Serializer):
     id_token = serializers.CharField()
-    
+
 class PasswordSerializer(serializers.Serializer):
     current_password = serializers.CharField()
     new_password = serializers.CharField()

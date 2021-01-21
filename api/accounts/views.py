@@ -8,7 +8,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 
 from .models import User
-from .serializers import UserSerializer, UserGoogleJWTSerializer, PasswordSerializer, ChangeEmailSerializer, ChangeContactEmailSerializer
+from .serializers import UserSerializer, UserGoogleJWTSerializer, PasswordSerializer, ChangeEmailSerializer, ChangeContactEmailSerializer, ChangeUserAgentSerializer
 
 import requests
 import jwt
@@ -131,6 +131,28 @@ class UserViewSet(viewsets.ViewSet):
             user.contact_email = email
             user.save()
             return Response({"new_contact_email": "Contact email has been changed."}, status = status.HTTP_200_OK)
+
+        else:
+            return Response(serializer.errors,
+                            status = status.HTTP_400_BAD_REQUEST)
+
+    #change user agent
+    @action(detail = True, methods = ['post'], permission_classes=[IsAuthenticated])
+    def change_user_agent(self, request, *args, **kwargs):
+
+        serializer = ChangeUserAgentSerializer(data = request.data)
+        if serializer.is_valid():
+
+            #check if user is anonymous
+            user = self.request.user
+            if user.is_anonymous:
+                return Response({"User": "Anonymous users can not change user agent."},
+                                status = status.HTTP_401_UNAUTHORIZED)
+
+            user_agent = serializer.data['user_agent']
+            user.user_agent = user_agent
+            user.save()
+            return Response({"user_agent": "User agent has been changed."}, status = status.HTTP_200_OK)
 
         else:
             return Response(serializer.errors,

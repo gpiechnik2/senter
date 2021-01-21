@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .managers import CustomUserManager
 
-HEADER_CHOICES = (
+USER_AGENT_CHOICES = (
     ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"),
     ("Mozilla/5.0 (Windows NT 5.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36", "Mozilla/5.0 (Windows NT 5.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"),
     ("Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36", "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"),
@@ -60,7 +60,7 @@ class User(AbstractUser):
     username = None
     username_validator = None
     email = models.EmailField(verbose_name = 'email', max_length = 255, unique = True)
-    user_agent = models.CharField(max_length = 99999, choices = HEADER_CHOICES, default = HEADER_CHOICES[0][1])
+    user_agent = models.CharField(max_length = 99999, choices = USER_AGENT_CHOICES, default = USER_AGENT_CHOICES[0][1])
     contact_email = models.EmailField(null = True, blank = True)
 
     USERNAME_FIELD = 'email'
