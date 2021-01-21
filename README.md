@@ -45,10 +45,19 @@ If you want to be on a shell for one of the Docker services, you can do somethin
 docker-compose run --rm frontend bash
 ```
 
-## Modules
+## Functionalities
 ### The project is divided into 5 main modules:
-#### Lorem ipsum dolor
+#### Keyword analysis
+Loreim ipsum dolor mit sit amet L oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet.
 
+#### Audit
+Loreim ipsum dolor mit sit amet L oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet.
+
+#### Keyword analysis
+Loreim ipsum dolor mit sit amet L oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet.
+
+#### Keyword analysis
+Loreim ipsum dolor mit sit amet L oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet.
 
 ## Dependencies
 
