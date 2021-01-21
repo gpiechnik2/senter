@@ -159,7 +159,7 @@ class GoogleJwtAuthToken(ObtainAuthToken):
             return Response(status = status.HTTP_400_BAD_REQUEST)
 
         #decode user token
-        encoded_token = jwt.decode(id_token, options = {"verify_signature": False}, algorithms = ["HS256"])
+        encoded_token = json.loads(response.text)
 
         #get user info from id_token
         email = encoded_token['email']

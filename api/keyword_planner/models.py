@@ -2,14 +2,14 @@ from django.db import models
 from accounts.models import User
 
 LANG_CHOICES = [
-    ('pl', 'Polish'),
-    ('en', 'English')
+    ('Polish', 'Polish'),
+    ('English', 'English')
 ]
 
 class KeywordPlanner(models.Model):
     author = models.ForeignKey(User, on_delete = models.CASCADE)
     keyword = models.CharField(max_length = 300)
-    language = models.CharField(max_length = 6, choices = LANG_CHOICES, default = 'pl')
+    language = models.CharField(max_length = 8, choices = LANG_CHOICES, default = 'pl')
     googleKeywords = models.JSONField(null = True, blank = True)
     pytrendsKeywords = models.JSONField(null = True, blank = True)
     serpKeywords = models.JSONField(null = True, blank = True)

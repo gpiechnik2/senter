@@ -195,7 +195,7 @@
 * **URL**
 
   auth/users/change-contact-email/
-  
+
 * **Method:**
 
   `POST`
@@ -241,7 +241,7 @@
   OR
 
   * **Code:** 400 BAD REQUEST
-    
+
 * **Sample Call:**
 
   ```
@@ -362,7 +362,7 @@
 
 * **Header Params**
 
-  `Authorization: Token <AUTHORIZATION_TOKEN>`
+  None
 
 * **URL Params**
 
@@ -394,55 +394,6 @@
 
   ```
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"id_token": <ID_TOKEN>}' http://hostname/auth/google/token/login/
-  ```
-
-**Login user with Facebook**
-----
-  Returns auth token.
-
-* **URL**
-
-  auth/facebook/token/login/
-
-* **Method:**
-
-  `POST`
-
-* **Header Params**
-
-  `Authorization: Token <AUTHORIZATION_TOKEN>`
-
-*  **URL Params**
-
-  None
-
-* **Data Params**
-
-    ```
-      {
-          "access_token": <String>,
-          "facebookId": <String>
-      }
-    ```
-
-* **Success Response:**
-
-  * **Code:** 200 <br />
-    **Content:**
-
-    ```
-      {
-          "auth_token": "38c5cba2c678551ad3077dfbcef4015cec12ab47"
-      }
-    ```    
-* **Error Response:**
-
-  * **Code:** 400 BAD REQUEST
-
-* **Sample Call:**
-
-  ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"access_token": <ACCESS_TOKEN>, "facebookId": <FACEBOOKID>}' http://hostname/auth/facebook/token/login/
   ```
 
 **Get website info**
