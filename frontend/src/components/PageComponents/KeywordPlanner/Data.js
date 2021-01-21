@@ -1,6 +1,6 @@
-export const options1 = [
-  { label: 'Polish', value: 'polish' },
-  { label: 'English', value: 'english' },
+export const options = [
+  { key: 1, label: 'Polish', value: 'Polish' },
+  { key: 2, label: 'English', value: 'English' },
 ];
 
 export const analysisContent = [
