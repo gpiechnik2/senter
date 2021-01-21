@@ -248,6 +248,65 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"new_contact_email": <NEW_CONTACT_EMAIL>}' http://hostname/auth/users/change-contact-email/
   ```
 
+**Set user agent**
+----
+  Returns info about successful changing the user agent.
+
+* **URL**
+
+  auth/users/change-contact-user-agent/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  `Authorization: Token <AUTHORIZATION_TOKEN>`
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+    ```
+      {
+          "user_agent": <String>
+      }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "user_agent": "User agent has been changed."
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+          "User": "Anonymous users can not change user agent."
+      }
+    ```
+
+  OR
+
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"user_agent": <NEW_USER_AGENT>}' http://hostname/auth/users/change-user-agent/
+  ```
 
 **Login user**
 ----
