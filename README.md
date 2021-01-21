@@ -47,17 +47,23 @@ docker-compose run --rm frontend bash
 
 ## Functionalities
 ### The project is divided into 5 main modules:
+#### Website analysis
+Allows the user to investigate the web page code for SEO. User get an analysis of the page and tips on how to improve the performance of the page and increase user position in search engine. The analysis is detailed and provides information of specific actions.
+
 #### Keyword analysis
-Loreim ipsum dolor mit sit amet L oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet.
+With the keyword planner, you can automate word and selection of keywords or keyphrases under which to position. There are several sources used to do this, and you get up to six types of suggestions. This makes it unnecessary to manually reset.
 
 #### Audit
-Loreim ipsum dolor mit sit amet L oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet.
+Audit analyzes the entire domain for SEO and provides to the user detailed analysis and improvement opportunities. This is an extended web analysis. 
 
-#### Keyword analysis
-Loreim ipsum dolor mit sit amet L oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet.
+#### Content analysis
+Provides real time text analysis, meta description, page title, and keywords or keyphrases in terms of SEO. This helps you write more friendly text under search engine.
 
-#### Keyword analysis
-Loreim ipsum dolor mit sit amet L oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet oreim ipsum dolor mit sit amet.
+### Keyword analysis
+We get information about the competition pages that are at the first positions of your search for a keyword or keyphrase. This gives us the opportunity to "look", what we could change on our website to get a similar result.
+
+#### Website info
+User get basic information about a page, such as its keyword/keyphrases, description, or external links. Recommended for research in a specific competitor.
 
 ## Dependencies
 
@@ -69,4 +75,7 @@ For detailed rest API documentation, please go [here](https://github.com/gpiechn
 ## External resources
 
 
+
 ## License
+
+
