@@ -1,6 +1,6 @@
-# Django & React application
+# Senter
 
-An application to streamline and automate the development of SEO for websites and articles. More about functionalities in [functionalities](https://github.com/gpiechnik2/senter#functionalities) section.
+An application to streamline and automate the development of SEO for websites and articles. More about functionalities in [functionalities](https://github.com/gpiechnik2/senter#functionalities) section. Implemented in Django and React.
 
 ## Setup
 
