@@ -188,9 +188,9 @@
     curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"new_email": <NEW_EMAIL>}' http://hostname/auth/users/change-email/
   ```
 
-**Set contact email**
+**Set user contact email**
 ----
-  Returns info about successful changing the contact email.
+  Returns info about successful changing the user contact email.
 
 * **URL**
 
