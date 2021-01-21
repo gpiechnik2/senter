@@ -1,4 +1,4 @@
-import Select from 'react-select';
+import Select from 'react-dropdown-select';
 
 import { PageSpeedPageContainer } from './PageSpeedPageElements';
 
@@ -40,36 +40,18 @@ const PageSpeedPage = () => {
             <FormInput placeholder='Adres strony do analizy' />
             <FormSelectContainer>
               <Select
-                isSearchable={false}
-                className='react-select-container'
-                classNamePrefix='react-select'
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary: 'rgba(107, 126, 172, 0.05)',
-                  },
-                })}
-                options={options1}
                 placeholder='Rodzaj strony'
+                required
+                searchable={false}
+                options={options1}
               />
             </FormSelectContainer>
             <FormSelectContainer>
               <Select
-                isSearchable={false}
-                className='react-select-container'
-                classNamePrefix='react-select'
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary: 'rgba(107, 126, 172, 0.05)',
-                  },
-                })}
+                placeholder='Rodzaj urządzenia'
+                required
+                searchable={false}
                 options={options2}
-                placeholder='Urządzenie'
               />
             </FormSelectContainer>
             <FormBtnWrap>

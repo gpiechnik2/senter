@@ -12,6 +12,7 @@ import PrivateLayoutPage from './pages/PrivateLayoutPage';
 import './App.css';
 import './components/Common/DropdownMain.css';
 import './components/Common/Accordion.css';
+import './components/Common/DropdownSelect.css';
 
 const authGuard = (Component) => () => {
   return localStorage.getItem('profile') ? (
@@ -29,10 +30,7 @@ const App = () => {
         <Route exact path='/login' component={PublicLayoutPage} />
         <Route exact path='/register' component={PublicLayoutPage} />
         <Route path='/dashboard' component={PrivateLayoutPage} />
-        <Route
-          path='/keyword-planner'
-          component={authGuard(PrivateLayoutPage)}
-        />
+        <Route path='/keyword-planner' component={PrivateLayoutPage} />
         <Route path='/website-analysis' component={PrivateLayoutPage} />
         <Route path='/keyword-analysis' component={PrivateLayoutPage} />
         <Route path='/content-analysis' component={PrivateLayoutPage} />
