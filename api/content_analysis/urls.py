@@ -6,7 +6,7 @@ router = DefaultRouter()
 router.register('', ContentAnalysisViewSet, basename = '')
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('analyse/', include(router.urls)),
     path('check/', ContentAnalysisRealTimeViewSet.as_view({
         'post': 'create'
     })),
