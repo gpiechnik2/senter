@@ -50,7 +50,7 @@ docker-compose run --rm frontend bash
 #### Website analysis
 Allows the user to investigate the web page code for SEO. User get an analysis of the page and tips on how to improve the performance of the page and increase user position in search engine. The analysis is detailed and provides information of specific actions.
 
-#### Keyword analysis
+#### Keyword planner
 With the keyword planner, you can automate word and selection of keywords or keyphrases under which to position. There are several sources used to do this, and you get up to six types of suggestions. This makes it unnecessary to manually reset.
 
 #### Audit
