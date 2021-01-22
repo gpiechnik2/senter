@@ -72,13 +72,8 @@ const Register = () => {
   };
 
   const googleSucces = async (res) => {
-    console.log(res);
-    console.log(res.accesToken);
-    console.log(res.Bc);
-    console.log(res?.Bc.access_token);
-
     const tokenGoogle = {
-      id_token: res?.Bc.access_token,
+      id_token: res?.tokenObj.id_token,
     };
 
     try {
@@ -88,7 +83,7 @@ const Register = () => {
     }
   };
   const googleFailure = (error) => {
-    console.log('GOOGLE FAIL', error);
+    console.log('GOOGLE LOGIN FAIL', error);
   };
 
   return (

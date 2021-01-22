@@ -1,4 +1,5 @@
-import Select from 'react-select';
+import { useState } from 'react';
+import Select from 'react-dropdown-select';
 
 import {
   Accordion,
@@ -32,9 +33,32 @@ import {
   ElementText,
 } from '../../Common/AnalysisElements';
 
-import { options1, analysisContent } from './Data';
+import { options, analysisContent } from './Data';
+
+const initialState = {
+  keyword: '',
+  language: '',
+};
 
 const KeywordPlanner = () => {
+  const [formData, setFormData] = useState(initialState);
+
+  const handleSelect = (selectedOption) => {
+    setFormData({
+      ...formData,
+      language: selectedOption[0].value,
+    });
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
   return (
     <>
       <KeywordPlannerContainer>
@@ -44,27 +68,27 @@ const KeywordPlanner = () => {
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy.
           </FormText>
-          <FormWrap>
-            <FormInput placeholder='Keyword' />
+          <FormWrap onSubmit={onSubmit}>
+            <FormInput
+              required
+              type='text'
+              name='keyword'
+              placeholder='Keyword'
+              aria-describedby='Enter keyword'
+              onChange={handleChange}
+            />
             <FormSelectContainer>
               <Select
-                isSearchable={false}
-                className='react-select-container'
-                classNamePrefix='react-select'
-                theme={(theme) => ({
-                  ...theme,
-                  borderRadius: 0,
-                  colors: {
-                    ...theme.colors,
-                    primary: 'rgba(107, 126, 172, 0.05)',
-                  },
-                })}
-                options={options1}
+                name='language'
+                onChange={handleSelect}
                 placeholder='Language'
+                required
+                searchable={false}
+                options={options}
               />
             </FormSelectContainer>
             <FormBtnWrap>
-              <ButtonBasic>Get keyword</ButtonBasic>
+              <ButtonBasic type='submit'>Get keyword</ButtonBasic>
             </FormBtnWrap>
           </FormWrap>
         </FormContainer>
