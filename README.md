@@ -69,7 +69,7 @@ User get basic information about a page, such as its keyword/keyphrases, descrip
 For detailed rest API documentation, please go [here](https://github.com/gpiechnik2/popita/blob/master/API.md).
 
 ## External resources
-In project has been used resources from [Free UI Components](https://dribbble.com/shots/4981844-Free-Ui-Elements) and [Freepik vectors](https://www.freepik.com/vectorjuice).
+In project has been used resources from [Free UI Components](https://dribbble.com/shots/4981844-Free-Ui-Elements) and [vectorjuice](https://www.freepik.com/vectorjuice) resources.
 
 ## License
 
