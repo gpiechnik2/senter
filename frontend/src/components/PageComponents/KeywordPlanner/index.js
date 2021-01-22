@@ -1,13 +1,11 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { createkeyword } from '../../../actions/keywordPlanner';
+
 import Select from 'react-dropdown-select';
 
-import {
-  Accordion,
-  AccordionItem,
-  AccordionItemHeading,
-  AccordionItemButton,
-  AccordionItemPanel,
-} from 'react-accessible-accordion';
+import KeywordData from './KeywordData';
 
 import { KeywordPlannerContainer } from './KeywordPlannerElements';
 
@@ -23,25 +21,16 @@ import {
 
 import { ButtonBasic } from '../../Common/ButtonElements';
 
-import { ColumnContainerBasic } from '../../Common/ContainerElements';
-
-import {
-  ExpandableAnalysisContainer,
-  AnalysisElementWrapper,
-  AnalysisElement,
-  ElementTitle,
-  ElementText,
-} from '../../Common/AnalysisElements';
-
-import { options, analysisContent } from './Data';
-
 const initialState = {
   keyword: '',
   language: '',
 };
 
 const KeywordPlanner = () => {
+  const { isLoading } = useSelector((state) => state.keywordReducer);
   const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  // const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSelect = (selectedOption) => {
     setFormData({
@@ -56,7 +45,8 @@ const KeywordPlanner = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // setIsSubmitting(true);
+    dispatch(createkeyword(formData));
   };
 
   return (
@@ -84,51 +74,20 @@ const KeywordPlanner = () => {
                 placeholder='Language'
                 required
                 searchable={false}
-                options={options}
+                options={[
+                  { key: 1, label: 'Polish', value: 'Polish' },
+                  { key: 2, label: 'English', value: 'English' },
+                ]}
               />
             </FormSelectContainer>
             <FormBtnWrap>
-              <ButtonBasic type='submit'>Get keyword</ButtonBasic>
+              <ButtonBasic type='submit' disabled={isLoading}>
+                Get keyword
+              </ButtonBasic>
             </FormBtnWrap>
           </FormWrap>
         </FormContainer>
-        {analysisContent.map((analysis) => (
-          <ColumnContainerBasic key={analysis.title}>
-            <ExpandableAnalysisContainer>
-              <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
-                <AccordionItem>
-                  <AccordionItemHeading>
-                    <AccordionItemButton className='accordion__button--analysis'>
-                      {analysis.title}
-                    </AccordionItemButton>
-                  </AccordionItemHeading>
-                  <AccordionItemPanel className='accordion__panel--analysis'>
-                    <AnalysisElementWrapper>
-                      <AnalysisElement>
-                        <ElementTitle>
-                          {analysis.label1 ? analysis.label1 : null}{' '}
-                        </ElementTitle>
-                        <ElementText>{analysis.text1}</ElementText>
-                      </AnalysisElement>
-                      <AnalysisElement>
-                        <ElementTitle>{analysis.label2} </ElementTitle>
-                        <ElementText>{analysis.text2}</ElementText>
-                      </AnalysisElement>
-                      <AnalysisElement>
-                        <ElementTitle>{analysis.label3} </ElementTitle>
-                        <ElementText>{analysis.text3}</ElementText>
-                      </AnalysisElement>
-                      <AnalysisElement>
-                        <ElementTitle>{analysis.label4} </ElementTitle>
-                        <ElementText>{analysis.text4}</ElementText>
-                      </AnalysisElement>
-                    </AnalysisElementWrapper>
-                  </AccordionItemPanel>
-                </AccordionItem>
-              </Accordion>
-            </ExpandableAnalysisContainer>
-          </ColumnContainerBasic>
-        ))}
+        <KeywordData />
       </KeywordPlannerContainer>
     </>
   );
