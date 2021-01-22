@@ -4,10 +4,10 @@ from accounts.models import User
 
 class ContentAnalysisSerializer(serializers.ModelSerializer):
 
-    text_to_check = serializers.CharField()
-    keyword = serializers.CharField()
-    page_title = serializers.CharField()
-    meta_description = serializers.CharField()
+    text_to_check = serializers.CharField(allow_null = True, default = None)
+    keyword = serializers.CharField(allow_null = True, default = None)
+    page_title = serializers.CharField(allow_null = True, default = None)
+    meta_description = serializers.CharField(allow_null = True, default = None)
 
     class Meta:
         model = ContentAnalysis
