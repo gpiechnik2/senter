@@ -11,9 +11,11 @@ def google_keywords(keyword, header):
     keywords.remove(keywords[-1])
     keywords.remove(keywords[-1])
 
-    google_keywords = keywords[1]
-
-    return google_keywords
+    if keywords:
+        google_keywords = keywords[1]
+        return google_keywords
+    else:
+        return []
 
 def pytrends_query(keyword, language):
 
