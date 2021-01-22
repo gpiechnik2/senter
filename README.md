@@ -50,7 +50,7 @@ docker-compose run --rm frontend bash
 #### Website analysis
 Allows the user to investigate the web page code for SEO. User get an analysis of the page and tips on how to improve the performance of the page and increase user position in search engine. The analysis is detailed and provides information of specific actions.
 
-#### Keyword analysis
+#### Keyword planner
 With the keyword planner, you can automate word and selection of keywords or keyphrases under which to position. There are several sources used to do this, and you get up to six types of suggestions. This makes it unnecessary to manually reset.
 
 #### Audit
@@ -69,7 +69,7 @@ User get basic information about a page, such as its keyword/keyphrases, descrip
 For detailed rest API documentation, please go [here](https://github.com/gpiechnik2/popita/blob/master/API.md).
 
 ## External resources
-In project has been used resources from [Free UI Components](https://dribbble.com/shots/4981844-Free-Ui-Elements) and [Freepik vectors](https://www.freepik.com/vectorjuice).
+In project has been used resources from [Free UI Components](https://dribbble.com/shots/4981844-Free-Ui-Elements) and [vectorjuice](https://www.freepik.com/vectorjuice) vectors.
 
 ## License
 
