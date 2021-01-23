@@ -3051,7 +3051,7 @@
 
   * **URL**
 
-    audit/
+    audit/check/
 
   * **Method:**
 
@@ -3069,8 +3069,7 @@
 
     ```
       {
-          "url": <String>,
-          "audit": <String>
+          "url": <String>
       }
     ```
 
@@ -3258,7 +3257,7 @@
   * **Sample Call:**
 
   ```
-    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>, "audit": <AUDIT>}' http://hostname/audit/check/
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Token <YOUR_TOKEN> -d '{"url": <URL>}' http://hostname/audit/check/
   ```
 
 **Create audit**
