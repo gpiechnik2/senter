@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import ContentAnalysis
 from accounts.models import User
+from rest_framework.response import Response
+from rest_framework import status
 
 class ContentAnalysisSerializer(serializers.ModelSerializer):
 
@@ -19,14 +21,7 @@ class ContentAnalysisSerializer(serializers.ModelSerializer):
             'meta_description']
 
     def create(self, request):
-
-        user = self.context['request'].user
-
-        #check if users has maximum of content analysis
-        analysislen = len(ContentAnalysis.objects.filter(author = user))
-        if analysislen > 6:
-            return Response(serializer.errors, status = status.HTTP_409_CONFLICT)
-
+        
         user = self.context['request'].user
         text_to_check = request['text_to_check']
         keyword = request['keyword']

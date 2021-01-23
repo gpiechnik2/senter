@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'website_analysis.apps.WebsiteAnalysisConfig',
     'audit.apps.AuditConfig',
     'updates.apps.UpdatesConfig',
-
+    'search.apps.SearchConfig',
 ]
 
 MIDDLEWARE = [
