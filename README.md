@@ -48,7 +48,7 @@ docker-compose run --rm frontend bash
 ## Functionalities
 ### The project is divided into 5 main modules:
 #### Website analysis
-It allows the you to invetigate the web page code for SEO. You get an analysis and tips on how to improve the performance of the page and increase their position in search engine. The analysis is detailed and provides information of specific actions.
+It allows you to invetigate the web page code for SEO. You get an analysis and tips on how to improve the performance of the page and increase their position in search engine. The analysis is detailed and provides information of specific actions.
 
 #### Keyword planner
 With the keyword planner you can automate selection of keywords or keyphrase which will help with positioning of your website. There are several sources to do this - you can get up to six types of suggestions. It will save your time and help you to avoid manual researches. 
