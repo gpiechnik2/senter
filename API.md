@@ -4000,3 +4000,68 @@
   ```
     curl -X GET -H "Accept: application/json" -H "Content-Type: application/json" http://hostname/updates/
   ```
+
+**Search value**
+----
+  Returns queries and endopints of specified value.
+
+* **URL**
+
+  search/
+
+* **Method:**
+
+  `POST`
+
+* **Header Params**
+
+  None
+
+* **URL Params**
+
+  None
+
+* **Data Params**
+
+    ```
+      {
+          "searchQuery": <String>
+      }
+    ```
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+    ```
+      {
+          "results": [
+              {
+                  "endpoint": <String>,
+                  "result": <String>
+              }
+          ]
+      }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 401 UNAUTHORIZED <br />
+    **Content:**
+
+    ```
+      {
+          "detail": "Authentication credentials were not provided."
+      }
+    ```
+
+  OR
+
+  * **Code:** 400 BAD REQUEST
+
+* **Sample Call:**
+
+  ```
+    curl -X POST -H "Accept: application/json" -H "Content-Type: application/json" -d '{"searchQuery": <SEARCH_QUERY>' http://hostname/search/
+  ```
