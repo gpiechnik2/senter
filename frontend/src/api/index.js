@@ -19,3 +19,5 @@ export const signGoogle = (tokenGoogle) =>
 
 export const createKeyword = (formData) =>
   API.post('/keyword-planner/', formData);
+export const contentCheck = (formData) =>
+  API.post('/content-analysis/check/', formData);
