@@ -1,3 +1,5 @@
+![Image of Senter](https://github.com/gpiechnik2/senter/design/presentation.jpg)
+
 # Senter
 
 An application to streamline and automate the development of SEO for websites and articles. More about functionalities and modules in [this](https://github.com/gpiechnik2/senter#functionalities) section.
