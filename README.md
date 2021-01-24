@@ -4,6 +4,9 @@
 
 An application to streamline and automate the development of SEO for websites and articles. More about functionalities and modules in [this](https://github.com/gpiechnik2/senter#functionalities) section.
 
+Frontend - Marek Szuba(https://github.com/mszba)
+Backend & Design - Grzegorz Piechnik(https://github.com/gpiechnik2/)
+
 ## Setup
 
 **Build a stack of applications to run a complete service**
