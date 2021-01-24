@@ -51,7 +51,7 @@ docker-compose run --rm frontend bash
 ```
 
 ## Functionalities
-### The project is divided into 5 main modules:
+### The project is divided into six main modules:
 #### Website analysis
 It allows you to invetigate the web page code for SEO. You get an analysis and tips on how to improve the performance of the page and increase their position in search engine. The analysis is detailed and provides information of specific actions.
 
