@@ -1,4 +1,4 @@
-![Image of Popita](https://github.com/gpiechnik2/senter/design/presentation.jpg)
+![Image of Senter](https://github.com/gpiechnik2/senter/design/presentation.jpg)
 
 # Senter
 
