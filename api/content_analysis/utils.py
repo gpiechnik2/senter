@@ -32,6 +32,12 @@ def text_analysis(text, keyword):
 
     results = []
 
+    if keyword is "":
+        keyword = None
+
+    if text is "":
+        text = None
+
     #check if text exists
     if text is not None:
         results.append({
@@ -146,6 +152,9 @@ def keyword_analysis(keyword):
 
     results = []
 
+    if keyword is "":
+        keyword = None
+
     #check if keyword exists
     if keyword is not None:
         if (' ' in keyword) == True:
@@ -188,6 +197,12 @@ def keyword_analysis(keyword):
 def title_analysis(keyword, page_title):
 
     results = []
+
+    if keyword is "":
+        keyword = None
+
+    if page_title is "":
+        page_title = None
 
     #check if keyword exists in page_title
     if page_title is not None:
@@ -271,6 +286,12 @@ def title_analysis(keyword, page_title):
 def meta_description_analysis(keyword, meta_description):
 
     results = []
+
+    if keyword is "":
+        keyword = None
+
+    if meta_description is "":
+        meta_description = None
 
     #check if keyword exists in meta description
     if meta_description is not None:
