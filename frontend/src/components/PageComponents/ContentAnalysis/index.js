@@ -1,3 +1,10 @@
+import { useEffect, useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { contentcheck } from '../../../actions/contentAnalysisCheck';
+
+import CheckData from './CheckData';
+
 import {
   ContentAnalysisContainer,
   FormContainer,
@@ -16,66 +23,78 @@ import {
 import {
   ExpandableAnalysisContainer,
   MessageAnalysisWrapper,
-  MessageAnalysisElementWrap,
-  StatusElement,
-  StatusBar,
-  StatusText,
-  MessageElement,
-  MessageText,
 } from '../../Common/AnalysisElements';
 
 import { ButtonBasic } from '../../Common/ButtonElements';
 
-import { analysisExample } from './Data';
+const initialState = {
+  keyword: '',
+  page_title: '',
+  meta_description: '',
+  text_to_check: '',
+};
 
 const ContentAnalysis = () => {
+  const [checkForm, setCheckForm] = useState(initialState);
+  const dispatch = useDispatch();
+  const initialRender = useRef(true);
+
+  const onChange = (e) => {
+    setCheckForm({ ...checkForm, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+    } else {
+      dispatch(contentcheck(checkForm));
+      console.log('w useeffect', checkForm);
+    }
+  }, [dispatch, checkForm]);
+
   return (
     <>
       <ContentAnalysisContainer>
         <FormContainer>
           <FormWrapper>
             <FormItemsWrap>
-              <FormInput placeholder='Tytuł*' required />
-              <FormInput placeholder='Słowo bądź fraza kluczowa' />
-              <FormInput placeholder='Page title' />
+              <FormInput
+                name='keyword'
+                placeholder='Słowo bądź fraza kluczowa'
+                required
+                onChange={onChange}
+              />
+              <FormInput
+                name='page_title'
+                placeholder='Page title'
+                required
+                onChange={onChange}
+              />
               <MetaDiv>
                 <MetaP>Meta description</MetaP>
-                <MetaTextArea cols='30' rows='10' />
+                <MetaTextArea
+                  name='meta_description'
+                  cols='30'
+                  rows='10'
+                  required
+                  onChange={onChange}
+                />
               </MetaDiv>
               <ContentDiv>
                 <ContentP>Content</ContentP>
-                <ContentTextArea cols='30' rows='10' />
+                <ContentTextArea
+                  name='text_to_check'
+                  cols='30'
+                  rows='10'
+                  required
+                  onChange={onChange}
+                />
               </ContentDiv>
             </FormItemsWrap>
           </FormWrapper>
           <ExpandableAnalysisContainer>
             <MessageAnalysisWrapper>
-              <MessageAnalysisElementWrap>
-                <StatusElement>
-                  <StatusBar />
-                  <StatusText style={{ fontWeight: 'bold' }}>Status</StatusText>
-                </StatusElement>
-                <MessageElement>
-                  <MessageText style={{ fontWeight: 'bold' }}>
-                    Message
-                  </MessageText>
-                </MessageElement>
-              </MessageAnalysisElementWrap>
-              {analysisExample.map((analysis) => (
-                <MessageAnalysisElementWrap key={analysis.message}>
-                  <StatusElement>
-                    <StatusBar style={{ borderColor: '#72BC39' }} />
-                    <StatusText style={{ color: 'rgba(104,104,104,.8)' }}>
-                      {analysis.status}
-                    </StatusText>
-                  </StatusElement>
-                  <MessageElement>
-                    <MessageText style={{ color: 'rgba(104,104,104,.8)' }}>
-                      {analysis.message}
-                    </MessageText>
-                  </MessageElement>
-                </MessageAnalysisElementWrap>
-              ))}
+              <CheckData />
             </MessageAnalysisWrapper>
           </ExpandableAnalysisContainer>
           <BtnWrap>
