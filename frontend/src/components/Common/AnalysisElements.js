@@ -107,6 +107,11 @@ export const MessageAnalysisWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `;
+
+export const ObjectMappingWrap = styled.div`
+  width: 100%;
+`;
+
 export const MessageAnalysisElementWrap = styled.div`
   padding: 10px 10px 10px 0;
   width: 100%;
