@@ -45,6 +45,9 @@ const PrivateLayoutPage = () => {
               success: {
                 duration: 3200,
               },
+              error: {
+                duration: 3200,
+              },
             }}
           />
           <Switch>
