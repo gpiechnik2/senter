@@ -1,10 +1,21 @@
 import styled from 'styled-components';
-import { CgHome } from 'react-icons/cg';
+import {
+  CgCodeSlash,
+  CgReorder,
+  CgNotes,
+  CgCode,
+  CgLink,
+  CgImage,
+  CgAttribution,
+  CgFontHeight,
+  CgAlbum,
+} from 'react-icons/cg';
 
 export const TableLargeContainer = styled.div`
   min-width: 530px;
   margin-bottom: 15px;
   padding: 14px;
+  padding-bottom: 10px;
 
   display: flex;
   border: 1px solid #d0d6e6;
@@ -38,6 +49,7 @@ export const TableIconWrapper = styled.div`
 
   display: flex;
   justify-content: center;
+  color: #6caa89;
 `;
 
 export const TableTextWrapper = styled.div`
@@ -47,21 +59,32 @@ export const TableTextWrapper = styled.div`
   align-items: flex-start;
 `;
 
+export const TitleCountWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const TableTextTitle = styled.h1`
   margin-bottom: 5px;
   font-size: 13px;
   font-weight: bold;
 `;
-export const TableTextContentWrap = styled.div`
+
+export const CountNumber = styled.span`
+  font-size: 14px;
+  color: #5d38db;
+  font-weight: bold;
+`;
+
+export const TableTextContentWrap = styled.ul`
   display: flex;
   flex-direction: column;
 `;
-export const TableText = styled.p`
+export const TableText = styled.li`
+  margin-bottom: 4px;
   font-size: 13px;
   color: #707070;
-`;
-export const TableIcon = styled(CgHome)`
-  color: #6caa89;
 `;
 
 export const ExpandableAnalysisContainer = styled.div`
@@ -151,3 +174,15 @@ export const MessageText = styled.p`
   font-size: 13px;
   color: #000000;
 `;
+
+export const IconUrl = styled(CgCodeSlash)``;
+export const IconTitle = styled(CgFontHeight)``;
+export const IconDescription = styled(CgNotes)``;
+export const IconUrlTitle = styled(CgCode)``;
+export const IconKeyword = styled(CgReorder)``;
+export const IconH1 = styled(CgAlbum)``;
+export const IconH2 = styled(CgAlbum)``;
+export const IconOtherH = styled(CgAlbum)``;
+export const IconInternalLinks = styled(CgLink)``;
+export const IconExternalLinks = styled(CgLink)``;
+export const IconImagesCount = styled(CgImage)``;
