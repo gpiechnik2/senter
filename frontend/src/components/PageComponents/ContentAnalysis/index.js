@@ -38,7 +38,7 @@ const initialState = {
 };
 
 const ContentAnalysis = () => {
-  const { analyseData, isLoading } = useSelector(
+  const { analyseData, isLoading, isError } = useSelector(
     (state) => state.contentAnalyseReducer
   );
   const [contentForm, setContentForm] = useState(initialState);
@@ -60,12 +60,6 @@ const ContentAnalysis = () => {
       meta_description: '',
       text_to_check: '',
     });
-
-    dispatch({
-      type: 'CLEAR_CHECK_DATA',
-    });
-
-    toast.success('Article saved successfully!');
   };
 
   useEffect(() => {
@@ -77,10 +71,12 @@ const ContentAnalysis = () => {
   }, [dispatch, contentForm]);
 
   useEffect(() => {
-    if (analyseData) {
-      console.log(analyseData);
+    if (analyseData && !isError) {
+      toast.success('Article saved successfully!');
+    } else if (analyseData && isError) {
+      toast.error(`We couldn't save that one.`);
     }
-  }, [analyseData]);
+  }, [analyseData, isError]);
 
   return (
     <>

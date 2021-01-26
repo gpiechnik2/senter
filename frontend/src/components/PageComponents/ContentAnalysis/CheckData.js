@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -30,12 +29,6 @@ const CheckData = () => {
         return '#72BC39';
     }
   };
-
-  useEffect(() => {
-    if (checkData) {
-      console.log(checkData.analysis);
-    }
-  }, [checkData]);
 
   if (isError) return <span>Sorry, something went wrong</span>;
 
