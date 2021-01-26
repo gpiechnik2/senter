@@ -1,9 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { contentcheck } from '../../../actions/contentAnalysisCheck';
+import { contentanalyse } from '../../../actions/contentAnalyse';
 
 import CheckData from './CheckData';
+
+import toast from 'react-hot-toast';
 
 import {
   ContentAnalysisContainer,
@@ -35,40 +38,69 @@ const initialState = {
 };
 
 const ContentAnalysis = () => {
-  const [checkForm, setCheckForm] = useState(initialState);
+  const { analyseData, isLoading } = useSelector(
+    (state) => state.contentAnalyseReducer
+  );
+  const [contentForm, setContentForm] = useState(initialState);
   const dispatch = useDispatch();
   const initialRender = useRef(true);
 
-  const onChange = (e) => {
-    setCheckForm({ ...checkForm, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    setContentForm({ ...contentForm, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(contentanalyse(contentForm));
+
+    setContentForm({
+      keyword: '',
+      page_title: '',
+      meta_description: '',
+      text_to_check: '',
+    });
+
+    dispatch({
+      type: 'CLEAR_CHECK_DATA',
+    });
+
+    toast.success('Article saved successfully!');
   };
 
   useEffect(() => {
     if (initialRender.current) {
       initialRender.current = false;
     } else {
-      dispatch(contentcheck(checkForm));
-      console.log('w useeffect', checkForm);
+      dispatch(contentcheck(contentForm));
     }
-  }, [dispatch, checkForm]);
+  }, [dispatch, contentForm]);
+
+  useEffect(() => {
+    if (analyseData) {
+      console.log(analyseData);
+    }
+  }, [analyseData]);
 
   return (
     <>
       <ContentAnalysisContainer>
-        <FormContainer>
+        <FormContainer onSubmit={handleSubmit}>
           <FormWrapper>
             <FormItemsWrap>
               <FormInput
                 name='keyword'
                 placeholder='Słowo bądź fraza kluczowa'
                 required
-                onChange={onChange}
+                onChange={handleChange}
+                value={contentForm.keyword}
               />
               <FormInput
                 name='page_title'
                 placeholder='Page title'
                 required
-                onChange={onChange}
+                onChange={handleChange}
+                value={contentForm.page_title}
               />
               <MetaDiv>
                 <MetaP>Meta description</MetaP>
@@ -77,7 +109,8 @@ const ContentAnalysis = () => {
                   cols='30'
                   rows='10'
                   required
-                  onChange={onChange}
+                  onChange={handleChange}
+                  value={contentForm.meta_description}
                 />
               </MetaDiv>
               <ContentDiv>
@@ -87,7 +120,8 @@ const ContentAnalysis = () => {
                   cols='30'
                   rows='10'
                   required
-                  onChange={onChange}
+                  onChange={handleChange}
+                  value={contentForm.text_to_check}
                 />
               </ContentDiv>
             </FormItemsWrap>
@@ -98,7 +132,9 @@ const ContentAnalysis = () => {
             </MessageAnalysisWrapper>
           </ExpandableAnalysisContainer>
           <BtnWrap>
-            <ButtonBasic>Save</ButtonBasic>
+            <ButtonBasic type='submit' disabled={isLoading}>
+              Save
+            </ButtonBasic>
           </BtnWrap>
         </FormContainer>
       </ContentAnalysisContainer>
