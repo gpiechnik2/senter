@@ -107,17 +107,23 @@ def text_analysis(text, keyword):
 
     #check if keyword exists minimum of 3 times
     if text is not None:
-        len_keys_in_text = len([m.start() for m in finditer(r'(?={})'.format(escape(keyword)), text)])
-        if len_keys_in_text >= 3:
-            results.append({
-                'status': "Valid",
-                'message': "Fraza kluczowa występuje często."
-            })
+        if keyword is not None:
+            len_keys_in_text = len([m.start() for m in finditer(r'(?={})'.format(escape(keyword)), text)])
+            if len_keys_in_text >= 3:
+                results.append({
+                    'status': "Valid",
+                    'message': "Fraza kluczowa występuje często."
+                })
+            else:
+                minimum_keys_in_text = 3 - len_keys_in_text
+                results.append({
+                    'status': "Invalid",
+                    'message': "Fraza kluczowa występuje zbyt rzadko, użyj jej przynajmniej {} razy.".format(minimum_keys_in_text)
+                })
         else:
-            minimum_keys_in_text = 3 - len_keys_in_text
             results.append({
                 'status': "Invalid",
-                'message': "Fraza kluczowa występuje zbyt rzadko, użyj jej przynajmniej {} razy.".format(minimum_keys_in_text)
+                'message': "Fraza kluczowa występuje zbyt rzadko, użyj jej przynajmniej 3 razy."
             })
     else:
         results.append({

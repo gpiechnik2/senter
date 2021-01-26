@@ -47,10 +47,10 @@ def website_analysis(url, headers):
 
     #links
     urls_info = get_internal_and_external_links(url, soup)
-    external_links = urls_info['external_links']
-    external_links_count = urls_info['external_links_count']
-    internal_links = urls_info['internal_links']
-    internal_links_count = urls_info['internal_links_count']
+    external_links = len(urls_info['external_links'])
+    external_links_count = len(urls_info['external_links'])
+    internal_links = len(urls_info['internal_links'])
+    internal_links_count = len(urls_info['internal_links'])
 
     #images and keywords extraction
     images_count = get_images_count(soup)
@@ -84,11 +84,6 @@ def website_analysis(url, headers):
 
     return result
 
-def make_soup(url, headers):
-    r = requests.get(url, headers=headers).content
-    soup = BeautifulSoup(r, 'html.parser', from_encoding='utf-8')
-    return soup
-
 def check_robots_txt(url, headers):
 
     base_url = get_base_url(url)
@@ -117,16 +112,18 @@ def is_valid(url):
 
 def get_h1(soup):
 
-    data = {}
+    h1 = soup.find_all('h1')
+    results = []
 
-    if soup.find_all('h1'):
-        h1 = soup.find_all('h1')[0]
-        data.setdefault('val1', []).append(h1.text if h1 else "N/A")
-        data['val1'][0] = data['val1'][0].replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.')
+    if h1:
+        temp_result = (h.text for h in h1)
+        for h in temp_result:
+            h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
+            results.append(h)
     else:
-        data.setdefault('val1', []).append("N/A")
+        pass
 
-    return data['val1'][0]
+    return results
 
 def get_h2(soup):
 
@@ -136,10 +133,10 @@ def get_h2(soup):
     if h2:
         temp_result = (h.text for h in h2)
         for h in temp_result:
-            h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.')
+            h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
             results.append(h)
     else:
-        results = "N/A"
+        pass
 
     return results
 
@@ -151,30 +148,32 @@ def get_other_h(soup):
     if h_others:
         temp_result = (h.text for h in h_others)
         for h in temp_result:
-            h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.')
+            h = h.replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
             results.append(h)
     else:
-        results = "N/A"
+        pass
 
     return results
 
 def get_title_tag(soup):
 
-    data = {
-    }
+    results = []
 
-    if soup.find_all('title'):
-        title = soup.find_all('title')[0]
-        data.setdefault('val1', []).append(title.text if title else "N/A")
-        data['val1'][0] = data['val1'][0].replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.')
-    else:
-        data.setdefault('val1', []).append("N/A")
+    for title in soup.findAll("title"):
+        if title:
+            title_text = (title.text).replace('\r\n', '').replace('\n', '').replace('\r', '').replace('  ', '').replace('   ', '').replace('    ', '').replace('. ','.').replace('\xa0', ' ')
+            results.append(str(title_text))
+        else:
+            pass
 
-    return data['val1'][0]
+    if not results:
+        pass
 
-def get_meta_description(soup):
+    return results
 
-    result = []
+def get_meta_descriptions(soup):
+
+    results = []
 
     for meta in soup.findAll("meta"):
         if meta:
@@ -182,25 +181,20 @@ def get_meta_description(soup):
             metaprop = meta.get('property', '').lower()
             if 'description' == metaname or metaprop.find("description")>0:
                 desc = meta['content'].strip()
-                result.append(desc)
+                results.append(desc)
         else:
-            result.append("N/A")
+            pass
 
-    if not result:
-        result.append("N/A")
+    if not results:
+        pass
 
-    return result[0]
+    return results
 
-def get_images_count(soup):
+def get_images_count(url, soup):
 
     images = soup.find_all('img')
 
-    if images:
-        result = len(images)
-    else:
-        result = "N/A"
-
-    return result
+    return len(images)
 
 def get_base_url(url):
 
@@ -238,23 +232,21 @@ def get_internal_and_external_links(url, soup):
         if 'mailto://' in href:
             #and mail hrefs
             continue
+        if 'call://' in href:
+            #and call hrefs
+            continue
+        if 'tel:' in href:
+            #and call hrefs
+            continue
         if base_url not in href:
             # check if url is not in external link
             if href not in external_links:
-                if "tel:" not in href:
-                    external_links.append(href)
-                else:
-                    pass
+                external_links.append(href)
             continue
 
         internal_links.append(href)
 
-    eu_len = len(external_links)
-    iu_len = len(internal_links)
-
     context = {
-        'external_links_count' : eu_len,
-        'internal_links_count' : iu_len,
         'external_links' : external_links,
         'internal_links' : internal_links,
     }
@@ -263,34 +255,32 @@ def get_internal_and_external_links(url, soup):
 
 def get_url_title(url):
 
-    title = url.rsplit('/', 1)[-1]
-    title = title.replace('-', ' ').replace('_', ' ').replace('.html', '')
+    title = urlparse(url).path
 
-    if not title:
-        title = url.rsplit('/', 1)[-2]
-        title = title.rsplit('/', 1)[-1]
-        title = title.replace('-', ' ').replace('_', ' ').replace('.html', '')
+    if str(title) == "/":
+        return None
 
     return title
 
-def get_keywords(title, meta_desc, h1, url_title):
+def get_keyword(title, meta_desc, h1, url_title):
 
+    #if one of parameters is None, match to it random hash
     if title is not None:
         title = title.lower()
     else:
-        title = "None"
+        title = get_random_string(8)
     if meta_desc is not None:
         meta_desc = meta_desc.lower()
     else:
-        meta_desc = "None"
+        meta_desc = get_random_string(8)
     if h1 is not None:
         h1 = h1.lower()
     else:
-        h1 = "None"
+        h1 = get_random_string(8)
     if url_title is not None:
         url_title = url_title.lower()
     else:
-        url_title = "None"
+        url_title = get_random_string(8)
 
     #hierarchy of elements:
     #   1 url_title
@@ -352,7 +342,7 @@ def get_keywords(title, meta_desc, h1, url_title):
     if h1:
         return h1
 
-    return "N/A"
+    return None
 
 def get_bing_links(keyword, headers):
 
