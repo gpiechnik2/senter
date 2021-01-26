@@ -1,5 +1,3 @@
-import { TableIcon } from '../../../Common/AnalysisElements';
-
 export const options1 = [
   { label: 'all', value: 'Wszystkie' },
   { label: 'op1', value: 'opcja 1' },
@@ -10,19 +8,19 @@ export const options1 = [
 export const InfoTables = [
   {
     id: 1,
-    icon: <TableIcon />,
+    icon: '',
     title: 'Url',
     text: 'analysis.url',
   },
   {
     id: 2,
-    icon: <TableIcon />,
+    icon: '',
     title: 'Keyword',
     text: 'analysis.keyword',
   },
   {
     id: 3,
-    icon: <TableIcon />,
+    icon: '',
     title: 'Description',
     text: 'Lorem ipsum dolor sit mit amet.',
   },

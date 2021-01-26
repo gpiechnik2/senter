@@ -43,7 +43,6 @@ import {
   TableTextTitle,
   TableTextContentWrap,
   TableText,
-  TableIcon,
   TableSmallContainer,
   SmallTableWrapper,
 } from '../../../Common/AnalysisElements';
@@ -90,9 +89,7 @@ const SeoPage = () => {
           ))}
           <TableSmallContainer>
             <SmallTableWrapper>
-              <TableIconWrapper style={{ width: '13%' }}>
-                <TableIcon />
-              </TableIconWrapper>
+              <TableIconWrapper style={{ width: '13%' }}></TableIconWrapper>
               <TableTextWrapper>
                 <TableTextTitle>Url title</TableTextTitle>
                 <TableTextContentWrap>
@@ -101,9 +98,7 @@ const SeoPage = () => {
               </TableTextWrapper>
             </SmallTableWrapper>
             <SmallTableWrapper>
-              <TableIconWrapper style={{ width: '13%' }}>
-                <TableIcon />
-              </TableIconWrapper>
+              <TableIconWrapper style={{ width: '13%' }}></TableIconWrapper>
               <TableTextWrapper>
                 <TableTextTitle>Url status</TableTextTitle>
                 <TableTextContentWrap>

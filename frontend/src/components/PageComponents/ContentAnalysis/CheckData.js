@@ -9,7 +9,6 @@ import {
   MessageElement,
   MessageText,
 } from '../../Common/AnalysisElements';
-
 import { StyledSpinner } from '../../Common/StyledSpinner';
 
 const CheckData = () => {
