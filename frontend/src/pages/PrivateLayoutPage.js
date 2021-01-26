@@ -41,6 +41,10 @@ const PrivateLayoutPage = () => {
                 padding: '16px',
                 color: '#fff',
               },
+
+              success: {
+                duration: 3200,
+              },
             }}
           />
           <Switch>

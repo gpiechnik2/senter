@@ -1,28 +1,28 @@
 import {
-  REQUEST_KEYPLANNER_DATA,
-  RECEIVE_KEYPLANNER_DATA,
+  REQUEST_ANALYSE_DATA,
+  RECEIVE_ANALYSE_DATA,
 } from '../constants/actionTypes';
 
 const initalState = {
-  keywordData: null,
+  analyseData: null,
   isLoading: false,
   isError: false,
   errorMsg: '',
 };
 
-const keywordReducer = (state = initalState, action) => {
+const contentAnalyseReducer = (state = initalState, action) => {
   switch (action.type) {
-    case REQUEST_KEYPLANNER_DATA:
+    case REQUEST_ANALYSE_DATA:
       return {
         ...state,
         isLoading: true,
         isError: false,
         errorMsg: '',
       };
-    case RECEIVE_KEYPLANNER_DATA:
+    case RECEIVE_ANALYSE_DATA:
       return {
         ...state,
-        keywordData: action.keywordData,
+        analyseData: action.analyseData,
         isLoading: false,
         isError: action.isError,
         errorMsg: action.errorMsg,
@@ -31,4 +31,4 @@ const keywordReducer = (state = initalState, action) => {
       return state;
   }
 };
-export default keywordReducer;
+export default contentAnalyseReducer;
