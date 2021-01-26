@@ -2,6 +2,7 @@ import * as api from '../api';
 import {
   REQUEST_ANALYSE_DATA,
   RECEIVE_ANALYSE_DATA,
+  CLEAR_CHECK_DATA,
 } from '../constants/actionTypes';
 
 export const contentanalyse = (formData) => async (dispatch) => {
@@ -16,6 +17,9 @@ export const contentanalyse = (formData) => async (dispatch) => {
       analyseData: data,
       isError: false,
       errorMsg: '',
+    });
+    dispatch({
+      type: CLEAR_CHECK_DATA,
     });
   } catch (error) {
     dispatch({

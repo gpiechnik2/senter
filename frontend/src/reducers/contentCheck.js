@@ -28,7 +28,7 @@ const contentCheckReducer = (state = initalState, action) => {
         isError: action.isError,
         errorMsg: action.errorMsg,
       };
-    case 'CLEAR_CHECK_DATA':
+    case CLEAR_CHECK_DATA:
       return {
         ...state,
         checkData: null,
