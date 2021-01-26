@@ -1,4 +1,8 @@
-import { REQUEST_DATA, RECEIVE_DATA } from '../constants/actionTypes';
+import {
+  REQUEST_CHECK_DATA,
+  RECEIVE_CHECK_DATA,
+  CLEAR_CHECK_DATA,
+} from '../constants/actionTypes';
 
 const initalState = {
   checkData: null,
@@ -9,14 +13,14 @@ const initalState = {
 
 const contentCheckReducer = (state = initalState, action) => {
   switch (action.type) {
-    case REQUEST_DATA:
+    case REQUEST_CHECK_DATA:
       return {
         ...state,
         isLoading: true,
         isError: false,
         errorMsg: '',
       };
-    case RECEIVE_DATA:
+    case RECEIVE_CHECK_DATA:
       return {
         ...state,
         checkData: action.checkData,
@@ -24,6 +28,15 @@ const contentCheckReducer = (state = initalState, action) => {
         isError: action.isError,
         errorMsg: action.errorMsg,
       };
+    case 'CLEAR_CHECK_DATA':
+      return {
+        ...state,
+        checkData: null,
+        isLoading: false,
+        isError: false,
+        errorMsg: '',
+      };
+
     default:
       return state;
   }

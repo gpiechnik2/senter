@@ -1,4 +1,7 @@
-import { REQUEST_DATA, RECEIVE_DATA } from '../constants/actionTypes';
+import {
+  REQUEST_KEYPLANNER_DATA,
+  RECEIVE_KEYPLANNER_DATA,
+} from '../constants/actionTypes';
 
 const initalState = {
   keywordData: null,
@@ -9,14 +12,14 @@ const initalState = {
 
 const keywordReducer = (state = initalState, action) => {
   switch (action.type) {
-    case REQUEST_DATA:
+    case REQUEST_KEYPLANNER_DATA:
       return {
         ...state,
         isLoading: true,
         isError: false,
         errorMsg: '',
       };
-    case RECEIVE_DATA:
+    case RECEIVE_KEYPLANNER_DATA:
       return {
         ...state,
         keywordData: action.keywordData,
