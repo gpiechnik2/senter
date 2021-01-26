@@ -105,7 +105,7 @@ export const MessageAnalysisWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 `;
 
 export const ObjectMappingWrap = styled.div`
