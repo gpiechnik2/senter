@@ -21,3 +21,5 @@ export const createKeyword = (formData) =>
   API.post('/keyword-planner/', formData);
 export const contentCheck = (formData) =>
   API.post('/content-analysis/check/', formData);
+export const contentAnalyse = (formData) =>
+  API.post('/content-analysis/analyse/', formData);
