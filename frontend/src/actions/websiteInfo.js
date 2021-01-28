@@ -2,6 +2,7 @@ import * as api from '../api';
 import {
   REQUEST_WEBSITEINFO_DATA,
   RECEIVE_WEBSITEINFO_DATA,
+  CLEAR_WEBSITEINFO_ERROR,
 } from '../constants/actionTypes';
 
 export const getwebsiteinfo = (formData) => async (dispatch) => {
@@ -22,7 +23,12 @@ export const getwebsiteinfo = (formData) => async (dispatch) => {
       type: RECEIVE_WEBSITEINFO_DATA,
       websiteInfoData: [],
       isError: true,
-      errorMsg: error,
+      errorMsg: error.response.data,
     });
+    setTimeout(() => {
+      dispatch({
+        type: CLEAR_WEBSITEINFO_ERROR,
+      });
+    }, 2500);
   }
 };
