@@ -6,6 +6,7 @@ import keywordReducer from './keywordPlanner';
 import contentCheckReducer from './contentCheck';
 import contentAnalyseReducer from './contentAnalyse';
 import websiteInfoReducer from './websiteInfo';
+import auditCheckReducer from './auditCheck';
 
 export default combineReducers({
   authReducer,
@@ -14,4 +15,5 @@ export default combineReducers({
   contentCheckReducer,
   contentAnalyseReducer,
   websiteInfoReducer,
+  auditCheckReducer,
 });
