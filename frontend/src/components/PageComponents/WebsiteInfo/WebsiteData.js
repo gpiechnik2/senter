@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -9,7 +10,6 @@ import {
   CountNumber,
   TableTextContentWrap,
   TableText,
-  TableIcon,
   TableSmallContainer,
   SmallTableWrapper,
   IconUrl,
@@ -27,11 +27,16 @@ import {
 import { StyledSpinner } from '../../Common/StyledSpinner';
 
 const WebsiteData = () => {
-  const { websiteInfoData, isError, isLoading } = useSelector(
+  const { websiteInfoData, isError, isLoading, errorMsg } = useSelector(
     (state) => state.websiteInfoReducer
   );
 
-  if (isError) return <span>Sorry, something went wrong</span>;
+  if (isError)
+    return (
+      <span style={{ color: '#EB6969', fontWeight: 'bold' }}>
+        {errorMsg.url ? errorMsg.url[0] : null}
+      </span>
+    );
 
   return isLoading ? (
     <StyledSpinner viewBox='0 0 50 50'>

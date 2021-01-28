@@ -1,6 +1,7 @@
 import {
   REQUEST_WEBSITEINFO_DATA,
   RECEIVE_WEBSITEINFO_DATA,
+  CLEAR_WEBSITEINFO_ERROR,
 } from '../constants/actionTypes';
 
 const initalState = {
@@ -26,6 +27,11 @@ const websiteInfoReducer = (state = initalState, action) => {
         isLoading: false,
         isError: action.isError,
         errorMsg: action.errorMsg,
+      };
+    case CLEAR_WEBSITEINFO_ERROR:
+      return {
+        ...state,
+        errorMsg: '',
       };
     default:
       return state;
