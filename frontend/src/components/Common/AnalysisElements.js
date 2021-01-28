@@ -11,6 +11,10 @@ import {
   CgAlbum,
 } from 'react-icons/cg';
 
+export const AuditAnalysisContainer = styled.div`
+  max-width: 530px;
+`;
+
 export const TableLargeContainer = styled.div`
   min-width: 530px;
   margin-bottom: 15px;
@@ -103,6 +107,7 @@ export const AnalysisElementWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow-x: scroll;
   @media screen and (max-width: 768px) {
     min-width: auto;
     width: 100%;
@@ -122,6 +127,8 @@ export const ElementTitle = styled.h1`
 export const ElementText = styled.p`
   font-size: 13px;
   color: rgba(104, 104, 104, 0.8);
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const MessageAnalysisWrapper = styled.div`
@@ -140,11 +147,12 @@ export const MessageAnalysisElementWrap = styled.div`
   width: 100%;
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
 
   border-bottom: 1px solid #d0d6e6;
 `;
 export const StatusElement = styled.div`
+  justify-self: flex-start;
   width: 20%;
   display: flex;
   justify-content: flex-start;
@@ -169,10 +177,13 @@ export const MessageElement = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
 `;
+// ElementText
 export const MessageText = styled.p`
   line-height: 20px;
   font-size: 13px;
   color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const IconUrl = styled(CgCodeSlash)``;
@@ -186,3 +197,4 @@ export const IconOtherH = styled(CgAlbum)``;
 export const IconInternalLinks = styled(CgLink)``;
 export const IconExternalLinks = styled(CgLink)``;
 export const IconImagesCount = styled(CgImage)``;
+export const IconUrlStatus = styled(CgAttribution)``;
