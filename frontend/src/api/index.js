@@ -25,3 +25,4 @@ export const contentAnalyse = (formData) =>
   API.post('/content-analysis/analyse/', formData);
 export const getWebsiteInfo = (formData) =>
   API.post('/website-info/', formData);
+export const getAudit = (formData) => API.post('/audit/check/', formData);
