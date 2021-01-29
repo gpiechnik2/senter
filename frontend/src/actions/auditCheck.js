@@ -7,6 +7,9 @@ import {
 
 export const getaudit = (formData) => async (dispatch) => {
   dispatch({
+    type: CLEAR_AUDITCHECK_ERROR,
+  });
+  dispatch({
     type: REQUEST_AUDITCHECK_DATA,
   });
   try {
@@ -18,6 +21,13 @@ export const getaudit = (formData) => async (dispatch) => {
       isError: false,
       errorMsg: '',
     });
+    if (data.analysis.length === 0) {
+      setTimeout(() => {
+        dispatch({
+          type: CLEAR_AUDITCHECK_ERROR,
+        });
+      }, 4000);
+    }
   } catch (error) {
     dispatch({
       type: RECEIVE_AUDITCHECK_DATA,

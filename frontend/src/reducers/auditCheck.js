@@ -31,6 +31,9 @@ const auditCheckReducer = (state = initalState, action) => {
     case CLEAR_AUDITCHECK_ERROR:
       return {
         ...state,
+        auditCheckData: null,
+        isLoading: false,
+        isError: false,
         errorMsg: '',
       };
     default:
