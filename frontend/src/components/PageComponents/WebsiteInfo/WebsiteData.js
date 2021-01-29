@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -10,8 +9,6 @@ import {
   CountNumber,
   TableTextContentWrap,
   TableText,
-  TableSmallContainer,
-  SmallTableWrapper,
   IconUrl,
   IconTitle,
   IconDescription,
