@@ -59,6 +59,8 @@ const Audit = () => {
     setSaveData({ ...saveData, url: '', audit: null });
   };
 
+  const isDisabled = isLoading || auditCheckData?.analysis.length === 0;
+
   useEffect(() => {
     if (auditCheckData?.analysis.length) {
       setSaveData({
@@ -96,7 +98,7 @@ const Audit = () => {
               onChange={handleChange}
             />
             <FormBtnWrap>
-              <ButtonBasic type='submit' disabled={isLoading}>
+              <ButtonBasic type='submit' disabled={isDisabled}>
                 Check
               </ButtonBasic>
             </FormBtnWrap>
