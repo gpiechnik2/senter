@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getaudit } from '../../../actions/auditCheck';
+import { createaudit } from '../../../actions/createAudit';
 
 import AuditData from './AuditData';
+
+import toast from 'react-hot-toast';
 
 import { AuditContainer } from './AuditElements';
 import {
@@ -13,16 +16,28 @@ import {
   FormWrap,
   FormInput,
   FormBtnWrap,
+  SaveButtonWrap,
 } from '../../Common/FormElements';
+import { ColumnContainerBasic } from '../../Common/ContainerElements';
 import { ButtonBasic } from '../../Common/ButtonElements';
 
 const initialState = {
   url: '',
 };
+const auditSaveInitialState = {
+  url: '',
+  audit: null,
+};
 
 const Audit = () => {
-  const { isLoading } = useSelector((state) => state.auditCheckReducer);
+  const { auditCheckData, isLoading } = useSelector(
+    (state) => state.auditCheckReducer
+  );
+  const { createAuditData, isLoadingSave, isErrorSave } = useSelector(
+    (state) => state.createAuditReducer
+  );
   const [formData, setFormData] = useState(initialState);
+  const [saveData, setSaveData] = useState(auditSaveInitialState);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -31,13 +46,35 @@ const Audit = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(getaudit(formData));
 
+    dispatch(getaudit(formData));
     setFormData({
       ...formData,
       url: '',
     });
   };
+
+  const handleSave = () => {
+    dispatch(createaudit(saveData));
+    setSaveData({ ...saveData, url: '', audit: null });
+  };
+
+  useEffect(() => {
+    if (auditCheckData?.analysis.length) {
+      setSaveData({
+        url: auditCheckData.analysis[0].url,
+        audit: auditCheckData.analysis,
+      });
+    }
+  }, [auditCheckData]);
+
+  useEffect(() => {
+    if (createAuditData && !isErrorSave) {
+      toast.success('Audit saved successfully!');
+    } else if (isErrorSave) {
+      toast.error(`We couldn't save that one.`);
+    }
+  }, [createAuditData, isErrorSave]);
 
   return (
     <>
@@ -66,6 +103,15 @@ const Audit = () => {
           </FormWrap>
         </FormContainer>
         <AuditData />
+        {auditCheckData?.analysis.length ? (
+          <ColumnContainerBasic>
+            <SaveButtonWrap>
+              <ButtonBasic onClick={handleSave} disabled={isLoadingSave}>
+                Save
+              </ButtonBasic>
+            </SaveButtonWrap>
+          </ColumnContainerBasic>
+        ) : null}
       </AuditContainer>
     </>
   );
