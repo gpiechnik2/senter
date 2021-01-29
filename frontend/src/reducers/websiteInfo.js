@@ -31,6 +31,9 @@ const websiteInfoReducer = (state = initalState, action) => {
     case CLEAR_WEBSITEINFO_ERROR:
       return {
         ...state,
+        websiteInfoData: null,
+        isLoading: false,
+        isError: false,
         errorMsg: '',
       };
     default:
