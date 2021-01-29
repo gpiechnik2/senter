@@ -7,6 +7,7 @@ import contentCheckReducer from './contentCheck';
 import contentAnalyseReducer from './contentAnalyse';
 import websiteInfoReducer from './websiteInfo';
 import auditCheckReducer from './auditCheck';
+import createAuditReducer from './createAudit';
 
 export default combineReducers({
   authReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
   contentAnalyseReducer,
   websiteInfoReducer,
   auditCheckReducer,
+  createAuditReducer,
 });
