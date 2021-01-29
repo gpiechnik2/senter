@@ -23,3 +23,13 @@ export const SingleElementContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const PaginationContainer = styled.div`
+  max-width: 530px;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    max-width: auto;
+  }
+`;

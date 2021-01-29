@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import Pagination from 'rc-pagination';
 import {
   Accordion,
   AccordionItem,
@@ -8,6 +9,7 @@ import {
   AccordionItemButton,
   AccordionItemPanel,
 } from 'react-accessible-accordion';
+import localeInfo from '../../../../node_modules/rc-pagination/lib/locale/en_US';
 
 import {
   AuditAnalysisContainer,
@@ -32,29 +34,36 @@ import {
   TableSmallContainer,
   SmallTableWrapper,
   IconUrl,
-  IconTitle,
   IconDescription,
   IconUrlTitle,
   IconKeyword,
-  IconH1,
-  IconH2,
-  IconOtherH,
-  IconInternalLinks,
-  IconExternalLinks,
-  IconImagesCount,
   IconUrlStatus,
 } from '../../Common/AnalysisElements';
 import { ColumnContainerBasic } from '../../Common/ContainerElements';
+import { PreviousIcon, NextIcon } from '../../Common/ButtonElements';
+import { PaginationContainer } from '../../Common/ContainerElements';
 import { StyledSpinner } from '../../Common/StyledSpinner';
 
 const AuditData = () => {
   const { auditCheckData, isError, isLoading, errorMsg } = useSelector(
     (state) => state.auditCheckReducer
   );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [analysisPerPage] = useState(1);
+
+  const indexOfLastAnalysis = currentPage * analysisPerPage;
+  const indexOfFirstAnalysis = indexOfLastAnalysis - analysisPerPage;
+  const currentAnalysis = auditCheckData?.analysis.length
+    ? auditCheckData.analysis.slice(indexOfFirstAnalysis, indexOfLastAnalysis)
+    : null;
 
   useEffect(() => {
-    console.log(auditCheckData);
-  }, [auditCheckData]);
+    setCurrentPage(1);
+  }, []);
+
+  const handlePageChange = (current) => {
+    setCurrentPage(current);
+  };
 
   const statusColor = (status) => {
     switch (status) {
@@ -71,10 +80,18 @@ const AuditData = () => {
 
   if (isError)
     return (
-      <span style={{ color: '#EB6969', fontWeight: 'bold' }}>
+      <span style={{ color: '#EB6969' }}>
         {errorMsg.url ? errorMsg.url[0] : null}
       </span>
     );
+
+  if (auditCheckData?.analysis.length === 0) {
+    return (
+      <span style={{ color: '#EB6969' }}>
+        Something went wrong, try again later.
+      </span>
+    );
+  }
 
   return isLoading ? (
     <StyledSpinner viewBox='0 0 50 50'>
@@ -89,7 +106,7 @@ const AuditData = () => {
     </StyledSpinner>
   ) : auditCheckData?.analysis.length ? (
     <>
-      {auditCheckData?.analysis.map((analysis, i) => (
+      {currentAnalysis.map((analysis, i) => (
         <AuditAnalysisContainer key={i}>
           <TableLargeContainer>
             <TableIconWrapper>
@@ -522,9 +539,9 @@ const AuditData = () => {
                       </StatusElement>
                       <MessageElement style={{ width: '20%' }}>
                         <MessageText
-                          title={external_links.file_name}
+                          title={external_links.url_status}
                           style={{ color: 'rgba(104,104,104,.8)' }}>
-                          {external_links.file_name}
+                          {external_links.url_status}
                         </MessageText>
                       </MessageElement>
                       <MessageElement style={{ width: '30%' }}>
@@ -658,9 +675,9 @@ const AuditData = () => {
                       </StatusElement>
                       <MessageElement style={{ width: '20%' }}>
                         <MessageText
-                          title={internal_links.file_name}
+                          title={internal_links.url_status}
                           style={{ color: 'rgba(104,104,104,.8)' }}>
-                          {internal_links.file_name}
+                          {internal_links.url_status}
                         </MessageText>
                       </MessageElement>
                       <MessageElement style={{ width: '30%' }}>
@@ -812,6 +829,22 @@ const AuditData = () => {
           </ColumnContainerBasic>
         </AuditAnalysisContainer>
       ))}
+      <PaginationContainer>
+        <Pagination
+          showQuickJumper
+          showSizeChanger
+          defaultPageSize={1}
+          defaultCurrent={1}
+          current={currentPage}
+          total={auditCheckData.analysis.length}
+          onChange={handlePageChange}
+          locale={localeInfo}
+          prevIcon={<PreviousIcon />}
+          nextIcon={<NextIcon />}
+          jumpPrevIcon='...'
+          jumpNextIcon='...'
+        />
+      </PaginationContainer>
     </>
   ) : null;
 };
