@@ -8,6 +8,7 @@ import contentAnalyseReducer from './contentAnalyse';
 import websiteInfoReducer from './websiteInfo';
 import auditCheckReducer from './auditCheck';
 import createAuditReducer from './createAudit';
+import websiteAnalysisReducer from './websiteAnalysis';
 
 export default combineReducers({
   authReducer,
@@ -18,4 +19,5 @@ export default combineReducers({
   websiteInfoReducer,
   auditCheckReducer,
   createAuditReducer,
+  websiteAnalysisReducer,
 });
