@@ -26,3 +26,4 @@ export const contentAnalyse = (formData) =>
 export const getWebsiteInfo = (formData) =>
   API.post('/website-info/', formData);
 export const getAudit = (formData) => API.post('/audit/check/', formData);
+export const createAudit = (saveData) => API.post('/audit/', saveData);
