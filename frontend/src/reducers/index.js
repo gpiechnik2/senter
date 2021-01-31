@@ -10,6 +10,7 @@ import auditCheckReducer from './auditCheck';
 import createAuditReducer from './createAudit';
 import websiteAnalysisReducer from './websiteAnalysis';
 import keywordAnalysisReducer from './keywordAnalysis';
+import changeContactEmailReducer from './changeContactEmail';
 
 export default combineReducers({
   authReducer,
@@ -22,4 +23,5 @@ export default combineReducers({
   createAuditReducer,
   websiteAnalysisReducer,
   keywordAnalysisReducer,
+  changeContactEmailReducer,
 });
