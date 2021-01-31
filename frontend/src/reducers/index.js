@@ -11,6 +11,7 @@ import createAuditReducer from './createAudit';
 import websiteAnalysisReducer from './websiteAnalysis';
 import keywordAnalysisReducer from './keywordAnalysis';
 import changeContactEmailReducer from './changeContactEmail';
+import changeUserEmailReducer from './changeUserEmail';
 
 export default combineReducers({
   authReducer,
@@ -24,4 +25,5 @@ export default combineReducers({
   websiteAnalysisReducer,
   keywordAnalysisReducer,
   changeContactEmailReducer,
+  changeUserEmailReducer,
 });
