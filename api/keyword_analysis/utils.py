@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlsplit, urljoin, urlparse
 import re
+import random
+import string
 
 def analyze(keyword, user_agent):
 
@@ -37,32 +39,51 @@ def website_analysis(url, headers):
     soup = make_soup(url, headers)
 
     #basic info
-    title = get_title_tag(soup)
-    description = get_meta_description(soup)
-    h1 = get_h1(soup)
+    titles = get_title_tags(soup)
+    descriptions = get_meta_descriptions(soup)
+    h1s = get_h1(soup)
     h2 = get_h2(soup)
     other_h = get_other_h(soup)
     url_title = get_url_title(url)
-    keywords = get_keywords(title, description, h1, url_title)
+
+    #get first title
+    if len(titles) >= 1:
+        title = titles[0]
+    else:
+        title = None
+
+    #get first description
+    if len(descriptions) >= 1:
+        description = descriptions[0]
+    else:
+        description = None
+
+    #get first h1
+    if len(h1s) >= 1:
+        h1 = h1s[0]
+    else:
+        h1 = None
+
+    keywords = get_keyword(title, description, h1, url_title)
 
     #links
     urls_info = get_internal_and_external_links(url, soup)
-    external_links = len(urls_info['external_links'])
+    external_links = urls_info['external_links']
     external_links_count = len(urls_info['external_links'])
-    internal_links = len(urls_info['internal_links'])
+    internal_links = urls_info['internal_links']
     internal_links_count = len(urls_info['internal_links'])
 
     #images and keywords extraction
-    images_count = get_images_count(soup)
+    images_count = get_images_count(url, soup)
 
     #Append all stuff to competitions
     result = {
         "url" : url,
-        "title" : title,
-        "description": description,
+        "titles" : titles,
+        "descriptions": descriptions,
         "url_title": url_title,
         "keywords": keywords,
-        "h1": h1,
+        "h1": h1s,
         "h2": {
             "h2_count": len(h2),
             "h2": h2
@@ -155,7 +176,7 @@ def get_other_h(soup):
 
     return results
 
-def get_title_tag(soup):
+def get_title_tags(soup):
 
     results = []
 
@@ -343,6 +364,13 @@ def get_keyword(title, meta_desc, h1, url_title):
         return h1
 
     return None
+
+def get_random_string(length):
+    # put your letters in the following string
+    sample_letters = 'abcdefghijklmnopqrstuvwxyz'
+    result_str = ''.join((random.choice(sample_letters) for i in range(length)))
+
+    return result_str
 
 def get_bing_links(keyword, headers):
 
