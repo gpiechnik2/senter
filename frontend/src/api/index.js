@@ -18,6 +18,10 @@ export const signGoogle = (tokenGoogle) =>
   API.post('/auth/google/token/login/', tokenGoogle);
 export const changeContactEmail = (formData) =>
   API.post('/auth/users/change-contact-email/', formData);
+export const changeUserEmail = (emailData) =>
+  API.post('/auth/users/change-email/', emailData);
+export const changeUserAgent = (formData) =>
+  API.post('/auth/users/change-user-agent/', formData);
 
 export const createKeyword = (formData) =>
   API.post('/keyword-planner/', formData);
