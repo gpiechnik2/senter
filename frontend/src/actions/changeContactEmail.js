@@ -24,9 +24,11 @@ export const changecontactemail = (formData) => async (dispatch) => {
       });
     }, 3200);
   } catch (error) {
+    const { data } = error.response;
+
     dispatch({
       type: RECEIVE_CONTACTEMAILCHANGE_DATA,
-      contactEmailChangeData: null,
+      contactEmailChangeData: data,
       isError: true,
       errorMsg: error,
     });
