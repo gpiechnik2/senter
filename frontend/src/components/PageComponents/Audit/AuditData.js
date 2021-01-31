@@ -57,10 +57,6 @@ const AuditData = () => {
     ? auditCheckData.analysis.slice(indexOfFirstAnalysis, indexOfLastAnalysis)
     : null;
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, []);
-
   const handlePageChange = (current) => {
     setCurrentPage(current);
   };
@@ -77,6 +73,10 @@ const AuditData = () => {
         return '#72BC39';
     }
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, []);
 
   if (isError)
     return (
