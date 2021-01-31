@@ -16,6 +16,8 @@ export const signUp = (formData) => API.post('/auth/users/', formData);
 export const signIn = (formData) => API.post('/auth/token/login/', formData);
 export const signGoogle = (tokenGoogle) =>
   API.post('/auth/google/token/login/', tokenGoogle);
+export const changeContactEmail = (formData) =>
+  API.post('/auth/users/change-contact-email/', formData);
 
 export const createKeyword = (formData) =>
   API.post('/keyword-planner/', formData);
