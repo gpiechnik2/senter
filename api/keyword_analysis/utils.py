@@ -96,7 +96,7 @@ def website_analysis(url, headers):
             "external_links_count": external_links_count,
             "external_links": external_links
         },
-        "internal links": {
+        "internal_links": {
             "internal_links_count": internal_links_count,
             "internal_links": internal_links
         },
