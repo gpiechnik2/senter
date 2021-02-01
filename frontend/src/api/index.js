@@ -22,6 +22,8 @@ export const changeUserEmail = (emailData) =>
   API.post('/auth/users/change-email/', emailData);
 export const changeUserAgent = (formData) =>
   API.post('/auth/users/change-user-agent/', formData);
+export const changeUserPassword = (passwordData) =>
+  API.post('/auth/users/set-password/', passwordData);
 
 export const createKeyword = (formData) =>
   API.post('/keyword-planner/', formData);
