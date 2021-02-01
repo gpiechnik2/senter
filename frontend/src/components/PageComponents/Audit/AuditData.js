@@ -76,7 +76,7 @@ const AuditData = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, []);
+  }, [isLoading]);
 
   if (isError)
     return (
