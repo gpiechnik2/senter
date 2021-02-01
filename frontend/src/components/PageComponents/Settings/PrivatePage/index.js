@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 
 import { changeuseremail } from '../../../../actions/changeUserEmail';
+import { changeuserpassword } from '../../../../actions/changeUserPassword';
 
 import toast from 'react-hot-toast';
 
@@ -15,23 +17,47 @@ import {
   FormInput,
   FormBtnWrap,
 } from '../../../Common/FormElements';
+import { RegisterErrorMsg } from '../../../PageComponents/Register/RegisterElements';
 import { ButtonBasic } from '../../../Common/ButtonElements';
 
 const initialStateEmail = {
   new_email: '',
 };
+const initialStatePassword = {
+  current_password: '',
+  new_password: '',
+  re_new_password: '',
+};
 
 let emailChangeToast;
+let passwordChangeToast;
+
+const errorStyles = {
+  color: '#EB6969',
+  borderBottomColor: 'rgba(255,150,150,.85)',
+};
 
 const PrivatePage = () => {
   const { userEmailChangeData, isLoadingEmail, isErrorEmail } = useSelector(
     (state) => state.changeUserEmailReducer
   );
+  const {
+    userPasswordChangeData,
+    isLoadingPassword,
+    isErrorPassword,
+  } = useSelector((state) => state.changeUserPasswordReducer);
   const [emailData, setEmailData] = useState(initialStateEmail);
+  const [passwordData, setPasswordData] = useState(initialStatePassword);
   const dispatch = useDispatch();
+  const { register, handleSubmit, errors, watch, reset } = useForm();
+  const password = useRef({});
+  password.current = watch('new_password', '');
 
   const handleEmailChange = (e) => {
     setEmailData({ ...emailData, [e.target.name]: e.target.value });
+  };
+  const handlePasswordChange = (e) => {
+    setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
   };
 
   const onEmailSubmit = (e) => {
@@ -40,6 +66,11 @@ const PrivatePage = () => {
     setEmailData({ ...emailData, new_email: '' });
 
     emailChangeToast = toast.loading('Changing user email...');
+  };
+  const onPasswordSubmit = () => {
+    dispatch(changeuserpassword(passwordData));
+    passwordChangeToast = toast.loading('Changing password...');
+    reset();
   };
 
   useEffect(() => {
@@ -61,6 +92,27 @@ const PrivatePage = () => {
       });
     }
   }, [userEmailChangeData, isErrorEmail]);
+
+  useEffect(() => {
+    if (userPasswordChangeData?.password) {
+      toast.success(userPasswordChangeData.password, {
+        id: passwordChangeToast,
+      });
+    } else if (userPasswordChangeData?.User && isErrorPassword) {
+      toast.error(userPasswordChangeData.User, {
+        id: passwordChangeToast,
+      });
+    } else if (userPasswordChangeData?.current_password && isErrorPassword) {
+      toast.error(userPasswordChangeData.current_password, {
+        id: passwordChangeToast,
+      });
+    } else if (isErrorPassword) {
+      toast.error('Unable to change password.', {
+        id: passwordChangeToast,
+      });
+      console.log(userPasswordChangeData);
+    }
+  }, [userPasswordChangeData, isErrorPassword]);
 
   return (
     <>
@@ -95,12 +147,77 @@ const PrivatePage = () => {
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy.
             </FormText>
-            <FormWrap>
-              <FormInput placeholder='Old password' />
-              <FormInput placeholder='New password' />
-              <FormInput placeholder='Repassword' />
+            <FormWrap
+              onSubmit={handleSubmit(onPasswordSubmit)}
+              noValidate
+              autoComplete='off'>
+              <FormInput
+                type='password'
+                name='current_password'
+                placeholder='Current password'
+                aria-describedby='Enter current password'
+                onChange={handlePasswordChange}
+                ref={register({
+                  required: {
+                    value: true,
+                    message: 'Please enter current password',
+                  },
+                })}
+                style={errors.current_password && errorStyles}
+              />
+              {errors.current_password && (
+                <RegisterErrorMsg style={{ marginTop: '-10px' }}>
+                  {errors.current_password.message}
+                </RegisterErrorMsg>
+              )}
+              <FormInput
+                type='password'
+                name='new_password'
+                placeholder='New password'
+                aria-describedby='Enter new password'
+                onChange={handlePasswordChange}
+                ref={register({
+                  required: {
+                    value: true,
+                    message: 'Please enter new password',
+                  },
+                  minLength: {
+                    value: 8,
+                    message: 'Password must have at least 8 characters',
+                  },
+                  maxLength: {
+                    value: 255,
+                    message: 'Maximum 255 characters are allowed',
+                  },
+                })}
+                style={errors.new_password && errorStyles}
+              />
+              {errors.new_password && (
+                <RegisterErrorMsg style={{ marginTop: '-10px' }}>
+                  {errors.new_password.message}
+                </RegisterErrorMsg>
+              )}
+              <FormInput
+                type='password'
+                name='re_new_password'
+                placeholder='Repassword'
+                aria-describedby='Enter new password again'
+                onChange={handlePasswordChange}
+                ref={register({
+                  validate: (value) =>
+                    value === password.current || 'The passwords do not match',
+                })}
+                style={errors.re_new_password && errorStyles}
+              />
+              {errors.re_new_password && (
+                <RegisterErrorMsg style={{ marginTop: '-10px' }}>
+                  {errors.re_new_password.message}
+                </RegisterErrorMsg>
+              )}
               <FormBtnWrap>
-                <ButtonBasic>Change</ButtonBasic>
+                <ButtonBasic type='submit' disabled={isLoadingPassword}>
+                  Change
+                </ButtonBasic>
               </FormBtnWrap>
             </FormWrap>
           </FormContainer>
