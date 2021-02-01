@@ -1,44 +1,43 @@
 import {
-  REQUEST_CHECK_DATA,
-  RECEIVE_CHECK_DATA,
-  CLEAR_CHECK_DATA,
+  REQUEST_AUDITCHECK_DATA,
+  RECEIVE_AUDITCHECK_DATA,
+  CLEAR_AUDITCHECK_ERROR,
 } from '../constants/actionTypes';
 
 const initalState = {
-  checkData: null,
+  auditCheckData: null,
   isLoading: false,
   isError: false,
   errorMsg: '',
 };
 
-const contentCheckReducer = (state = initalState, action) => {
+const auditCheckReducer = (state = initalState, action) => {
   switch (action.type) {
-    case REQUEST_CHECK_DATA:
+    case REQUEST_AUDITCHECK_DATA:
       return {
         ...state,
         isLoading: true,
         isError: false,
         errorMsg: '',
       };
-    case RECEIVE_CHECK_DATA:
+    case RECEIVE_AUDITCHECK_DATA:
       return {
         ...state,
-        checkData: action.checkData,
+        auditCheckData: action.auditCheckData,
         isLoading: false,
         isError: action.isError,
         errorMsg: action.errorMsg,
       };
-    case CLEAR_CHECK_DATA:
+    case CLEAR_AUDITCHECK_ERROR:
       return {
         ...state,
-        checkData: null,
+        auditCheckData: null,
         isLoading: false,
         isError: false,
         errorMsg: '',
       };
-
     default:
       return state;
   }
 };
-export default contentCheckReducer;
+export default auditCheckReducer;

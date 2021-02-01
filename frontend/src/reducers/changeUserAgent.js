@@ -1,44 +1,43 @@
 import {
-  REQUEST_CHECK_DATA,
-  RECEIVE_CHECK_DATA,
-  CLEAR_CHECK_DATA,
+  REQUEST_USERAGENTCHANGE_DATA,
+  RECEIVE_USERAGENTCHANGE_DATA,
+  CLEAR_USERAGENTCHANGE_DATA,
 } from '../constants/actionTypes';
 
 const initalState = {
-  checkData: null,
+  userAgentChangeData: null,
   isLoading: false,
   isError: false,
   errorMsg: '',
 };
 
-const contentCheckReducer = (state = initalState, action) => {
+const changeUserAgentReducer = (state = initalState, action) => {
   switch (action.type) {
-    case REQUEST_CHECK_DATA:
+    case REQUEST_USERAGENTCHANGE_DATA:
       return {
         ...state,
         isLoading: true,
         isError: false,
         errorMsg: '',
       };
-    case RECEIVE_CHECK_DATA:
+    case RECEIVE_USERAGENTCHANGE_DATA:
       return {
         ...state,
-        checkData: action.checkData,
+        userAgentChangeData: action.userAgentChangeData,
         isLoading: false,
         isError: action.isError,
         errorMsg: action.errorMsg,
       };
-    case CLEAR_CHECK_DATA:
+    case CLEAR_USERAGENTCHANGE_DATA:
       return {
         ...state,
-        checkData: null,
+        userAgentChangeData: null,
         isLoading: false,
         isError: false,
         errorMsg: '',
       };
-
     default:
       return state;
   }
 };
-export default contentCheckReducer;
+export default changeUserAgentReducer;

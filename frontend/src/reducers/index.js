@@ -5,6 +5,14 @@ import messageReducer from './message';
 import keywordReducer from './keywordPlanner';
 import contentCheckReducer from './contentCheck';
 import contentAnalyseReducer from './contentAnalyse';
+import websiteInfoReducer from './websiteInfo';
+import auditCheckReducer from './auditCheck';
+import createAuditReducer from './createAudit';
+import websiteAnalysisReducer from './websiteAnalysis';
+import keywordAnalysisReducer from './keywordAnalysis';
+import changeContactEmailReducer from './changeContactEmail';
+import changeUserEmailReducer from './changeUserEmail';
+import changeUserAgentReducer from './changeUserAgent';
 
 export default combineReducers({
   authReducer,
@@ -12,4 +20,12 @@ export default combineReducers({
   keywordReducer,
   contentCheckReducer,
   contentAnalyseReducer,
+  websiteInfoReducer,
+  auditCheckReducer,
+  createAuditReducer,
+  websiteAnalysisReducer,
+  keywordAnalysisReducer,
+  changeContactEmailReducer,
+  changeUserEmailReducer,
+  changeUserAgentReducer,
 });

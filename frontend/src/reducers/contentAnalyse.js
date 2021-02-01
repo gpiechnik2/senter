@@ -1,6 +1,7 @@
 import {
   REQUEST_ANALYSE_DATA,
   RECEIVE_ANALYSE_DATA,
+  CLEAR_ANALYSE_DATA,
 } from '../constants/actionTypes';
 
 const initalState = {
@@ -26,6 +27,14 @@ const contentAnalyseReducer = (state = initalState, action) => {
         isLoading: false,
         isError: action.isError,
         errorMsg: action.errorMsg,
+      };
+    case CLEAR_ANALYSE_DATA:
+      return {
+        ...state,
+        analyseData: null,
+        isLoading: false,
+        isError: false,
+        errorMsg: '',
       };
     default:
       return state;

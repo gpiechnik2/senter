@@ -2,6 +2,8 @@ import * as api from '../api';
 import {
   REQUEST_ANALYSE_DATA,
   RECEIVE_ANALYSE_DATA,
+  CLEAR_CHECK_DATA,
+  CLEAR_ANALYSE_DATA,
 } from '../constants/actionTypes';
 
 export const contentanalyse = (formData) => async (dispatch) => {
@@ -17,6 +19,14 @@ export const contentanalyse = (formData) => async (dispatch) => {
       isError: false,
       errorMsg: '',
     });
+    dispatch({
+      type: CLEAR_CHECK_DATA,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: CLEAR_ANALYSE_DATA,
+      });
+    }, 3250);
   } catch (error) {
     dispatch({
       type: RECEIVE_ANALYSE_DATA,

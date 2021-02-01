@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FcGoogle } from 'react-icons/fc';
+import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
 
 export const ButtonBasic = styled.button`
   padding: 10px 35px;
@@ -42,4 +43,15 @@ export const ButtonGoogle = styled.button`
     color: #fff;
     background-color: #707070;
   }
+`;
+
+export const PreviousIcon = styled(GrFormPrevious)`
+  font-size: 16px;
+  line-height: 42px;
+  color: #707070;
+`;
+export const NextIcon = styled(GrFormNext)`
+  font-size: 16px;
+  line-height: 42px;
+  color: #707070;
 `;

@@ -47,3 +47,15 @@ export const FormSelectContainer = styled.div`
   width: 100%;
   margin-bottom: 19px;
 `;
+
+export const SaveButtonWrap = styled.div`
+  margin-top: 20px;
+  min-width: 530px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    min-width: auto;
+    width: 100%;
+  }
+`;

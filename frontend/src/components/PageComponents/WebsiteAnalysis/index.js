@@ -1,55 +1,76 @@
-import { Switch, Route } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import MainPage from './MainPage';
-import PageSpeedPage from './PageSpeedPage';
-import SeoPage from './SeoPage/index';
-import SearchConsolePage from './SearchConsolePage/index';
+import { getwebsiteanalysis } from '../../../actions/websiteAnalysis';
 
+import WebsiteAnalysisData from './WebsiteAnalysisData';
+
+import { WebAnalysisContainer } from './WebsiteAnalysisElements';
 import {
-  WebAnalysisWrapper,
-  WebAnalysisMenu,
-  MenuList,
-  MenuElement,
-  MenuLink,
-  WebSwitchContainer,
-} from './WebsiteAnalysisElements';
+  FormContainer,
+  FormTitle,
+  FormText,
+  FormWrap,
+  FormInput,
+  FormBtnWrap,
+} from '../../Common/FormElements';
+import { ButtonBasic } from '../../Common/ButtonElements';
+
+const initialState = {
+  url: '',
+};
 
 const WebsiteAnalysis = () => {
+  const { websiteAnalysisData, isLoading } = useSelector(
+    (state) => state.websiteAnalysisReducer
+  );
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getwebsiteanalysis(formData));
+
+    setFormData({
+      ...formData,
+      url: '',
+    });
+  };
+
+  const isDisabled = isLoading || websiteAnalysisData?.analysis.length === 0;
+
   return (
     <>
-      <WebAnalysisWrapper>
-        <WebAnalysisMenu>
-          <MenuList>
-            <MenuElement>
-              <MenuLink to='/website-analysis/seo'>SEO</MenuLink>
-            </MenuElement>
-            <MenuElement>
-              <MenuLink to='/website-analysis/pagespeed'>
-                Techniczne błędy
-              </MenuLink>
-            </MenuElement>
-            <MenuElement>
-              <MenuLink to='/website-analysis/search-console'>
-                Search Console
-              </MenuLink>
-            </MenuElement>
-          </MenuList>
-        </WebAnalysisMenu>
-        <WebSwitchContainer>
-          <Switch>
-            <Route exact path='/website-analysis' component={MainPage} />
-            <Route path='/website-analysis/seo' component={SeoPage} />
-            <Route
-              path='/website-analysis/pagespeed'
-              component={PageSpeedPage}
+      <WebAnalysisContainer>
+        <FormContainer>
+          <FormTitle>Website analysis</FormTitle>
+          <FormText>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy.
+          </FormText>
+          <FormWrap onSubmit={onSubmit}>
+            <FormInput
+              required
+              type='text'
+              name='url'
+              aria-describedby='Enter url'
+              placeholder='Url'
+              value={formData.url}
+              onChange={handleChange}
             />
-            <Route
-              path='/website-analysis/search-console'
-              component={SearchConsolePage}
-            />
-          </Switch>
-        </WebSwitchContainer>
-      </WebAnalysisWrapper>
+            <FormBtnWrap>
+              <ButtonBasic type='submit' disabled={isDisabled}>
+                Check
+              </ButtonBasic>
+            </FormBtnWrap>
+          </FormWrap>
+        </FormContainer>
+        <WebsiteAnalysisData />
+      </WebAnalysisContainer>
     </>
   );
 };

@@ -16,6 +16,12 @@ export const signUp = (formData) => API.post('/auth/users/', formData);
 export const signIn = (formData) => API.post('/auth/token/login/', formData);
 export const signGoogle = (tokenGoogle) =>
   API.post('/auth/google/token/login/', tokenGoogle);
+export const changeContactEmail = (formData) =>
+  API.post('/auth/users/change-contact-email/', formData);
+export const changeUserEmail = (emailData) =>
+  API.post('/auth/users/change-email/', emailData);
+export const changeUserAgent = (formData) =>
+  API.post('/auth/users/change-user-agent/', formData);
 
 export const createKeyword = (formData) =>
   API.post('/keyword-planner/', formData);
@@ -23,3 +29,11 @@ export const contentCheck = (formData) =>
   API.post('/content-analysis/check/', formData);
 export const contentAnalyse = (formData) =>
   API.post('/content-analysis/analyse/', formData);
+export const getWebsiteInfo = (formData) =>
+  API.post('/website-info/', formData);
+export const getAudit = (formData) => API.post('/audit/check/', formData);
+export const createAudit = (saveData) => API.post('/audit/', saveData);
+export const getWebsiteAnalysis = (formData) =>
+  API.post('/website-analysis/seo/', formData);
+export const getKeywordAnalysis = (formData) =>
+  API.post('/keyword-analysis/', formData);

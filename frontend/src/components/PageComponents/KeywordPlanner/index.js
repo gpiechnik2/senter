@@ -3,12 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { createkeyword } from '../../../actions/keywordPlanner';
 
-import Select from 'react-dropdown-select';
-
 import KeywordData from './KeywordData';
 
-import { KeywordPlannerContainer } from './KeywordPlannerElements';
+import Select from 'react-dropdown-select';
 
+import { KeywordPlannerContainer } from './KeywordPlannerElements';
 import {
   FormContainer,
   FormTitle,
@@ -18,7 +17,6 @@ import {
   FormBtnWrap,
   FormSelectContainer,
 } from '../../Common/FormElements';
-
 import { ButtonBasic } from '../../Common/ButtonElements';
 
 const initialState = {
@@ -30,7 +28,6 @@ const KeywordPlanner = () => {
   const { isLoading } = useSelector((state) => state.keywordReducer);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
-  // const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSelect = (selectedOption) => {
     setFormData({
@@ -45,7 +42,6 @@ const KeywordPlanner = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // setIsSubmitting(true);
     dispatch(createkeyword(formData));
   };
 

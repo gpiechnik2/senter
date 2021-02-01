@@ -3,9 +3,13 @@ import styled from 'styled-components';
 export const ColumnContainerBasic = styled.div`
   max-width: 530px;
   margin-bottom: 50px;
+
   @media screen and (max-width: 768px) {
     max-width: auto;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -18,4 +22,14 @@ export const SingleElementContainer = styled.div`
 
   display: flex;
   justify-content: center;
+`;
+
+export const PaginationContainer = styled.div`
+  max-width: 530px;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    max-width: auto;
+  }
 `;

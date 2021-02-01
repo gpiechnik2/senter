@@ -1,44 +1,43 @@
 import {
-  REQUEST_CHECK_DATA,
-  RECEIVE_CHECK_DATA,
-  CLEAR_CHECK_DATA,
+  REQUEST_WEBSITEINFO_DATA,
+  RECEIVE_WEBSITEINFO_DATA,
+  CLEAR_WEBSITEINFO_ERROR,
 } from '../constants/actionTypes';
 
 const initalState = {
-  checkData: null,
+  websiteInfoData: null,
   isLoading: false,
   isError: false,
   errorMsg: '',
 };
 
-const contentCheckReducer = (state = initalState, action) => {
+const websiteInfoReducer = (state = initalState, action) => {
   switch (action.type) {
-    case REQUEST_CHECK_DATA:
+    case REQUEST_WEBSITEINFO_DATA:
       return {
         ...state,
         isLoading: true,
         isError: false,
         errorMsg: '',
       };
-    case RECEIVE_CHECK_DATA:
+    case RECEIVE_WEBSITEINFO_DATA:
       return {
         ...state,
-        checkData: action.checkData,
+        websiteInfoData: action.websiteInfoData,
         isLoading: false,
         isError: action.isError,
         errorMsg: action.errorMsg,
       };
-    case CLEAR_CHECK_DATA:
+    case CLEAR_WEBSITEINFO_ERROR:
       return {
         ...state,
-        checkData: null,
+        websiteInfoData: null,
         isLoading: false,
         isError: false,
         errorMsg: '',
       };
-
     default:
       return state;
   }
 };
-export default contentCheckReducer;
+export default websiteInfoReducer;

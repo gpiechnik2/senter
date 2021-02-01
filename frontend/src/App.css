@@ -6,6 +6,10 @@
   font-weight: 100;
 }
 
+html { 
+  scroll-behavior: smooth;
+}
+
 /* clears the 'X' from Internet Explorer */
 input[type=search]::-ms-clear {
   display: none;
@@ -73,4 +77,25 @@ input:focus{
 
 textarea {
   resize: none;
+}
+
+
+body {
+  overflow: overlay;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #5D38DB;
+  border-radius: 3px;
 }
