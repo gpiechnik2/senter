@@ -2,9 +2,13 @@ import * as api from '../api';
 import {
   REQUEST_KEYWORDANALYSIS_DATA,
   RECEIVE_KEYWORDANALYSIS_DATA,
+  CLEAR_KEYWORDANALYSIS_DATA,
 } from '../constants/actionTypes';
 
 export const getkeywordanalysis = (formData) => async (dispatch) => {
+  dispatch({
+    type: CLEAR_KEYWORDANALYSIS_DATA,
+  });
   dispatch({
     type: REQUEST_KEYWORDANALYSIS_DATA,
   });
@@ -24,5 +28,10 @@ export const getkeywordanalysis = (formData) => async (dispatch) => {
       isError: true,
       errorMsg: error,
     });
+    setTimeout(() => {
+      dispatch({
+        type: CLEAR_KEYWORDANALYSIS_DATA,
+      });
+    }, 3200);
   }
 };
