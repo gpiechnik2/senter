@@ -36,7 +36,7 @@ const PrivateLayoutPage = () => {
               className: '',
               style: {
                 margin: '80px',
-
+                textAlign: 'center',
                 background: '#5D38DB',
                 padding: '16px',
                 color: '#fff',
