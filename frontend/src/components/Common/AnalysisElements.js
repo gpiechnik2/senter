@@ -89,6 +89,8 @@ export const TableText = styled.li`
   margin-bottom: 4px;
   font-size: 13px;
   color: #707070;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const ExpandableAnalysisContainer = styled.div`

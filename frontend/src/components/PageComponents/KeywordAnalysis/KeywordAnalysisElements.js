@@ -9,7 +9,8 @@ export const KeywordAnalysisContainer = styled.div`
   padding-left: 4vw;
   padding-right: 4vw;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const AddFont = styled(CgAdd)`
