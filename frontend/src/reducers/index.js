@@ -13,6 +13,7 @@ import keywordAnalysisReducer from './keywordAnalysis';
 import changeContactEmailReducer from './changeContactEmail';
 import changeUserEmailReducer from './changeUserEmail';
 import changeUserAgentReducer from './changeUserAgent';
+import changeUserPasswordReducer from './changeUserPassword';
 
 export default combineReducers({
   authReducer,
@@ -28,4 +29,5 @@ export default combineReducers({
   changeContactEmailReducer,
   changeUserEmailReducer,
   changeUserAgentReducer,
+  changeUserPasswordReducer,
 });
