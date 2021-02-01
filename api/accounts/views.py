@@ -73,7 +73,7 @@ class UserViewSet(viewsets.ViewSet):
             #check if validated data is the same
 
             if not user.check_password(serializer.data.get("current_password")):
-                return Response({"current_password": "Wrong password."}, status = status.HTTP_400_BAD_REQUEST)
+                return Response({"current_password": "Wrong current password."}, status = status.HTTP_400_BAD_REQUEST)
 
             if serializer.data['current_password'] != serializer.data['new_password']:
                 user.set_password(serializer.data['new_password'])
