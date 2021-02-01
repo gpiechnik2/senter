@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getkeywordanalysis } from '../../../actions/keywordAnalysis';
+
+import KeywordData from './KeywordData';
 
 import { KeywordAnalysisContainer } from './KeywordAnalysisElements';
 import {
@@ -19,9 +21,7 @@ const initialState = {
 };
 
 const KeywordAnalysis = () => {
-  const { auditCheckData, isLoading } = useSelector(
-    (state) => state.auditCheckReducer
-  );
+  const { isLoading } = useSelector((state) => state.keywordAnalysisReducer);
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
 
@@ -31,8 +31,8 @@ const KeywordAnalysis = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     dispatch(getkeywordanalysis(formData));
+
     setFormData({
       ...formData,
       keyword: '',
@@ -65,6 +65,7 @@ const KeywordAnalysis = () => {
             </FormBtnWrap>
           </FormWrap>
         </FormContainer>
+        <KeywordData />
       </KeywordAnalysisContainer>
     </>
   );

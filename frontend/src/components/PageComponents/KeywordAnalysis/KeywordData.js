@@ -18,13 +18,6 @@ import {
   AnalysisElement,
   ElementTitle,
   ElementText,
-  MessageAnalysisWrapper,
-  MessageAnalysisElementWrap,
-  StatusElement,
-  StatusBar,
-  StatusText,
-  MessageElement,
-  MessageText,
   TableLargeContainer,
   TableIconWrapper,
   TableTextWrapper,
@@ -45,17 +38,18 @@ import { PaginationContainer } from '../../Common/ContainerElements';
 import { StyledSpinner } from '../../Common/StyledSpinner';
 
 const KeywordData = () => {
-  const { auditCheckData, isError, isLoading, errorMsg } = useSelector(
-    (state) => state.auditCheckReducer
+  const { keywordAnalysisData, isError, isLoading } = useSelector(
+    (state) => state.keywordAnalysisReducer
   );
   const [currentPage, setCurrentPage] = useState(1);
   const [analysisPerPage] = useState(1);
 
   const indexOfLastAnalysis = currentPage * analysisPerPage;
   const indexOfFirstAnalysis = indexOfLastAnalysis - analysisPerPage;
-  const currentAnalysis = auditCheckData?.analysis.length
-    ? auditCheckData.analysis.slice(indexOfFirstAnalysis, indexOfLastAnalysis)
-    : null;
+  const currentAnalysis = keywordAnalysisData?.keyword_analysis.results.slice(
+    indexOfFirstAnalysis,
+    indexOfLastAnalysis
+  );
 
   const handlePageChange = (current) => {
     setCurrentPage(current);
@@ -63,7 +57,14 @@ const KeywordData = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, []);
+  }, [isLoading]);
+
+  if (isError)
+    return (
+      <span style={{ color: '#EB6969' }}>
+        Something went wrong, try again later.
+      </span>
+    );
 
   return isLoading ? (
     <StyledSpinner viewBox='0 0 50 50'>
@@ -76,10 +77,10 @@ const KeywordData = () => {
         strokeWidth='4'
       />
     </StyledSpinner>
-  ) : auditCheckData?.analysis.length ? (
+  ) : keywordAnalysisData?.keyword_analysis.results ? (
     <>
-      {currentAnalysis.map((analysis, i) => (
-        <AuditAnalysisContainer>
+      {currentAnalysis.map((keyword_analysis, i) => (
+        <AuditAnalysisContainer key={i}>
           <TableLargeContainer>
             <TableIconWrapper>
               <IconUrl />
@@ -87,7 +88,7 @@ const KeywordData = () => {
             <TableTextWrapper>
               <TableTextTitle>Url</TableTextTitle>
               <TableTextContentWrap>
-                <TableText>{analysis.url}</TableText>
+                <TableText>{keyword_analysis.url}</TableText>
               </TableTextContentWrap>
             </TableTextWrapper>
           </TableLargeContainer>
@@ -99,7 +100,7 @@ const KeywordData = () => {
             <TableTextWrapper>
               <TableTextTitle>Keyword</TableTextTitle>
               <TableTextContentWrap>
-                <TableText>{analysis.keyword}</TableText>
+                <TableText>{keyword_analysis.keywords}</TableText>
               </TableTextContentWrap>
             </TableTextWrapper>
           </TableLargeContainer>
@@ -111,7 +112,9 @@ const KeywordData = () => {
             <TableTextWrapper>
               <TableTextTitle>Title</TableTextTitle>
               <TableTextContentWrap>
-                <TableText>{analysis.description.main_description}</TableText>
+                {keyword_analysis.titles.map((title, i) => (
+                  <TableText key={i}>{title}</TableText>
+                ))}
               </TableTextContentWrap>
             </TableTextWrapper>
           </TableLargeContainer>
@@ -123,7 +126,9 @@ const KeywordData = () => {
             <TableTextWrapper>
               <TableTextTitle>Description</TableTextTitle>
               <TableTextContentWrap>
-                <TableText>{analysis.description.main_description}</TableText>
+                {keyword_analysis.descriptions.map((description, i) => (
+                  <TableText key={i}>{description}</TableText>
+                ))}
               </TableTextContentWrap>
             </TableTextWrapper>
           </TableLargeContainer>
@@ -137,7 +142,7 @@ const KeywordData = () => {
                 <TableTextWrapper>
                   <TableTextTitle>Url title</TableTextTitle>
                   <TableTextContentWrap>
-                    <TableText>{analysis.url_title.url_title}</TableText>
+                    <TableText>{keyword_analysis.url_title}</TableText>
                   </TableTextContentWrap>
                 </TableTextWrapper>
               </SmallTableWrapper>
@@ -148,7 +153,9 @@ const KeywordData = () => {
                 <TableTextWrapper>
                   <TableTextTitle>H1</TableTextTitle>
                   <TableTextContentWrap>
-                    <TableText>{analysis.url_status}</TableText>
+                    {keyword_analysis.h1.map((h1, i) => (
+                      <TableText key={i}>{h1}</TableText>
+                    ))}
                   </TableTextContentWrap>
                 </TableTextWrapper>
               </SmallTableWrapper>
@@ -168,11 +175,15 @@ const KeywordData = () => {
                     <AnalysisElementWrapper>
                       <AnalysisElement>
                         <ElementTitle>H2 count</ElementTitle>
-                        <ElementText>{keywordData.keyword}</ElementText>
+                        <ElementText>
+                          {keyword_analysis.h2.h2_count}
+                        </ElementText>
                       </AnalysisElement>
                       <AnalysisElement>
-                        <ElementTitle>H2 </ElementTitle>
-                        <ElementText>{keywordData.language}</ElementText>
+                        <ElementTitle>H2</ElementTitle>
+                        {keyword_analysis.h2.h2.map((h2, i) => (
+                          <ElementText key={i}>{h2}</ElementText>
+                        ))}
                       </AnalysisElement>
                     </AnalysisElementWrapper>
                   </AccordionItemPanel>
@@ -194,11 +205,15 @@ const KeywordData = () => {
                     <AnalysisElementWrapper>
                       <AnalysisElement>
                         <ElementTitle>H3-H6 count</ElementTitle>
-                        <ElementText>{keywordData.keyword}</ElementText>
+                        <ElementText>
+                          {keyword_analysis.other_h.other_h_count}
+                        </ElementText>
                       </AnalysisElement>
                       <AnalysisElement>
                         <ElementTitle>H3-H6 </ElementTitle>
-                        <ElementText>{keywordData.language}</ElementText>
+                        {keyword_analysis.other_h.other_h.map((other_h, i) => (
+                          <ElementText key={i}>{other_h}</ElementText>
+                        ))}
                       </AnalysisElement>
                     </AnalysisElementWrapper>
                   </AccordionItemPanel>
@@ -220,11 +235,17 @@ const KeywordData = () => {
                     <AnalysisElementWrapper>
                       <AnalysisElement>
                         <ElementTitle>External links count</ElementTitle>
-                        <ElementText>{keywordData.keyword}</ElementText>
+                        <ElementText>
+                          {keyword_analysis.external_links.external_links_count}
+                        </ElementText>
                       </AnalysisElement>
                       <AnalysisElement>
                         <ElementTitle>External links</ElementTitle>
-                        <ElementText>{keywordData.language}</ElementText>
+                        {keyword_analysis.external_links.external_links.map(
+                          (external_link, i) => (
+                            <ElementText key={i}>{external_link}</ElementText>
+                          )
+                        )}
                       </AnalysisElement>
                     </AnalysisElementWrapper>
                   </AccordionItemPanel>
@@ -246,11 +267,17 @@ const KeywordData = () => {
                     <AnalysisElementWrapper>
                       <AnalysisElement>
                         <ElementTitle>Internal links count</ElementTitle>
-                        <ElementText>{keywordData.keyword}</ElementText>
+                        <ElementText>
+                          {keyword_analysis.internal_links.internal_links_count}
+                        </ElementText>
                       </AnalysisElement>
                       <AnalysisElement>
                         <ElementTitle>Internal links</ElementTitle>
-                        <ElementText>{keywordData.language}</ElementText>
+                        {keyword_analysis.internal_links.internal_links.map(
+                          (internal_link, i) => (
+                            <ElementText key={i}>{internal_link}</ElementText>
+                          )
+                        )}
                       </AnalysisElement>
                     </AnalysisElementWrapper>
                   </AccordionItemPanel>
@@ -267,7 +294,7 @@ const KeywordData = () => {
           defaultPageSize={1}
           defaultCurrent={1}
           current={currentPage}
-          total={auditCheckData.analysis.length}
+          total={keywordAnalysisData.keyword_analysis.results.length}
           onChange={handlePageChange}
           locale={localeInfo}
           prevIcon={<PreviousIcon />}
