@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 import {
   HeaderContainer,
   HeaderWrapper,
-  LogoWrap,
+  LogoWrapLink,
   Logo,
 } from './HeaderElements';
 
-import logo from '../../../images/logo.svg';
+import logo from '../../../images/logo_main.svg';
 
-const Header = ({ children }) => {
+const Header = ({ children, isPrivate }) => {
   const [isScroll, setIsScroll] = useState(false);
 
   const changeHeader = () => {
@@ -32,9 +32,9 @@ const Header = ({ children }) => {
     <>
       <HeaderContainer isScroll={isScroll}>
         <HeaderWrapper>
-          <LogoWrap>
+          <LogoWrapLink to={isPrivate ? '/dashboard' : '/'}>
             <Logo src={logo} />
-          </LogoWrap>
+          </LogoWrapLink>
           {children}
         </HeaderWrapper>
       </HeaderContainer>
