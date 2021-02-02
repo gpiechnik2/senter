@@ -9,7 +9,6 @@ import {
 } from 'react-accessible-accordion';
 
 import { ColumnContainerBasic } from '../../Common/ContainerElements';
-
 import {
   ExpandableAnalysisContainer,
   AnalysisElementWrapper,
@@ -17,7 +16,6 @@ import {
   ElementTitle,
   ElementText,
 } from '../../Common/AnalysisElements';
-
 import { StyledSpinner } from '../../Common/StyledSpinner';
 
 const KeywordData = () => {
