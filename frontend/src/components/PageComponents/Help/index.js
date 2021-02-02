@@ -6,90 +6,90 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 
+import { HelpContainer, ColumnContainerHelpdesk } from './HelpElements';
 import {
-  HelpContainer,
-  CollapsibleWrap,
-  CollapsibleTitle,
-  CollapsibleText,
-  CollapsibleLink,
-} from './HelpElements';
+  ExpandableAnalysisContainer,
+  AnalysisElementWrapper,
+  AnalysisElement,
+  ElementText,
+} from '../../Common/AnalysisElements';
 
 export const Help = () => {
   return (
     <>
       <HelpContainer>
-        <CollapsibleWrap>
-          <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
-            <AccordionItem>
-              <AccordionItemHeading>
-                <AccordionItemButton>Content Analysis</AccordionItemButton>
-              </AccordionItemHeading>
-              <AccordionItemPanel>
-                <CollapsibleTitle>Po co?</CollapsibleTitle>
-                <CollapsibleText>
-                  User Experience is much wider than User Interface and refers
-                  to designing apps in a way that optimizes usability and
-                  accessibility. The overriding aim of a good UX is customer
-                  delight, or delivering maximum possible pleasure to the users
-                  interacting with the app. UI is delivering a good UX through a
-                  good interface. UI may be regarded as one element,
-                </CollapsibleText>
-                <CollapsibleLink>Read more</CollapsibleLink>
-              </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem>
-              <AccordionItemHeading>
-                <AccordionItemButton>Content Analysis</AccordionItemButton>
-              </AccordionItemHeading>
-              <AccordionItemPanel>
-                <CollapsibleTitle>Po co?</CollapsibleTitle>
-                <CollapsibleText>
-                  User Experience is much wider than User Interface and refers
-                  to designing apps in a way that optimizes usability and
-                  accessibility. The overriding aim of a good UX is customer
-                  delight, or delivering maximum possible pleasure to the users
-                  interacting with the app. UI is delivering a good UX through a
-                  good interface. UI may be regarded as one element,
-                </CollapsibleText>
-                <CollapsibleLink>Read more</CollapsibleLink>
-              </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem>
-              <AccordionItemHeading>
-                <AccordionItemButton>Content Analysis</AccordionItemButton>
-              </AccordionItemHeading>
-              <AccordionItemPanel>
-                <CollapsibleTitle>Po co?</CollapsibleTitle>
-                <CollapsibleText>
-                  User Experience is much wider than User Interface and refers
-                  to designing apps in a way that optimizes usability and
-                  accessibility. The overriding aim of a good UX is customer
-                  delight, or delivering maximum possible pleasure to the users
-                  interacting with the app. UI is delivering a good UX through a
-                  good interface. UI may be regarded as one element,
-                </CollapsibleText>
-                <CollapsibleLink>Read more</CollapsibleLink>
-              </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem>
-              <AccordionItemHeading>
-                <AccordionItemButton>Content Analysis</AccordionItemButton>
-              </AccordionItemHeading>
-              <AccordionItemPanel>
-                <CollapsibleTitle>Po co?</CollapsibleTitle>
-                <CollapsibleText>
-                  User Experience is much wider than User Interface and refers
-                  to designing apps in a way that optimizes usability and
-                  accessibility. The overriding aim of a good UX is customer
-                  delight, or delivering maximum possible pleasure to the users
-                  interacting with the app. UI is delivering a good UX through a
-                  good interface. UI may be regarded as one element,
-                </CollapsibleText>
-                <CollapsibleLink>Read more</CollapsibleLink>
-              </AccordionItemPanel>
-            </AccordionItem>
-          </Accordion>
-        </CollapsibleWrap>
+        <ColumnContainerHelpdesk>
+          <ExpandableAnalysisContainer>
+            <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton className='accordion__button--analysis'>
+                    Lorem ipsum 1
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel className='accordion__panel--analysis'>
+                  <AnalysisElementWrapper>
+                    <AnalysisElement>
+                      <ElementText>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy.
+                      </ElementText>
+                    </AnalysisElement>
+                  </AnalysisElementWrapper>
+                </AccordionItemPanel>
+              </AccordionItem>
+            </Accordion>
+          </ExpandableAnalysisContainer>
+        </ColumnContainerHelpdesk>
+        <ColumnContainerHelpdesk>
+          <ExpandableAnalysisContainer>
+            <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton className='accordion__button--analysis'>
+                    Lorem ipsum 2
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel className='accordion__panel--analysis'>
+                  <AnalysisElementWrapper>
+                    <AnalysisElement>
+                      <ElementText>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy.
+                      </ElementText>
+                    </AnalysisElement>
+                  </AnalysisElementWrapper>
+                </AccordionItemPanel>
+              </AccordionItem>
+            </Accordion>
+          </ExpandableAnalysisContainer>
+        </ColumnContainerHelpdesk>
+        <ColumnContainerHelpdesk>
+          <ExpandableAnalysisContainer>
+            <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton className='accordion__button--analysis'>
+                    Lorem ipsum 3
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel className='accordion__panel--analysis'>
+                  <AnalysisElementWrapper>
+                    <AnalysisElement>
+                      <ElementText>
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the
+                        industry's standard dummy.
+                      </ElementText>
+                    </AnalysisElement>
+                  </AnalysisElementWrapper>
+                </AccordionItemPanel>
+              </AccordionItem>
+            </Accordion>
+          </ExpandableAnalysisContainer>
+        </ColumnContainerHelpdesk>
       </HelpContainer>
     </>
   );
