@@ -17,8 +17,6 @@ import {
   CheckRememberWrap,
   InputRemember,
   LabelRemember,
-  ForgotWrap,
-  ForgotLink,
   LoginGoogleBtnWrap,
 } from './LoginElements';
 import { RegisterErrorMsg } from '../Register/RegisterElements';
@@ -143,9 +141,6 @@ const Login = () => {
                     Remember me
                   </LabelRemember>
                 </CheckRememberWrap>
-                <ForgotWrap>
-                  <ForgotLink>Forgot Password?</ForgotLink>
-                </ForgotWrap>
               </LoginCheckWrap>
               <LoginGoogleBtnWrap>
                 <GoogleLogin
