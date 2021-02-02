@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link as LinkRouter } from 'react-router-dom';
+import { NavLink as LinkRouter } from 'react-router-dom';
 
 export const SettingsWrapper = styled.div`
   width: 100%;
@@ -48,7 +48,8 @@ export const MenuLink = styled(LinkRouter)`
   color: #707070;
   transition: 0.1s ease;
 
-  &:hover {
+  &:hover,
+  &.active {
     border-bottom: 2.5px solid #5d38db;
     color: #5d38db;
   }

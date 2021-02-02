@@ -2,6 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import LoginPage from './login';
 import RegisterPage from './register';
+import AboutUsPage from './about-us';
 
 import { Toaster } from 'react-hot-toast';
 
@@ -14,7 +15,7 @@ const PublicLayoutPage = () => {
   return (
     <>
       <PublicLayout>
-        <Header></Header>
+        <Header isPrivate={false}></Header>
         <CornerMenu isPrivate={0} />
         <ContentContainer>
           <Toaster
@@ -32,6 +33,7 @@ const PublicLayoutPage = () => {
           <Switch>
             <Route path='/login' component={LoginPage} />
             <Route path='/register' component={RegisterPage} />
+            <Route path='/about-us' component={AboutUsPage} />
           </Switch>
         </ContentContainer>
       </PublicLayout>

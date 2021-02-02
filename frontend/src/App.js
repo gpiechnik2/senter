@@ -30,6 +30,7 @@ const App = () => {
         <Route path='/' component={HomePage} exact />
         <Route exact path='/login' component={PublicLayoutPage} />
         <Route exact path='/register' component={PublicLayoutPage} />
+        <Route exact path='/about-us' component={PublicLayoutPage} />
         <Route path='/dashboard' component={PrivateLayoutPage} />
         <Route path='/keyword-planner' component={PrivateLayoutPage} />
         <Route path='/website-analysis' component={PrivateLayoutPage} />

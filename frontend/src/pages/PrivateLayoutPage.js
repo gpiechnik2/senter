@@ -25,7 +25,7 @@ const PrivateLayoutPage = () => {
     <>
       <PrivateLayout>
         <Aside />
-        <Header>
+        <Header isPrivate={true}>
           <SearchPanel />
         </Header>
         <CornerMenu isPrivate={1} />

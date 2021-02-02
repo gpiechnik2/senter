@@ -20,7 +20,7 @@ const Settings = () => {
         <SettingsMenu>
           <MenuList>
             <MenuElement>
-              <MenuLink to='/settings'>Profile</MenuLink>
+              <MenuLink to='/settings/profile'>Profile</MenuLink>
             </MenuElement>
             <MenuElement>
               <MenuLink to='/settings/private'>Private</MenuLink>
@@ -32,7 +32,7 @@ const Settings = () => {
         </SettingsMenu>
         <SettingsSwitchContainer>
           <Switch>
-            <Route exact path='/settings' component={ProfilePage} />
+            <Route path='/settings/profile' component={ProfilePage} />
             <Route path='/settings/private' component={PrivatePage} />
             <Route path='/settings/web-scraping' component={WebScrapingPage} />
           </Switch>
