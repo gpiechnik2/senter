@@ -6,7 +6,6 @@ import {
   UserPanelContainer,
   UserPanelWrapper,
   UserHello,
-  UserName,
   UserPanelList,
   UserPanelElement,
   UserPanelLink,
@@ -30,17 +29,13 @@ const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
     <>
       <UserPanelContainer onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
         <UserPanelWrapper>
-          <UserHello>
-            Cześć, <UserName>Lorem ipsum</UserName>
-          </UserHello>
+          <UserHello>Hello!</UserHello>
           <UserPanelList>
             <UserPanelElement>
-              <UserPanelLink to='/dashboard/settings'>
-                Wesprzyj nas
-              </UserPanelLink>
+              <UserPanelLink to='/dashboard/settings'>Support Us</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/settings'>Ustawienia</UserPanelLink>
+              <UserPanelLink to='/settings/profile'>Settings</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
               <UserPanelLink to='/dashboard/settings'>
@@ -48,7 +43,7 @@ const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
               </UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLogout onClick={logout}>Wyloguj</UserPanelLogout>
+              <UserPanelLogout onClick={logout}>Logout</UserPanelLogout>
             </UserPanelElement>
           </UserPanelList>
         </UserPanelWrapper>
