@@ -15,13 +15,17 @@ const UserPanelPublic = ({ isOpen, setIsOpen }) => {
           <UserHello>Hello!</UserHello>
           <UserPanelList>
             <UserPanelElement>
-              <UserPanelLink to='/login'>Login</UserPanelLink>
+              <UserPanelLink to='/login' style={{ color: '#5D38DB' }}>
+                Login
+              </UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/register'>Register</UserPanelLink>
+              <UserPanelLink to='/register' style={{ color: '#5D38DB' }}>
+                Register
+              </UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/login'>About us</UserPanelLink>
+              <UserPanelLink to='/about-us'>About us</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
               <UserPanelLink to='/login'>Support us</UserPanelLink>

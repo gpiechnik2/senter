@@ -128,6 +128,7 @@ export const ElementTitle = styled.h1`
 `;
 export const ElementText = styled.p`
   font-size: 13px;
+  line-height: 20px;
   color: rgba(104, 104, 104, 0.8);
   overflow: hidden;
   text-overflow: ellipsis;

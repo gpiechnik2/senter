@@ -9,10 +9,11 @@ import {
   IconWrap,
   IconHome,
   IconWebsiteAnalysis,
-  IconKeywordsAnalysis,
+  IconKeywordAnalysis,
+  IconKeywordPlanner,
   IconContentAnalysis,
-  IconWebsiteRankTracker,
-  IconDocuments,
+  IconWebsiteInfo,
+  IconAudit,
   NavName,
   HelpWrap,
   HelpLink,
@@ -40,7 +41,7 @@ const Aside = () => {
               <NavElement>
                 <NavLink to='/keyword-planner'>
                   <IconWrap>
-                    <IconKeywordsAnalysis />
+                    <IconKeywordPlanner />
                   </IconWrap>
                   <NavName>Keyword planner</NavName>
                 </NavLink>
@@ -56,7 +57,7 @@ const Aside = () => {
               <NavElement>
                 <NavLink to='/keyword-analysis'>
                   <IconWrap>
-                    <IconKeywordsAnalysis />
+                    <IconKeywordAnalysis />
                   </IconWrap>
                   <NavName>Keyword analysis</NavName>
                 </NavLink>
@@ -72,7 +73,7 @@ const Aside = () => {
               <NavElement>
                 <NavLink to='/website-info'>
                   <IconWrap>
-                    <IconWebsiteRankTracker />
+                    <IconWebsiteInfo />
                   </IconWrap>
                   <NavName>Website info</NavName>
                 </NavLink>
@@ -80,7 +81,7 @@ const Aside = () => {
               <NavElement>
                 <NavLink to='/audit'>
                   <IconWrap>
-                    <IconDocuments />
+                    <IconAudit />
                   </IconWrap>
                   <NavName>Audit</NavName>
                 </NavLink>

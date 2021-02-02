@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const PublicContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 80px;
-  grid-template-rows: 70px 1fr;
+  grid-template-columns: 1fr 55px;
+  grid-template-rows: 50px 1fr;
   grid-template-areas:
     'header corner-panel'
     'content content';

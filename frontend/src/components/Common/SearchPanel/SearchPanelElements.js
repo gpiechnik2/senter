@@ -22,7 +22,6 @@ const searchPanelAnimation = keyframes`
 
 export const SearchPanelContainer = styled.div`
   height: 100%;
-  width: 25%;
 `;
 
 export const SearchPanelWrapper = styled.div`
@@ -44,6 +43,9 @@ export const SearchForm = styled.form`
 
 export const SearchBtn = styled.button`
   margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background: transparent;
   color: inherit;
@@ -53,12 +55,12 @@ export const SearchBtn = styled.button`
 
 export const IconSearch = styled(FiSearch)`
   color: #fff;
-  font-size: 26px;
+  font-size: 18px;
 `;
 
 export const Input = styled(ComboboxInput)`
-  width: 90%;
-  font-size: 13px;
+  width: 195px;
+  font-size: 12px;
   border: none;
   background: #5d38db;
   color: #fff;
@@ -76,7 +78,7 @@ export const Input = styled(ComboboxInput)`
 `;
 
 export const MyCombobox = styled(Combobox)`
-  width: 70%;
+  padding-right: 10px;
   display: flex;
   align-items: center;
 `;

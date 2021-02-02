@@ -16,13 +16,12 @@ export const UserPanelContainer = styled.div`
   transition: all 0.5s linear;
   width: 280px;
   position: absolute;
-  top: 70px;
+  top: 51px;
   right: 0;
 
   animation: ${panelAnimation} 0.3s ease;
 
   border: 1px solid #e6e8f1;
-  border-top: none;
   background-color: #fff;
   color: #686868;
   box-shadow: -10px 9px 21px rgba(128, 152, 213, 0.07);
@@ -45,10 +44,10 @@ export const UserPanelList = styled.ul`
   flex-direction: column;
   align-items: flex-start;
   width: 115px;
-  margin-top: 23px;
+  margin-top: 18px;
 `;
 export const UserPanelElement = styled.li`
-  margin-bottom: 25px;
+  margin-bottom: 18px;
 `;
 export const UserPanelLink = styled(LinkRouter)`
   font-size: 13px;

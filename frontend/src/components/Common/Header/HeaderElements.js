@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link as LinkRouter } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
   grid-area: header;
@@ -8,8 +9,8 @@ export const HeaderContainer = styled.header`
 
   position: ${({ isScroll }) => (isScroll ? 'fixed' : 'static')};
   top: ${({ isScroll }) => (isScroll ? '0' : 'auto')};
-  width: ${({ isScroll }) => (isScroll ? 'calc(100% - 80px)' : 'auto')};
-  height: ${({ isScroll }) => (isScroll ? '70px' : 'auto')};
+  width: ${({ isScroll }) => (isScroll ? 'calc(100% - 55px)' : 'auto')};
+  height: ${({ isScroll }) => (isScroll ? '50px' : 'auto')};
 `;
 
 export const HeaderWrapper = styled.div`
@@ -21,13 +22,14 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const LogoWrap = styled.div`
-  width: 60px;
-  height: 60px;
+export const LogoWrapLink = styled(LinkRouter)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 14px;
+  cursor: pointer;
 `;
 export const Logo = styled.img`
-  width: 100%;
-  height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
 `;

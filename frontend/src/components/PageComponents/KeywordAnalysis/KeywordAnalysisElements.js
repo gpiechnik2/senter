@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { CgAdd } from 'react-icons/cg';
 
 export const KeywordAnalysisContainer = styled.div`
   width: 100%;
@@ -11,10 +10,4 @@ export const KeywordAnalysisContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const AddFont = styled(CgAdd)`
-  margin-right: 3px;
-  font-size: 16px;
-  color: #fff;
 `;

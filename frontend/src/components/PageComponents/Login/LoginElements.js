@@ -76,11 +76,5 @@ export const LabelRemember = styled.label`
   font-size: 12px;
   color: #686868;
 `;
-export const ForgotWrap = styled.div``;
-export const ForgotLink = styled.a`
-  font-size: 12px;
-  color: #4a90e2;
-  text-decoration: none;
-  cursor: pointer;
-`;
+
 export const LoginGoogleBtnWrap = styled.div``;

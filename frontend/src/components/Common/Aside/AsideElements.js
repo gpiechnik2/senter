@@ -2,16 +2,15 @@ import styled from 'styled-components';
 import { Link as LinkRouter } from 'react-router-dom';
 
 import {
-  CgHello,
+  CgHome,
+  CgList,
   CgBrowse,
-  CgPlayListSearch,
-  CgFormatColor,
-  // CgListTree,
-  CgBrowser,
+  CgDatabase,
   CgFileDocument,
-  CgReadme,
+  CgDesktop,
+  CgWebsite,
+  CgComment,
 } from 'react-icons/cg';
-import { VscSymbolKeyword } from 'react-icons/vsc';
 
 export const AsideContainer = styled.aside`
   background-color: #ffffff;
@@ -19,7 +18,7 @@ export const AsideContainer = styled.aside`
   top: 0;
   left: 0;
   bottom: 0;
-  width: 65px;
+  width: 40px;
   height: 100vh;
   transition: width 0.3s ease;
   z-index: 9;
@@ -27,7 +26,7 @@ export const AsideContainer = styled.aside`
   background: #5d38db;
 
   &:hover {
-    width: 211px;
+    width: 165px;
   }
 `;
 export const AsideWrap = styled.div`
@@ -41,7 +40,7 @@ export const AsideWrap = styled.div`
 `;
 export const ToggleWrap = styled.div``;
 export const Nav = styled.nav`
-  width: 210px;
+  width: 165px;
   overflow: hidden;
   background-color: #5d38db;
   z-index: 9;
@@ -71,7 +70,7 @@ export const NavLink = styled(LinkRouter)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 10px;
   font-weight: 100;
   font-size: 11px;
   color: #fff;
@@ -85,18 +84,18 @@ export const IconWrap = styled.div`
   justify-content: center;
   align-items: center;
 
-  font-size: 20px;
+  font-size: 19px;
 `;
-export const IconHome = styled(CgHello)``;
+export const IconHome = styled(CgHome)``;
+export const IconKeywordPlanner = styled(CgList)``;
 export const IconWebsiteAnalysis = styled(CgBrowse)``;
-export const IconKeywordsAnalysis = styled(VscSymbolKeyword)``;
-export const IconCompetitionAnalysis = styled(CgPlayListSearch)``;
-export const IconContentAnalysis = styled(CgFormatColor)``;
-export const IconWebsiteRankTracker = styled(CgBrowser)``;
-export const IconDocuments = styled(CgFileDocument)``;
+export const IconKeywordAnalysis = styled(CgDatabase)``;
+export const IconContentAnalysis = styled(CgFileDocument)``;
+export const IconWebsiteInfo = styled(CgDesktop)``;
+export const IconAudit = styled(CgWebsite)``;
 
 export const NavName = styled.span`
-  margin-left: 25px;
+  margin-left: 20px;
 `;
 export const HelpWrap = styled.div`
   display: flex;
@@ -119,7 +118,7 @@ export const HelpLink = styled(LinkRouter)`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 10px;
   font-weight: 100;
   font-size: 11px;
   color: #fff;
@@ -135,10 +134,10 @@ export const IconHelpWrap = styled.div`
 
   border-radius: 5px;
 `;
-export const IconHelp = styled(CgReadme)`
-  font-size: 20px;
+export const IconHelp = styled(CgComment)`
+  font-size: 19px;
   color: #5d38db;
 `;
 export const HelpText = styled.span`
-  margin-left: 25px;
+  margin-left: 20px;
 `;
