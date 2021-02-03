@@ -39,3 +39,5 @@ export const getWebsiteAnalysis = (formData) =>
   API.post('/website-analysis/seo/', formData);
 export const getKeywordAnalysis = (formData) =>
   API.post('/keyword-analysis/', formData);
+
+export const getNews = () => API.get('/updates/');
