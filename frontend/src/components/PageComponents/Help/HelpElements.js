@@ -15,7 +15,6 @@ export const HelpContainer = styled.div`
 
 export const ColumnContainerHelpdesk = styled.div`
   max-width: 530px;
-  margin-bottom: 30px;
 
   @media screen and (max-width: 768px) {
     max-width: auto;
