@@ -1,81 +1,134 @@
 import {
-  DashboardWrapper,
-  UpdatesWrap,
-  UpdateSection,
-  UpdateTitle,
-  UpdateArticle,
-  UpdateArticleSmall,
-  UpdateArticleTitle,
-  UpdateText,
-  UpdateLink,
-  BtnWrap,
-  ButtonLink,
+  DashboardContainer,
+  DashboardTextWrap,
+  DashboardUpdateWrap,
+  DashboardTitle,
+  DashboardDate,
+  DashboardText,
+  DashboardUserContentWrap,
+  ContentUnit,
+  ContentTitle,
+  IconContentWrap,
+  ContentIcon,
+  Title,
+  ContentText,
+  ContentLink,
+  DashboardTechnicalWrap,
+  TechnicalUnit,
+  LinkIconWrap,
+  LinkIcon,
+  ArticleIcon,
+  KeywordIcon,
+  AuditIcon,
+  DocumentationIcon,
+  FeedbackIcon,
+  ExternalContentLink,
 } from './DashboardElements';
-
-import {
-  NotificationWrapper,
-  TextWrap,
-  NotificationText,
-  LinkRefresh,
-  IconWrap,
-  IconClose,
-} from '../../Common/NotificationElements';
-
-import toast from 'react-hot-toast';
+import { SingleElementContainer } from '../../Common/ContainerElements';
 
 const Dashboard = () => {
-  const notify = () =>
-    toast((t) => (
-      <NotificationWrapper>
-        <TextWrap>
-          <NotificationText>
-            This page have been updated by another person.
-            <LinkRefresh onClick={() => window.location.reload()}>
-              Refresh
-            </LinkRefresh>
-          </NotificationText>
-        </TextWrap>
-        <IconWrap onClick={() => toast.dismiss(t.id)}>
-          <IconClose />
-        </IconWrap>
-      </NotificationWrapper>
-    ));
   return (
     <>
-      <DashboardWrapper>
-        <UpdatesWrap>
-          <UpdateSection>
-            <UpdateTitle>Update 1</UpdateTitle>
-            <UpdateArticle>
-              <UpdateArticleTitle>1.0</UpdateArticleTitle>
-              <UpdateText>
-                User Experience is much wider than User Interface and refers to
-                designing apps in a way that optimizes usability and
-                accessibility. The overriding aim of a good UX is customer
-                delight, or delivering maximum possible pleasure to the users
-                interacting with the app. UI is delivering a good UX through a
-                good interface. UI may be regarded as one element,
-              </UpdateText>
-              <UpdateLink>Read More</UpdateLink>
-            </UpdateArticle>
-          </UpdateSection>
-          <UpdateSection>
-            <UpdateTitle>Update 2</UpdateTitle>
-            <UpdateArticleSmall>
-              <UpdateArticleTitle>1.0</UpdateArticleTitle>
-              <UpdateText>
-                User Experience is much wider than User Interface and refers to
-                designing apps in a way that optimizes usability and
-                accessibility. The overriding aim designing apps in a way that
-                optimizes usability and accessibility. The overriding aim
-              </UpdateText>
-            </UpdateArticleSmall>
-          </UpdateSection>
-        </UpdatesWrap>
-        <BtnWrap>
-          <ButtonLink onClick={notify}>Więcej</ButtonLink>
-        </BtnWrap>
-      </DashboardWrapper>
+      <SingleElementContainer>
+        <DashboardContainer>
+          <DashboardTextWrap>
+            <DashboardUpdateWrap>
+              <DashboardTitle>Last update</DashboardTitle>
+              <DashboardDate>20-03-2021</DashboardDate>
+            </DashboardUpdateWrap>
+            <DashboardText>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
+              ex. Consectetur, eaque autem? Maxime dolor facere dolores
+              accusamus culpa
+            </DashboardText>
+          </DashboardTextWrap>
+          <DashboardUserContentWrap>
+            <ContentUnit>
+              <ContentTitle>
+                <IconContentWrap>
+                  <ArticleIcon />
+                </IconContentWrap>
+                <Title>My articles</Title>
+              </ContentTitle>
+              <ContentText>Your saved documents</ContentText>
+              <ContentLink to='/articles'>
+                <LinkIconWrap>
+                  <LinkIcon />
+                </LinkIconWrap>
+                Check articles
+              </ContentLink>
+            </ContentUnit>
+            <ContentUnit>
+              <ContentTitle>
+                <IconContentWrap>
+                  <KeywordIcon />
+                </IconContentWrap>
+                <Title>My keywords</Title>
+              </ContentTitle>
+              <ContentText>Your saved planners</ContentText>
+              <ContentLink to='/keywords'>
+                <LinkIconWrap>
+                  <LinkIcon />
+                </LinkIconWrap>
+                Check keywords
+              </ContentLink>
+            </ContentUnit>
+            <ContentUnit>
+              <ContentTitle>
+                <IconContentWrap>
+                  <AuditIcon />
+                </IconContentWrap>
+                <Title>My audits</Title>
+              </ContentTitle>
+              <ContentText>Your saved audits</ContentText>
+              <ContentLink to='/audits'>
+                <LinkIconWrap>
+                  <LinkIcon />
+                </LinkIconWrap>
+                Check audits
+              </ContentLink>
+            </ContentUnit>
+          </DashboardUserContentWrap>
+          <DashboardTechnicalWrap>
+            <TechnicalUnit>
+              <ContentTitle>
+                <IconContentWrap>
+                  <DocumentationIcon />
+                </IconContentWrap>
+                <Title>Documentation</Title>
+              </ContentTitle>
+              <ContentText>
+                Check the detailed documentation on the github.
+              </ContentText>
+              <ExternalContentLink
+                href='https://github.com/gpiechnik2/senter'
+                target='_blank'>
+                <LinkIconWrap>
+                  <LinkIcon />
+                </LinkIconWrap>
+                Github
+              </ExternalContentLink>
+            </TechnicalUnit>
+            <TechnicalUnit>
+              <ContentTitle>
+                <IconContentWrap>
+                  <FeedbackIcon />
+                </IconContentWrap>
+                <Title>Send feedback</Title>
+              </ContentTitle>
+              <ContentText>
+                Send feedback message to us, what can be corrected.
+              </ContentText>
+              <ContentLink to='/articles'>
+                <LinkIconWrap>
+                  <LinkIcon />
+                </LinkIconWrap>
+                Send feedback
+              </ContentLink>
+            </TechnicalUnit>
+          </DashboardTechnicalWrap>
+        </DashboardContainer>
+      </SingleElementContainer>
     </>
   );
 };
