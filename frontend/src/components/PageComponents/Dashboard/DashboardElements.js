@@ -1,73 +1,118 @@
 import styled from 'styled-components';
+import { Link as LinkRouter } from 'react-router-dom';
+import {
+  CgFileDocument,
+  CgArrowBottomRightR,
+  CgList,
+  CgWebsite,
+} from 'react-icons/cg';
+import { HiOutlineMail } from 'react-icons/hi';
 
-export const DashboardWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-
-  padding: 107px 4vw 38px 4vw;
+export const DashboardContainer = styled.div`
+  max-width: 530px;
+  margin-bottom: 30px;
 `;
-export const UpdatesWrap = styled.div`
+export const DashboardTextWrap = styled.div`
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+export const DashboardUpdateWrap = styled.div`
+  margin-bottom: 10px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
 `;
-export const UpdateSection = styled.section`
-  width: 49%;
-
-  margin-bottom: 20px;
-  padding: 51px 46px 24px 48px;
-  border: 1px solid #e8ebf2;
-  border-radius: 4px;
-  -webkit-box-shadow: -10px 9px 21px rgba(128, 152, 213, 0.07);
-  box-shadow: -10px 9px 21px rgba(128, 152, 213, 0.07);
-`;
-export const UpdateTitle = styled.h2`
-  margin-bottom: 11.5px;
-  font-size: 14px;
-  color: #8954ba;
-`;
-export const UpdateArticle = styled.article`
-  padding: 19.5px 0 42.5px 0;
-  border-top: 1px solid #d6d8e3;
-  border-bottom: 1px solid #d6d8e3;
-`;
-export const UpdateArticleSmall = styled.article`
-  padding-top: 19.5px;
-  border-top: 1px solid #d6d8e3;
-  border-bottom: 1px solid #d6d8e3;
-`;
-export const UpdateArticleTitle = styled.h3`
-  margin-bottom: 11px;
-  font-size: 13px;
+export const DashboardTitle = styled.h1`
+  font-size: 22px;
+  font-weight: normal;
   color: #686868;
 `;
-export const UpdateText = styled.p`
-  margin-bottom: 30px;
-  line-height: 25px;
-  font-size: 12px;
-  color: rgba(104, 104, 104, 0.8);
-`;
-export const UpdateLink = styled.a`
+export const DashboardDate = styled.span`
   font-size: 13px;
-  color: #4a90e2;
+  color: #707070;
 `;
-export const BtnWrap = styled.div`
+export const DashboardText = styled.p`
+  font-size: 13px;
+  line-height: 20px;
+  color: #707070;
+`;
+export const DashboardUserContentWrap = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+`;
+export const ContentUnit = styled.div``;
+export const ContentTitle = styled.div`
+  margin-bottom: 10px;
+  padding-left: 5px;
+  display: flex;
   align-items: center;
 `;
-export const ButtonLink = styled.a`
-  padding: 10px 15px;
+
+export const LinkIconWrap = styled.div`
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+`;
+
+export const IconContentWrap = styled.div`
+  margin-right: 10px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  font-size: 18px;
+`;
+export const ContentIcon = styled(CgFileDocument)``;
+export const Title = styled.h2`
+  font-size: 13px;
+  color: #000000;
+  font-weight: bold;
+`;
+export const ContentText = styled.p`
+  margin-bottom: 9px;
+  font-size: 12px;
+  color: #707070;
+`;
+export const ContentLink = styled(LinkRouter)`
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #5d38db;
+`;
+export const ExternalContentLink = styled.a`
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #5d38db;
+`;
+export const DashboardTechnicalWrap = styled.div`
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+`;
+export const TechnicalUnit = styled.div`
+  margin-bottom: 24px;
+`;
 
-  font-size: 14px;
-  background-color: #5d38db;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+export const LinkIcon = styled(CgArrowBottomRightR)`
+  transform: rotate(-90deg);
+`;
+export const ArticleIcon = styled(CgFileDocument)`
+  color: #d28861;
+`;
+export const DocumentationIcon = styled(CgFileDocument)`
+  color: #6caa89;
+`;
+export const KeywordIcon = styled(CgList)`
+  color: #5d38db;
+`;
+export const AuditIcon = styled(CgWebsite)`
+  color: #d56767;
+`;
+export const FeedbackIcon = styled(HiOutlineMail)`
+  color: #ca629d;
 `;
