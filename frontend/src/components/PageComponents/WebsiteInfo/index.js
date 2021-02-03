@@ -15,7 +15,13 @@ import {
   FormBtnWrap,
 } from '../../Common/FormElements';
 import { ButtonBasic } from '../../Common/ButtonElements';
-import { ColumnContainerBasic } from '../../Common/ContainerElements';
+import {
+  ColumnContainerBasic,
+  GraphicImg,
+} from '../../Common/ContainerElements';
+import { GraphicWrap } from '../../Common/UserContentElements';
+
+import graphic from '../../../images/website_info.jpg';
 
 const initialState = {
   url: '',
@@ -44,6 +50,9 @@ const WebsiteInfo = () => {
     <>
       <WebsiteInfoContainer>
         <FormContainer>
+          <GraphicWrap>
+            <GraphicImg src={graphic} />
+          </GraphicWrap>
           <FormTitle>Website info</FormTitle>
           <FormText>
             Lorem Ipsum is simply dummy text of the printing and typesetting

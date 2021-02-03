@@ -18,8 +18,14 @@ import {
   FormBtnWrap,
   SaveButtonWrap,
 } from '../../Common/FormElements';
-import { ColumnContainerBasic } from '../../Common/ContainerElements';
+import {
+  ColumnContainerBasic,
+  GraphicImg,
+} from '../../Common/ContainerElements';
 import { ButtonBasic } from '../../Common/ButtonElements';
+import { GraphicWrap } from '../../Common/UserContentElements';
+
+import graphic from '../../../images/myaudits.jpg';
 
 const initialState = {
   url: '',
@@ -82,6 +88,9 @@ const Audit = () => {
     <>
       <AuditContainer>
         <FormContainer>
+          <GraphicWrap>
+            <GraphicImg src={graphic} />
+          </GraphicWrap>
           <FormTitle>Website audit</FormTitle>
           <FormText>
             Lorem Ipsum is simply dummy text of the printing and typesetting
