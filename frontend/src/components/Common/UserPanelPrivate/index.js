@@ -38,9 +38,7 @@ const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
               <UserPanelLink to='/settings/profile'>Settings</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/dashboard/settings'>
-                Report / Feedback
-              </UserPanelLink>
+              <UserPanelLink to='/dashboard'>Report / Feedback</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
               <UserPanelLogout onClick={logout}>Logout</UserPanelLogout>

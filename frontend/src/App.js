@@ -33,7 +33,7 @@ const App = () => {
         <Route exact path='/about' component={PublicLayoutPage} />
         <Route exact path='/support' component={PublicLayoutPage} />
         <Route exact path='/news' component={PublicLayoutPage} />
-        <Route path='/dashboard' component={PrivateLayoutPage} />
+        <Route exact path='/dashboard' component={PrivateLayoutPage} />
         <Route path='/keyword-planner' component={PrivateLayoutPage} />
         <Route path='/website-analysis' component={PrivateLayoutPage} />
         <Route path='/keyword-analysis' component={PrivateLayoutPage} />
@@ -42,6 +42,9 @@ const App = () => {
         <Route path='/audit' component={PrivateLayoutPage} />
         <Route path='/help' component={PrivateLayoutPage} />
         <Route path='/settings' component={PrivateLayoutPage} />
+        <Route path='/articles' component={PrivateLayoutPage} />
+        <Route path='/keywords' component={PrivateLayoutPage} />
+        <Route path='/audits' component={PrivateLayoutPage} />
       </Switch>
     </Router>
   );
