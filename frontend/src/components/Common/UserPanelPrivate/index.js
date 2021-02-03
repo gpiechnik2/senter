@@ -32,7 +32,7 @@ const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
           <UserHello>Hello!</UserHello>
           <UserPanelList>
             <UserPanelElement>
-              <UserPanelLink to='/dashboard/settings'>Support Us</UserPanelLink>
+              <UserPanelLink to='/support'>Support Us</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
               <UserPanelLink to='/settings/profile'>Settings</UserPanelLink>

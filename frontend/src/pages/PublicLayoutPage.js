@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import LoginPage from './login';
 import RegisterPage from './register';
 import AboutUsPage from './about-us';
+import SupportUsPage from './support-us';
+import NewsPage from './news';
 
 import { Toaster } from 'react-hot-toast';
 
@@ -33,7 +35,9 @@ const PublicLayoutPage = () => {
           <Switch>
             <Route path='/login' component={LoginPage} />
             <Route path='/register' component={RegisterPage} />
-            <Route path='/about-us' component={AboutUsPage} />
+            <Route path='/about' component={AboutUsPage} />
+            <Route path='/support' component={SupportUsPage} />
+            <Route path='/news' component={NewsPage} />
           </Switch>
         </ContentContainer>
       </PublicLayout>

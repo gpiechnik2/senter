@@ -25,13 +25,13 @@ const UserPanelPublic = ({ isOpen, setIsOpen }) => {
               </UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/about-us'>About us</UserPanelLink>
+              <UserPanelLink to='/about'>About us</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/login'>Support us</UserPanelLink>
+              <UserPanelLink to='/support'>Support us</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/login'>News</UserPanelLink>
+              <UserPanelLink to='/news'>News</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
               <UserPanelLink to='/login'>Helpdesk / Github</UserPanelLink>
