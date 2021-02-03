@@ -19,6 +19,9 @@ import WebsiteInfoPage from './website-info';
 import AuditPage from './audit';
 import HelpPage from './help';
 import SettingsPage from './settings';
+import ArticlesPage from './articles';
+import KeywordsPage from './keywords';
+import AuditsPage from './audits';
 
 const PrivateLayoutPage = () => {
   return (
@@ -60,6 +63,9 @@ const PrivateLayoutPage = () => {
             <Route path='/audit' component={AuditPage} />
             <Route path='/help' component={HelpPage} />
             <Route path='/settings' component={SettingsPage} />
+            <Route path='/articles' component={ArticlesPage} />
+            <Route path='/keywords' component={KeywordsPage} />
+            <Route path='/audits' component={AuditsPage} />
           </Switch>
         </ContentContainer>
       </PrivateLayout>
