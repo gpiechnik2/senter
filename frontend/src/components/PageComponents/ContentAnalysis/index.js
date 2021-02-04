@@ -73,6 +73,7 @@ const ContentAnalysis = () => {
   useEffect(() => {
     if (analyseData && !isError) {
       toast.success('Article saved successfully!');
+      console.log(analyseData);
     } else if (analyseData && isError) {
       toast.error(`We couldn't save that one.`);
     }
@@ -129,7 +130,7 @@ const ContentAnalysis = () => {
           </ExpandableAnalysisContainer>
           <BtnWrap>
             <ButtonBasic type='submit' disabled={isLoading}>
-              Save
+              Save2
             </ButtonBasic>
           </BtnWrap>
         </FormContainer>

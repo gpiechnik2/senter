@@ -15,6 +15,10 @@ import {
   FormBtnWrap,
 } from '../../Common/FormElements';
 import { ButtonBasic } from '../../Common/ButtonElements';
+import { GraphicWrap } from '../../Common/UserContentElements';
+import { GraphicImg } from '../../Common/ContainerElements';
+
+import graphic from '../../../images/keyword_analysis.jpg';
 
 const initialState = {
   keyword: '',
@@ -43,6 +47,9 @@ const KeywordAnalysis = () => {
     <>
       <KeywordAnalysisContainer>
         <FormContainer>
+          <GraphicWrap>
+            <GraphicImg src={graphic} />
+          </GraphicWrap>
           <FormTitle>Keyword analysis</FormTitle>
           <FormText>
             Lorem Ipsum is simply dummy text of the printing and typesetting

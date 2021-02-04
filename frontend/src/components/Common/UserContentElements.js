@@ -29,7 +29,7 @@ export const DynamicContentWrap = styled.div`
   margin-top: 40px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
 `;
 

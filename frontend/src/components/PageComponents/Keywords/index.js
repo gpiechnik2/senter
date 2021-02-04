@@ -27,7 +27,7 @@ import {
   KeywordIcon,
 } from '../../PageComponents/Dashboard/DashboardElements';
 
-import graphic from '../../../images/myarticles.jpg';
+import graphic from '../../../images/keyword_planner.jpg';
 
 const Keywords = () => {
   return (

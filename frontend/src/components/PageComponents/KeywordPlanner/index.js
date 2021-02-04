@@ -18,6 +18,10 @@ import {
   FormSelectContainer,
 } from '../../Common/FormElements';
 import { ButtonBasic } from '../../Common/ButtonElements';
+import { GraphicWrap } from '../../Common/UserContentElements';
+import { GraphicImg } from '../../Common/ContainerElements';
+
+import graphic from '../../../images/keyword_planner.jpg';
 
 const initialState = {
   keyword: '',
@@ -49,6 +53,9 @@ const KeywordPlanner = () => {
     <>
       <KeywordPlannerContainer>
         <FormContainer>
+          <GraphicWrap>
+            <GraphicImg src={graphic} />
+          </GraphicWrap>
           <FormTitle>Keyword planner</FormTitle>
           <FormText>
             Lorem Ipsum is simply dummy text of the printing and typesetting
