@@ -15,6 +15,7 @@ import changeUserEmailReducer from './changeUserEmail';
 import changeUserAgentReducer from './changeUserAgent';
 import changeUserPasswordReducer from './changeUserPassword';
 import getNewsReducer from './getNews';
+import articlesReducer from './articles';
 
 export default combineReducers({
   authReducer,
@@ -32,4 +33,5 @@ export default combineReducers({
   changeUserAgentReducer,
   changeUserPasswordReducer,
   getNewsReducer,
+  articlesReducer,
 });

@@ -41,3 +41,4 @@ export const getKeywordAnalysis = (formData) =>
   API.post('/keyword-analysis/', formData);
 
 export const getNews = () => API.get('/updates/');
+export const getArticles = () => API.get('/content-analysis/analyse/');

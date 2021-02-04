@@ -1,3 +1,9 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getnews } from '../../../actions/getNews';
+import { getarticles } from '../../../actions/articles';
+
 import {
   DashboardContainer,
   DashboardTextWrap,
@@ -9,7 +15,6 @@ import {
   ContentUnit,
   ContentTitle,
   IconContentWrap,
-  ContentIcon,
   Title,
   ContentText,
   ContentLink,
@@ -27,6 +32,18 @@ import {
 import { SingleElementContainer } from '../../Common/ContainerElements';
 
 const Dashboard = () => {
+  const { newsData, isError, isLoading } = useSelector(
+    (state) => state.getNewsReducer
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getnews());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log('news', newsData);
+  }, [newsData]);
   return (
     <>
       <SingleElementContainer>
@@ -51,7 +68,9 @@ const Dashboard = () => {
                 <Title>My articles</Title>
               </ContentTitle>
               <ContentText>Your saved documents</ContentText>
-              <ContentLink to='/articles'>
+              <ContentLink
+                to='/articles'
+                onClick={() => dispatch(getarticles())}>
                 <LinkIconWrap>
                   <LinkIcon />
                 </LinkIconWrap>

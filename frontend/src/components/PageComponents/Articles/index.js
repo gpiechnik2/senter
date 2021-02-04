@@ -1,3 +1,8 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getarticles } from '../../../actions/articles';
+
 import {
   StaticContentWrap,
   GraphicWrap,
@@ -25,10 +30,25 @@ import {
   LinkIcon,
   ArticleIcon,
 } from '../../PageComponents/Dashboard/DashboardElements';
+import { StyledSpinner } from '../../Common/StyledSpinner';
 
 import graphic from '../../../images/myarticles.jpg';
 
 const Articles = () => {
+  const { articlesData, isError, isLoading } = useSelector(
+    (state) => state.articlesReducer
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getarticles());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log('articles', articlesData);
+    console.log('loading?', isLoading);
+  }, [articlesData, isLoading]);
+
   return (
     <>
       <SingleElementContainer>
@@ -46,66 +66,43 @@ const Articles = () => {
             </StaticTextWrap>
           </StaticContentWrap>
           <DynamicContentWrap>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <ArticleIcon />
-                </IconContentWrap>
-                <Title>Keyword</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
-                </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <ArticleIcon />
-                </IconContentWrap>
-                <Title>Keyword</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
-                </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <ArticleIcon />
-                </IconContentWrap>
-                <Title>Keyword</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
-                </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
+            {!articlesData?.length ? (
+              <StyledSpinner viewBox='0 0 50 50'>
+                <circle
+                  className='path'
+                  cx='25'
+                  cy='25'
+                  r='20'
+                  fill='none'
+                  strokeWidth='4'
+                />
+              </StyledSpinner>
+            ) : (
+              <>
+                {articlesData.map((article) => (
+                  <DynamicContentUnit key={article.id}>
+                    <ContentTitle>
+                      <IconContentWrap>
+                        <ArticleIcon />
+                      </IconContentWrap>
+                      <Title>{article.keyword}</Title>
+                    </ContentTitle>
+                    <ContentText>{article.page_title}</ContentText>
+                    <LinkWrapper>
+                      <ContentLink to='/articles'>
+                        <LinkIconWrap>
+                          <LinkIcon />
+                        </LinkIconWrap>
+                        Check article
+                      </ContentLink>
+                      <DeleteIconWrap>
+                        <DeleteIcon />
+                      </DeleteIconWrap>
+                    </LinkWrapper>
+                  </DynamicContentUnit>
+                ))}
+              </>
+            )}
           </DynamicContentWrap>
         </ColumnContainerBasic>
       </SingleElementContainer>
