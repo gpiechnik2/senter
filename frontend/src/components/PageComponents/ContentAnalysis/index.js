@@ -130,7 +130,7 @@ const ContentAnalysis = () => {
           </ExpandableAnalysisContainer>
           <BtnWrap>
             <ButtonBasic type='submit' disabled={isLoading}>
-              Save2
+              Save
             </ButtonBasic>
           </BtnWrap>
         </FormContainer>

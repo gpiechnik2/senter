@@ -49,6 +49,24 @@ export const LinkWrapper = styled.div`
 `;
 
 export const DynamicContentUnit = styled.div`
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   flex-basis: 33.333333%;
+  overflow-x: scroll;
+
+  &:nth-child(3n) .unitIcon {
+    color: #d56767;
+  }
+  &:nth-child(3n + 1) .unitIcon {
+    color: #d28861;
+  }
+  &:nth-child(3n + 2) .unitIcon {
+    color: #5d38db;
+  }
+`;
+export const WarnMessage = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #686868;
 `;
