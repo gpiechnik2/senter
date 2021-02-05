@@ -16,6 +16,8 @@ import changeUserAgentReducer from './changeUserAgent';
 import changeUserPasswordReducer from './changeUserPassword';
 import getNewsReducer from './getNews';
 import articlesReducer from './articles';
+import keywordsReducer from './keywords';
+import auditsReducer from './audits';
 
 export default combineReducers({
   authReducer,
@@ -34,4 +36,6 @@ export default combineReducers({
   changeUserPasswordReducer,
   getNewsReducer,
   articlesReducer,
+  keywordsReducer,
+  auditsReducer,
 });

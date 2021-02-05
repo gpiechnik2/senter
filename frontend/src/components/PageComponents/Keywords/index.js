@@ -1,3 +1,9 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Moment from 'react-moment';
+
+import { getkeywords } from '../../../actions/keywords';
+
 import {
   StaticContentWrap,
   GraphicWrap,
@@ -9,6 +15,7 @@ import {
   DeleteIcon,
   LinkWrapper,
   DynamicContentUnit,
+  WarnMessage,
 } from '../../Common/UserContentElements';
 import {
   ColumnContainerBasic,
@@ -23,13 +30,29 @@ import {
   ContentLink,
   LinkIconWrap,
   LinkIcon,
-  ArticleIcon,
   KeywordIcon,
 } from '../../PageComponents/Dashboard/DashboardElements';
+import { StyledSpinner } from '../../Common/StyledSpinner';
 
 import graphic from '../../../images/keyword_planner.jpg';
 
+const colors = ['#5D38DB', '#D56767', '#D28861'];
+
 const Keywords = () => {
+  const { keywordsData, isError, isLoading } = useSelector(
+    (state) => state.keywordsReducer
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getkeywords());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log('keywords', keywordsData);
+    console.log('loading?', isLoading);
+  }, [keywordsData, isLoading]);
+
   return (
     <>
       <SingleElementContainer>
@@ -47,66 +70,56 @@ const Keywords = () => {
             </StaticTextWrap>
           </StaticContentWrap>
           <DynamicContentWrap>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <KeywordIcon />
-                </IconContentWrap>
-                <Title>Keyword</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
+            {isLoading ? (
+              <StyledSpinner viewBox='0 0 50 50'>
+                <circle
+                  className='path'
+                  cx='25'
+                  cy='25'
+                  r='20'
+                  fill='none'
+                  strokeWidth='4'
+                />
+              </StyledSpinner>
+            ) : keywordsData?.length ? (
+              <>
+                {keywordsData.map((keyword) => (
+                  <DynamicContentUnit key={keyword.id}>
+                    <ContentTitle>
+                      <IconContentWrap>
+                        <KeywordIcon className='unitIcon' />
+                      </IconContentWrap>
+                      <Title>{keyword.keyword}</Title>
+                    </ContentTitle>
+                    <ContentText>
+                      <Moment format='DD-MM-YYYY'>
+                        {keyword.publish_date}
+                      </Moment>
+                    </ContentText>
+                    <LinkWrapper>
+                      <ContentLink to='/articles'>
+                        <LinkIconWrap>
+                          <LinkIcon />
+                        </LinkIconWrap>
+                        Check planner
+                      </ContentLink>
+                      <DeleteIconWrap>
+                        <DeleteIcon />
+                      </DeleteIconWrap>
+                    </LinkWrapper>
+                  </DynamicContentUnit>
+                ))}
+              </>
+            ) : (
+              <WarnMessage>
+                No planners found. To add planner go to
+                <ContentLink
+                  style={{ marginLeft: '5px' }}
+                  to='/keyword-planner'>
+                  Keyword planner
                 </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <KeywordIcon />
-                </IconContentWrap>
-                <Title>Keyword</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
-                </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <KeywordIcon />
-                </IconContentWrap>
-                <Title>Keyword</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
-                </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
+              </WarnMessage>
+            )}
           </DynamicContentWrap>
         </ColumnContainerBasic>
       </SingleElementContainer>
