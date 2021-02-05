@@ -47,6 +47,11 @@ const KeywordPlanner = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(createkeyword(formData));
+
+    setFormData({
+      ...formData,
+      keyword: '',
+    });
   };
 
   return (
@@ -68,6 +73,7 @@ const KeywordPlanner = () => {
               name='keyword'
               placeholder='Keyword'
               aria-describedby='Enter keyword'
+              value={formData.keyword}
               onChange={handleChange}
             />
             <FormSelectContainer>
