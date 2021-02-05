@@ -1,6 +1,7 @@
 import {
   REQUEST_ARTICLES_DATA,
   RECEIVE_ARTICLES_DATA,
+  DELETE_ARTICLE,
 } from '../constants/actionTypes';
 
 const initalState = {
@@ -26,6 +27,16 @@ const articlesReducer = (state = initalState, action) => {
         isLoading: false,
         isError: action.isError,
         errorMsg: action.errorMsg,
+      };
+    case DELETE_ARTICLE:
+      return {
+        ...state,
+        articlesData: state.articlesData.filter(
+          (article) => article.id !== action.payload
+        ),
+        isLoading: false,
+        isError: false,
+        errorMsg: '',
       };
     default:
       return state;

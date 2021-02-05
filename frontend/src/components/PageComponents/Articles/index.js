@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getarticles } from '../../../actions/articles';
+import { getarticles, deleteArticle } from '../../../actions/articles';
 
 import {
   StaticContentWrap,
@@ -96,7 +96,8 @@ const Articles = () => {
                         </LinkIconWrap>
                         Check article
                       </ContentLink>
-                      <DeleteIconWrap>
+                      <DeleteIconWrap
+                        onClick={() => dispatch(deleteArticle(article.id))}>
                         <DeleteIcon />
                       </DeleteIconWrap>
                     </LinkWrapper>
