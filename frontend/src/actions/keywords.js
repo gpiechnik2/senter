@@ -2,6 +2,7 @@ import * as api from '../api';
 import {
   REQUEST_KEYWORDS_DATA,
   RECEIVE_KEYWORDS_DATA,
+  DELETE_KEYWORD,
 } from '../constants/actionTypes';
 
 export const getkeywords = () => async (dispatch) => {
@@ -17,6 +18,21 @@ export const getkeywords = () => async (dispatch) => {
       isError: false,
       errorMsg: '',
     });
+  } catch (error) {
+    dispatch({
+      type: RECEIVE_KEYWORDS_DATA,
+      keywordsData: null,
+      isError: true,
+      errorMsg: error,
+    });
+  }
+};
+
+export const deleteKeyword = (id) => async (dispatch) => {
+  try {
+    await api.deleteKeyword(id);
+
+    dispatch({ type: DELETE_KEYWORD, payload: id });
   } catch (error) {
     dispatch({
       type: RECEIVE_KEYWORDS_DATA,

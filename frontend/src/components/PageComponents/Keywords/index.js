@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
-import { getkeywords } from '../../../actions/keywords';
+import { getkeywords, deleteKeyword } from '../../../actions/keywords';
 
 import {
   StaticContentWrap,
@@ -35,8 +35,6 @@ import {
 import { StyledSpinner } from '../../Common/StyledSpinner';
 
 import graphic from '../../../images/keyword_planner.jpg';
-
-const colors = ['#5D38DB', '#D56767', '#D28861'];
 
 const Keywords = () => {
   const { keywordsData, isError, isLoading } = useSelector(
@@ -103,7 +101,8 @@ const Keywords = () => {
                         </LinkIconWrap>
                         Check planner
                       </ContentLink>
-                      <DeleteIconWrap>
+                      <DeleteIconWrap
+                        onClick={() => dispatch(deleteKeyword(keyword.id))}>
                         <DeleteIcon />
                       </DeleteIconWrap>
                     </LinkWrapper>
