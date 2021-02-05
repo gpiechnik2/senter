@@ -1,6 +1,7 @@
 import {
   REQUEST_AUDITS_DATA,
   RECEIVE_AUDITS_DATA,
+  DELETE_AUDIT,
 } from '../constants/actionTypes';
 
 const initalState = {
@@ -26,6 +27,16 @@ const auditsReducer = (state = initalState, action) => {
         isLoading: false,
         isError: action.isError,
         errorMsg: action.errorMsg,
+      };
+    case DELETE_AUDIT:
+      return {
+        ...state,
+        auditsData: state.auditsData.filter(
+          (audit) => audit.id !== action.payload
+        ),
+        isLoading: false,
+        isError: false,
+        errorMsg: '',
       };
     default:
       return state;

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
-import { getaudits } from '../../../actions/audits';
+import { getaudits, deleteAudit } from '../../../actions/audits';
 
 import {
   StaticContentWrap,
@@ -47,7 +47,7 @@ const Audits = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log('keywords', auditsData);
+    console.log('audits', auditsData);
     console.log('loading?', isLoading);
   }, [auditsData, isLoading]);
   return (
@@ -98,7 +98,8 @@ const Audits = () => {
                         </LinkIconWrap>
                         Check audit
                       </ContentLink>
-                      <DeleteIconWrap>
+                      <DeleteIconWrap
+                        onClick={() => dispatch(deleteAudit(audit.id))}>
                         <DeleteIcon />
                       </DeleteIconWrap>
                     </LinkWrapper>
@@ -108,10 +109,8 @@ const Audits = () => {
             ) : (
               <WarnMessage>
                 No audits found. To add audit go to
-                <ContentLink
-                  style={{ marginLeft: '5px' }}
-                  to='/keyword-planner'>
-                  Keyword planner
+                <ContentLink style={{ marginLeft: '5px' }} to='/audit'>
+                  Audit
                 </ContentLink>
               </WarnMessage>
             )}

@@ -41,6 +41,13 @@ export const getKeywordAnalysis = (formData) =>
   API.post('/keyword-analysis/', formData);
 
 export const getNews = () => API.get('/updates/');
+
 export const getArticles = () => API.get('/content-analysis/analyse/');
+export const deleteArticle = (id) =>
+  API.delete(`/content-analysis/analyse/${id}/`);
+
 export const getKeywords = () => API.get('/keyword-planner/');
+export const deleteKeyword = (id) => API.delete(`/keyword-planner/${id}/`);
+
 export const getAudits = () => API.get('/audit/');
+export const deleteAudit = (id) => API.delete(`/audit/${id}/`);
