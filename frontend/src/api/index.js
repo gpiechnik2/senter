@@ -42,3 +42,5 @@ export const getKeywordAnalysis = (formData) =>
 
 export const getNews = () => API.get('/updates/');
 export const getArticles = () => API.get('/content-analysis/analyse/');
+export const getKeywords = () => API.get('/keyword-planner/');
+export const getAudits = () => API.get('/audit/');

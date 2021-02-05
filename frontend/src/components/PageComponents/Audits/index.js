@@ -1,3 +1,9 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Moment from 'react-moment';
+
+import { getaudits } from '../../../actions/audits';
+
 import {
   StaticContentWrap,
   GraphicWrap,
@@ -9,6 +15,7 @@ import {
   DeleteIcon,
   LinkWrapper,
   DynamicContentUnit,
+  WarnMessage,
 } from '../../Common/UserContentElements';
 import {
   ColumnContainerBasic,
@@ -23,13 +30,26 @@ import {
   ContentLink,
   LinkIconWrap,
   LinkIcon,
-  ArticleIcon,
   AuditIcon,
 } from '../../PageComponents/Dashboard/DashboardElements';
+import { StyledSpinner } from '../../Common/StyledSpinner';
 
 import graphic from '../../../images/myaudits.jpg';
 
 const Audits = () => {
+  const { auditsData, isError, isLoading } = useSelector(
+    (state) => state.auditsReducer
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getaudits());
+  }, [dispatch]);
+
+  useEffect(() => {
+    console.log('keywords', auditsData);
+    console.log('loading?', isLoading);
+  }, [auditsData, isLoading]);
   return (
     <>
       <SingleElementContainer>
@@ -47,86 +67,54 @@ const Audits = () => {
             </StaticTextWrap>
           </StaticContentWrap>
           <DynamicContentWrap>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <AuditIcon />
-                </IconContentWrap>
-                <Title>Url</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
+            {isLoading ? (
+              <StyledSpinner viewBox='0 0 50 50'>
+                <circle
+                  className='path'
+                  cx='25'
+                  cy='25'
+                  r='20'
+                  fill='none'
+                  strokeWidth='4'
+                />
+              </StyledSpinner>
+            ) : auditsData?.length ? (
+              <>
+                {auditsData.map((audit) => (
+                  <DynamicContentUnit key={audit.id}>
+                    <ContentTitle>
+                      <IconContentWrap>
+                        <AuditIcon className='unitIcon' />
+                      </IconContentWrap>
+                      <Title>{audit.url}</Title>
+                    </ContentTitle>
+                    <ContentText>
+                      <Moment format='DD-MM-YYYY'>{audit.publish_date}</Moment>
+                    </ContentText>
+                    <LinkWrapper>
+                      <ContentLink to='/articles'>
+                        <LinkIconWrap>
+                          <LinkIcon />
+                        </LinkIconWrap>
+                        Check audit
+                      </ContentLink>
+                      <DeleteIconWrap>
+                        <DeleteIcon />
+                      </DeleteIconWrap>
+                    </LinkWrapper>
+                  </DynamicContentUnit>
+                ))}
+              </>
+            ) : (
+              <WarnMessage>
+                No audits found. To add audit go to
+                <ContentLink
+                  style={{ marginLeft: '5px' }}
+                  to='/keyword-planner'>
+                  Keyword planner
                 </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <AuditIcon />
-                </IconContentWrap>
-                <Title>Url</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
-                </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <AuditIcon />
-                </IconContentWrap>
-                <Title>Url</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
-                </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
-            <DynamicContentUnit>
-              <ContentTitle>
-                <IconContentWrap>
-                  <AuditIcon />
-                </IconContentWrap>
-                <Title>Url</Title>
-              </ContentTitle>
-              <ContentText>page_title</ContentText>
-              <LinkWrapper>
-                <ContentLink to='/articles'>
-                  <LinkIconWrap>
-                    <LinkIcon />
-                  </LinkIconWrap>
-                  Check article
-                </ContentLink>
-                <DeleteIconWrap>
-                  <DeleteIcon />
-                </DeleteIconWrap>
-              </LinkWrapper>
-            </DynamicContentUnit>
+              </WarnMessage>
+            )}
           </DynamicContentWrap>
         </ColumnContainerBasic>
       </SingleElementContainer>
