@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getnews } from '../../../actions/getNews';
-import { getarticles } from '../../../actions/articles';
 
 import {
   DashboardContainer,
@@ -68,9 +67,7 @@ const Dashboard = () => {
                 <Title>My articles</Title>
               </ContentTitle>
               <ContentText>Your saved documents</ContentText>
-              <ContentLink
-                to='/articles'
-                onClick={() => dispatch(getarticles())}>
+              <ContentLink to='/articles'>
                 <LinkIconWrap>
                   <LinkIcon />
                 </LinkIconWrap>

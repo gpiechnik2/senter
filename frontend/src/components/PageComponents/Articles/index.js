@@ -14,6 +14,7 @@ import {
   DeleteIcon,
   LinkWrapper,
   DynamicContentUnit,
+  WarnMessage,
 } from '../../Common/UserContentElements';
 import {
   ColumnContainerBasic,
@@ -66,7 +67,7 @@ const Articles = () => {
             </StaticTextWrap>
           </StaticContentWrap>
           <DynamicContentWrap>
-            {!articlesData?.length ? (
+            {isLoading ? (
               <StyledSpinner viewBox='0 0 50 50'>
                 <circle
                   className='path'
@@ -77,13 +78,13 @@ const Articles = () => {
                   strokeWidth='4'
                 />
               </StyledSpinner>
-            ) : (
+            ) : articlesData?.length ? (
               <>
                 {articlesData.map((article) => (
                   <DynamicContentUnit key={article.id}>
                     <ContentTitle>
                       <IconContentWrap>
-                        <ArticleIcon />
+                        <ArticleIcon className='unitIcon' />
                       </IconContentWrap>
                       <Title>{article.keyword}</Title>
                     </ContentTitle>
@@ -102,6 +103,15 @@ const Articles = () => {
                   </DynamicContentUnit>
                 ))}
               </>
+            ) : (
+              <WarnMessage>
+                No articles found. To add article go to
+                <ContentLink
+                  style={{ marginLeft: '5px' }}
+                  to='/content-analysis'>
+                  Content analysis
+                </ContentLink>
+              </WarnMessage>
             )}
           </DynamicContentWrap>
         </ColumnContainerBasic>
