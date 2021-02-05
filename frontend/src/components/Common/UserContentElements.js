@@ -38,6 +38,7 @@ export const DeleteIconWrap = styled.div`
   display: flex;
   align-items: center;
   font-size: 20px;
+  cursor: pointer;
 `;
 
 export const DeleteIcon = styled(CgTrash)`
