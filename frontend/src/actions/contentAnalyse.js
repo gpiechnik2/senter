@@ -19,14 +19,15 @@ export const contentanalyse = (formData) => async (dispatch) => {
       isError: false,
       errorMsg: '',
     });
-    dispatch({
-      type: CLEAR_CHECK_DATA,
-    });
+
     setTimeout(() => {
+      dispatch({
+        type: CLEAR_CHECK_DATA,
+      });
       dispatch({
         type: CLEAR_ANALYSE_DATA,
       });
-    }, 3250);
+    }, 100);
   } catch (error) {
     dispatch({
       type: RECEIVE_ANALYSE_DATA,
