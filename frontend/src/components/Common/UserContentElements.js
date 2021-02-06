@@ -33,11 +33,14 @@ export const DynamicContentWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-export const DeleteIconWrap = styled.div`
+export const DeleteIconWrap = styled.button`
   margin-left: 20px;
   display: flex;
   align-items: center;
+  border: 0;
+  padding: 0;
   font-size: 20px;
+  background-color: transparent;
   cursor: pointer;
 `;
 
