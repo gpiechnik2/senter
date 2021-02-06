@@ -55,3 +55,25 @@ export const NextIcon = styled(GrFormNext)`
   line-height: 42px;
   color: #707070;
 `;
+
+export const CancelButton = styled.button`
+  margin-right: 8px;
+  min-height: 40px;
+  min-width: 138px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 13px;
+  color: #707070;
+  background-color: #ffffff;
+  border: 1px solid #171717;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    color: #fff;
+    background-color: #707070;
+  }
+`;
