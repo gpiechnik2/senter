@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { contentcheck } from '../../../actions/contentAnalysisCheck';
 import { contentanalyse } from '../../../actions/contentAnalyse';
+import { editArticle } from '../../../actions/articles';
 
 import CheckData from './CheckData';
 
@@ -28,7 +29,7 @@ import {
   MessageAnalysisWrapper,
 } from '../../Common/AnalysisElements';
 
-import { ButtonBasic } from '../../Common/ButtonElements';
+import { ButtonBasic, CancelButton } from '../../Common/ButtonElements';
 
 const initialState = {
   keyword: '',
@@ -41,19 +42,14 @@ const ContentAnalysis = () => {
   const { analyseData, isLoading, isError } = useSelector(
     (state) => state.contentAnalyseReducer
   );
+  const { articleToEdit, isEditing, isSuccess } = useSelector(
+    (state) => state.articlesReducer
+  );
   const [contentForm, setContentForm] = useState(initialState);
   const dispatch = useDispatch();
   const initialRender = useRef(true);
 
-  const handleChange = (e) => {
-    setContentForm({ ...contentForm, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    dispatch(contentanalyse(contentForm));
-
+  const clear = () => {
     setContentForm({
       keyword: '',
       page_title: '',
@@ -61,6 +57,33 @@ const ContentAnalysis = () => {
       text_to_check: '',
     });
   };
+
+  const handleChange = (e) => {
+    setContentForm({ ...contentForm, [e.target.name]: e.target.value });
+  };
+
+  const handleCancel = () => {
+    setTimeout(() => {
+      dispatch({ type: 'CLEAR_EDIT_ARTICLE' });
+      dispatch({ type: 'CLEAR_CHECK_DATA' });
+    }, 100);
+
+    clear();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (isEditing) {
+      dispatch(editArticle(articleToEdit.id, contentForm));
+    } else {
+      dispatch(contentanalyse(contentForm));
+    }
+  };
+
+  useEffect(() => {
+    if (articleToEdit) setContentForm(articleToEdit);
+  }, [articleToEdit]);
 
   useEffect(() => {
     if (initialRender.current) {
@@ -73,11 +96,14 @@ const ContentAnalysis = () => {
   useEffect(() => {
     if (analyseData && !isError) {
       toast.success('Article saved successfully!');
-      console.log(analyseData);
+      clear();
     } else if (analyseData && isError) {
       toast.error(`We couldn't save that one.`);
+    } else if (isSuccess) {
+      toast.success('Article edited successfully!');
+      clear();
     }
-  }, [analyseData, isError]);
+  }, [analyseData, isError, isSuccess]);
 
   return (
     <>
@@ -129,6 +155,9 @@ const ContentAnalysis = () => {
             </MessageAnalysisWrapper>
           </ExpandableAnalysisContainer>
           <BtnWrap>
+            {isEditing ? (
+              <CancelButton onClick={handleCancel}>Cancel</CancelButton>
+            ) : null}
             <ButtonBasic type='submit' disabled={isLoading}>
               Save
             </ButtonBasic>
