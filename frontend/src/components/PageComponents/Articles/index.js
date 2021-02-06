@@ -1,7 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getarticles, deleteArticle } from '../../../actions/articles';
+import {
+  getarticles,
+  deleteArticle,
+  getArticle,
+} from '../../../actions/articles';
 
 import {
   StaticContentWrap,
@@ -90,7 +94,9 @@ const Articles = () => {
                     </ContentTitle>
                     <ContentText>{article.page_title}</ContentText>
                     <LinkWrapper>
-                      <ContentLink to='/articles'>
+                      <ContentLink
+                        onClick={() => dispatch(getArticle(article.id))}
+                        to='/content-analysis'>
                         <LinkIconWrap>
                           <LinkIcon />
                         </LinkIconWrap>

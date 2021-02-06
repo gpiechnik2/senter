@@ -45,6 +45,8 @@ export const getNews = () => API.get('/updates/');
 export const getArticles = () => API.get('/content-analysis/analyse/');
 export const deleteArticle = (id) =>
   API.delete(`/content-analysis/analyse/${id}/`);
+export const editArticle = (id, formData) =>
+  API.put(`/content-analysis/analyse/${id}/`, formData);
 
 export const getKeywords = () => API.get('/keyword-planner/');
 export const deleteKeyword = (id) => API.delete(`/keyword-planner/${id}/`);
