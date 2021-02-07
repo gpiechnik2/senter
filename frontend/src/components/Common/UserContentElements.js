@@ -74,3 +74,9 @@ export const WarnMessage = styled.span`
   font-size: 13px;
   color: #686868;
 `;
+
+export const ExternalLink = styled.a`
+  margin-left: 3px;
+  font-size: 13px;
+  color: #5d38db;
+`;
