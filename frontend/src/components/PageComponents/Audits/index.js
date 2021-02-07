@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
 
-import { getaudits, deleteAudit } from '../../../actions/audits';
+import { getaudits, deleteAudit, getAudit } from '../../../actions/audits';
 
 import {
   StaticContentWrap,
@@ -92,7 +92,9 @@ const Audits = () => {
                       <Moment format='DD-MM-YYYY'>{audit.publish_date}</Moment>
                     </ContentText>
                     <LinkWrapper>
-                      <ContentLink to='/articles'>
+                      <ContentLink
+                        onClick={() => dispatch(getAudit(audit.id))}
+                        to='/audit'>
                         <LinkIconWrap>
                           <LinkIcon />
                         </LinkIconWrap>

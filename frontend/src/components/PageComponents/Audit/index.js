@@ -42,6 +42,7 @@ const Audit = () => {
   const { createAuditData, isLoadingSave, isErrorSave } = useSelector(
     (state) => state.createAuditReducer
   );
+  const { isChecking } = useSelector((state) => state.auditsReducer);
   const [formData, setFormData] = useState(initialState);
   const [saveData, setSaveData] = useState(auditSaveInitialState);
   const dispatch = useDispatch();
@@ -107,22 +108,29 @@ const Audit = () => {
               onChange={handleChange}
             />
             <FormBtnWrap>
-              <ButtonBasic type='submit' disabled={isDisabled}>
+              <ButtonBasic
+                onClick={() => dispatch({ type: 'CLEAR_AUDIT_CHECK' })}
+                type='submit'
+                disabled={isDisabled}>
                 Check
               </ButtonBasic>
             </FormBtnWrap>
           </FormWrap>
         </FormContainer>
         <AuditData />
-        {auditCheckData?.analysis.length ? (
-          <ColumnContainerBasic>
-            <SaveButtonWrap>
-              <ButtonBasic onClick={handleSave} disabled={isLoadingSave}>
-                Save
-              </ButtonBasic>
-            </SaveButtonWrap>
-          </ColumnContainerBasic>
-        ) : null}
+        {isChecking ? null : (
+          <>
+            {auditCheckData?.analysis.length ? (
+              <ColumnContainerBasic>
+                <SaveButtonWrap>
+                  <ButtonBasic onClick={handleSave} disabled={isLoadingSave}>
+                    Save
+                  </ButtonBasic>
+                </SaveButtonWrap>
+              </ColumnContainerBasic>
+            ) : null}
+          </>
+        )}
       </AuditContainer>
     </>
   );

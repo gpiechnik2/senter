@@ -48,13 +48,20 @@ const AuditData = () => {
   const { auditCheckData, isError, isLoading, errorMsg } = useSelector(
     (state) => state.auditCheckReducer
   );
+  const { auditToCheck, isChecking } = useSelector(
+    (state) => state.auditsReducer
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [analysisPerPage] = useState(1);
 
+  const dataToDisplay = isChecking
+    ? auditToCheck?.audit
+    : auditCheckData?.analysis;
+
   const indexOfLastAnalysis = currentPage * analysisPerPage;
   const indexOfFirstAnalysis = indexOfLastAnalysis - analysisPerPage;
-  const currentAnalysis = auditCheckData?.analysis.length
-    ? auditCheckData.analysis.slice(indexOfFirstAnalysis, indexOfLastAnalysis)
+  const currentAnalysis = dataToDisplay?.length
+    ? dataToDisplay.slice(indexOfFirstAnalysis, indexOfLastAnalysis)
     : null;
 
   const handlePageChange = (current) => {
@@ -85,7 +92,7 @@ const AuditData = () => {
       </span>
     );
 
-  if (auditCheckData?.analysis.length === 0) {
+  if (dataToDisplay?.length === 0) {
     return (
       <span style={{ color: '#EB6969' }}>
         Something went wrong, try again later.
@@ -104,7 +111,7 @@ const AuditData = () => {
         strokeWidth='4'
       />
     </StyledSpinner>
-  ) : auditCheckData?.analysis.length ? (
+  ) : dataToDisplay?.length ? (
     <>
       {currentAnalysis.map((analysis, i) => (
         <AuditAnalysisContainer key={i}>
@@ -836,7 +843,7 @@ const AuditData = () => {
           defaultPageSize={1}
           defaultCurrent={1}
           current={currentPage}
-          total={auditCheckData.analysis.length}
+          total={dataToDisplay.length}
           onChange={handlePageChange}
           locale={localeInfo}
           prevIcon={<PreviousIcon />}
