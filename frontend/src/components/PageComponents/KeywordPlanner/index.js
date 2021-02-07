@@ -63,8 +63,11 @@ const KeywordPlanner = () => {
           </GraphicWrap>
           <FormTitle>Keyword planner</FormTitle>
           <FormText>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy.
+            With the keyword planner you can automate selection of keywords or
+            keyphrase which will help with positioning of your website. There
+            are several sources to do this - you can get up to six types of
+            suggestions. It will save your time and help you to avoid manual
+            researches.
           </FormText>
           <FormWrap onSubmit={onSubmit}>
             <FormInput

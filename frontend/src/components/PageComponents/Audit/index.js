@@ -94,8 +94,9 @@ const Audit = () => {
           </GraphicWrap>
           <FormTitle>Website audit</FormTitle>
           <FormText>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy.
+            Audit analyzes the entire domain for SEO and provides you detailed
+            analysis and improvement opportunities. This is an extended web
+            analysis.
           </FormText>
           <FormWrap onSubmit={onSubmit}>
             <FormInput

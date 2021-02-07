@@ -52,8 +52,11 @@ const KeywordAnalysis = () => {
           </GraphicWrap>
           <FormTitle>Keyword analysis</FormTitle>
           <FormText>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy.
+            You get information about the competition pages. Keyword analysis
+            helps you to scan all of the pages that interest you. You can do a
+            quick research of first positions for a keywords or keyphrase. This
+            gives us the opportunity to „look” what we could change on our
+            website to get a similar result.
           </FormText>
           <FormWrap onSubmit={onSubmit}>
             <FormInput

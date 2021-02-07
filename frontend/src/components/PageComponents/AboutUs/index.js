@@ -5,6 +5,7 @@ import {
   GraphicImg,
 } from '../../Common/ContainerElements';
 import { FormTitle, FormText } from '../../Common/FormElements';
+import { ExternalLink } from '../../Common/UserContentElements';
 
 import graphic from '../../../images/about_us.jpg';
 
@@ -18,8 +19,14 @@ const AboutUs = () => {
           </GraphicContainer>
           <FormTitle>About us</FormTitle>
           <FormText>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy.
+            We are the group of developers that creates and provides tools to
+            improve SEO on websites. If you need to contact with us, send us a
+            message on
+            <ExternalLink
+              href='https://github.com/gpiechnik2/senter'
+              target='_blank'>
+              https://github.com/gpiechnik2/senter
+            </ExternalLink>
           </FormText>
         </ColumnContainerBasic>
       </SingleElementContainer>

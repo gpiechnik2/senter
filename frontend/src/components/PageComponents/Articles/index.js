@@ -59,10 +59,7 @@ const Articles = () => {
             </GraphicWrap>
             <StaticTextWrap>
               <StaticTitle>My articles</StaticTitle>
-              <StaticText>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy.
-              </StaticText>
+              <StaticText>Check your saved content analysis.</StaticText>
             </StaticTextWrap>
           </StaticContentWrap>
           <DynamicContentWrap>

@@ -62,10 +62,7 @@ const ProfilePage = () => {
       <ProfilePageContainer>
         <FormContainer>
           <FormTitle>Contact email</FormTitle>
-          <FormText>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy.
-          </FormText>
+          <FormText>Change your contact email.</FormText>
           <FormWrap onSubmit={onSubmit}>
             <FormInput
               required

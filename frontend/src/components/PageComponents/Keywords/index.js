@@ -65,10 +65,7 @@ const Keywords = () => {
             </GraphicWrap>
             <StaticTextWrap>
               <StaticTitle>My keywords</StaticTitle>
-              <StaticText>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy.
-              </StaticText>
+              <StaticText>Check your saved keyword planners.</StaticText>
             </StaticTextWrap>
           </StaticContentWrap>
           <DynamicContentWrap>

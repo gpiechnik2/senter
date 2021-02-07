@@ -55,8 +55,9 @@ const WebsiteInfo = () => {
           </GraphicWrap>
           <FormTitle>Website info</FormTitle>
           <FormText>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy.
+            Thanks to it, you get basic information about page, such as its
+            keywords/keyphrase, description, or external links. It’s truly
+            recommended for research in a specific competitor.
           </FormText>
           <FormWrap onSubmit={onSubmit}>
             <FormInput

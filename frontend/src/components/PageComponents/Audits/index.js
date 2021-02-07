@@ -37,9 +37,7 @@ import { StyledSpinner } from '../../Common/StyledSpinner';
 import graphic from '../../../images/myaudits.jpg';
 
 const Audits = () => {
-  const { auditsData, isError, isLoading } = useSelector(
-    (state) => state.auditsReducer
-  );
+  const { auditsData, isLoading } = useSelector((state) => state.auditsReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,10 +58,7 @@ const Audits = () => {
             </GraphicWrap>
             <StaticTextWrap>
               <StaticTitle>My audits</StaticTitle>
-              <StaticText>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy.
-              </StaticText>
+              <StaticText>Check your saved audits.</StaticText>
             </StaticTextWrap>
           </StaticContentWrap>
           <DynamicContentWrap>

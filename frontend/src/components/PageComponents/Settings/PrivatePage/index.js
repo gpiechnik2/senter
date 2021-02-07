@@ -120,10 +120,7 @@ const PrivatePage = () => {
         <MultipleFormsContainer>
           <FormContainer>
             <FormTitle>Email</FormTitle>
-            <FormText>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy.
-            </FormText>
+            <FormText>Change your email.</FormText>
             <FormWrap onSubmit={onEmailSubmit}>
               <FormInput
                 required
@@ -143,10 +140,7 @@ const PrivatePage = () => {
           </FormContainer>
           <FormContainer>
             <FormTitle>Password</FormTitle>
-            <FormText>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy.
-            </FormText>
+            <FormText>Change your password.</FormText>
             <FormWrap
               onSubmit={handleSubmit(onPasswordSubmit)}
               noValidate
