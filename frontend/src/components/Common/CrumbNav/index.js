@@ -41,6 +41,12 @@ const CrumbNav = () => {
         return 'Settings';
       case '/settings/web-scraping':
         return 'Settings';
+      case '/articles':
+        return 'My articles';
+      case '/keywords':
+        return 'My keywords';
+      case '/audits':
+        return 'My audits';
       default:
         return 'Dashboard';
     }
