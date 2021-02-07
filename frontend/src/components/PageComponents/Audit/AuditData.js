@@ -180,8 +180,11 @@ const AuditData = () => {
 
           <ColumnContainerBasic>
             <ExpandableAnalysisContainer>
-              <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
-                <AccordionItem>
+              <Accordion
+                allowMultipleExpanded={true}
+                allowZeroExpanded={true}
+                preExpanded={['1']}>
+                <AccordionItem uuid='1'>
                   <AccordionItemHeading>
                     <AccordionItemButton className='accordion__button--analysis'>
                       Basic info

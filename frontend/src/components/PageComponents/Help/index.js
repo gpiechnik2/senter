@@ -28,9 +28,12 @@ export const Help = () => {
             <GraphicImg src={graphic} />
           </GraphicContainer>
           <ExpandableAnalysisContainer>
-            <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
+            <Accordion
+              allowMultipleExpanded={true}
+              allowZeroExpanded={true}
+              preExpanded={[0]}>
               {HelpdeskItems.map((item, i) => (
-                <AccordionItem key={i}>
+                <AccordionItem uuid={i} key={i}>
                   <AccordionItemHeading>
                     <AccordionItemButton className='accordion__button--analysis'>
                       {item.title}
