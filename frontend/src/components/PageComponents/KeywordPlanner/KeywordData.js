@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -22,6 +23,16 @@ const KeywordData = () => {
   const { keywordData, isError, isLoading } = useSelector(
     (state) => state.keywordReducer
   );
+  const { keywordToCheck, isChecking } = useSelector(
+    (state) => state.keywordsReducer
+  );
+
+  useEffect(() => {
+    console.log(keywordToCheck);
+  }, [keywordToCheck]);
+
+  const dataToDisplay = isChecking ? keywordToCheck : keywordData;
+
   if (isError) return <span>Sorry, something went wrong</span>;
 
   return isLoading ? (
@@ -35,7 +46,7 @@ const KeywordData = () => {
         strokeWidth='4'
       />
     </StyledSpinner>
-  ) : keywordData ? (
+  ) : dataToDisplay ? (
     <>
       <ColumnContainerBasic>
         <ExpandableAnalysisContainer>
@@ -50,11 +61,11 @@ const KeywordData = () => {
                 <AnalysisElementWrapper>
                   <AnalysisElement>
                     <ElementTitle>Keyword</ElementTitle>
-                    <ElementText>{keywordData.keyword}</ElementText>
+                    <ElementText>{dataToDisplay.keyword}</ElementText>
                   </AnalysisElement>
                   <AnalysisElement>
                     <ElementTitle>Language </ElementTitle>
-                    <ElementText>{keywordData.language}</ElementText>
+                    <ElementText>{dataToDisplay.language}</ElementText>
                   </AnalysisElement>
                 </AnalysisElementWrapper>
               </AccordionItemPanel>
@@ -74,7 +85,7 @@ const KeywordData = () => {
               </AccordionItemHeading>
               <AccordionItemPanel className='accordion__panel--analysis'>
                 <AnalysisElementWrapper>
-                  {keywordData.pytrendsKeywords.map((pytrend, i) => (
+                  {dataToDisplay.pytrendsKeywords.map((pytrend, i) => (
                     <AnalysisElement key={i}>
                       <ElementTitle>{pytrend.title}</ElementTitle>
                       <ElementText>{pytrend.type}</ElementText>
@@ -87,7 +98,7 @@ const KeywordData = () => {
         </ExpandableAnalysisContainer>
       </ColumnContainerBasic>
 
-      {keywordData.serpKeywords.length ? (
+      {dataToDisplay.serpKeywords.length ? (
         <ColumnContainerBasic>
           <ExpandableAnalysisContainer>
             <Accordion allowMultipleExpanded={true} allowZeroExpanded={true}>
@@ -100,7 +111,7 @@ const KeywordData = () => {
                 <AccordionItemPanel className='accordion__panel--analysis'>
                   <AnalysisElementWrapper>
                     <AnalysisElement>
-                      {keywordData.serpKeywords.map((serp, i) => (
+                      {dataToDisplay.serpKeywords.map((serp, i) => (
                         <ElementText key={i}>{serp}</ElementText>
                       ))}
                     </AnalysisElement>
@@ -124,7 +135,7 @@ const KeywordData = () => {
               <AccordionItemPanel className='accordion__panel--analysis'>
                 <AnalysisElementWrapper>
                   <AnalysisElement>
-                    {keywordData.googleKeywords.map((keyword, i) => (
+                    {dataToDisplay.googleKeywords.map((keyword, i) => (
                       <ElementText key={i}>{keyword}</ElementText>
                     ))}
                   </AnalysisElement>
@@ -146,7 +157,7 @@ const KeywordData = () => {
               </AccordionItemHeading>
               <AccordionItemPanel className='accordion__panel--analysis'>
                 <AnalysisElementWrapper>
-                  {keywordData.googleSuggestionsQuestions.questions.map(
+                  {dataToDisplay.googleSuggestionsQuestions.questions.map(
                     ({ question, results }, i) => (
                       <AnalysisElement key={i}>
                         <ElementTitle>{question}</ElementTitle>
@@ -177,7 +188,7 @@ const KeywordData = () => {
               </AccordionItemHeading>
               <AccordionItemPanel className='accordion__panel--analysis'>
                 <AnalysisElementWrapper>
-                  {keywordData.googleSuggestionsPrepositions.prepositions.map(
+                  {dataToDisplay.googleSuggestionsPrepositions.prepositions.map(
                     ({ preposition, results }, i) => (
                       <AnalysisElement key={i}>
                         <ElementTitle>{preposition}</ElementTitle>
@@ -208,7 +219,7 @@ const KeywordData = () => {
               </AccordionItemHeading>
               <AccordionItemPanel className='accordion__panel--analysis'>
                 <AnalysisElementWrapper>
-                  {keywordData.googleSuggestionsComparisons.comparisons.map(
+                  {dataToDisplay.googleSuggestionsComparisons.comparisons.map(
                     ({ comparison, results }, i) => (
                       <AnalysisElement key={i}>
                         <ElementTitle>{comparison}</ElementTitle>
@@ -239,7 +250,7 @@ const KeywordData = () => {
               </AccordionItemHeading>
               <AccordionItemPanel className='accordion__panel--analysis'>
                 <AnalysisElementWrapper>
-                  {keywordData.googleSuggestionsAlphabeticals.letters.map(
+                  {dataToDisplay.googleSuggestionsAlphabeticals.letters.map(
                     ({ letter, results }, i) => (
                       <AnalysisElement key={i}>
                         <ElementTitle>{letter}</ElementTitle>

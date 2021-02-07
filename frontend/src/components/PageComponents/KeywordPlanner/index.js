@@ -90,7 +90,10 @@ const KeywordPlanner = () => {
               />
             </FormSelectContainer>
             <FormBtnWrap>
-              <ButtonBasic type='submit' disabled={isLoading}>
+              <ButtonBasic
+                onClick={() => dispatch({ type: 'CLEAR_KEYWORD_CHECK' })}
+                type='submit'
+                disabled={isLoading}>
                 Get keyword
               </ButtonBasic>
             </FormBtnWrap>

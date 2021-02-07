@@ -3,6 +3,7 @@ import {
   REQUEST_KEYWORDS_DATA,
   RECEIVE_KEYWORDS_DATA,
   DELETE_KEYWORD,
+  GET_KEYWORD,
 } from '../constants/actionTypes';
 
 export const getkeywords = () => async (dispatch) => {
@@ -37,6 +38,18 @@ export const deleteKeyword = (id) => async (dispatch) => {
     dispatch({
       type: RECEIVE_KEYWORDS_DATA,
       keywordsData: null,
+      isError: true,
+      errorMsg: error,
+    });
+  }
+};
+
+export const getKeyword = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_KEYWORD, payload: id });
+  } catch (error) {
+    dispatch({
+      type: GET_KEYWORD,
       isError: true,
       errorMsg: error,
     });
