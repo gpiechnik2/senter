@@ -40,7 +40,7 @@ import { StyledSpinner } from '../../Common/StyledSpinner';
 import graphic from '../../../images/myarticles.jpg';
 
 const Articles = () => {
-  const { articlesData, isError, isLoading } = useSelector(
+  const { articlesData, isLoading } = useSelector(
     (state) => state.articlesReducer
   );
   const dispatch = useDispatch();
@@ -48,11 +48,6 @@ const Articles = () => {
   useEffect(() => {
     dispatch(getarticles());
   }, [dispatch]);
-
-  useEffect(() => {
-    console.log('articles', articlesData);
-    console.log('loading?', isLoading);
-  }, [articlesData, isLoading]);
 
   return (
     <>
