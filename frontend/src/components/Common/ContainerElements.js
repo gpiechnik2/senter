@@ -43,3 +43,11 @@ export const GraphicImg = styled.img`
   -o-object-fit: cover;
   object-fit: cover;
 `;
+
+export const StyledProperWidth = styled.div`
+  min-width: 530px;
+  @media screen and (max-width: 768px) {
+    min-width: auto;
+    width: 100%;
+  }
+`;

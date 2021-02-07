@@ -19,6 +19,7 @@ import {
 } from '../../../Common/FormElements';
 import { RegisterErrorMsg } from '../../../PageComponents/Register/RegisterElements';
 import { ButtonBasic } from '../../../Common/ButtonElements';
+import { StyledProperWidth } from '../../../Common/ContainerElements';
 
 const initialStateEmail = {
   new_email: '',
@@ -118,26 +119,28 @@ const PrivatePage = () => {
     <>
       <PrivatePageContainer>
         <MultipleFormsContainer>
-          <FormContainer>
-            <FormTitle>Email</FormTitle>
-            <FormText>Change your email.</FormText>
-            <FormWrap onSubmit={onEmailSubmit}>
-              <FormInput
-                required
-                type='email'
-                name='new_email'
-                placeholder='Username'
-                aria-describedby='Enter email'
-                value={emailData.new_email}
-                onChange={handleEmailChange}
-              />
-              <FormBtnWrap>
-                <ButtonBasic type='submit' disabled={isLoadingEmail}>
-                  Change
-                </ButtonBasic>
-              </FormBtnWrap>
-            </FormWrap>
-          </FormContainer>
+          <StyledProperWidth>
+            <FormContainer>
+              <FormTitle>Email</FormTitle>
+              <FormText>Change your email.</FormText>
+              <FormWrap onSubmit={onEmailSubmit}>
+                <FormInput
+                  required
+                  type='email'
+                  name='new_email'
+                  placeholder='Username'
+                  aria-describedby='Enter email'
+                  value={emailData.new_email}
+                  onChange={handleEmailChange}
+                />
+                <FormBtnWrap>
+                  <ButtonBasic type='submit' disabled={isLoadingEmail}>
+                    Change
+                  </ButtonBasic>
+                </FormBtnWrap>
+              </FormWrap>
+            </FormContainer>
+          </StyledProperWidth>
           <FormContainer>
             <FormTitle>Password</FormTitle>
             <FormText>Change your password.</FormText>

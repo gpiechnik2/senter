@@ -15,6 +15,7 @@ import {
   FormBtnWrap,
 } from '../../../Common/FormElements';
 import { ButtonBasic } from '../../../Common/ButtonElements';
+import { StyledProperWidth } from '../../../Common/ContainerElements';
 
 const initialState = {
   user_agent: '',
@@ -60,28 +61,30 @@ const WebScrapingPage = () => {
   return (
     <>
       <WebScrapingPageContainer>
-        <FormContainer>
-          <FormTitle>User agent</FormTitle>
-          <FormText>
-            Change your user agent to connect website with different headers.
-          </FormText>
-          <FormWrap onSubmit={onSubmit}>
-            <FormInput
-              required
-              type='text'
-              name='user_agent'
-              placeholder='Mozilla/43s/320 - 32 cddd'
-              aria-describedby='Enter user agent'
-              value={formData.user_agent}
-              onChange={handleChange}
-            />
-            <FormBtnWrap>
-              <ButtonBasic type='submit' disabled={isLoading}>
-                Change
-              </ButtonBasic>
-            </FormBtnWrap>
-          </FormWrap>
-        </FormContainer>
+        <StyledProperWidth>
+          <FormContainer>
+            <FormTitle>User agent</FormTitle>
+            <FormText>
+              Change your user agent to connect website with different headers.
+            </FormText>
+            <FormWrap onSubmit={onSubmit}>
+              <FormInput
+                required
+                type='text'
+                name='user_agent'
+                placeholder='Mozilla/43s/320 - 32 cddd'
+                aria-describedby='Enter user agent'
+                value={formData.user_agent}
+                onChange={handleChange}
+              />
+              <FormBtnWrap>
+                <ButtonBasic type='submit' disabled={isLoading}>
+                  Change
+                </ButtonBasic>
+              </FormBtnWrap>
+            </FormWrap>
+          </FormContainer>
+        </StyledProperWidth>
       </WebScrapingPageContainer>
     </>
   );

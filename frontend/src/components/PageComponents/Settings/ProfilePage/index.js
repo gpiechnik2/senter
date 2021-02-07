@@ -15,6 +15,7 @@ import {
   FormBtnWrap,
 } from '../../../Common/FormElements';
 import { ButtonBasic } from '../../../Common/ButtonElements';
+import { StyledProperWidth } from '../../../Common/ContainerElements';
 
 const initialState = {
   new_contact_email: '',
@@ -61,24 +62,26 @@ const ProfilePage = () => {
     <>
       <ProfilePageContainer>
         <FormContainer>
-          <FormTitle>Contact email</FormTitle>
-          <FormText>Change your contact email.</FormText>
-          <FormWrap onSubmit={onSubmit}>
-            <FormInput
-              required
-              type='email'
-              name='new_contact_email'
-              placeholder='Email'
-              aria-describedby='Enter email'
-              value={formData.new_contact_email}
-              onChange={handleChange}
-            />
-            <FormBtnWrap>
-              <ButtonBasic type='submit' disabled={isLoading}>
-                Change
-              </ButtonBasic>
-            </FormBtnWrap>
-          </FormWrap>
+          <StyledProperWidth>
+            <FormTitle>Contact email</FormTitle>
+            <FormText>Change your contact email.</FormText>
+            <FormWrap onSubmit={onSubmit}>
+              <FormInput
+                required
+                type='email'
+                name='new_contact_email'
+                placeholder='Email'
+                aria-describedby='Enter email'
+                value={formData.new_contact_email}
+                onChange={handleChange}
+              />
+              <FormBtnWrap>
+                <ButtonBasic type='submit' disabled={isLoading}>
+                  Change
+                </ButtonBasic>
+              </FormBtnWrap>
+            </FormWrap>
+          </StyledProperWidth>
         </FormContainer>
       </ProfilePageContainer>
     </>
