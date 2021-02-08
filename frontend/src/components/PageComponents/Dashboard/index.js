@@ -66,7 +66,7 @@ const Dashboard = () => {
                 </IconContentWrap>
                 <Title>My articles</Title>
               </ContentTitle>
-              <ContentText>Your saved documents</ContentText>
+              <ContentText>Your saved documents.</ContentText>
               <ContentLink to='/articles'>
                 <LinkIconWrap>
                   <LinkIcon />
@@ -81,7 +81,7 @@ const Dashboard = () => {
                 </IconContentWrap>
                 <Title>My keywords</Title>
               </ContentTitle>
-              <ContentText>Your saved planners</ContentText>
+              <ContentText>Your saved planners.</ContentText>
               <ContentLink to='/keywords'>
                 <LinkIconWrap>
                   <LinkIcon />
@@ -96,7 +96,7 @@ const Dashboard = () => {
                 </IconContentWrap>
                 <Title>My audits</Title>
               </ContentTitle>
-              <ContentText>Your saved audits</ContentText>
+              <ContentText>Your saved website audits.</ContentText>
               <ContentLink to='/audits'>
                 <LinkIconWrap>
                   <LinkIcon />

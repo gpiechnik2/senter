@@ -42,9 +42,6 @@ export const signin = (formData, history) => async (dispatch) => {
     window.location.reload();
   } catch (error) {
     const messageLogin = error.response.data.non_field_errors[0];
-
-    console.log(error.response);
-
     dispatch({
       type: LOGIN_MESSAGE,
       payload: messageLogin,

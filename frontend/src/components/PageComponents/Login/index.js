@@ -78,7 +78,7 @@ const Login = () => {
       <SingleElementContainer>
         <ColumnContainerBasic>
           <LoginContainer>
-            <LoginTitle>Zaloguj się</LoginTitle>
+            <LoginTitle>Sign in</LoginTitle>
             <LoginFormWrap
               onSubmit={handleSubmit(onSubmit)}
               noValidate
@@ -121,7 +121,7 @@ const Login = () => {
                     style={{
                       boxShadow: '0px 12px 35px rgba(52, 77, 178, 0.34)',
                     }}>
-                    Zaloguj
+                    Sign in
                   </ButtonBasic>
                 </LoginButtonWrap>
               </LoginInputWrap>
@@ -150,7 +150,7 @@ const Login = () => {
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}>
                       <IconGoogle />
-                      Zaloguj się przez Google
+                      Sign in with Google
                     </ButtonGoogle>
                   )}
                   onSuccess={googleSucces}

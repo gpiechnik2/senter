@@ -95,7 +95,7 @@ const Register = () => {
               <RegisterGraphicWrap>
                 <RegisterGraphic src={registerGraphic} />
               </RegisterGraphicWrap>
-              <RegisterTitle>Zarejestruj się</RegisterTitle>
+              <RegisterTitle>Sign up</RegisterTitle>
             </RegisterFrontWrap>
 
             <RegisterFormWrap
@@ -253,7 +253,7 @@ const Register = () => {
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}>
                       <IconGoogle />
-                      Zaloguj się przez Google
+                      Sign in with Google
                     </ButtonGoogle>
                   )}
                   onSuccess={googleSucces}
