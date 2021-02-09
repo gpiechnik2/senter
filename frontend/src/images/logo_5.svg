@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="33" viewBox="0 0 60 33">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #5d38db;
+        font-size: 14px;
+        font-family: SegoeUIBlack, Segoe UI;
+        font-weight: 900;
+      }
+    </style>
+  </defs>
+  <text id="MIRROR_CODE" data-name="MIRROR
+CODE" class="cls-1"><tspan x="2" y="15">MIRROR</tspan><tspan x="10" y="29">CODE</tspan></text>
+</svg>
