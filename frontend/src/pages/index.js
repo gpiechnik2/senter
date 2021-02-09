@@ -1,18 +1,9 @@
-import { Link } from 'react-router-dom';
+import LandingPage from '../components/PageComponents/LandingPage';
 
 const HomePage = () => {
   return (
     <>
-      <h1>Home page</h1>
-
-      <Link to='/dashboard'>Dashboard</Link>
-      <br />
-      <Link to='/login'>zaloguj sie</Link>
-      <br />
-      <Link to='/register'>zarejestruj sie</Link>
-      <br />
-      <Link to='/blog'>BLOG</Link>
-      <br />
+      <LandingPage />
     </>
   );
 };

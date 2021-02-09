@@ -50,11 +50,6 @@ const Keywords = () => {
     dispatch(getkeywords());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log('keywords', keywordsData);
-    console.log('loading?', isLoading);
-  }, [keywordsData, isLoading]);
-
   return (
     <>
       <SingleElementContainer>

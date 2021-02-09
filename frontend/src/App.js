@@ -5,7 +5,6 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import HomePage from './pages';
 import PublicLayoutPage from './pages/PublicLayoutPage';
 import PrivateLayoutPage from './pages/PrivateLayoutPage';
 
@@ -27,7 +26,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path='/' component={HomePage} exact />
+        <Route exact path='/home' component={PublicLayoutPage} />
         <Route exact path='/login' component={PublicLayoutPage} />
         <Route exact path='/register' component={PublicLayoutPage} />
         <Route exact path='/about' component={PublicLayoutPage} />
