@@ -5,6 +5,7 @@ import RegisterPage from './register';
 import AboutUsPage from './about-us';
 import SupportUsPage from './support-us';
 import NewsPage from './news';
+import HomePage from './index';
 
 import { Toaster } from 'react-hot-toast';
 
@@ -33,6 +34,7 @@ const PublicLayoutPage = () => {
             }}
           />
           <Switch>
+            <Route path='/home' component={HomePage} />
             <Route path='/login' component={LoginPage} />
             <Route path='/register' component={RegisterPage} />
             <Route path='/about' component={AboutUsPage} />
