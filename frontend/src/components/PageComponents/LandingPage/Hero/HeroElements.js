@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 export const HeroContainer = styled.div`
-  margin-top: 10%;
-  padding: 0 30px;
-  height: 720px;
+  padding: 100px 30px;
   display: flex;
   justify-content: center;
 `;
