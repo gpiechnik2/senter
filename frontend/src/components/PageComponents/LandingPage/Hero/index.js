@@ -41,10 +41,17 @@ const Hero = () => {
           </HeroH1>
           <HeroP>Analyze, audit, and analyze keywords from one place.</HeroP>
           <HeroButtonWrap>
-            <LandingButton>Start now</LandingButton>
+            <LandingButton to='/register'>Start now</LandingButton>
           </HeroButtonWrap>
           <HeroLinkWrap>
-            <HeroLink>Learn more</HeroLink>
+            <HeroLink
+              to='inside'
+              smooth={true}
+              duration={200}
+              exact='true'
+              offset={-100}>
+              Learn more
+            </HeroLink>
           </HeroLinkWrap>
           <HeroLogosContainer>
             {logosData.map((logo, i) => (

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Link as LinkRouter } from 'react-router-dom';
+import { Link as LinkScroll } from 'react-scroll';
 
 export const HeroContainer = styled.div`
   padding: 100px 30px;
@@ -34,7 +36,7 @@ export const HeroButtonWrap = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const LandingButton = styled.button`
+export const LandingButton = styled(LinkRouter)`
   padding: 12px 52px;
   display: flex;
   justify-content: center;
@@ -51,7 +53,7 @@ export const HeroLinkWrap = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const HeroLink = styled.a`
+export const HeroLink = styled(LinkScroll)`
   margin-bottom: 140px;
   text-align: center;
   font-size: 13px;
