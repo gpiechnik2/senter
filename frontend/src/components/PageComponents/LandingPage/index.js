@@ -3,6 +3,7 @@ import InfoFirst from './InfoFirst';
 import Scanners from './Scanners';
 import Keywords from './Keywords';
 import Content from './Content';
+import Footer from './Footer';
 
 const LandingPage = () => {
   return (
@@ -12,6 +13,7 @@ const LandingPage = () => {
       <Scanners />
       <Keywords />
       <Content />
+      <Footer />
     </>
   );
 };
