@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
 export const ContentContainer = styled.div`
-  padding: 0 30px;
-  padding-bottom: 100px;
+  padding: 50px 30px 100px 30px;
   display: flex;
   justify-content: center;
 `;
 export const ContentWrapper = styled.div`
   max-width: 920px;
-  padding: 50px 0;
   display: grid;
   gap: 50px;
   align-items: start;
