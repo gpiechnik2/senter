@@ -16,7 +16,7 @@ import image from '../../../../images/landing_info.jpg';
 const InfoFirst = () => {
   return (
     <>
-      <InfoContainer>
+      <InfoContainer id='inside'>
         <InfoWrapper>
           <Column1>
             <TextContainer>
