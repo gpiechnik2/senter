@@ -1,6 +1,8 @@
 import Hero from './Hero';
 import InfoFirst from './InfoFirst';
 import Scanners from './Scanners';
+import Keywords from './Keywords';
+import Content from './Content';
 
 const LandingPage = () => {
   return (
@@ -8,6 +10,8 @@ const LandingPage = () => {
       <Hero />
       <InfoFirst />
       <Scanners />
+      <Keywords />
+      <Content />
     </>
   );
 };
