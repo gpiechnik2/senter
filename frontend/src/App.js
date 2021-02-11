@@ -7,6 +7,7 @@ import {
 
 import PublicLayoutPage from './pages/PublicLayoutPage';
 import PrivateLayoutPage from './pages/PrivateLayoutPage';
+import NotFoundPage from './pages/notfound';
 
 import './App.css';
 import './components/Common/DropdownMain.css';
@@ -26,6 +27,9 @@ const App = () => {
   return (
     <Router>
       <Switch>
+        <Route exact path='/'>
+          <Redirect to='/home' />
+        </Route>
         <Route exact path='/home' component={PublicLayoutPage} />
         <Route exact path='/login' component={PublicLayoutPage} />
         <Route exact path='/register' component={PublicLayoutPage} />
@@ -33,17 +37,18 @@ const App = () => {
         <Route exact path='/support' component={PublicLayoutPage} />
         <Route exact path='/news' component={PublicLayoutPage} />
         <Route exact path='/dashboard' component={PrivateLayoutPage} />
-        <Route path='/keyword-planner' component={PrivateLayoutPage} />
-        <Route path='/website-analysis' component={PrivateLayoutPage} />
-        <Route path='/keyword-analysis' component={PrivateLayoutPage} />
-        <Route path='/content-analysis' component={PrivateLayoutPage} />
-        <Route path='/website-info' component={PrivateLayoutPage} />
-        <Route path='/audit' component={PrivateLayoutPage} />
-        <Route path='/help' component={PrivateLayoutPage} />
+        <Route exact path='/keyword-planner' component={PrivateLayoutPage} />
+        <Route exact path='/website-analysis' component={PrivateLayoutPage} />
+        <Route exact path='/keyword-analysis' component={PrivateLayoutPage} />
+        <Route exact path='/content-analysis' component={PrivateLayoutPage} />
+        <Route exact path='/website-info' component={PrivateLayoutPage} />
+        <Route exact path='/audit' component={PrivateLayoutPage} />
+        <Route exact path='/help' component={PrivateLayoutPage} />
         <Route path='/settings' component={PrivateLayoutPage} />
-        <Route path='/articles' component={PrivateLayoutPage} />
-        <Route path='/keywords' component={PrivateLayoutPage} />
-        <Route path='/audits' component={PrivateLayoutPage} />
+        <Route exact path='/articles' component={PrivateLayoutPage} />
+        <Route exact path='/keywords' component={PrivateLayoutPage} />
+        <Route exact path='/audits' component={PrivateLayoutPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </Router>
   );

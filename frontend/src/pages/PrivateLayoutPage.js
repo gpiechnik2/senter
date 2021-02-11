@@ -22,6 +22,7 @@ import SettingsPage from './settings';
 import ArticlesPage from './articles';
 import KeywordsPage from './keywords';
 import AuditsPage from './audits';
+import NotFoundPage from './notfound';
 
 const PrivateLayoutPage = () => {
   return (
@@ -54,18 +55,35 @@ const PrivateLayoutPage = () => {
             }}
           />
           <Switch>
-            <Route path='/dashboard' component={DashboardPage} />
-            <Route path='/keyword-planner' component={KeywordPlannerPage} />
-            <Route path='/website-analysis' component={WebsiteAnalysisPage} />
-            <Route path='/keyword-analysis' component={KeywordAnalysisPage} />
-            <Route path='/content-analysis' component={ContentAnalysisPage} />
-            <Route path='/website-info' component={WebsiteInfoPage} />
-            <Route path='/audit' component={AuditPage} />
-            <Route path='/help' component={HelpPage} />
+            <Route exact path='/dashboard' component={DashboardPage} />
+            <Route
+              exact
+              path='/keyword-planner'
+              component={KeywordPlannerPage}
+            />
+            <Route
+              exact
+              path='/website-analysis'
+              component={WebsiteAnalysisPage}
+            />
+            <Route
+              exact
+              path='/keyword-analysis'
+              component={KeywordAnalysisPage}
+            />
+            <Route
+              exact
+              path='/content-analysis'
+              component={ContentAnalysisPage}
+            />
+            <Route exact path='/website-info' component={WebsiteInfoPage} />
+            <Route exact path='/audit' component={AuditPage} />
+            <Route exact path='/help' component={HelpPage} />
             <Route path='/settings' component={SettingsPage} />
-            <Route path='/articles' component={ArticlesPage} />
-            <Route path='/keywords' component={KeywordsPage} />
-            <Route path='/audits' component={AuditsPage} />
+            <Route exact path='/articles' component={ArticlesPage} />
+            <Route exact path='/keywords' component={KeywordsPage} />
+            <Route exact path='/audits' component={AuditsPage} />
+            <Route component={NotFoundPage} />
           </Switch>
         </ContentContainer>
       </PrivateLayout>

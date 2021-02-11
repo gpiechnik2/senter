@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import ProfilePage from './ProfilePage/index';
 import PrivatePage from './PrivatePage/index';
 import WebScrapingPage from './WebScrapingPage/index';
+import NotFoundPage from '../../../pages/notfound';
 
 import {
   SettingsWrapper,
@@ -32,9 +33,14 @@ const Settings = () => {
         </SettingsMenu>
         <SettingsSwitchContainer>
           <Switch>
-            <Route path='/settings/profile' component={ProfilePage} />
-            <Route path='/settings/private' component={PrivatePage} />
-            <Route path='/settings/web-scraping' component={WebScrapingPage} />
+            <Route exact path='/settings/profile' component={ProfilePage} />
+            <Route exact path='/settings/private' component={PrivatePage} />
+            <Route
+              exact
+              path='/settings/web-scraping'
+              component={WebScrapingPage}
+            />
+            <Route component={NotFoundPage} />
           </Switch>
         </SettingsSwitchContainer>
       </SettingsWrapper>
