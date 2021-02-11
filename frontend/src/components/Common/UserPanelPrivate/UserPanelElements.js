@@ -36,9 +36,6 @@ export const UserHello = styled.div`
   text-align: left;
   border-bottom: 1px solid #e6e8f1;
 `;
-export const UserName = styled.span`
-  color: #8954ba;
-`;
 export const UserPanelList = styled.ul`
   display: flex;
   flex-direction: column;

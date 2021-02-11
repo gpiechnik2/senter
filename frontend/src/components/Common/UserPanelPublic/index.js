@@ -1,44 +1,50 @@
 import {
-  UserPanelContainer,
-  UserPanelWrapper,
-  UserHello,
-  UserPanelList,
-  UserPanelElement,
-  UserPanelLink,
-} from '../UserPanelPrivate/UserPanelElements';
+  UserPanelPublicContainer,
+  UserPanelPublicWrapper,
+  UserHelloPublic,
+  UserPanelPublicList,
+  UserPanelPublicElement,
+  UserPanelPublicLink,
+} from './UserPanelPublicElements';
 
 const UserPanelPublic = ({ isOpen, setIsOpen }) => {
   return (
     <>
-      <UserPanelContainer onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
-        <UserPanelWrapper>
-          <UserHello>Hello!</UserHello>
-          <UserPanelList>
-            <UserPanelElement>
-              <UserPanelLink to='/login' style={{ color: '#5D38DB' }}>
+      <UserPanelPublicContainer
+        onClick={() => setIsOpen(!isOpen)}
+        isOpen={isOpen}>
+        <UserPanelPublicWrapper>
+          <UserHelloPublic>Hello!</UserHelloPublic>
+          <UserPanelPublicList>
+            <UserPanelPublicElement>
+              <UserPanelPublicLink to='/login' style={{ color: '#5D38DB' }}>
                 Login
-              </UserPanelLink>
-            </UserPanelElement>
-            <UserPanelElement>
-              <UserPanelLink to='/register' style={{ color: '#5D38DB' }}>
+              </UserPanelPublicLink>
+            </UserPanelPublicElement>
+            <UserPanelPublicElement>
+              <UserPanelPublicLink to='/register' style={{ color: '#5D38DB' }}>
                 Register
-              </UserPanelLink>
-            </UserPanelElement>
-            <UserPanelElement>
-              <UserPanelLink to='/about'>About us</UserPanelLink>
-            </UserPanelElement>
-            <UserPanelElement>
-              <UserPanelLink to='/support'>Support us</UserPanelLink>
-            </UserPanelElement>
-            <UserPanelElement>
-              <UserPanelLink to='/news'>News</UserPanelLink>
-            </UserPanelElement>
-            <UserPanelElement>
-              <UserPanelLink to='/login'>Helpdesk / Github</UserPanelLink>
-            </UserPanelElement>
-          </UserPanelList>
-        </UserPanelWrapper>
-      </UserPanelContainer>
+              </UserPanelPublicLink>
+            </UserPanelPublicElement>
+            <UserPanelPublicElement>
+              <UserPanelPublicLink to='/about'>About us</UserPanelPublicLink>
+            </UserPanelPublicElement>
+            <UserPanelPublicElement>
+              <UserPanelPublicLink to='/support'>
+                Support us
+              </UserPanelPublicLink>
+            </UserPanelPublicElement>
+            <UserPanelPublicElement>
+              <UserPanelPublicLink to='/news'>News</UserPanelPublicLink>
+            </UserPanelPublicElement>
+            <UserPanelPublicElement>
+              <UserPanelPublicLink to='/login'>
+                Helpdesk / Github
+              </UserPanelPublicLink>
+            </UserPanelPublicElement>
+          </UserPanelPublicList>
+        </UserPanelPublicWrapper>
+      </UserPanelPublicContainer>
     </>
   );
 };

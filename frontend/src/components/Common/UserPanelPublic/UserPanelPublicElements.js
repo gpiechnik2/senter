@@ -10,14 +10,13 @@ to {
 }
 `;
 
-export const UserPanelContainer = styled.div`
+export const UserPanelPublicContainer = styled.div`
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
 
   transition: all 0.5s linear;
   width: 280px;
-  height: 250px;
   position: absolute;
-  top: 70px;
+  top: 51px;
   right: 0;
 
   animation: ${panelAnimation} 0.3s ease;
@@ -27,34 +26,53 @@ export const UserPanelContainer = styled.div`
   background-color: #fff;
   color: #686868;
   box-shadow: -10px 9px 21px rgba(128, 152, 213, 0.07);
+
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    left: ${({ isOpen }) => (isOpen ? 0 : '-245px')};
+    top: 0;
+    bottom: 0;
+    right: auto;
+    width: 245px;
+    display: block;
+    transition: 0.3s ease;
+    box-shadow: none;
+  }
 `;
-export const UserPanelWrapper = styled.div`
+export const UserPanelPublicWrapper = styled.div`
   padding: 32px 102px 32px 40px;
+
+  @media screen and (max-width: 768px) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
-export const UserHello = styled.div`
+export const UserHelloPublic = styled.div`
   height: 31px;
   width: 163px;
   font-size: 13px;
   text-align: left;
   border-bottom: 1px solid #e6e8f1;
 `;
-export const UserName = styled.span`
-  color: #8954ba;
-`;
-export const UserPanelList = styled.ul`
+export const UserPanelPublicList = styled.ul`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: flex-start;
   width: 115px;
-  height: 132px;
-  margin-top: 23px;
+  margin-top: 18px;
 `;
-export const UserPanelElement = styled.li`
-  font-size: 12px;
+export const UserPanelPublicElement = styled.li`
+  margin-bottom: 18px;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 26px;
+  }
+`;
+export const UserPanelPublicLink = styled(LinkRouter)`
+  font-size: 13px;
   color: #686868;
-`;
-export const UserPanelLink = styled(LinkRouter)`
   cursor: pointer;
 
   &:hover {
