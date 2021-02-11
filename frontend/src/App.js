@@ -31,8 +31,28 @@ const App = () => {
           <Redirect to='/home' />
         </Route>
         <Route exact path='/home' component={PublicLayoutPage} />
-        <Route exact path='/login' component={PublicLayoutPage} />
-        <Route exact path='/register' component={PublicLayoutPage} />
+        <Route
+          exact
+          path='/login'
+          render={() => {
+            return localStorage.getItem('profile') ? (
+              <Redirect to='/dashboard' />
+            ) : (
+              <PublicLayoutPage />
+            );
+          }}
+        />
+        <Route
+          exact
+          path='/register'
+          render={() => {
+            return localStorage.getItem('profile') ? (
+              <Redirect to='/dashboard' />
+            ) : (
+              <PublicLayoutPage />
+            );
+          }}
+        />
         <Route exact path='/about' component={PublicLayoutPage} />
         <Route exact path='/support' component={PublicLayoutPage} />
         <Route exact path='/news' component={PublicLayoutPage} />
