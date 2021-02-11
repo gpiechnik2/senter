@@ -18,6 +18,8 @@ import {
   InputRemember,
   LabelRemember,
   LoginGoogleBtnWrap,
+  LogininBtnWrapMobile,
+  ErrorsWrapper,
 } from './LoginElements';
 import { RegisterErrorMsg } from '../Register/RegisterElements';
 
@@ -125,15 +127,22 @@ const Login = () => {
                   </ButtonBasic>
                 </LoginButtonWrap>
               </LoginInputWrap>
-              {errors.email && (
-                <RegisterErrorMsg> {errors.email.message}</RegisterErrorMsg>
+              {(errors.email || errors.password || messageLogin) && (
+                <ErrorsWrapper>
+                  {errors.email && (
+                    <RegisterErrorMsg> {errors.email.message}</RegisterErrorMsg>
+                  )}
+                  {errors.password && (
+                    <RegisterErrorMsg>
+                      {errors.password.message}
+                    </RegisterErrorMsg>
+                  )}
+                  {messageLogin && (
+                    <RegisterErrorMsg>{messageLogin}</RegisterErrorMsg>
+                  )}
+                </ErrorsWrapper>
               )}
-              {errors.password && (
-                <RegisterErrorMsg> {errors.password.message}</RegisterErrorMsg>
-              )}
-              {messageLogin && (
-                <RegisterErrorMsg>{messageLogin}</RegisterErrorMsg>
-              )}
+
               <LoginCheckWrap>
                 <CheckRememberWrap>
                   <InputRemember type='checkbox' id='remember-me' />
@@ -142,6 +151,14 @@ const Login = () => {
                   </LabelRemember>
                 </CheckRememberWrap>
               </LoginCheckWrap>
+              <LogininBtnWrapMobile>
+                <ButtonBasic
+                  type='submit'
+                  disabled={isSubmitting}
+                  style={{ width: '100%', marginBottom: '10px' }}>
+                  Sign in
+                </ButtonBasic>
+              </LogininBtnWrapMobile>
               <LoginGoogleBtnWrap>
                 <GoogleLogin
                   clientId={GOOGLE_ID}

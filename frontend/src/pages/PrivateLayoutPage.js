@@ -32,7 +32,7 @@ const PrivateLayoutPage = () => {
         <Header isPrivate={true}>
           <SearchPanel />
         </Header>
-        <CornerMenu isPrivate={1} />
+        <CornerMenu isPrivate={true} />
         <CrumbNav />
         <ContentContainer>
           <Toaster

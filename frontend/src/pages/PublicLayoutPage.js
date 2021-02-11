@@ -19,7 +19,7 @@ const PublicLayoutPage = () => {
     <>
       <PublicLayout>
         <Header isPrivate={false}></Header>
-        <CornerMenu isPrivate={0} />
+        <CornerMenu isPrivate={false} />
         <ContentContainer>
           <Toaster
             toastOptions={{

@@ -46,6 +46,10 @@ export const LoginButtonWrap = styled.div`
   top: 50%;
   right: 0;
   transform: translateY(-50%);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 export const LoginCheckWrap = styled.div`
   padding: 0 18px;
@@ -78,3 +82,16 @@ export const LabelRemember = styled.label`
 `;
 
 export const LoginGoogleBtnWrap = styled.div``;
+
+export const LogininBtnWrapMobile = styled.div`
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+
+export const ErrorsWrapper = styled.div`
+  margin-top: -30px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+`;
