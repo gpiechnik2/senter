@@ -1,3 +1,4 @@
+import { AboutUsText } from './AboutUsElements';
 import {
   SingleElementContainer,
   ColumnContainerBasic,
@@ -18,7 +19,7 @@ const AboutUs = () => {
             <GraphicImg src={graphic} />
           </GraphicContainer>
           <FormTitle>About us</FormTitle>
-          <FormText>
+          <AboutUsText>
             We are the group of developers that creates and provides tools to
             improve SEO on websites. If you need to contact with us, send us a
             message on
@@ -27,7 +28,7 @@ const AboutUs = () => {
               target='_blank'>
               https://github.com/gpiechnik2/senter
             </ExternalLink>
-          </FormText>
+          </AboutUsText>
         </ColumnContainerBasic>
       </SingleElementContainer>
     </>
