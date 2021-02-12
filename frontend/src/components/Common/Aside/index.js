@@ -1,3 +1,7 @@
+import onClickOutside from 'react-onclickoutside';
+
+import UserPanelMobile from '../UserPanelPrivate/Mobile/index';
+
 import {
   AsideContainer,
   AsideWrap,
@@ -20,15 +24,25 @@ import {
   IconHelpWrap,
   IconHelp,
   HelpText,
+  UserPanelMobileIconWrap,
+  IconGrid,
 } from './AsideElements';
 
-const Aside = () => {
+function Aside({
+  isAsideOpen,
+  setIsAsideOpen,
+  isPanelMobileOpen,
+  setIsPanelMobileOpen,
+  togglePanelMobile,
+}) {
+  Aside.handleClickOutside = () => setIsAsideOpen(false);
+
   return (
     <>
-      <AsideContainer>
+      <AsideContainer isAsideOpen={isAsideOpen}>
         <AsideWrap>
           <ToggleWrap></ToggleWrap>
-          <Nav>
+          <Nav onClick={() => setIsAsideOpen(false)}>
             <NavUl>
               <NavElement>
                 <NavLink to='/dashboard'>
@@ -89,17 +103,36 @@ const Aside = () => {
             </NavUl>
           </Nav>
           <HelpWrap>
-            <HelpLink to='/help'>
+            <HelpLink
+              to='/help'
+              onClick={() => {
+                setIsAsideOpen(false);
+                setIsPanelMobileOpen(false);
+              }}>
               <IconHelpWrap>
                 <IconHelp />
               </IconHelpWrap>
               <HelpText>Helpdesk</HelpText>
             </HelpLink>
+            <UserPanelMobileIconWrap
+              className='ignore-react-onclickoutside'
+              onClick={togglePanelMobile}>
+              <IconGrid />
+            </UserPanelMobileIconWrap>
+            <UserPanelMobile
+              isPanelMobileOpen={isPanelMobileOpen}
+              setIsPanelMobileOpen={setIsPanelMobileOpen}
+              setIsAsideOpen={setIsAsideOpen}
+            />
           </HelpWrap>
         </AsideWrap>
       </AsideContainer>
     </>
   );
+}
+
+const clickOutsideConfig = {
+  handleClickOutside: () => Aside.handleClickOutside,
 };
 
-export default Aside;
+export default onClickOutside(Aside, clickOutsideConfig);

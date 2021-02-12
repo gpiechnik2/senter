@@ -15,11 +15,12 @@ import CornerMenu from '../components/Common/CornerMenu';
 import { ContentContainer } from '../components/Layouts/ContentContainer';
 
 const PublicLayoutPage = () => {
+  const isUserLoggedIn = Boolean(localStorage.getItem('profile'));
   return (
     <>
       <PublicLayout>
-        <Header isPrivate={false}></Header>
-        <CornerMenu isPrivate={false} />
+        <Header isUserLoggedIn={isUserLoggedIn}></Header>
+        <CornerMenu isUserLoggedIn={isUserLoggedIn} isPrivate={false} />
         <ContentContainer>
           <Toaster
             toastOptions={{

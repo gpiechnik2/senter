@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-
 import { BsGrid3X3Gap } from 'react-icons/bs';
+import { CgMenu } from 'react-icons/cg';
 
 export const CornerMenuContainer = styled.div`
   grid-area: corner-panel;
@@ -22,7 +22,6 @@ export const CornerMenuWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-left: 1px solid #d8d8d8;
 `;
 export const IconWrap = styled.div`
@@ -30,8 +29,32 @@ export const IconWrap = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  ${({ isPrivate, isUserLoggedIn }) =>
+    isPrivate && isUserLoggedIn
+      ? ` @media screen and (max-width: 768px) {
+    display: none;
+  }`
+      : `display:flex`};
 `;
 export const IconGrid = styled(BsGrid3X3Gap)`
+  font-size: 21px;
+  color: #fff;
+`;
+export const CornerIconWrapMobile = styled.div`
+  display: none;
+
+  ${({ isPrivate, isUserLoggedIn }) =>
+    isPrivate && isUserLoggedIn
+      ? `  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }`
+      : `display:none`};
+`;
+export const IconHamburger = styled(CgMenu)`
   font-size: 21px;
   color: #fff;
 `;

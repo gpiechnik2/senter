@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import PrivateLayout from '../components/Layouts/PrivateLayout';
@@ -25,14 +26,31 @@ import AuditsPage from './audits';
 import NotFoundPage from './notfound';
 
 const PrivateLayoutPage = () => {
+  const [isAsideOpen, setIsAsideOpen] = useState(false);
+  const [isPanelMobileOpen, setIsPanelMobileOpen] = useState(false);
+  const togglePanelMobile = () => setIsPanelMobileOpen(!isPanelMobileOpen);
+
+  const isUserLoggedIn = Boolean(localStorage.getItem('profile'));
   return (
     <>
       <PrivateLayout>
-        <Aside />
-        <Header isPrivate={true}>
+        <Aside
+          isPanelMobileOpen={isPanelMobileOpen}
+          setIsPanelMobileOpen={setIsPanelMobileOpen}
+          togglePanelMobile={togglePanelMobile}
+          isAsideOpen={isAsideOpen}
+          setIsAsideOpen={setIsAsideOpen}
+        />
+        <Header isUserLoggedIn={isUserLoggedIn}>
           <SearchPanel />
         </Header>
-        <CornerMenu isPrivate={true} />
+        <CornerMenu
+          setIsPanelMobileOpen={setIsPanelMobileOpen}
+          isAsideOpen={isAsideOpen}
+          setIsAsideOpen={setIsAsideOpen}
+          isPrivate={true}
+          isUserLoggedIn={isUserLoggedIn}
+        />
         <CrumbNav />
         <ContentContainer>
           <Toaster

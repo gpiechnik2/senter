@@ -25,6 +25,20 @@ export const UserPanelContainer = styled.div`
   background-color: #fff;
   color: #686868;
   box-shadow: -10px 9px 21px rgba(128, 152, 213, 0.07);
+
+  @media screen and (max-width: 768px) {
+    width: 240px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    left: ${({ isOpen }) => (isOpen ? 0 : '-240px')};
+    width: 240px;
+    transition: 0.3s ease;
+    z-index: 16;
+  }
 `;
 export const UserPanelWrapper = styled.div`
   padding: 32px 102px 10px 40px;
