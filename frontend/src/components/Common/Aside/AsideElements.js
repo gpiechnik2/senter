@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Link as LinkRouter } from 'react-router-dom';
+import { NavLink as LinkRouter } from 'react-router-dom';
+import { BsGrid3X3Gap } from 'react-icons/bs';
 
 import {
   CgHome,
@@ -19,14 +20,22 @@ export const AsideContainer = styled.aside`
   left: 0;
   bottom: 0;
   width: 40px;
-  height: 100vh;
   transition: width 0.3s ease;
   z-index: 9;
   overflow: hidden;
   background: #5d38db;
+  transition: 0.3s ease;
 
-  &:hover {
-    width: 165px;
+  @media (min-width: 769px) {
+    &:hover,
+    &:hover a {
+      width: 165px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    width: 240px;
+    left: ${({ isAsideOpen }) => (isAsideOpen ? 0 : '-240px')};
+    z-index: 15;
   }
 `;
 export const AsideWrap = styled.div`
@@ -44,6 +53,10 @@ export const Nav = styled.nav`
   overflow: hidden;
   background-color: #5d38db;
   z-index: 9;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 export const NavUl = styled.ul`
   display: flex;
@@ -57,26 +70,31 @@ export const NavElement = styled.li`
   transition: all 0.1s ease;
   cursor: pointer;
 
-  &:hover {
-    border-right: 2.5px solid #fff;
-  }
-  &:hover a {
-    color: #fff;
-    overflow: hidden;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 9%;
   }
 `;
 export const NavLink = styled(LinkRouter)`
+  @media (min-width: 769px) {
+    width: 30px;
+    height: 19px;
+    overflow: hidden;
+  }
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-left: 10px;
   font-weight: 100;
-  font-size: 11px;
+  font-size: 12px;
   color: #fff;
 
-  &:hover {
-    color: #fff;
+  &.active {
+    border-right: 4px solid #fff;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-left: 24px;
   }
 `;
 export const IconWrap = styled.div`
@@ -95,7 +113,11 @@ export const IconWebsiteInfo = styled(CgDesktop)``;
 export const IconAudit = styled(CgWebsite)``;
 
 export const NavName = styled.span`
+  display: flex;
+  align-items: center;
   margin-left: 20px;
+  height: 19px;
+  transition: 0.3s ease;
 `;
 export const HelpWrap = styled.div`
   display: flex;
@@ -104,14 +126,6 @@ export const HelpWrap = styled.div`
   overflow: hidden;
   transition: all 0.1s ease;
   cursor: pointer;
-
-  &:hover {
-    border-right: 2.5px solid #fff;
-  }
-  &:hover a {
-    color: #fff;
-    overflow: hidden;
-  }
 `;
 export const HelpLink = styled(LinkRouter)`
   width: 100%;
@@ -120,8 +134,11 @@ export const HelpLink = styled(LinkRouter)`
   align-items: center;
   margin-left: 10px;
   font-weight: 100;
-  font-size: 11px;
+  font-size: 12px;
   color: #fff;
+  @media screen and (max-width: 768px) {
+    margin-left: 24px;
+  }
 `;
 export const IconHelpWrap = styled.div`
   display: flex;
@@ -140,4 +157,17 @@ export const IconHelp = styled(CgComment)`
 `;
 export const HelpText = styled.span`
   margin-left: 20px;
+`;
+export const UserPanelMobileIconWrap = styled.div`
+  display: none;
+  @media screen and (max-width: 768px) {
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+export const IconGrid = styled(BsGrid3X3Gap)`
+  font-size: 21px;
+  color: #fff;
 `;
