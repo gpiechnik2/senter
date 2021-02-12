@@ -88,7 +88,7 @@ class SearchViewSet(viewsets.ViewSet):
             for planner in keywordPlanners:
                 results.append({
                     "endpoint": "keyword-planner/" + str(planner.id) + "/",
-                    "result": "Keyword planner of: " + planner.keyword + "keyword."
+                    "result": "Keyword planner of: " + planner.keyword + " keyword."
                 })
 
 
