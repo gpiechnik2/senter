@@ -1,4 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { searchQuery } from '../../../actions/searchQuery';
+import { getArticle, getarticles } from '../../../actions/articles';
+import { getAudit, getaudits } from '../../../actions/audits';
+import { getKeyword, getkeywords } from '../../../actions/keywords';
 
 import {
   SearchPanelContainer,
@@ -11,14 +17,59 @@ import {
   MyComboboxPopover,
   MyComboboxOption,
   MyComboboxList,
+  LinkElement,
 } from './SearchPanelElements';
 
+const initialState = {
+  searchQuery: '',
+};
+
 const SearchPanel = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const cities = useCitySearch(searchTerm);
-  const handleSearchTermChange = (event) => {
-    setSearchTerm(event.target.value);
+  const [searchForm, setSearchForm] = useState(initialState);
+  const { searchData } = useSelector((state) => state.searchReducer);
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setSearchForm({ ...searchForm, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    dispatch(getaudits());
+    dispatch(getkeywords());
+    dispatch(getarticles());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (searchForm.searchQuery.length > 0) {
+      dispatch(searchQuery(searchForm));
+    }
+  }, [dispatch, searchForm]);
+
+  const locationName = (endpoint) => {
+    if (endpoint.includes('audit/')) {
+      return '/audit';
+    } else if (endpoint.includes('keyword-planner/')) {
+      return '/keyword-planner';
+    } else if (endpoint.includes('content-analysis/analyse/')) {
+      return '/content-analysis';
+    } else {
+      return '/dasboard';
+    }
+  };
+
+  const properDispatch = (endpoint) => {
+    let properId = parseInt(endpoint.slice(-2));
+    if (endpoint.includes('audit/')) {
+      dispatch(getAudit(properId));
+    } else if (endpoint.includes('keyword-planner/')) {
+      dispatch(getKeyword(properId));
+    } else if (endpoint.includes('content-analysis/analyse/')) {
+      dispatch(getArticle(properId));
+    }
+  };
+
+  const popoverRef = useRef();
+
   return (
     <>
       <SearchPanelContainer>
@@ -30,17 +81,27 @@ const SearchPanel = () => {
               </SearchBtn>
               <Input
                 type='search'
+                name='searchQuery'
+                value={searchForm.searchQuery}
                 placeholder='Szukaj np. jak przeprowadzić audyt'
-                onChange={handleSearchTermChange}
+                onChange={handleChange}
               />
-              {cities && (
-                <MyComboboxPopover>
-                  {cities.length > 0 ? (
+              {searchData && (
+                <MyComboboxPopover ref={popoverRef}>
+                  {searchData?.results.length > 0 ? (
                     <MyComboboxList>
-                      {cities.map((city) => {
-                        const str = `${city.city}, ${city.state}`;
-                        return <MyComboboxOption key={str} value={str} />;
-                      })}
+                      {searchData?.results.map((result, i) => (
+                        <LinkElement
+                          key={i}
+                          to={locationName(result.endpoint)}
+                          onClick={() => {
+                            properDispatch(result.endpoint);
+                            console.log(popoverRef.current);
+                            popoverRef.current.setAttribute('hidden', true);
+                          }}>
+                          <MyComboboxOption value={result.result} />
+                        </LinkElement>
+                      ))}
                     </MyComboboxList>
                   ) : (
                     <span style={{ display: 'block', margin: 8 }}>
@@ -58,31 +119,3 @@ const SearchPanel = () => {
 };
 
 export default SearchPanel;
-
-const useCitySearch = (searchTerm) => {
-  const [cities, setCities] = useState([]);
-
-  useEffect(() => {
-    if (searchTerm.trim() !== '') {
-      let isFresh = true;
-      fetchCities(searchTerm).then((cities) => {
-        if (isFresh) setCities(cities);
-      });
-      return () => (isFresh = false);
-    }
-  }, [searchTerm]);
-  return cities;
-};
-const cache = {};
-
-const fetchCities = (value) => {
-  if (cache[value]) {
-    return Promise.resolve(cache[value]);
-  }
-  return fetch('https://city-search.chaance.vercel.app/api?' + value)
-    .then((res) => res.json())
-    .then((result) => {
-      cache[value] = result;
-      return result;
-    });
-};
