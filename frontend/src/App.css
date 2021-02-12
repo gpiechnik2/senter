@@ -99,3 +99,11 @@ body {
   background: #5D38DB;
   border-radius: 3px;
 }
+
+[data-suggested-value] {
+  font-weight: normal;
+}
+
+[data-reach-combobox-popover] {
+  width: 216px !important;
+}

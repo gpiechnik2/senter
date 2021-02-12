@@ -24,7 +24,7 @@ export const AsideContainer = styled.aside`
   z-index: 9;
   overflow: hidden;
   background: #5d38db;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 
   @media (min-width: 769px) {
     &:hover,
@@ -128,6 +128,13 @@ export const HelpWrap = styled.div`
   cursor: pointer;
 `;
 export const HelpLink = styled(LinkRouter)`
+  @media (min-width: 769px) {
+    width: 30px;
+    overflow: hidden;
+    &.active {
+      border-right: 4px solid #fff;
+    }
+  }
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -136,6 +143,7 @@ export const HelpLink = styled(LinkRouter)`
   font-weight: 100;
   font-size: 12px;
   color: #fff;
+
   @media screen and (max-width: 768px) {
     margin-left: 24px;
   }
