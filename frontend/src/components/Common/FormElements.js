@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const FormContainer = styled.div`
   max-width: 530px;
   margin-bottom: 50px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 export const FormTitle = styled.h1`
   margin-bottom: 15px;
