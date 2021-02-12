@@ -4,7 +4,7 @@ import {
   GraphicContainer,
   GraphicImg,
 } from '../../Common/ContainerElements';
-import { FormTitle, FormText } from '../../Common/FormElements';
+import { FormTitle } from '../../Common/FormElements';
 import { ExternalLink } from '../../Common/UserContentElements';
 import { AboutUsText } from '../AboutUs/AboutUsElements';
 
