@@ -15,13 +15,13 @@ import './components/Common/Accordion.css';
 import './components/Common/DropdownSelect.css';
 import './components/Common/Pagination.css';
 
-const authGuard = (Component) => () => {
-  return localStorage.getItem('profile') ? (
-    <Component />
-  ) : (
-    <Redirect to='/login' />
-  );
-};
+// const authGuard = (Component) => () => {
+//   return localStorage.getItem('profile') ? (
+//     <Component />
+//   ) : (
+//     <Redirect to='/login' />
+//   );
+// };
 
 const App = () => {
   return (

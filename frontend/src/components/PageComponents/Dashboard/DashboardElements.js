@@ -44,7 +44,13 @@ export const DashboardUserContentWrap = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export const ContentUnit = styled.div``;
+export const ContentUnit = styled.div`
+  flex-basis: 33.333333%;
+  min-height: 83px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 export const ContentTitle = styled.div`
   margin-bottom: 10px;
   padding-left: 5px;
@@ -74,6 +80,7 @@ export const Title = styled.h2`
 `;
 export const ContentText = styled.p`
   margin-bottom: 9px;
+
   font-size: 12px;
   color: #707070;
 `;

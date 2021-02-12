@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -26,10 +25,6 @@ const KeywordData = () => {
   const { keywordToCheck, isChecking } = useSelector(
     (state) => state.keywordsReducer
   );
-
-  useEffect(() => {
-    console.log(keywordToCheck);
-  }, [keywordToCheck]);
 
   const dataToDisplay = isChecking ? keywordToCheck : keywordData;
 
