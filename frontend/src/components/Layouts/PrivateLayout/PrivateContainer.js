@@ -11,7 +11,7 @@ export const PrivateContainer = styled.div`
 
   min-height: 100vh;
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 768px) {
     grid-template-columns: 1fr 55px;
     grid-template-rows: 50px 1fr;
     grid-template-areas:
