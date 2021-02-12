@@ -9,7 +9,7 @@ import {
 
 import logo from '../../../images/logo_main.svg';
 
-const Header = ({ children, isPrivate }) => {
+const Header = ({ children, isUserLoggedIn }) => {
   const [isScroll, setIsScroll] = useState(false);
 
   const changeHeader = () => {
@@ -32,7 +32,7 @@ const Header = ({ children, isPrivate }) => {
     <>
       <HeaderContainer isScroll={isScroll}>
         <HeaderWrapper>
-          <LogoWrapLink to={isPrivate ? '/dashboard' : '/'}>
+          <LogoWrapLink to={isUserLoggedIn ? '/dashboard' : '/home'}>
             <Logo src={logo} />
           </LogoWrapLink>
           {children}
