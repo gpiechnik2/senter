@@ -23,9 +23,9 @@ const Content = () => {
               <TextElement>
                 <Title>Content analysis</Title>
                 <Text>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy.
+                  It provides real time text analysis, meta description, page
+                  title, and keywords or keyphrase in terms of SEO. This helps
+                  you write more friendly text under search engine.
                 </Text>
               </TextElement>
             </TextWrap>

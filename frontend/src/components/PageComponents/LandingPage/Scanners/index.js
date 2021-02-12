@@ -41,9 +41,11 @@ const Scanners = () => {
                     <AccordionItemPanel className='accordion__panel--analysis'>
                       <TextWrap>
                         <TextP>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy.
+                          It allows you to invetigate the web page code for SEO.
+                          You get an analysis and tips on how to improve the
+                          performance of the page and increase their position in
+                          search engine. The analysis is detailed and provides
+                          information of specific actions.
                         </TextP>
                       </TextWrap>
                     </AccordionItemPanel>
@@ -57,9 +59,9 @@ const Scanners = () => {
                     <AccordionItemPanel className='accordion__panel--analysis'>
                       <TextWrap>
                         <TextP>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy.
+                          Audit analyzes the entire domain for SEO and provides
+                          you detailed analysis and improvement opportunities.
+                          This is an extended web analysis.
                         </TextP>
                       </TextWrap>
                     </AccordionItemPanel>
@@ -73,9 +75,10 @@ const Scanners = () => {
                     <AccordionItemPanel className='accordion__panel--analysis'>
                       <TextWrap>
                         <TextP>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy.
+                          Thanks to it, you get basic information about page,
+                          such as its keywords/keyphrase, description, or
+                          external links. It’s truly recommended for research in
+                          a specific competitor.
                         </TextP>
                       </TextWrap>
                     </AccordionItemPanel>
