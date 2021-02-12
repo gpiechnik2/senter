@@ -18,6 +18,7 @@ import getNewsReducer from './getNews';
 import articlesReducer from './articles';
 import keywordsReducer from './keywords';
 import auditsReducer from './audits';
+import searchReducer from './searchQuery';
 
 export default combineReducers({
   authReducer,
@@ -38,4 +39,5 @@ export default combineReducers({
   articlesReducer,
   keywordsReducer,
   auditsReducer,
+  searchReducer,
 });

@@ -53,3 +53,5 @@ export const deleteKeyword = (id) => API.delete(`/keyword-planner/${id}/`);
 
 export const getAudits = () => API.get('/audit/');
 export const deleteAudit = (id) => API.delete(`/audit/${id}/`);
+
+export const searchQuery = (formData) => API.post('/search/', formData);
