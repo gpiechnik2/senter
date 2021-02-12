@@ -4,7 +4,10 @@ import { HiArrowNarrowLeft } from 'react-icons/hi';
 
 export const CrumbNavContainer = styled.div`
   grid-area: crumb-nav;
-  /* background: #5d38db; */
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 export const CrumbNavWrap = styled.div`
   padding-left: 2%;
@@ -16,21 +19,13 @@ export const CrumbNavWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* border-top-left-radius: 10px; */
   background: #fff;
   border-bottom: 1px solid #e6e8f1;
 `;
 export const CrumbNavList = styled.ul`
   display: flex;
   align-items: center;
-
   font-size: 12px;
-
-  li + li::before {
-    content: '/ ';
-    color: #a4a5a6;
-  }
 `;
 export const CrumbNavElement = styled.li`
   margin-right: 2px;
