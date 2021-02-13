@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import { Link as LinkRouter } from 'react-router-dom';
 import { Link as LinkScroll } from 'react-scroll';
 
-export const HeroContainer = styled.div`
-  padding: 100px 30px;
+export const HeroContainer = styled(motion.div)`
+  padding: 100px 30px 135px 30px;
   display: flex;
   justify-content: center;
 `;

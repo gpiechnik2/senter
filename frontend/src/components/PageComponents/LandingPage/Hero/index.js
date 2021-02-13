@@ -20,6 +20,8 @@ import logo5 from '../../../../images/logo_5.svg';
 import logo6 from '../../../../images/logo_6.svg';
 import logo7 from '../../../../images/logo_7.svg';
 
+import { textAnimation, textTransition } from '../../../animations/animations';
+
 const logosData = [
   { src: logo1 },
   { src: logo2 },
@@ -33,7 +35,11 @@ const logosData = [
 const Hero = () => {
   return (
     <>
-      <HeroContainer>
+      <HeroContainer
+        initial='hidden'
+        animate='visible'
+        variants={textAnimation}
+        transition={textTransition}>
         <HeroContent>
           <HeroH1>
             All the tools you need to take care of positioning yourself, from
