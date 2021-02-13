@@ -8,12 +8,15 @@ import NewsPage from './news';
 import HomePage from './index';
 
 import { Toaster } from 'react-hot-toast';
+import CookieConsent from 'react-cookie-consent';
 
 import PublicLayout from '../components/Layouts/PublicLayout/index';
 import Header from '../components/Common/Header';
 import CornerMenu from '../components/Common/CornerMenu';
 import { ContentContainer } from '../components/Layouts/ContentContainer';
 import ScrollToTop from '../components/Common/ScrollToTop';
+
+import './cookieConsent.css';
 
 const PublicLayoutPage = () => {
   const isUserLoggedIn = Boolean(localStorage.getItem('profile'));
@@ -44,6 +47,17 @@ const PublicLayoutPage = () => {
             <Route path='/support' component={SupportUsPage} />
             <Route path='/news' component={NewsPage} />
           </Switch>
+          <CookieConsent
+            cookieName='senter-cookieConsent'
+            disableStyles={true}
+            buttonClasses='cookiesBtn'
+            containerClasses='cookiesContainer'
+            contentClasses='cookiesContent'
+            buttonText='Agree'>
+            This website uses cookies to ensure you get the best experience on
+            our website. By continuing to browse the site, you agree to our use
+            of cookies.
+          </CookieConsent>
         </ContentContainer>
       </PublicLayout>
     </>
