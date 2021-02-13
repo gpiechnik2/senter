@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Senter App",
+  "name": "Analyze, audit, and analyze keywords from one place",
   "icons": [
     {
       "src": "favicon.ico",
