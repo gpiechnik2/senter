@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 
 import {
   HeaderContainer,
@@ -20,6 +21,10 @@ const Header = ({ children, isUserLoggedIn }) => {
     }
   };
 
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', changeHeader);
 
@@ -32,7 +37,9 @@ const Header = ({ children, isUserLoggedIn }) => {
     <>
       <HeaderContainer isScroll={isScroll}>
         <HeaderWrapper>
-          <LogoWrapLink to={isUserLoggedIn ? '/dashboard' : '/home'}>
+          <LogoWrapLink
+            to={isUserLoggedIn ? '/dashboard' : '/home'}
+            onClick={isUserLoggedIn ? null : toggleHome}>
             <Logo src={logo} />
           </LogoWrapLink>
           {children}
