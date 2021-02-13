@@ -24,6 +24,7 @@ import ArticlesPage from './articles';
 import KeywordsPage from './keywords';
 import AuditsPage from './audits';
 import NotFoundPage from './notfound';
+import ScrollToTop from '../components/Common/ScrollToTop';
 
 const PrivateLayoutPage = () => {
   const [isAsideOpen, setIsAsideOpen] = useState(false);
@@ -34,6 +35,7 @@ const PrivateLayoutPage = () => {
   return (
     <>
       <PrivateLayout>
+        <ScrollToTop />
         <Aside
           isPanelMobileOpen={isPanelMobileOpen}
           setIsPanelMobileOpen={setIsPanelMobileOpen}

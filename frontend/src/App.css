@@ -6,10 +6,6 @@
   font-weight: 100;
 }
 
-html { 
-  scroll-behavior: smooth;
-}
-
 /* clears the 'X' from Internet Explorer */
 input[type=search]::-ms-clear {
   display: none;

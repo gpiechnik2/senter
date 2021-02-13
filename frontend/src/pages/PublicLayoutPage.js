@@ -13,12 +13,14 @@ import PublicLayout from '../components/Layouts/PublicLayout/index';
 import Header from '../components/Common/Header';
 import CornerMenu from '../components/Common/CornerMenu';
 import { ContentContainer } from '../components/Layouts/ContentContainer';
+import ScrollToTop from '../components/Common/ScrollToTop';
 
 const PublicLayoutPage = () => {
   const isUserLoggedIn = Boolean(localStorage.getItem('profile'));
   return (
     <>
       <PublicLayout>
+        <ScrollToTop />
         <Header isUserLoggedIn={isUserLoggedIn}></Header>
         <CornerMenu isUserLoggedIn={isUserLoggedIn} isPrivate={false} />
         <ContentContainer>

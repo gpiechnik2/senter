@@ -650,7 +650,7 @@ const WebsiteAnalysisData = () => {
             <ExpandableAnalysisContainer style={{ marginBottom: '30px' }}>
               <MessageAnalysisWrapper>
                 <MessageAnalysisElementWrap>
-                  <StatusElement style={{ width: '15%' }}>
+                  <StatusElement style={{ width: '20%' }}>
                     <StatusBar />
                     <StatusText style={{ fontWeight: 'bold' }}>
                       Status
@@ -661,7 +661,7 @@ const WebsiteAnalysisData = () => {
                       Url status
                     </MessageText>
                   </MessageElement>
-                  <MessageElement style={{ width: '30%' }}>
+                  <MessageElement style={{ width: '25%' }}>
                     <MessageText style={{ fontWeight: 'bold' }}>
                       Url
                     </MessageText>
@@ -676,7 +676,7 @@ const WebsiteAnalysisData = () => {
                 {websiteAnalysisData.analysis.external_links.status.map(
                   (external_links, i) => (
                     <MessageAnalysisElementWrap key={i}>
-                      <StatusElement style={{ width: '15%' }}>
+                      <StatusElement style={{ width: '20%' }}>
                         <StatusBar
                           style={{
                             borderColor: `${statusColor(
@@ -695,7 +695,7 @@ const WebsiteAnalysisData = () => {
                           {external_links.url_status}
                         </MessageText>
                       </MessageElement>
-                      <MessageElement style={{ width: '30%' }}>
+                      <MessageElement style={{ width: '25%' }}>
                         <MessageText
                           title={external_links.url}
                           style={{ color: 'rgba(104,104,104,.8)' }}>
@@ -791,7 +791,7 @@ const WebsiteAnalysisData = () => {
             <ExpandableAnalysisContainer style={{ marginBottom: '30px' }}>
               <MessageAnalysisWrapper>
                 <MessageAnalysisElementWrap>
-                  <StatusElement style={{ width: '15%' }}>
+                  <StatusElement style={{ width: '20%' }}>
                     <StatusBar />
                     <StatusText style={{ fontWeight: 'bold' }}>
                       Status
@@ -802,7 +802,7 @@ const WebsiteAnalysisData = () => {
                       Url status
                     </MessageText>
                   </MessageElement>
-                  <MessageElement style={{ width: '30%' }}>
+                  <MessageElement style={{ width: '25%' }}>
                     <MessageText style={{ fontWeight: 'bold' }}>
                       Url
                     </MessageText>
@@ -927,7 +927,7 @@ const WebsiteAnalysisData = () => {
           <ExpandableAnalysisContainer>
             <MessageAnalysisWrapper>
               <MessageAnalysisElementWrap>
-                <StatusElement style={{ width: '15%' }}>
+                <StatusElement style={{ width: '20%' }}>
                   <StatusBar />
                   <StatusText style={{ fontWeight: 'bold' }}>Status</StatusText>
                 </StatusElement>
@@ -936,7 +936,7 @@ const WebsiteAnalysisData = () => {
                     Filename
                   </MessageText>
                 </MessageElement>
-                <MessageElement style={{ width: '30%' }}>
+                <MessageElement style={{ width: '25%' }}>
                   <MessageText style={{ fontWeight: 'bold' }}>Url</MessageText>
                 </MessageElement>
                 <MessageElement style={{ width: '30%' }}>
