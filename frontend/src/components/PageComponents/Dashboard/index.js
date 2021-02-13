@@ -31,9 +31,7 @@ import {
 import { SingleElementContainer } from '../../Common/ContainerElements';
 
 const Dashboard = () => {
-  const { newsData, isError, isLoading } = useSelector(
-    (state) => state.getNewsReducer
-  );
+  const { newsData } = useSelector((state) => state.getNewsReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
