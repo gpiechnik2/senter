@@ -107,3 +107,7 @@ body {
 [data-reach-combobox-popover] {
   width: 216px !important;
 }
+
+.mobile-popover {
+  width: 240px !important;
+}

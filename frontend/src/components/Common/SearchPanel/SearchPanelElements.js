@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { Link as LinkRouter } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 
 import {
@@ -22,6 +23,7 @@ const searchPanelAnimation = keyframes`
 
 export const SearchPanelContainer = styled.div`
   height: 100%;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -41,7 +43,6 @@ export const SearchForm = styled.form`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  /* display: block; */
 `;
 
 export const SearchBtn = styled.button`
@@ -90,7 +91,6 @@ export const MyComboboxPopover = styled(ComboboxPopover)`
   position: absolute;
   top: 70px;
   right: -1px;
-  width: 75%;
   max-height: 275px;
 
   padding: 30px 0 15px 0;
@@ -117,7 +117,10 @@ export const MyComboboxList = styled(ComboboxList)`
 
 export const MyComboboxOption = styled(ComboboxOption)`
   margin: 0;
-  padding: 8px 20px;
+  padding: 11px 20px;
+  font-size: 12px;
+  color: #747474;
+  font-weight: normal !important;
   cursor: pointer;
 
   &:hover {
@@ -125,3 +128,4 @@ export const MyComboboxOption = styled(ComboboxOption)`
     color: #8954ba;
   }
 `;
+export const LinkElement = styled(LinkRouter)``;

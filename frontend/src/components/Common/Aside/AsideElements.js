@@ -46,6 +46,9 @@ export const AsideWrap = styled.div`
   flex-direction: column;
   justify-content: space-between;
   z-index: 9;
+  @media screen and (max-width: 768px) {
+    padding-top: 0;
+  }
 `;
 export const ToggleWrap = styled.div``;
 export const Nav = styled.nav`
