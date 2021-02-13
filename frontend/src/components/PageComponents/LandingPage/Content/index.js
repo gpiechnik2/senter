@@ -1,3 +1,5 @@
+import Fade from 'react-reveal/Fade';
+
 import {
   ContentContainer,
   ContentWrapper,
@@ -18,23 +20,27 @@ const Content = () => {
     <>
       <ContentContainer>
         <ContentWrapper>
-          <Column1>
-            <TextWrap>
-              <TextElement>
-                <Title>Content analysis</Title>
-                <Text>
-                  It provides real time text analysis, meta description, page
-                  title, and keywords or keyphrase in terms of SEO. This helps
-                  you write more friendly text under search engine.
-                </Text>
-              </TextElement>
-            </TextWrap>
-          </Column1>
-          <Column2>
-            <ImgWrap>
-              <Img src={image} alt='content analysis' />
-            </ImgWrap>
-          </Column2>
+          <Fade left>
+            <Column1>
+              <TextWrap>
+                <TextElement>
+                  <Title>Content analysis</Title>
+                  <Text>
+                    It provides real time text analysis, meta description, page
+                    title, and keywords or keyphrase in terms of SEO. This helps
+                    you write more friendly text under search engine.
+                  </Text>
+                </TextElement>
+              </TextWrap>
+            </Column1>
+          </Fade>
+          <Fade right>
+            <Column2>
+              <ImgWrap>
+                <Img src={image} alt='content analysis' />
+              </ImgWrap>
+            </Column2>
+          </Fade>
         </ContentWrapper>
       </ContentContainer>
     </>

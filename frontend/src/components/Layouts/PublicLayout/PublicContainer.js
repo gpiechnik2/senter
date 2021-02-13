@@ -9,4 +9,6 @@ export const PublicContainer = styled.div`
     'content content';
 
   min-height: 100vh;
+
+  overflow-x: hidden;
 `;
