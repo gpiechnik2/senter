@@ -1,5 +1,6 @@
 import onClickOutside from 'react-onclickoutside';
 
+import SearchPanelMobile from '../SearchPanel/Mobile';
 import UserPanelMobile from '../UserPanelPrivate/Mobile/index';
 
 import {
@@ -41,6 +42,7 @@ function Aside({
     <>
       <AsideContainer isAsideOpen={isAsideOpen}>
         <AsideWrap>
+          <SearchPanelMobile setIsAsideOpen={setIsAsideOpen} />
           <ToggleWrap></ToggleWrap>
           <Nav onClick={() => setIsAsideOpen(false)}>
             <NavUl>
