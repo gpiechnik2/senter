@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { searchQuery } from '../../../actions/searchQuery';
@@ -68,8 +68,6 @@ const SearchPanel = () => {
     }
   };
 
-  const popoverRef = useRef();
-
   return (
     <>
       <SearchPanelContainer>
@@ -87,7 +85,7 @@ const SearchPanel = () => {
                 onChange={handleChange}
               />
               {searchData && (
-                <MyComboboxPopover ref={popoverRef}>
+                <MyComboboxPopover>
                   {searchData?.results.length > 0 ? (
                     <MyComboboxList>
                       {searchData?.results.map((result, i) => (
@@ -96,8 +94,7 @@ const SearchPanel = () => {
                           to={locationName(result.endpoint)}
                           onClick={() => {
                             properDispatch(result.endpoint);
-                            console.log(popoverRef.current);
-                            popoverRef.current.setAttribute('hidden', true);
+                            setSearchForm({ ...searchForm, searchQuery: '' });
                           }}>
                           <MyComboboxOption value={result.result} />
                         </LinkElement>
