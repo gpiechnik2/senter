@@ -61,13 +61,11 @@ const SearchPanelMobile = ({ setIsAsideOpen }) => {
   };
 
   useEffect(() => {
-    dispatch(getaudits());
-    dispatch(getkeywords());
-    dispatch(getarticles());
-  }, [dispatch]);
-
-  useEffect(() => {
     if (searchForm.searchQuery.length > 0) {
+      dispatch(getaudits());
+      dispatch(getkeywords());
+      dispatch(getarticles());
+
       dispatch(searchQuery(searchForm));
     }
   }, [dispatch, searchForm]);

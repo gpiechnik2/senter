@@ -43,11 +43,6 @@ const Audits = () => {
   useEffect(() => {
     dispatch(getaudits());
   }, [dispatch]);
-
-  useEffect(() => {
-    console.log('audits', auditsData);
-    console.log('loading?', isLoading);
-  }, [auditsData, isLoading]);
   return (
     <>
       <SingleElementContainer>
