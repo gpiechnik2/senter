@@ -82,6 +82,11 @@ export const NavLink = styled(LinkRouter)`
     width: 30px;
     height: 19px;
     overflow: hidden;
+    transition: border-right 0.1s ease;
+
+    &:hover {
+      border-right: 4px solid #fff;
+    }
   }
   width: 100%;
   display: flex;
