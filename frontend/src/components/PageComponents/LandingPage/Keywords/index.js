@@ -1,4 +1,4 @@
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 
 import {
   KeywordsContainer,
@@ -20,14 +20,14 @@ const Keywords = () => {
     <>
       <KeywordsContainer>
         <KeywordsWrapper>
-          <Fade left>
+          <Fade direction='left' triggerOnce delay={150}>
             <Column1>
               <ImgWrap>
                 <Img src={image} alt='keywords' />
               </ImgWrap>
             </Column1>
           </Fade>
-          <Fade right>
+          <Fade direction='right' triggerOnce delay={150}>
             <Column2>
               <TextWrap>
                 <TextElement>

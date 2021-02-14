@@ -1,4 +1,4 @@
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 
 import {
   InfoContainer,
@@ -20,7 +20,7 @@ const InfoFirst = () => {
     <>
       <InfoContainer id='inside'>
         <InfoWrapper>
-          <Fade left>
+          <Fade direction='left' triggerOnce delay={150}>
             <Column1>
               <TextContainer>
                 <TextTitle>Easy to use</TextTitle>
@@ -49,7 +49,7 @@ const InfoFirst = () => {
               <Img src={image} alt='info' />
             </ImgWrap>
           </Column2>
-          <Fade right>
+          <Fade direction='right' triggerOnce delay={150}>
             <Column3>
               <TextContainer>
                 <TextTitle>One platform</TextTitle>

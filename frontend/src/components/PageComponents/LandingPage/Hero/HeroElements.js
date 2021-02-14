@@ -4,7 +4,7 @@ import { Link as LinkRouter } from 'react-router-dom';
 import { Link as LinkScroll } from 'react-scroll';
 
 export const HeroContainer = styled(motion.div)`
-  padding: 100px 30px 135px 30px;
+  padding: 100px 30px 140px 30px;
   display: flex;
   justify-content: center;
 `;

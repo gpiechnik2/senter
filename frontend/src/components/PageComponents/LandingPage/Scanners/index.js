@@ -1,4 +1,4 @@
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 
 import {
   Accordion,
@@ -29,7 +29,7 @@ const Scanners = () => {
     <>
       <ScannersContainer>
         <ScannersWrapper>
-          <Fade left cascade>
+          <Fade direction='left' triggerOnce delay={150}>
             <Column1>
               <ContentWrap>
                 <Title>Website scanners</Title>
@@ -91,7 +91,7 @@ const Scanners = () => {
               </ContentWrap>
             </Column1>
           </Fade>
-          <Fade right>
+          <Fade direction='right' triggerOnce delay={150}>
             <Column2>
               <ImgWrap>
                 <Img src={image} alt='website scanners' />
