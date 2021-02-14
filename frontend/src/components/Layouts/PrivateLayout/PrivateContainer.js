@@ -18,4 +18,6 @@ export const PrivateContainer = styled.div`
       'header corner-panel'
       'content content';
   }
+
+  overflow-x: hidden;
 `;

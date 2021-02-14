@@ -14,3 +14,14 @@ export const textTransition = {
   delay: 0.3,
   ease: [0.165, 0.84, 0.44, 1],
 };
+
+export const pageAnimation = {
+  in: {
+    opacity: 1,
+    x: 0,
+  },
+  out: {
+    opacity: 0,
+    x: 100,
+  },
+};

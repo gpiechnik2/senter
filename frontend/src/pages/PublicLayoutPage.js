@@ -1,4 +1,6 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
+
+import { AnimatePresence } from 'framer-motion';
 
 import LoginPage from './login';
 import RegisterPage from './register';
@@ -19,6 +21,8 @@ import ScrollToTop from '../components/Common/ScrollToTop';
 import './cookieConsent.css';
 
 const PublicLayoutPage = () => {
+  let location = useLocation();
+
   const isUserLoggedIn = Boolean(localStorage.getItem('profile'));
   return (
     <>
@@ -39,14 +43,16 @@ const PublicLayoutPage = () => {
               },
             }}
           />
-          <Switch>
-            <Route path='/home' component={HomePage} />
-            <Route path='/login' component={LoginPage} />
-            <Route path='/register' component={RegisterPage} />
-            <Route path='/about' component={AboutUsPage} />
-            <Route path='/support' component={SupportUsPage} />
-            <Route path='/news' component={NewsPage} />
-          </Switch>
+          <AnimatePresence exitBeforeEnter>
+            <Switch location={location} key={location.pathname}>
+              <Route path='/home' component={HomePage} />
+              <Route path='/login' component={LoginPage} />
+              <Route path='/register' component={RegisterPage} />
+              <Route path='/about' component={AboutUsPage} />
+              <Route path='/support' component={SupportUsPage} />
+              <Route path='/news' component={NewsPage} />
+            </Switch>
+          </AnimatePresence>
           <CookieConsent
             cookieName='senter-cookieConsent'
             disableStyles={true}
