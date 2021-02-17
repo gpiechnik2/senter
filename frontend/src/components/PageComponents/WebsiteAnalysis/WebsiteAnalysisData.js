@@ -661,7 +661,7 @@ const WebsiteAnalysisData = () => {
                       Url status
                     </MessageText>
                   </MessageElement>
-                  <MessageElement style={{ width: '25%' }}>
+                  <MessageElement style={{ width: '30%' }}>
                     <MessageText style={{ fontWeight: 'bold' }}>
                       Url
                     </MessageText>
@@ -688,14 +688,14 @@ const WebsiteAnalysisData = () => {
                           {external_links.status}
                         </StatusText>
                       </StatusElement>
-                      <MessageElement style={{ width: '15%' }}>
+                      <MessageElement style={{ width: '20%' }}>
                         <MessageText
                           title={external_links.url_status}
                           style={{ color: 'rgba(104,104,104,.8)' }}>
                           {external_links.url_status}
                         </MessageText>
                       </MessageElement>
-                      <MessageElement style={{ width: '25%' }}>
+                      <MessageElement style={{ width: '30%' }}>
                         <MessageText
                           title={external_links.url}
                           style={{ color: 'rgba(104,104,104,.8)' }}>
@@ -797,12 +797,12 @@ const WebsiteAnalysisData = () => {
                       Status
                     </StatusText>
                   </StatusElement>
-                  <MessageElement style={{ width: '15%' }}>
+                  <MessageElement style={{ width: '20%' }}>
                     <MessageText style={{ fontWeight: 'bold' }}>
                       Url status
                     </MessageText>
                   </MessageElement>
-                  <MessageElement style={{ width: '25%' }}>
+                  <MessageElement style={{ width: '30%' }}>
                     <MessageText style={{ fontWeight: 'bold' }}>
                       Url
                     </MessageText>
@@ -817,7 +817,7 @@ const WebsiteAnalysisData = () => {
                 {websiteAnalysisData.analysis.internal_links.status.map(
                   (internal_links, i) => (
                     <MessageAnalysisElementWrap key={i}>
-                      <StatusElement style={{ width: '15%' }}>
+                      <StatusElement style={{ width: '20%' }}>
                         <StatusBar
                           style={{
                             borderColor: `${statusColor(
@@ -936,7 +936,7 @@ const WebsiteAnalysisData = () => {
                     Filename
                   </MessageText>
                 </MessageElement>
-                <MessageElement style={{ width: '25%' }}>
+                <MessageElement style={{ width: '30%' }}>
                   <MessageText style={{ fontWeight: 'bold' }}>Url</MessageText>
                 </MessageElement>
                 <MessageElement style={{ width: '30%' }}>
@@ -948,7 +948,7 @@ const WebsiteAnalysisData = () => {
 
               {websiteAnalysisData.analysis.images.analysis.map((image, i) => (
                 <MessageAnalysisElementWrap key={i}>
-                  <StatusElement style={{ width: '15%' }}>
+                  <StatusElement style={{ width: '20%' }}>
                     <StatusBar
                       style={{
                         borderColor: `${statusColor(image.status)}`,
