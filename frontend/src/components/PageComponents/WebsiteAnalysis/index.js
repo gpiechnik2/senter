@@ -64,7 +64,7 @@ const WebsiteAnalysis = () => {
           <FormWrap onSubmit={onSubmit}>
             <FormInput
               required
-              type='text'
+              type='url'
               name='url'
               aria-describedby='Enter url'
               placeholder='Url'
