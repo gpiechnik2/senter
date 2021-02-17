@@ -83,7 +83,7 @@ const SearchPanelMobile = ({ setIsAsideOpen }) => {
                 type='search'
                 name='searchQuery'
                 value={searchForm.searchQuery}
-                placeholder='Szukaj np. jak przeprowadzić audyt'
+                placeholder='Search'
                 onChange={handleChange}
               />
               {searchData && (
