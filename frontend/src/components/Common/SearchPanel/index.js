@@ -79,7 +79,7 @@ const SearchPanel = () => {
                 type='search'
                 name='searchQuery'
                 value={searchForm.searchQuery}
-                placeholder='Search'
+                placeholder='Szukaj np. jak przeprowadzić audyt'
                 onChange={handleChange}
               />
               {searchData && (
