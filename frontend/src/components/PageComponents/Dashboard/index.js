@@ -133,12 +133,14 @@ const Dashboard = () => {
               <ContentText>
                 Send feedback message to us, what can be corrected.
               </ContentText>
-              <ContentLink to='/articles'>
+              <ExternalContentLink
+                href='https://github.com/gpiechnik2/senter'
+                target='_blank'>
                 <LinkIconWrap>
                   <LinkIcon />
                 </LinkIconWrap>
                 Send feedback
-              </ContentLink>
+              </ExternalContentLink>
             </TechnicalUnit>
           </DashboardTechnicalWrap>
         </DashboardContainer>

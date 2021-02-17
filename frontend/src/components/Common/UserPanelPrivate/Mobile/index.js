@@ -10,6 +10,7 @@ import {
   UserPanelMobileElement,
   UserPanelMobileLink,
   UserPanelMobileLogout,
+  UserPanelLinkExternalMobile,
 } from './UserPanelMobileElements';
 
 function UserPanelMobile({
@@ -48,9 +49,11 @@ function UserPanelMobile({
               </UserPanelMobileLink>
             </UserPanelMobileElement>
             <UserPanelMobileElement>
-              <UserPanelMobileLink to='/dashboard'>
+              <UserPanelLinkExternalMobile
+                href='https://github.com/gpiechnik2/senter'
+                target='_blank'>
                 Report / Feedback
-              </UserPanelMobileLink>
+              </UserPanelLinkExternalMobile>
             </UserPanelMobileElement>
             <UserPanelMobileElement>
               <UserPanelMobileLogout onClick={logout}>

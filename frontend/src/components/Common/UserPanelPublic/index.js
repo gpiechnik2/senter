@@ -5,6 +5,7 @@ import {
   UserPanelPublicList,
   UserPanelPublicElement,
   UserPanelPublicLink,
+  UserPanelLinkExternalPublic,
 } from './UserPanelPublicElements';
 
 const UserPanelPublic = ({ isOpen, setIsOpen }) => {
@@ -38,9 +39,11 @@ const UserPanelPublic = ({ isOpen, setIsOpen }) => {
               <UserPanelPublicLink to='/news'>News</UserPanelPublicLink>
             </UserPanelPublicElement>
             <UserPanelPublicElement>
-              <UserPanelPublicLink to='/login'>
+              <UserPanelLinkExternalPublic
+                href='https://github.com/gpiechnik2/senter'
+                target='_blank'>
                 Helpdesk / Github
-              </UserPanelPublicLink>
+              </UserPanelLinkExternalPublic>
             </UserPanelPublicElement>
           </UserPanelPublicList>
         </UserPanelPublicWrapper>

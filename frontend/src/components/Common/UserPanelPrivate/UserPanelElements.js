@@ -71,6 +71,17 @@ export const UserPanelLink = styled(LinkRouter)`
   }
 `;
 
+export const UserPanelLinkExternal = styled.a`
+  font-size: 13px;
+  color: #686868;
+  cursor: pointer;
+
+  &:hover {
+    color: #5d38db;
+    transition: 0.3s ease;
+  }
+`;
+
 export const UserPanelLogout = styled.button`
   padding: 0 !important;
   border: none;

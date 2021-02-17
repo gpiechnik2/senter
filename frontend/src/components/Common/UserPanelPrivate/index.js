@@ -1,4 +1,3 @@
-// import {useState} from 'react'
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -10,10 +9,10 @@ import {
   UserPanelElement,
   UserPanelLink,
   UserPanelLogout,
+  UserPanelLinkExternal,
 } from './UserPanelElements';
 
 const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
-  // const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -21,8 +20,6 @@ const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
     dispatch({ type: 'LOGOUT' });
 
     history.push('/login');
-
-    // setUser(null)
   };
 
   return (
@@ -38,7 +35,11 @@ const UserPanelPrivate = ({ isOpen, setIsOpen }) => {
               <UserPanelLink to='/settings/profile'>Settings</UserPanelLink>
             </UserPanelElement>
             <UserPanelElement>
-              <UserPanelLink to='/dashboard'>Report / Feedback</UserPanelLink>
+              <UserPanelLinkExternal
+                href='https://github.com/gpiechnik2/senter'
+                target='_blank'>
+                Report / Feedback
+              </UserPanelLinkExternal>
             </UserPanelElement>
             <UserPanelElement>
               <UserPanelLogout onClick={logout}>Logout</UserPanelLogout>
