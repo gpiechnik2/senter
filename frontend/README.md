@@ -16,7 +16,7 @@ Project created with:
 - react-moment: 1.1.1
 - react-onclickoutside: 6.9.1
 - React: 17.0.1
-- rc-pagination: 5.2.0
+- rc-pagination: 3.1.3
 - react-scroll: 1.8.1
 - react-select: 3.1.1
 - react-accessible-accordion: 3.3.3
@@ -24,6 +24,3 @@ Project created with:
 - react-cookie-consent: 6.2.2
 - react-dropdown-select: 4.7.3
 - react-hot-toast: 1.0.1
-- rc-pagination: 5.2.0
-- rc-pagination: 5.2.0
-- rc-pagination: 5.2.0
