@@ -15,7 +15,6 @@ Project created with:
 - moment: 2.29.1
 - react-moment: 1.1.1
 - react-onclickoutside: 6.9.1
-- React: 17.0.1
 - rc-pagination: 3.1.3
 - react-scroll: 1.8.1
 - react-select: 3.1.1
